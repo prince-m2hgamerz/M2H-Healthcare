@@ -262,8 +262,8 @@ Framer Motion powers scroll-reveal animations (`motion.div` with `initial`/`whil
 
 ```env
 # Supabase
-NEXT_PUBLIC_SUPABASE_URL=        # Project URL from Supabase dashboard
-NEXT_PUBLIC_SUPABASE_ANON_KEY=   # Public anon key
+M2H_PUBLIC_SUPABASE_URL=        # Project URL from Supabase dashboard
+M2H_PUBLIC_SUPABASE_ANON_KEY=   # Public anon key
 SUPABASE_SERVICE_ROLE_KEY=       # Service role key (admin operations)
 
 # Resend Email
@@ -272,8 +272,8 @@ RESEND_FROM_EMAIL=               # Sender address (e.g., noreply@asianshealthcar
 ADMIN_EMAIL=                     # Where lead notifications are sent
 
 # Site
-NEXT_PUBLIC_SITE_URL=            # https://asianshealthcare.com
-NEXT_PUBLIC_WHATSAPP_NUMBER=     # +919650928250
+M2H_PUBLIC_SITE_URL=            # https://asianshealthcare.com
+M2H_PUBLIC_WHATSAPP_NUMBER=     # +919650928250
 ```
 
 ---
