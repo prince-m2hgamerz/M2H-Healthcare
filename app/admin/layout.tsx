@@ -115,7 +115,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   );
 
   return (
-    <div className="flex min-h-screen bg-canvas-cream">
+    <div className="flex min-h-screen bg-canvas-cream overflow-x-hidden">
       <aside className="fixed hidden h-full w-64 shrink-0 flex-col bg-canvas-night text-on-primary lg:flex">
         {sidebar}
       </aside>
@@ -127,7 +127,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
       )}
 
-      <div className="flex-1 lg:pl-64">
+      <div className="flex-1 min-w-0 lg:pl-64">
         <header className="sticky top-0 z-30 border-b border-hairline-light bg-canvas-light/95 backdrop-blur">
           <div className="flex items-center justify-between px-4 py-3 lg:px-8">
             <div className="flex items-center gap-3">
@@ -158,7 +158,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
         </header>
 
-        <div className="p-4 sm:p-6 lg:p-8">{children}</div>
+        <div className="p-4 sm:p-6 lg:p-8 overflow-x-auto">{children}</div>
       </div>
     </div>
   );
