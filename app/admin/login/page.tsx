@@ -55,7 +55,7 @@ export default function AdminLoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@asianshealthcare.com"
+              placeholder="test@example.com"
               required
               className="w-full bg-canvas-night-elevated border border-hairline-dark text-on-primary rounded-md px-4 py-3 text-body-md placeholder:text-shade-60 focus:outline-none focus:border-link-cool-2 transition-colors"
             />

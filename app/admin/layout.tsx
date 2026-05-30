@@ -17,6 +17,8 @@ import {
   Hotel,
   Settings,
   UserCog,
+  Mail,
+  Send,
   LogOut,
   Menu,
   X,
@@ -35,6 +37,8 @@ const sidebarLinks = [
   { label: "Hotels", href: "/admin/hotels", icon: Hotel },
   { label: "Settings", href: "/admin/settings", icon: Settings },
   { label: "Users", href: "/admin/users", icon: UserCog },
+  { label: "Subscribers", href: "/admin/subscribers", icon: Mail },
+  { label: "Email Marketing", href: "/admin/email-marketing", icon: Send },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
