@@ -9,6 +9,7 @@ import SearchInput from "@/components/layout/SearchInput";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbSchema } from "@/lib/json-ld";
 import { getSiteImages } from "@/lib/site-settings";
+import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 
 export const metadata: Metadata = {
   title: "Top Specialist Doctors in India",
@@ -54,6 +55,10 @@ export default async function DoctorsPage({
         { name: "Home", url: "https://asianshealthcare.com" },
         { name: "Doctors", url: "https://asianshealthcare.com/doctors" },
       ])} />
+      <BreadcrumbNav items={[
+        { label: "Home", href: "/" },
+        { label: "Doctors", href: "/doctors" },
+      ]} />
       <PageHero
         eyebrow="Our Experts"
         title="Our Specialist Doctors"

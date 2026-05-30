@@ -1,6 +1,6 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { organizationSchema, websiteSchema } from "@/lib/json-ld";
+import { organizationSchema, websiteSchema, faqPageSchema } from "@/lib/json-ld";
 import HeroSection from "@/components/home/HeroSection";
 import StatsCounter from "@/components/home/StatsCounter";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
@@ -78,6 +78,13 @@ export default async function HomePage() {
   return (
     <>
       <JsonLd data={[organizationSchema(), websiteSchema()]} />
+      <JsonLd data={faqPageSchema([
+        { question: "Why choose India for medical treatment?", answer: "India offers accredited hospitals, experienced specialists, advanced technology, and significantly lower treatment costs than many Western countries." },
+        { question: "How does Asians Healthcare work?", answer: "Share your reports, receive opinion and cost guidance, choose a doctor or hospital, then get support for visa invitation, arrival, stay, admission, interpreter help, and follow-up." },
+        { question: "Is Asians Healthcare's service free?", answer: "Yes. Patients pay the hospital directly. Asians Healthcare does not add a patient service fee." },
+        { question: "Which hospitals do you work with?", answer: "We coordinate with NABH and JCI accredited hospitals across major Indian cities, including Delhi NCR, Mumbai, Chennai, Bangalore, and other medical hubs." },
+        { question: "How much can I save?", answer: "Savings depend on the procedure and hospital, but many patients see treatment estimates that are 60-80% lower than US or UK costs." },
+      ])} />
       <HeroSection imageUrl={images.image_home_hero} />
       <StatsCounter />
       <WhyChooseUs />

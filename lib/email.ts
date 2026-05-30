@@ -14,6 +14,15 @@ async function getAdminEmail(): Promise<string> {
   return fallbackAdminEmail;
 }
 
+async function getWhatsAppNumber(): Promise<string> {
+  try {
+    const supabase = await createServerSupabaseClient();
+    const { data } = await supabase.from("site_settings").select("value").eq("key", "whatsapp_number").single();
+    if (data?.value) return data.value.replace(/[^0-9]/g, "");
+  } catch {}
+  return process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/[^0-9]/g, "") || "919650928250";
+}
+
 export async function sendLeadNotification(lead: Record<string, unknown>) {
   const formType = lead.form_type as string;
   const name = lead.name as string;
@@ -59,6 +68,8 @@ export async function sendCustomerConfirmation(lead: Record<string, unknown>) {
 
   if (!email) return;
 
+  const waNumber = await getWhatsAppNumber();
+
   const formLabels: Record<string, string> = {
     Contact: "Contact Form",
     "Doctor Opinion": "Doctor Opinion Request",
@@ -84,7 +95,7 @@ export async function sendCustomerConfirmation(lead: Record<string, unknown>) {
         <div style="background:#fff;border-radius:8px;padding:16px;margin:20px 0;border:1px solid #e0e0e0">
           <p style="margin:0 0 8px;font-size:13px;color:#666;text-transform:uppercase;letter-spacing:0.5px">Need Immediate Assistance?</p>
           <p style="margin:0;font-size:15px;color:#111">
-            WhatsApp: <a href="https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919650928250"}" style="color:#22c55e;text-decoration:none;font-weight:600">+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "91-9650928250"}</a>
+            WhatsApp: <a href="https://wa.me/${waNumber}" style="color:#22c55e;text-decoration:none;font-weight:600">+${waNumber}</a>
           </p>
         </div>
         <div style="border-top:1px solid #e0e0e0;padding-top:16px;margin-top:16px">

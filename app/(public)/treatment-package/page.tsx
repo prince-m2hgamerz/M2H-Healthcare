@@ -10,6 +10,7 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbSchema } from "@/lib/json-ld";
 import { getSiteImages } from "@/lib/site-settings";
 import { getTreatmentImage } from "@/lib/site-images";
+import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 
 export const metadata: Metadata = {
   title: "Affordable Medical Treatment Costs in India",
@@ -55,6 +56,10 @@ export default async function TreatmentPackagesPage({
         { name: "Home", url: "https://asianshealthcare.com" },
         { name: "Treatment Packages", url: "https://asianshealthcare.com/treatment-package" },
       ])} />
+      <BreadcrumbNav items={[
+        { label: "Home", href: "/" },
+        { label: "Treatment Packages", href: "/treatment-package" },
+      ]} />
       <PageHero
         eyebrow="Affordable Care"
         title="Treatment Packages & Costs"

@@ -9,6 +9,7 @@ import SearchInput from "@/components/layout/SearchInput";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbSchema } from "@/lib/json-ld";
 import { getSiteImages } from "@/lib/site-settings";
+import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 
 export const metadata: Metadata = {
   title: "Partner Hospitals in India",
@@ -55,6 +56,10 @@ export default async function HospitalsPage({
         { name: "Home", url: "https://asianshealthcare.com" },
         { name: "Hospitals", url: "https://asianshealthcare.com/hospitals" },
       ])} />
+      <BreadcrumbNav items={[
+        { label: "Home", href: "/" },
+        { label: "Hospitals", href: "/hospitals" },
+      ]} />
       <PageHero
         eyebrow="Top Facilities"
         title="Our Partner Hospitals"

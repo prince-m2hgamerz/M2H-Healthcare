@@ -3,8 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/layout/WhatsAppButton";
-import CallbackButton from "@/components/layout/CallbackButton";
+import FloatingButtons from "@/components/layout/WhatsAppButton";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -19,8 +18,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main className="min-h-screen">{children}</main>
       <Footer />
-      <WhatsAppButton />
-      <CallbackButton />
+      <FloatingButtons />
     </>
   );
 }

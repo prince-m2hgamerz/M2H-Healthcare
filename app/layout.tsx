@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/layout/AppShell";
+import CookieConsent from "@/components/shared/CookieConsent";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,8 +56,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <link rel="preconnect" href={process.env.NEXT_PUBLIC_SUPABASE_URL?.split("/").slice(0, 3).join("/") || "https://imhukfivfelxfltzqxtx.supabase.co"} />
+        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_SUPABASE_URL?.split("/").slice(0, 3).join("/") || "https://imhukfivfelxfltzqxtx.supabase.co"} />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="alternate" type="application/rss+xml" title="Asians Healthcare Blog" href="/api/rss" />
+      </head>
       <body className="font-sans antialiased">
         <AppShell>{children}</AppShell>
+        <CookieConsent />
       </body>
     </html>
   );
