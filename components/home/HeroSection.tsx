@@ -1,0 +1,164 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import { ArrowRight, Building2, DollarSign, Hotel, Search, Stethoscope } from "lucide-react";
+import Image from "next/image";
+
+const tabs = [
+  { id: "cost", label: "Find Cost", icon: DollarSign, placeholder: "Search treatment cost..." },
+  { id: "doctor", label: "Find Doctor", icon: Stethoscope, placeholder: "Search by doctor name or specialty..." },
+  { id: "hospital", label: "Find Hospital", icon: Building2, placeholder: "Search by hospital name or location..." },
+  { id: "hotel", label: "Find Hotel", icon: Hotel, placeholder: "Search nearby hotels..." },
+];
+
+const tabLinks: Record<string, string> = {
+  cost: "/treatment-package",
+  doctor: "/doctors",
+  hospital: "/hospitals",
+  hotel: "/hotels",
+};
+
+interface HeroSectionProps {
+  imageUrl?: string;
+}
+
+export default function HeroSection({ imageUrl = "https://images.unsplash.com/photo-1551076805-e1869033e561?w=1600&q=80" }: HeroSectionProps) {
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState("cost");
+  const [searchQuery, setSearchQuery] = useState("");
+  const activeConfig = tabs.find((t) => t.id === activeTab) || tabs[0];
+  const searchHref = (() => {
+    const trimmed = searchQuery.trim();
+    const params = new URLSearchParams();
+    if (trimmed) params.set("q", trimmed);
+    const query = params.toString();
+    return `${tabLinks[activeTab]}${query ? `?${query}` : ""}`;
+  })();
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    router.push(searchHref);
+  };
+
+  return (
+    <section className="relative bg-canvas-night text-on-primary overflow-hidden min-h-[80vh] lg:min-h-[90vh] flex items-center">
+      <div className="absolute inset-0">
+        <Image
+          src={imageUrl}
+          alt="Medical care team"
+          fill
+          className="object-cover opacity-30"
+          priority
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-canvas-night/90 via-canvas-night/80 to-surface-elevated-dark/70" />
+      <div className="container-cinematic relative z-10 py-20 lg:py-32 w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl"
+        >
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="pill-tag mb-6 inline-block"
+          >
+            World-Class Healthcare in India
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          className="font-display text-[44px] leading-[0.98] sm:text-display-xl lg:text-display-xxl tracking-wide mb-6"
+          >
+            Your Health Journey
+            <br />
+            <span className="text-link-mint">Starts in India</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="text-body-lg text-link-cool-2 max-w-2xl mb-10 leading-relaxed"
+          >
+            Free medical opinion, cost estimate, visa support, hospital admission help,
+            airport pickup, and interpreter support for overseas patients.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="max-w-3xl"
+          >
+            <div className="flex flex-wrap gap-1 mb-0.5">
+              {tabs.map((tab) => {
+                const Icon = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    aria-pressed={activeTab === tab.id}
+                    onClick={() => { setActiveTab(tab.id); setSearchQuery(""); }}
+                    className={`inline-flex items-center gap-2 px-4 py-2.5 text-sm rounded-t-lg transition-all ${
+                      activeTab === tab.id
+                        ? "bg-white/10 text-on-primary border-b-2 border-link-mint"
+                        : "text-link-cool-2 hover:text-on-primary hover:bg-white/5"
+                    }`}
+                  >
+                    <Icon size={16} />
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+            <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-md rounded-lg rounded-tl-none p-3 flex flex-col sm:flex-row gap-3">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-shade-40" size={18} />
+                <input
+                  type="text"
+                  aria-label={activeConfig.placeholder}
+                  placeholder={activeConfig.placeholder}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-canvas-night-elevated/60 border border-hairline-dark text-on-primary rounded-lg pl-10 pr-4 py-3 text-body-md placeholder:text-shade-40 focus:outline-none focus:border-link-mint focus:ring-1 focus:ring-link-mint/30 transition-all"
+                />
+              </div>
+              <button
+                type="submit"
+                className="btn-aloe whitespace-nowrap flex items-center gap-2 justify-center"
+              >
+                Search
+                <ArrowRight size={18} />
+              </button>
+            </form>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="flex flex-wrap gap-8 md:gap-12 text-sm mt-10"
+          >
+            <div>
+              <span className="font-display text-heading-xl lg:text-display-md text-aloe-10">15,000+</span>
+              <p className="text-caption text-link-cool-2">International Patients</p>
+            </div>
+            <div>
+              <span className="font-display text-heading-xl lg:text-display-md text-aloe-10">130+</span>
+              <p className="text-caption text-link-cool-2">Hospital Partners</p>
+            </div>
+            <div>
+              <span className="font-display text-heading-xl lg:text-display-md text-aloe-10">30+</span>
+              <p className="text-caption text-link-cool-2">Countries</p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

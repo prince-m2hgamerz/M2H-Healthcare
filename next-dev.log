@@ -1,0 +1,35 @@
+
+> asians-healthcare-temp@0.1.0 dev
+> next dev --hostname 127.0.0.1 --port 3000
+
+  ▲ Next.js 14.2.35
+  - Local:        http://127.0.0.1:3000
+  - Network:      http://127.0.0.1:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1972ms
+ ✓ Compiled /middleware in 273ms (127 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 5.4s (1622 modules)
+ GET / 200 in 6475ms
+ ○ Compiling /doctors ...
+ ✓ Compiled /doctors in 2.4s (1641 modules)
+ GET /doctors 200 in 2921ms
+ ✓ Compiled /blogs in 256ms (1632 modules)
+ GET /blogs 200 in 567ms
+ ✓ Compiled in 490ms (763 modules)
+ ✓ Compiled in 234ms (763 modules)
+ ✓ Compiled in 637ms (763 modules)
+ ✓ Compiled in 326ms (763 modules)
+ ✓ Compiled in 275ms (764 modules)
+ ✓ Compiled in 289ms (764 modules)
+ ✓ Compiled in 217ms (764 modules)
+ ✓ Compiled in 235ms (764 modules)
+ ✓ Compiled in 205ms (764 modules)
+ ✓ Compiled in 203ms (764 modules)
+ ✓ Compiled in 237ms (764 modules)
+ ✓ Compiled in 224ms (764 modules)
+ ✓ Compiled in 228ms (764 modules)
+ ✓ Compiled in 232ms (764 modules)
+ ✓ Compiled in 223ms (764 modules)

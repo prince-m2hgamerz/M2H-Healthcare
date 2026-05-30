@@ -1,0 +1,80 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft, Award, Building2, MapPin } from "lucide-react";
+import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { notFound } from "next/navigation";
+import { fallbackHospitals } from "@/lib/fallback-data";
+
+export const metadata: Metadata = {
+  title: "Hospital Details",
+  description: "View hospital profile, accreditations, and available treatments.",
+};
+
+export default async function HospitalDetailPage({ params }: { params: { slug: string } }) {
+  const supabase = await createServerSupabaseClient();
+  const { data: rawHospital } = await supabase.from("hospitals").select("*").eq("slug", params.slug).single();
+  const fallbackHospital = fallbackHospitals.find((hospital) => hospital.slug === params.slug);
+  const hospital = rawHospital
+    ? {
+        name: rawHospital.name,
+        city: rawHospital.city,
+        state: rawHospital.state,
+        accreditation: rawHospital.accreditations?.join(", ") || "Accredited",
+        beds_count: rawHospital.beds_count || 0,
+        about: rawHospital.about || "No description available.",
+      }
+    : fallbackHospital;
+
+  if (!hospital) notFound();
+
+  return (
+    <>
+      <section className="bg-canvas-night text-on-primary py-20">
+        <div className="container-cinematic">
+          <Link href="/hospitals" className="inline-flex items-center gap-2 text-link-cool-2 hover:text-on-primary mb-6 transition-colors">
+            <ArrowLeft size={18} /> Back to Hospitals
+          </Link>
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
+            <div className="w-20 h-20 rounded-lg bg-aloe-10 flex items-center justify-center shrink-0">
+              <Building2 size={40} className="text-ink" />
+            </div>
+            <div>
+              <span className="pill-tag mb-3">Hospital Profile</span>
+              <h1 className="font-display text-display-md lg:text-display-lg text-on-primary mb-3">{hospital.name}</h1>
+              <div className="flex flex-wrap items-center gap-4 text-caption text-link-cool-1">
+                <span className="flex items-center gap-1"><MapPin size={14} />{hospital.city}, {hospital.state}</span>
+                <span className="flex items-center gap-1"><Award size={14} />{hospital.accreditation}</span>
+                <span>{hospital.beds_count.toLocaleString()} beds</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-canvas-light py-huge">
+        <div className="container-cinematic">
+          <div className="max-w-reading-col mx-auto">
+            <h2 className="font-display text-heading-xl text-ink mb-4">About</h2>
+            <p className="text-body-lg text-shade-50 leading-relaxed mb-8">{hospital.about}</p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+              <div className="bg-canvas-cream rounded-lg p-6 text-center">
+                <div className="font-display text-display-md text-ink">{hospital.beds_count.toLocaleString()}+</div>
+                <p className="text-caption text-shade-50">Total Beds</p>
+              </div>
+              <div className="bg-canvas-cream rounded-lg p-6 text-center">
+                <div className="font-display text-display-md text-ink">50+</div>
+                <p className="text-caption text-shade-50">Specialists</p>
+              </div>
+              <div className="bg-canvas-cream rounded-lg p-6 text-center">
+                <div className="font-display text-display-md text-ink">24/7</div>
+                <p className="text-caption text-shade-50">International Desk</p>
+              </div>
+            </div>
+            <Link href="/contact-us" className="btn-primary">Contact for Treatment</Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

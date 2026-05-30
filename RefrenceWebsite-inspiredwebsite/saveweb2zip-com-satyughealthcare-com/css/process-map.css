@@ -1,0 +1,339 @@
+
+/* 1st layout css start  */
+/* Custom Map */
+.first_layout .map-markers{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.first_layout .map-marker{
+    position: relative;
+    cursor: pointer;
+  }
+  .first_layout .map-marker::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+  }
+  .first_layout .map-marker > span {
+    width: 10px;
+    display: block;
+    height: 10px;
+    background-color: #033b4a;
+    border-radius: 50%;
+}
+.first_layout .map-marker-content{
+    position: absolute;
+    top: -15px;
+    right: calc(100% + 15px);
+    transition: .3s;
+    opacity: 0;
+    min-width: 300px;
+    visibility: hidden;
+    padding: 10px;
+    background-color: #282828;
+    color: #dedede;
+    font-size: 12px;
+    z-index: 3;
+  }
+  .first_layout .map-marker-content::before{
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 0;
+    left: 100%;
+    transform: rotate(180deg);
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #db4242;
+    border-bottom: 10px solid transparent;
+  }
+  .first_layout .map-marker.right .map-marker-content::before{
+    transform: rotate(0);
+    right: 100%;
+    left: auto;
+  }
+  .first_layout .map-marker.right .map-marker-content{
+    right: auto;
+    left: calc(100% + 15px);
+  }
+  .first_layout .map-marker-content p{
+    color: #dedede;
+    margin: 0 0 5px;
+    font-size: 12px;
+  }
+  .first_layout .map-marker:hover .map-marker-content{
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .first_layout .map-marker.marker-1 {
+    position: absolute;
+    top: 74%;
+    right: 28%;
+}
+  
+.first_layout .map-marker.marker-2 {
+    position: absolute;
+    top: 43%;
+    right: 5%;
+}
+
+.first_layout .map-marker.marker-3 {
+    position: absolute;
+    top: 8%;
+    right: 64%;
+}
+
+.first_layout .map-marker.marker-4 {
+    position: absolute;
+    top: 50%;
+    right: 90%;
+}
+
+.first_layout .map-marker.marker-5 {
+    position: absolute;
+    top: 62%;
+    right: 74%;
+}
+
+.first_layout .map-marker.marker-6 {
+    position: absolute;
+    top: 24%;
+    right: 19%;
+}
+
+.first_layout .map-marker.marker-7 {
+    position: absolute;
+    top: 22%;
+    right: 46%;
+}
+.first_layout .map-markers h1 {
+    font-size: 22px;
+    line-height: 28px;
+    text-align: center;
+    color: #e91e63;
+}
+.first_layout .map-marker > img {
+    width: 149px;
+    height: 90px;
+    border-radius: 50%;
+    opacity: 0;
+    border: 2px solid #fff;
+}
+.first_layout .pt-15a{
+    padding-top: 15px;
+}
+ .respview{
+    display: none;
+}
+@media only screen and (max-width: 600px) {
+   .respview{
+        display: block;
+    }   
+}
+/* 1st layout css end  */
+
+
+/* 2nd layout css start  */
+/* Custom Map */
+.map-markers{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.map-marker{
+  position: relative;
+  cursor: pointer;
+}
+.map-marker::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+}
+.map-marker > span {
+  width: 10px;
+  display: block;
+  height: 10px;
+  background-color: #033b4a;
+  border-radius: 50%;
+}
+.map-marker > img{
+  width: 100px;
+  border-radius: 50%;
+  opacity: 0;
+  border: 2px solid #fff;
+}
+.map-marker-content{
+  position: absolute;
+  top: -15px;
+  right: calc(100% + 15px);
+  transition: .3s;
+  opacity: 0;
+  min-width: 300px;
+  visibility: hidden;
+  padding: 10px;
+  background-color: #282828;
+  color: #dedede;
+  font-size: 12px;
+  z-index: 3;
+}
+.map-marker-content::before{
+  content: '';
+  position: absolute;
+  top: 10px;
+  width: 0;
+  left: 100%;
+  transform: rotate(180deg);
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 10px solid #e91e63;
+  border-bottom: 10px solid transparent;
+}
+.map-marker.right .map-marker-content::before{
+  transform: rotate(0);
+  right: 100%;
+  left: auto;
+}
+.map-marker.right .map-marker-content{
+  right: auto;
+  left: calc(100% + 15px);
+}
+.map-marker-content p{
+  color: #dedede;
+  margin: 0 0 5px;
+  font-size: 13px;
+  text-align: center;
+}
+.map-marker:hover .map-marker-content{
+  opacity: 1;
+  visibility: visible;
+}
+
+.map-marker.marker-1 {
+  position: absolute;
+  top: 58%;
+  right: 32%;
+}
+
+.map-marker.marker-2 {
+  position: absolute;
+  top: 40%;
+  right: 19%;
+}
+
+.map-marker.marker-3 {
+  position: absolute;
+  top: 36%;
+  right: 67%;
+}
+
+.map-marker.marker-4 {
+  position: absolute;
+  top: 14%;
+  right: 82%;
+}
+
+.map-marker.marker-5 {
+  position: absolute;
+  top: 73%;
+  right: 72%;
+}
+
+.map-marker.marker-6 {
+  position: absolute;
+  top: 33%;
+  right: 38%;
+}
+
+.map-marker.marker-7 {
+  position: absolute;
+  top: 48%;
+  right: 58%;
+}
+  .map-markers h1 {
+      font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  color: #01d6a3;
+  margin: 0px 18px;
+}
+.readmorebtn {
+  fill: #06f0b4;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.respview{
+  display: none;
+}
+
+@media only screen and (max-width: 640px){
+  .svg-section {
+      background-image: linear-gradient(to top, #0e4a5a 0%, #330867 100%);
+      text-align: center;
+      padding: 30px 0px 40px;
+  }
+  .svg-section .title-header{
+      display: none;
+  }
+  .respview{
+      display: block;
+  }
+  .maps-svg {
+      display: none;
+  }
+  .svg-section-mob {
+      display: block;
+  }
+  .connectivity {
+      text-align: center;
+      font-size: 26px;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 25px;
+  }
+  .border-padding-svg {
+      border: 1px solid #fff;
+      padding: 20px;
+      height: auto;
+      border-radius: 10px;
+      background-color: #fff;
+      color: #000;
+      margin: 10px 10px;
+      position: relative;
+      text-align: left;
+  }
+  .slider-inner-svg {
+      display: flex;
+      justify-content: center;
+  }
+  .img-responsive {
+      max-width: 100%;
+      height: auto;
+  }
+  .svg-head {
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      margin: 10px 0px;
+      color: #e9a82f;
+      text-transform: uppercase;
+  }
+
+}
+/* 2nd layout css end  */
+.bgblue{
+  background-color: #033b4a;
+}

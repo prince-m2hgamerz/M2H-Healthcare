@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-feature-settings: "ss03";
+}
+
+html {
+  overflow-x: hidden;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-body-md text-ink bg-canvas-light antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-ink text-on-primary text-body-md rounded-pill px-6 py-3 transition-colors hover:bg-shade-70 min-h-[44px];
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center bg-transparent text-ink border border-ink text-body-md rounded-pill px-6 py-3 transition-colors hover:bg-shade-30/20 min-h-[44px];
+  }
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center bg-transparent text-on-primary border-2 border-on-primary text-body-md rounded-pill px-6 py-3 transition-colors hover:bg-white/10 min-h-[44px];
+  }
+  .btn-aloe {
+    @apply inline-flex items-center justify-center bg-aloe-10 text-ink text-body-md rounded-pill px-6 py-3 transition-colors hover:bg-aloe-10/80 min-h-[44px];
+  }
+  .container-cinematic {
+    @apply w-full max-w-cinematic mx-auto px-4 sm:px-6 lg:px-12;
+  }
+  .container-content {
+    @apply w-full max-w-reading-col mx-auto px-4 sm:px-6;
+  }
+  .section-padding {
+    @apply py-16 lg:py-huge;
+  }
+  .pill-tag {
+    @apply inline-flex items-center bg-aloe-10 text-ink text-eyebrow-cap uppercase tracking-widest rounded-pill px-3 py-1;
+  }
+  .pill-tag-shade {
+    @apply inline-flex items-center bg-shade-30 text-ink text-eyebrow-cap uppercase tracking-widest rounded-pill px-3 py-1;
+  }
+}

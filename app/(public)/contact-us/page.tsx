@@ -1,0 +1,93 @@
+import type { Metadata } from "next";
+import ContactForm from "@/components/forms/ContactForm";
+import { Clock, FileText, Mail, MapPin, MessageCircle, Phone, ShieldCheck } from "lucide-react";
+import PageHero from "@/components/layout/PageHero";
+import { getSiteImages } from "@/lib/site-settings";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description: "Get in touch with Asians Healthcare. We're here to help you with your medical treatment journey.",
+};
+
+const contactInfo = [
+  { icon: MapPin, title: "Address", value: "New Delhi, India", href: null },
+  { icon: Phone, title: "Phone", value: "+91 96509 28250", href: "tel:+919650928250" },
+  { icon: Mail, title: "Email", value: "info@asianshealthcare.com", href: "mailto:info@asianshealthcare.com" },
+  { icon: MessageCircle, title: "WhatsApp", value: "Chat on WhatsApp", href: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919650928250"}` },
+];
+
+const responseSteps = [
+  { icon: FileText, title: "Share your case", text: "Send your diagnosis, reports, preferred travel month, and budget expectations." },
+  { icon: Clock, title: "Get a reply within 24 hours", text: "Our team reviews your inquiry and asks for any missing medical details." },
+  { icon: ShieldCheck, title: "Receive matched options", text: "We shortlist suitable doctors, hospitals, and estimated treatment plans." },
+];
+
+export default async function ContactPage() {
+  const images = await getSiteImages();
+
+  return (
+    <>
+      <PageHero
+        eyebrow="Get in Touch"
+        title="Contact Us"
+        description="Ready to start your medical journey? Reach out to us and our team will get back to you within 24 hours."
+        imageUrl={images.image_contact_hero}
+      />
+
+      <section className="bg-canvas-cream py-10 border-b border-hairline-light">
+        <div className="container-cinematic">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {responseSteps.map((step) => (
+              <div key={step.title} className="flex gap-4 rounded-lg border border-hairline-light bg-canvas-light p-5">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-aloe-10">
+                  <step.icon size={20} className="text-ink" />
+                </div>
+                <div>
+                  <h2 className="font-display text-heading-sm text-ink">{step.title}</h2>
+                  <p className="mt-1 text-caption leading-relaxed text-shade-50">{step.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-canvas-light py-huge">
+        <div className="container-cinematic">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+            <div className="lg:col-span-3">
+              <h2 className="font-display text-heading-xl text-ink mb-6">Send Us a Message</h2>
+              <ContactForm />
+            </div>
+            <div className="lg:col-span-2">
+              <h2 className="font-display text-heading-xl text-ink mb-6">Contact Information</h2>
+              <div className="space-y-6">
+                {contactInfo.map((item) => {
+                  const Icon = item.icon;
+                  const content = (
+                    <div className="flex items-start gap-4 group p-4 rounded-xl bg-canvas-cream border border-hairline-light hover:shadow-elevation-3 hover:-translate-y-0.5 transition-all duration-300">
+                      <div className="w-10 h-10 rounded-lg bg-aloe-10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <Icon size={20} className="text-ink" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-heading-sm text-ink mb-1">{item.title}</h3>
+                        {item.href ? (
+                          <a href={item.href} className="text-body-md text-shade-50 hover:text-ink transition-colors" target={item.href.startsWith("https") ? "_blank" : undefined} rel="noopener noreferrer">
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p className="text-body-md text-shade-50">{item.value}</p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                  return <div key={item.title}>{content}</div>;
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
