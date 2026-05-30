@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.M2H_PUBLIC_SITE_URL || "https://asianshealthcare.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://asianshealthcare.com";
 
   const staticPages = [
     "", "/about-us", "/doctors", "/hospitals", "/treatment-package",

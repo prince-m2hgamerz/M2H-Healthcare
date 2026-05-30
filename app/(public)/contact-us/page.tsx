@@ -13,7 +13,7 @@ const contactInfo = [
   { icon: MapPin, title: "Address", value: "New Delhi, India", href: null },
   { icon: Phone, title: "Phone", value: "+91 96509 28250", href: "tel:+919650928250" },
   { icon: Mail, title: "Email", value: "info@asianshealthcare.com", href: "mailto:info@asianshealthcare.com" },
-  { icon: MessageCircle, title: "WhatsApp", value: "Chat on WhatsApp", href: `https://wa.me/${process.env.M2H_PUBLIC_WHATSAPP_NUMBER || "919650928250"}` },
+  { icon: MessageCircle, title: "WhatsApp", value: "Chat on WhatsApp", href: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919650928250"}` },
 ];
 
 const responseSteps = [
