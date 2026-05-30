@@ -1,10 +1,14 @@
-import { MessageCircle } from "lucide-react";
+"use client";
 
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919650928250";
+import { MessageCircle } from "lucide-react";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
+
 const MESSAGE = "Hi! I'm interested in medical treatment in India. Can you help?";
 
 export default function WhatsAppButton() {
-  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(MESSAGE)}`;
+  const { whatsapp_number } = useSiteSettings();
+  const number = whatsapp_number?.replace(/[^0-9]/g, "") || "919650928250";
+  const waUrl = `https://wa.me/${number}?text=${encodeURIComponent(MESSAGE)}`;
 
   return (
     <a

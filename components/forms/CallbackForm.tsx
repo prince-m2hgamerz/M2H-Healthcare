@@ -10,6 +10,7 @@ interface CallbackFormProps {
 export default function CallbackForm({ onSuccess }: CallbackFormProps) {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     phone: "",
     country: "",
     bestTime: "",
@@ -27,6 +28,7 @@ export default function CallbackForm({ onSuccess }: CallbackFormProps) {
         body: JSON.stringify({
           form_type: "Callback",
           name: formData.name,
+          email: formData.email || undefined,
           phone: formData.phone,
           country: formData.country,
           message: formData.bestTime ? `Best time to call: ${formData.bestTime}` : undefined,
@@ -65,6 +67,15 @@ export default function CallbackForm({ onSuccess }: CallbackFormProps) {
           required
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          className="w-full border border-hairline-light rounded-md px-3 py-2.5 text-body-md text-ink placeholder:text-shade-40 focus:outline-none focus:border-ink transition-colors"
+        />
+      </div>
+      <div>
+        <input
+          type="email"
+          placeholder="Email Address"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           className="w-full border border-hairline-light rounded-md px-3 py-2.5 text-body-md text-ink placeholder:text-shade-40 focus:outline-none focus:border-ink transition-colors"
         />
       </div>

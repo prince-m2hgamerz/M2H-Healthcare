@@ -125,7 +125,8 @@ export default function AdminDashboard() {
           <h1 className="font-display text-heading-xl text-ink">Dashboard</h1>
         </div>
         <Link href="/admin/leads" className="btn-primary inline-flex gap-2 self-start lg:self-auto">
-          Manage Leads
+          <span className="hidden sm:inline">Manage Leads</span>
+          <span className="sm:hidden">Leads</span>
           <ArrowRight size={18} />
         </Link>
       </div>
@@ -236,9 +237,9 @@ function ContentLink({
   value: number;
 }) {
   return (
-    <Link href={href} className="flex items-center justify-between rounded-lg border border-hairline-light bg-canvas-light p-5 transition-colors hover:bg-canvas-cream">
+    <Link href={href} className="flex items-center justify-between rounded-lg border border-hairline-light bg-canvas-light p-4 sm:p-5 transition-colors hover:bg-canvas-cream min-h-[60px]">
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-aloe-10">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-aloe-10">
           <Icon size={20} className="text-ink" />
         </div>
         <span className="font-display text-heading-sm text-ink">{label}</span>

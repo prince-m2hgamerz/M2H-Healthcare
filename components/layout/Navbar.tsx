@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 const primaryNavLinks = [
   { label: "Home", href: "/" },
@@ -30,6 +31,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
   const pathname = usePathname();
+  const settings = useSiteSettings();
+  const siteName = settings.site_name || "Asians Healthcare";
   const exploreActive = exploreLinks.some((link) => pathname === link.href || pathname.startsWith(`${link.href}/`));
 
   useEffect(() => {
@@ -46,7 +49,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-canvas-night text-on-primary border-b border-hairline-dark">
       <div className="container-cinematic flex items-center justify-between h-16 lg:h-20">
         <Link href="/" className="font-display text-heading-lg tracking-wide shrink-0">
-          Asians <span className="text-link-mint">Healthcare</span>
+          {siteName}
         </Link>
 
         <div className="hidden lg:flex items-center gap-6">

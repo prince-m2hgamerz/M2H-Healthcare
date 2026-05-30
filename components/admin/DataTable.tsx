@@ -69,13 +69,13 @@ export default function DataTable<T = any>({
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  className={`p-4 text-caption text-shade-40 uppercase tracking-wider font-medium ${col.className || ""}`}
+                  className={`p-3 sm:p-4 text-caption text-shade-40 uppercase tracking-wider font-medium ${col.className || ""}`}
                 >
                   {col.label}
                 </th>
               ))}
               {(onEdit || onDelete) && (
-                <th className="p-4 text-caption text-shade-40 uppercase tracking-wider font-medium">
+                <th className="p-3 sm:p-4 text-caption text-shade-40 uppercase tracking-wider font-medium">
                   Actions
                 </th>
               )}
@@ -85,7 +85,7 @@ export default function DataTable<T = any>({
             {loading ? (
               Array.from({ length: 5 }).map((_, index) => (
                 <tr key={index} className="border-b border-hairline-light">
-                  <td colSpan={columns.length + ((onEdit || onDelete) ? 1 : 0)} className="p-4">
+                  <td colSpan={columns.length + ((onEdit || onDelete) ? 1 : 0)} className="p-3 sm:p-4">
                     <div className="h-5 animate-pulse rounded bg-canvas-cream" />
                   </td>
                 </tr>
@@ -94,7 +94,7 @@ export default function DataTable<T = any>({
               <tr>
                 <td
                   colSpan={columns.length + ((onEdit || onDelete) ? 1 : 0)}
-                  className="p-8 text-center text-caption text-shade-40"
+                  className="p-6 sm:p-8 text-center text-caption text-shade-40"
                 >
                   {search ? "No matching records found." : "No data found."}
                 </td>
@@ -106,29 +106,31 @@ export default function DataTable<T = any>({
                   className="border-b border-hairline-light hover:bg-canvas-cream/50 transition-colors"
                 >
                   {columns.map((col) => (
-                    <td key={col.key} className={`p-4 ${col.className || ""}`}>
+                    <td key={col.key} className={`p-3 sm:p-4 ${col.className || ""}`}>
                       {col.render
                         ? col.render(item)
                         : ((item as Record<string, unknown>)[col.key] as React.ReactNode) || "-"}
                     </td>
                   ))}
                   {(onEdit || onDelete) && (
-                    <td className="p-4">
-                      <div className="flex items-center gap-2">
+                    <td className="p-3 sm:p-4">
+                      <div className="flex items-center gap-1">
                         {onEdit && (
                           <button
                             onClick={() => onEdit(item)}
-                            className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-caption text-shade-50 transition-colors hover:bg-canvas-cream hover:text-ink"
+                            className="inline-flex items-center justify-center rounded-md p-2 text-shade-50 transition-colors hover:bg-canvas-cream hover:text-ink"
+                            title="Edit"
                           >
-                            <Edit3 size={14} /> Edit
+                            <Edit3 size={16} />
                           </button>
                         )}
                         {onDelete && (
                           <button
                             onClick={() => onDelete(item)}
-                            className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-caption text-red-400 transition-colors hover:bg-red-50 hover:text-red-500"
+                            className="inline-flex items-center justify-center rounded-md p-2 text-red-400 transition-colors hover:bg-red-50 hover:text-red-500"
+                            title="Delete"
                           >
-                            <Trash2 size={14} /> Delete
+                            <Trash2 size={16} />
                           </button>
                         )}
                       </div>

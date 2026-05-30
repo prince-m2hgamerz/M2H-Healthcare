@@ -20,6 +20,7 @@ const insuranceOptions = [
 export default function InsuranceCheckForm({ onClose }: InsuranceCheckFormProps) {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     gender: "",
     country: "",
     phone: "",
@@ -38,6 +39,7 @@ export default function InsuranceCheckForm({ onClose }: InsuranceCheckFormProps)
         body: JSON.stringify({
           form_type: "Insurance",
           name: formData.name,
+          email: formData.email || undefined,
           gender: formData.gender || undefined,
           country: formData.country,
           phone: formData.phone,
@@ -85,6 +87,13 @@ export default function InsuranceCheckForm({ onClose }: InsuranceCheckFormProps)
           required
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          className="border border-hairline-light rounded-md px-3 py-2.5 text-body-md text-ink placeholder:text-shade-40 focus:outline-none focus:border-ink transition-colors"
+        />
+        <input
+          type="email"
+          placeholder="Email Address"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           className="border border-hairline-light rounded-md px-3 py-2.5 text-body-md text-ink placeholder:text-shade-40 focus:outline-none focus:border-ink transition-colors"
         />
         <select

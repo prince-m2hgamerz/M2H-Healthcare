@@ -2,19 +2,12 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/forms/ContactForm";
 import { Clock, FileText, Mail, MapPin, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
-import { getSiteImages } from "@/lib/site-settings";
+import { getSiteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description: "Get in touch with Asians Healthcare. We're here to help you with your medical treatment journey.",
 };
-
-const contactInfo = [
-  { icon: MapPin, title: "Address", value: "New Delhi, India", href: null },
-  { icon: Phone, title: "Phone", value: "+91 96509 28250", href: "tel:+919650928250" },
-  { icon: Mail, title: "Email", value: "info@asianshealthcare.com", href: "mailto:info@asianshealthcare.com" },
-  { icon: MessageCircle, title: "WhatsApp", value: "Chat on WhatsApp", href: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919650928250"}` },
-];
 
 const responseSteps = [
   { icon: FileText, title: "Share your case", text: "Send your diagnosis, reports, preferred travel month, and budget expectations." },
@@ -23,7 +16,16 @@ const responseSteps = [
 ];
 
 export default async function ContactPage() {
-  const images = await getSiteImages();
+  const settings = await getSiteSettings();
+  const { contact_phone, contact_email, whatsapp_number, images } = settings;
+  const waNumber = whatsapp_number?.replace(/[^0-9]/g, "") || "919650928250";
+
+  const contactInfo = [
+    { icon: MapPin, title: "Address", value: "New Delhi, India", href: null },
+    { icon: Phone, title: "Phone", value: contact_phone, href: `tel:${contact_phone}` },
+    { icon: Mail, title: "Email", value: contact_email, href: `mailto:${contact_email}` },
+    { icon: MessageCircle, title: "WhatsApp", value: "Chat on WhatsApp", href: `https://wa.me/${waNumber}` },
+  ];
 
   return (
     <>

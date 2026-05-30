@@ -118,7 +118,7 @@ export default function LeadsTable({ leads, loading = false, onUpdateLead }: Lea
 
   return (
     <div>
-      <div className="mb-6 flex flex-col gap-4 lg:flex-row">
+      <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-center md:gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-shade-40" size={18} />
           <input
@@ -129,29 +129,31 @@ export default function LeadsTable({ leads, loading = false, onUpdateLead }: Lea
             className="w-full rounded-md border border-hairline-light bg-canvas-light py-2.5 pl-10 pr-4 text-body-md text-ink placeholder:text-shade-40 focus:border-ink focus:outline-none"
           />
         </div>
-        <select
-          value={typeFilter}
-          onChange={(e) => setTypeFilter(e.target.value)}
-          className="rounded-md border border-hairline-light bg-canvas-light px-4 py-2.5 text-body-md text-ink focus:border-ink focus:outline-none"
-        >
-          <option value="all">All Types</option>
-          {leadTypes.map((type) => (
-            <option key={type} value={type}>{type}</option>
-          ))}
-        </select>
-        <select
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-          className="rounded-md border border-hairline-light bg-canvas-light px-4 py-2.5 text-body-md text-ink focus:border-ink focus:outline-none"
-        >
-          <option value="all">All Status</option>
-          {statusOptions.map((status) => (
-            <option key={status} value={status}>{status.charAt(0).toUpperCase() + status.slice(1)}</option>
-          ))}
-        </select>
-        <button onClick={exportCSV} className="btn-outline flex items-center gap-2 whitespace-nowrap text-sm">
-          <Download size={16} /> Export CSV
-        </button>
+        <div className="flex flex-wrap gap-3">
+          <select
+            value={typeFilter}
+            onChange={(e) => setTypeFilter(e.target.value)}
+            className="flex-1 min-w-0 rounded-md border border-hairline-light bg-canvas-light px-4 py-2.5 text-body-md text-ink focus:border-ink focus:outline-none"
+          >
+            <option value="all">All Types</option>
+            {leadTypes.map((type) => (
+              <option key={type} value={type}>{type}</option>
+            ))}
+          </select>
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="flex-1 min-w-0 rounded-md border border-hairline-light bg-canvas-light px-4 py-2.5 text-body-md text-ink focus:border-ink focus:outline-none"
+          >
+            <option value="all">All Status</option>
+            {statusOptions.map((status) => (
+              <option key={status} value={status}>{status.charAt(0).toUpperCase() + status.slice(1)}</option>
+            ))}
+          </select>
+          <button onClick={exportCSV} className="btn-outline flex items-center gap-2 whitespace-nowrap text-sm">
+            <Download size={16} /> <span className="hidden sm:inline">Export CSV</span>
+          </button>
+        </div>
       </div>
 
       <div className="overflow-hidden rounded-lg border border-hairline-light bg-canvas-light">
@@ -164,63 +166,64 @@ export default function LeadsTable({ leads, loading = false, onUpdateLead }: Lea
           <table className="w-full text-body-md">
             <thead>
               <tr className="border-b border-hairline-light bg-canvas-cream text-left">
-                <th className="p-4 text-caption uppercase tracking-wider text-shade-40">Patient</th>
-                <th className="p-4 text-caption uppercase tracking-wider text-shade-40">Contact</th>
-                <th className="p-4 text-caption uppercase tracking-wider text-shade-40">Country</th>
-                <th className="p-4 text-caption uppercase tracking-wider text-shade-40">Type</th>
-                <th className="p-4 text-caption uppercase tracking-wider text-shade-40">Status</th>
-                <th className="p-4 text-caption uppercase tracking-wider text-shade-40">Date</th>
-                <th className="p-4 text-caption uppercase tracking-wider text-shade-40">Actions</th>
+                <th className="p-3 sm:p-4 text-caption uppercase tracking-wider text-shade-40">Patient</th>
+                <th className="p-3 sm:p-4 text-caption uppercase tracking-wider text-shade-40">Contact</th>
+                <th className="p-3 sm:p-4 text-caption uppercase tracking-wider text-shade-40">Country</th>
+                <th className="p-3 sm:p-4 text-caption uppercase tracking-wider text-shade-40">Type</th>
+                <th className="p-3 sm:p-4 text-caption uppercase tracking-wider text-shade-40">Status</th>
+                <th className="p-3 sm:p-4 text-caption uppercase tracking-wider text-shade-40">Date</th>
+                <th className="p-3 sm:p-4 text-caption uppercase tracking-wider text-shade-40">Actions</th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
                 Array.from({ length: 6 }).map((_, index) => (
                   <tr key={index} className="border-b border-hairline-light">
-                    <td colSpan={7} className="p-4">
+                    <td colSpan={7} className="p-3 sm:p-4">
                       <div className="h-5 animate-pulse rounded bg-canvas-cream" />
                     </td>
                   </tr>
                 ))
               ) : filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="p-8 text-center text-caption text-shade-40">
+                  <td colSpan={7} className="p-6 sm:p-8 text-center text-caption text-shade-40">
                     No leads found.
                   </td>
                 </tr>
               ) : (
                 filtered.map((lead) => (
                   <tr key={lead.id} className="border-b border-hairline-light transition-colors hover:bg-canvas-cream/50">
-                    <td className="p-4">
+                    <td className="p-3 sm:p-4">
                       <p className="font-medium text-ink">{lead.name}</p>
-                      {lead.medical_condition && <p className="mt-1 max-w-[220px] truncate text-caption text-shade-40">{lead.medical_condition}</p>}
+                      {lead.medical_condition && <p className="mt-1 max-w-[180px] sm:max-w-[220px] truncate text-caption text-shade-40">{lead.medical_condition}</p>}
                     </td>
-                    <td className="p-4 text-shade-50">
+                    <td className="p-3 sm:p-4 text-shade-50">
                       <div className="space-y-1">
                         <a href={`tel:${lead.phone}`} className="flex items-center gap-1.5 hover:text-ink">
-                          <Phone size={14} /> {lead.phone}
+                          <Phone size={14} /> <span className="hidden sm:inline">{lead.phone}</span><span className="sm:hidden">{lead.phone}</span>
                         </a>
                         {lead.email && (
-                          <a href={`mailto:${lead.email}`} className="flex items-center gap-1.5 hover:text-ink">
+                          <a href={`mailto:${lead.email}`} className="hidden sm:flex items-center gap-1.5 hover:text-ink">
                             <Mail size={14} /> {lead.email}
                           </a>
                         )}
                       </div>
                     </td>
-                    <td className="p-4 text-shade-50">{lead.country}</td>
-                    <td className="p-4 text-shade-50">{lead.form_type}</td>
-                    <td className="p-4">
+                    <td className="p-3 sm:p-4 text-shade-50">{lead.country}</td>
+                    <td className="p-3 sm:p-4 text-shade-50">{lead.form_type}</td>
+                    <td className="p-3 sm:p-4">
                       <span className={`rounded-pill px-2 py-0.5 text-micro capitalize ${statusColors[lead.status] || "bg-shade-30 text-ink"}`}>
                         {lead.status}
                       </span>
                     </td>
-                    <td className="p-4 text-shade-40">{new Date(lead.created_at).toLocaleDateString()}</td>
-                    <td className="p-4">
+                    <td className="p-3 sm:p-4 text-shade-40 whitespace-nowrap">{new Date(lead.created_at).toLocaleDateString()}</td>
+                    <td className="p-3 sm:p-4">
                       <button
                         onClick={() => openLead(lead)}
-                        className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-caption text-shade-50 transition-colors hover:bg-canvas-cream hover:text-ink"
+                        className="inline-flex items-center justify-center rounded-md p-2 text-shade-50 transition-colors hover:bg-canvas-cream hover:text-ink"
+                        title="View details"
                       >
-                        <Eye size={14} /> View
+                        <Eye size={16} />
                       </button>
                     </td>
                   </tr>

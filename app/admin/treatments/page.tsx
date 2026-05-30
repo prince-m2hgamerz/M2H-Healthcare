@@ -75,7 +75,7 @@ export default function AdminTreatmentsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-display text-heading-xl text-ink">Treatments</h1>
-        <button onClick={openAdd} className="btn-primary flex items-center gap-2 text-sm"><Plus size={16} /> Add Treatment</button>
+        <button onClick={openAdd} className="btn-primary flex items-center gap-2 text-sm"><Plus size={16} /> <span className="hidden sm:inline">Add Treatment</span></button>
       </div>
       <DataTable columns={columns} data={data} onEdit={openEdit} onDelete={handleDelete} loading={loading} searchPlaceholder="Search treatments..." />
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={editing ? "Edit Treatment" : "Add Treatment"} size="lg">

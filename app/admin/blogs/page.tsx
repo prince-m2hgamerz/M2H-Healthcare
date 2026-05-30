@@ -87,7 +87,7 @@ export default function AdminBlogsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-display text-heading-xl text-ink">Blogs</h1>
-        <button onClick={openAdd} className="btn-primary flex items-center gap-2 text-sm"><Plus size={16} /> New Blog Post</button>
+        <button onClick={openAdd} className="btn-primary flex items-center gap-2 text-sm"><Plus size={16} /> <span className="hidden sm:inline">New Post</span></button>
       </div>
       <DataTable columns={columns} data={data} onEdit={openEdit} onDelete={handleDelete} loading={loading} searchPlaceholder="Search blogs..." />
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={editing ? "Edit Blog Post" : "New Blog Post"} size="lg">

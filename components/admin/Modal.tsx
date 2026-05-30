@@ -26,16 +26,16 @@ export default function Modal({ open, onClose, title, children, size = "md" }: M
   const sizeClass = size === "sm" ? "max-w-sm" : size === "lg" ? "max-w-2xl" : "max-w-md";
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
-      <div className={`relative bg-canvas-light rounded-xl w-full ${sizeClass} max-h-[90vh] overflow-y-auto shadow-elevation-4`}>
-        <div className="flex items-center justify-between p-6 border-b border-hairline-light">
+      <div className={`relative bg-canvas-light rounded-xl w-full ${sizeClass} mx-auto max-h-[90vh] overflow-y-auto overflow-x-auto shadow-elevation-4`}>
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-hairline-light">
           <h2 className="font-display text-heading-md text-ink">{title}</h2>
           <button onClick={onClose} className="text-shade-40 hover:text-ink transition-colors">
             <X size={20} />
           </button>
         </div>
-        <div className="p-6">{children}</div>
+        <div className="p-4 sm:p-6">{children}</div>
       </div>
     </div>
   );

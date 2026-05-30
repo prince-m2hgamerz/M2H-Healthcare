@@ -51,7 +51,7 @@ export default function AdminTestimonialsPage() {
             </div>
             <p className="text-body-md text-shade-50 leading-relaxed mb-4">&ldquo;{t.text_content}&rdquo;</p>
             {t.video_url && (
-              <a href={t.video_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-caption text-link-mint hover:text-link-mint/80 mb-3 transition-colors">
+              <a href={t.video_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-caption text-link-mint hover:text-link-mint/80 mb-3 transition-colors min-h-[36px]">
                 <Video size={14} /> Watch Video
               </a>
             )}
@@ -67,12 +67,12 @@ export default function AdminTestimonialsPage() {
               )}
               <button
                 onClick={() => toggleApproval(t)}
-                className={`flex items-center gap-1.5 text-caption rounded-pill px-3 py-1 transition-colors ${
+                className={`flex items-center gap-1.5 text-caption rounded-pill px-3 py-1.5 transition-colors min-h-[36px] ${
                   t.is_approved ? "text-shade-50 hover:bg-shade-30" : "text-aloe-10 hover:bg-aloe-10/20"
                 }`}
               >
                 {t.is_approved ? <X size={14} /> : <Check size={14} />}
-                {t.is_approved ? "Revoke" : "Approve"}
+                <span className="hidden sm:inline">{t.is_approved ? "Revoke" : "Approve"}</span>
               </button>
             </div>
           </div>

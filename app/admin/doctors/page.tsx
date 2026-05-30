@@ -89,7 +89,7 @@ export default function AdminDoctorsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-display text-heading-xl text-ink">Doctors</h1>
-        <button onClick={openAdd} className="btn-primary flex items-center gap-2 text-sm"><Plus size={16} /> Add Doctor</button>
+        <button onClick={openAdd} className="btn-primary flex items-center gap-2 text-sm"><Plus size={16} /> <span className="hidden sm:inline">Add Doctor</span></button>
       </div>
       <DataTable columns={columns} data={doctors} onEdit={openEdit} onDelete={handleDelete} loading={loading} searchPlaceholder="Search doctors..." />
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={editing ? "Edit Doctor" : "Add Doctor"} size="lg">

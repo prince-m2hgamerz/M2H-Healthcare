@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { sendLeadNotification } from "@/lib/email";
+import { sendLeadNotification, sendCustomerConfirmation } from "@/lib/email";
 
 export async function POST(request: Request) {
   try {
@@ -17,7 +17,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
-    sendLeadNotification(data as Record<string, unknown>);
+    const lead = data as Record<string, unknown>;
+
+    await Promise.allSettled([
+      sendLeadNotification(lead),
+      sendCustomerConfirmation(lead),
+    ]);
 
     return NextResponse.json({ message: "Lead created successfully" }, { status: 201 });
   } catch {

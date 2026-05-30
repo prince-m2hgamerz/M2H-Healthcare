@@ -87,7 +87,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               href={link.href}
               onClick={() => setMobileSidebar(false)}
               className={cn(
-                "flex items-center gap-3 rounded-md px-4 py-2.5 text-caption transition-colors",
+                "flex items-center gap-3 rounded-md px-4 py-3 text-caption transition-colors",
                 isActive
                   ? "bg-canvas-night-elevated text-on-primary"
                   : "text-link-cool-2 hover:bg-canvas-night-elevated hover:text-on-primary"
@@ -100,13 +100,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         })}
       </nav>
 
-      <div className="space-y-2 border-t border-hairline-dark p-4">
-        <Link href="/" className="flex items-center gap-2 text-caption text-link-cool-2 transition-colors hover:text-on-primary">
+      <div className="space-y-1 border-t border-hairline-dark p-4">
+        <Link href="/" className="flex items-center gap-2 rounded-md px-4 py-3 text-caption text-link-cool-2 transition-colors hover:bg-canvas-night-elevated hover:text-on-primary">
           <ArrowLeft size={16} /> View Site
         </Link>
         <button
           onClick={handleLogout}
-          className="flex w-full items-center gap-2 text-caption text-link-cool-2 transition-colors hover:text-red-400"
+          className="flex w-full items-center gap-2 rounded-md px-4 py-3 text-caption text-link-cool-2 transition-colors hover:bg-canvas-night-elevated hover:text-red-400"
         >
           <LogOut size={16} /> Sign Out
         </button>

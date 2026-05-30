@@ -13,9 +13,11 @@ interface Setting {
 }
 
 const defaultSettings: Setting[] = [
+  { label: "Site Name", key: "site_name", value: "Asians Healthcare" },
   { label: "WhatsApp Number", key: "whatsapp_number", value: "+919650928250" },
   { label: "Contact Phone", key: "contact_phone", value: "+919650928250" },
   { label: "Contact Email", key: "contact_email", value: "info@asianshealthcare.com" },
+  { label: "Admin Email", key: "admin_email", value: "admin@asianshealthcare.com" },
   { label: "Hero Title", key: "hero_title", value: "Your Health Journey Starts in India" },
   { label: "Hero Subtitle", key: "hero_subtitle", value: "Connect with India's top-rated hospitals and specialist doctors." },
   { label: "About Short", key: "about_short", value: "Asians Healthcare is India's premier medical tourism facilitator." },
@@ -94,7 +96,7 @@ export default function AdminSettingsPage() {
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-display text-heading-xl text-ink">Site Settings</h1>
         <button onClick={handleSave} disabled={saving} className="btn-primary flex items-center gap-2 text-sm disabled:opacity-50">
-          <Save size={16} /> {saving ? "Saving..." : saved ? "Saved!" : "Save Changes"}
+          <Save size={16} /> <span className="hidden sm:inline">{saving ? "Saving..." : saved ? "Saved!" : "Save Changes"}</span>
         </button>
       </div>
 

@@ -50,29 +50,30 @@ export default function AdminUsersPage() {
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-display text-heading-xl text-ink">Admin Users</h1>
         <button onClick={() => setModalOpen(true)} className="btn-primary flex items-center gap-2 text-sm">
-          <Plus size={16} /> Invite User
+          <Plus size={16} /> <span className="hidden sm:inline">Invite User</span>
         </button>
       </div>
 
       <div className="bg-canvas-light rounded-lg border border-hairline-light overflow-hidden">
+        <div className="overflow-x-auto">
         <table className="w-full text-body-md">
           <thead>
             <tr className="bg-canvas-cream border-b border-hairline-light text-left">
-              <th className="p-4 text-caption text-shade-40 uppercase tracking-wider">Email</th>
-              <th className="p-4 text-caption text-shade-40 uppercase tracking-wider">Role</th>
-              <th className="p-4 text-caption text-shade-40 uppercase tracking-wider">Actions</th>
+              <th className="p-3 sm:p-4 text-caption text-shade-40 uppercase tracking-wider">Email</th>
+              <th className="p-3 sm:p-4 text-caption text-shade-40 uppercase tracking-wider">Role</th>
+              <th className="p-3 sm:p-4 text-caption text-shade-40 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody>
             {users.map((u) => (
               <tr key={u.id} className="border-b border-hairline-light hover:bg-canvas-cream/50 transition-colors">
-                <td className="p-4 text-ink font-medium">{u.email}</td>
-                <td className="p-4">
+                <td className="p-3 sm:p-4 text-ink font-medium">{u.email}</td>
+                <td className="p-3 sm:p-4">
                   <span className={`px-2.5 py-0.5 rounded-pill text-micro capitalize ${roleColors[u.role] || "bg-shade-30 text-ink"}`}>
                     {u.role.replace("_", " ")}
                   </span>
                 </td>
-                <td className="p-4">
+                <td className="p-3 sm:p-4">
                   <button onClick={() => handleDelete(u.email)} className="flex items-center gap-1.5 text-caption text-red-400 hover:text-red-500 transition-colors">
                     <Trash2 size={14} /> Remove
                   </button>
@@ -81,6 +82,7 @@ export default function AdminUsersPage() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
 
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title="Invite Admin User" size="sm">

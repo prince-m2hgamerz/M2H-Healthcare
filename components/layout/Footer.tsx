@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Mail, Phone, MapPin, Heart } from "lucide-react";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 const treatmentLinks = [
   { label: "Cardiology", href: "/speciality/cardiology" },
@@ -38,13 +41,15 @@ const patientLinks = [
 ];
 
 export default function Footer() {
+  const { site_name, contact_phone, contact_email } = useSiteSettings();
+
   return (
     <footer className="bg-canvas-night text-on-primary border-t border-hairline-dark">
       <div className="container-cinematic py-16 lg:py-huge">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="font-display text-heading-lg tracking-wide">
-              Asians <span className="text-link-mint">Healthcare</span>
+              {site_name}
             </Link>
             <p className="text-caption text-link-cool-2 leading-relaxed max-w-xs mt-4">
               Connecting international patients with India&apos;s top hospitals and doctors.
@@ -57,11 +62,11 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={14} className="shrink-0" />
-                <a href="tel:+919650928250" className="hover:text-on-primary transition-colors">+91 96509 28250</a>
+                <a href={`tel:${contact_phone}`} className="hover:text-on-primary transition-colors">{contact_phone}</a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={14} className="shrink-0" />
-                <a href="mailto:info@asianshealthcare.com" className="hover:text-on-primary transition-colors">info@asianshealthcare.com</a>
+                <a href={`mailto:${contact_email}`} className="hover:text-on-primary transition-colors">{contact_email}</a>
               </div>
             </div>
           </div>
@@ -130,7 +135,7 @@ export default function Footer() {
       <div className="border-t border-hairline-dark py-6">
         <div className="container-cinematic flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-micro text-link-cool-2 text-center md:text-left">
-            &copy; {new Date().getFullYear()} Asians Healthcare. Made with <Heart size={10} className="inline text-aloe-10" /> for better healthcare.
+            &copy; {new Date().getFullYear()} {site_name}. Made with <Heart size={10} className="inline text-aloe-10" /> for better healthcare.
           </p>
           <div className="flex gap-6">
             <Link href="/privacy-policy" className="text-micro text-link-cool-2 hover:text-on-primary transition-colors">Privacy Policy</Link>
