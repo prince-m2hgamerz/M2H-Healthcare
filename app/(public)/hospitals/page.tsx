@@ -6,11 +6,13 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { fallbackHospitals } from "@/lib/fallback-data";
 import PageHero from "@/components/layout/PageHero";
 import SearchInput from "@/components/layout/SearchInput";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbSchema } from "@/lib/json-ld";
 import { getSiteImages } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
-  title: "Partner Hospitals",
-  description: "Explore India's top JCI and NABH accredited hospitals for medical tourism.",
+  title: "Partner Hospitals in India",
+  description: "Explore India's top JCI and NABH accredited hospitals for medical tourism. Apollo, Max, Artemis, BLK-Max, Sir Ganga Ram & more in Delhi NCR.",
 };
 
 export default async function HospitalsPage({
@@ -49,6 +51,10 @@ export default async function HospitalsPage({
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "Hospitals", url: "https://asianshealthcare.com/hospitals" },
+      ])} />
       <PageHero
         eyebrow="Top Facilities"
         title="Our Partner Hospitals"

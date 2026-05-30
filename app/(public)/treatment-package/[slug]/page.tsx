@@ -7,11 +7,23 @@ import { notFound } from "next/navigation";
 import { fallbackTreatments } from "@/lib/fallback-data";
 import { getSiteImages } from "@/lib/site-settings";
 import { getTreatmentImage } from "@/lib/site-images";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { faqPageSchema, breadcrumbSchema } from "@/lib/json-ld";
 
-export const metadata: Metadata = {
-  title: "Treatment Package Details",
-  description: "View detailed treatment information and costs in India.",
-};
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const supabase = await createServerSupabaseClient();
+  const { data: rawTreatment } = await supabase.from("treatments").select("*").eq("slug", params.slug).single();
+  const fallbackTreatment = fallbackTreatments.find((treatment) => treatment.slug === params.slug);
+  const treatment = rawTreatment || fallbackTreatment;
+  if (!treatment) return { title: "Treatment Not Found" };
+  const name = treatment.name || "Treatment";
+  const costMin = Number(treatment.cost_usd_min || treatment.costMin || 0);
+  return {
+    title: `${name} Cost in India | Asians Healthcare`,
+    description: `Affordable ${name} in India starting at $${costMin.toLocaleString()}. Save 60-80% compared to US costs. Board-accredited surgeons, JCI hospitals.`,
+    openGraph: { title: `${name} Cost in India`, description: `Get ${name} in India at top hospitals. Starting from $${costMin.toLocaleString()}.` },
+  };
+}
 
 export default async function TreatmentDetailPage({ params }: { params: { slug: string } }) {
   const supabase = await createServerSupabaseClient();
@@ -34,8 +46,37 @@ export default async function TreatmentDetailPage({ params }: { params: { slug: 
 
   const usCost = "usCost" in treatment ? treatment.usCost : treatment.costMax * 5 || 10000;
 
+  const faqs = [
+    {
+      question: `How much does ${treatment.name} cost in India?`,
+      answer: `The cost of ${treatment.name} in India ranges from $${treatment.costMin.toLocaleString()} to $${treatment.costMax.toLocaleString()}, depending on the hospital, surgeon, and medical complexity. This is typically 60-80% less than in the US or Europe.`,
+    },
+    {
+      question: `Which hospitals in India offer ${treatment.name}?`,
+      answer: `Top JCI and NABH-accredited hospitals in Delhi NCR offer ${treatment.name}, including Apollo Hospitals, Max Hospital, Artemis Hospital, BLK-Max, and Sir Ganga Ram Hospital.`,
+    },
+    {
+      question: `What is the recovery time for ${treatment.name}?`,
+      answer: `Recovery time for ${treatment.name} typically ranges from 6-8 weeks. Hospital stay is usually 3-5 days, followed by a recovery period in India before returning home.`,
+    },
+    {
+      question: `How do I get started with ${treatment.name} in India?`,
+      answer: `Contact us with your medical reports. Our team will match you with the best doctors and hospitals, provide a detailed cost estimate, arrange your visa invitation, and coordinate your entire medical journey.`,
+    },
+    {
+      question: `Is ${treatment.name} safe in India?`,
+      answer: `Yes. India's top hospitals maintain international standards with JCI and NABH accreditations. Our partner hospitals in Delhi NCR feature board-certified surgeons, modern ICUs, and dedicated international patient desks.`,
+    },
+  ];
+
   return (
     <>
+      <JsonLd data={faqPageSchema(faqs)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "Treatment Packages", url: "https://asianshealthcare.com/treatment-package" },
+        { name: treatment.name, url: `https://asianshealthcare.com/treatment-package/${params.slug}` },
+      ])} />
       <section className="relative overflow-hidden bg-canvas-night text-on-primary py-20">
         <div className="absolute inset-0">
           <Image

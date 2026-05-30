@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -48,8 +49,8 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-canvas-night text-on-primary border-b border-hairline-dark">
       <div className="container-cinematic flex items-center justify-between h-16 lg:h-20">
-        <Link href="/" className="font-display text-heading-lg tracking-wide shrink-0">
-          {siteName}
+        <Link href="/" className="shrink-0 flex items-center gap-2">
+          <Image src="/logo.svg" alt={siteName} width={160} height={32} className="h-8 w-auto" priority />
         </Link>
 
         <div className="hidden lg:flex items-center gap-6">

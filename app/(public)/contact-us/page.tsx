@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/forms/ContactForm";
 import { Clock, FileText, Mail, MapPin, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { localBusinessSchema, breadcrumbSchema } from "@/lib/json-ld";
 import { getSiteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with Asians Healthcare. We're here to help you with your medical treatment journey.",
+  description: "Contact Asians Healthcare for medical treatment in India. Get a free consultation, cost estimate, and treatment plan within 24 hours.",
 };
 
 const responseSteps = [
@@ -29,6 +31,16 @@ export default async function ContactPage() {
 
   return (
     <>
+      <JsonLd data={
+        localBusinessSchema({
+          telephone: contact_phone || "+919650928250",
+          email: contact_email || "contact@asianshealthcare.com",
+        })
+      } />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "Contact Us", url: "https://asianshealthcare.com/contact-us" },
+      ])} />
       <PageHero
         eyebrow="Get in Touch"
         title="Contact Us"

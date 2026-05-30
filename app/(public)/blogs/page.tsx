@@ -4,10 +4,15 @@ import Link from "next/link";
 import { Calendar, User } from "lucide-react";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import PageHero from "@/components/layout/PageHero";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbSchema } from "@/lib/json-ld";
+import { fallbackBlogs } from "@/lib/fallback-data";
 import { getSiteImages } from "@/lib/site-settings";
+
 export const metadata: Metadata = {
-  title: "Blogs",
-  description: "Read about medical tourism, treatment guides, and healthcare tips for India.",
+  title: "Medical Tourism Blog & Guides",
+  description: "Expert guides on medical tourism in India. Treatment costs, hospital comparisons, visa tips, recovery planning, and patient stories from Delhi NCR.",
+  alternates: { canonical: "/blogs" },
 };
 
 const categories = ["All", "Medical Visa Guide", "Treatment Blog", "Tourism Blog"];
@@ -18,7 +23,7 @@ export default async function BlogsPage() {
     supabase.from("blogs").select("*").eq("is_published", true).limit(20),
     getSiteImages(),
   ]);
-  const blogs = raw?.map((b) => ({
+  const fetchedBlogs = raw?.map((b) => ({
     title: b.title,
     category: b.category,
     author: b.author || "Asians Team",
@@ -27,9 +32,18 @@ export default async function BlogsPage() {
     excerpt: b.content?.substring(0, 120) + "..." || "",
     thumbnail_url: b.thumbnail_url || "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&q=80",
   })) || [];
+  const blogs = fetchedBlogs.length > 0 ? fetchedBlogs : fallbackBlogs.map((b) => ({
+    ...b,
+    date: b.published_at ? new Date(b.published_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "",
+    excerpt: b.content?.substring(0, 120) + "..." || "",
+  }));
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "Blog", url: "https://asianshealthcare.com/blogs" },
+      ])} />
       <PageHero
         eyebrow="Our Blog"
         title="Blogs & Resources"

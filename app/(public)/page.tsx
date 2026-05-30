@@ -1,4 +1,6 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/json-ld";
 import HeroSection from "@/components/home/HeroSection";
 import StatsCounter from "@/components/home/StatsCounter";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
@@ -75,6 +77,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd data={[organizationSchema(), websiteSchema()]} />
       <HeroSection imageUrl={images.image_home_hero} />
       <StatsCounter />
       <WhyChooseUs />

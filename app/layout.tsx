@@ -9,13 +9,23 @@ const inter = Inter({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://asianshealthcare.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Asians Healthcare - Medical Tourism in India",
     template: "%s | Asians Healthcare",
   },
   description:
     "Connect with India's top hospitals and doctors. Affordable medical treatments, world-class healthcare, and personalized care for international patients.",
+  robots: { index: true, follow: true },
+  alternates: { canonical: siteUrl },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: "Asians Healthcare - Medical Tourism in India",
     description:
@@ -23,6 +33,18 @@ export const metadata: Metadata = {
     siteName: "Asians Healthcare",
     type: "website",
     locale: "en_US",
+    url: siteUrl,
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Asians Healthcare - Medical Tourism in India",
+    description: "Connect with India's top hospitals and doctors for affordable, world-class medical treatment.",
+    images: ["/opengraph-image"],
+  },
+  other: {
+    "geo.region": "IN-DL",
+    "geo.placename": "New Delhi",
   },
 };
 

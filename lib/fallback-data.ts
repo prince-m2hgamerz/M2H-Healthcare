@@ -1078,3 +1078,59 @@ export const fallbackSpecialties = [
     desc: "Aesthetic and reconstructive procedures with privacy-focused recovery planning.",
   },
 ];
+
+export const fallbackBlogs = [
+  {
+    title: "Why Medical Tourism in India Is Growing: A Complete Guide",
+    slug: "medical-tourism-india-guide",
+    category: "Treatment Blog",
+    author: "Asians Healthcare",
+    published_at: "2025-12-15T00:00:00Z",
+    thumbnail_url: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=800&q=80",
+    content: `<h2>Why India Is a Top Destination for Medical Tourism</h2>
+<p>India has emerged as one of the world's leading medical tourism destinations, attracting patients from over 80 countries. With JCI and NABH-accredited hospitals, internationally trained doctors, and treatment costs that are 60-80% lower than in Western countries, India offers exceptional value for medical travelers.</p>
+<h2>Key Advantages</h2>
+<p><strong>World-Class Healthcare:</strong> India's top hospitals like Apollo, Max, and Artemis maintain international standards with advanced technology and highly skilled specialists. Many have dedicated international patient desks to coordinate your entire journey.</p>
+<p><strong>Cost Savings:</strong> A heart bypass surgery that costs $100,000+ in the US can be performed in India for $7,000-$10,000. Hip replacement costs $12,000 in the US versus $4,000 in India. These savings include hospital stay, surgeon fees, and follow-up care.</p>
+<p><strong>No Waiting Lists:</strong> Unlike many countries where patients wait months for elective procedures, Indian hospitals can schedule surgeries within days of consultation, making it ideal for time-sensitive treatments.</p>
+<h2>Steps to Plan Your Medical Trip</h2>
+<ol><li>Share your medical reports with our team</li><li>Receive matched doctor and hospital recommendations</li><li>Get a detailed cost estimate and treatment plan</li><li>Receive visa invitation and travel guidance</li><li>Arrive in India with airport pickup and accommodation arranged</li></ol>`,
+  },
+  {
+    title: "Top 10 Hospitals in Delhi NCR for International Patients",
+    slug: "top-hospitals-delhi-international-patients",
+    category: "Medical Visa Guide",
+    author: "Asians Healthcare",
+    published_at: "2025-11-20T00:00:00Z",
+    thumbnail_url: "https://images.unsplash.com/photo-1587351021759-3772687fe598?w=800&q=80",
+    content: `<h2>Best Hospitals in Delhi NCR</h2>
+<p>Delhi's National Capital Region hosts some of India's finest healthcare institutions, many with dedicated international patient departments. Here are the top hospitals that cater to medical travelers.</p>
+<h2>1. Apollo Hospitals Indraprastha</h2>
+<p>A flagship tertiary care hospital with internationally accredited programs in cardiac sciences, oncology, neurosciences, and organ transplantation. Apollo's International Patient Services handles over 10,000 international patients annually.</p>
+<h2>2. Max Super Speciality Hospital Saket</h2>
+<p>Known for advanced neurosciences, bone marrow transplant, and cardiac care. Max has a dedicated International Lounge with translators, visa assistance, and concierge services.</p>
+<h2>3. Artemis Hospital Gurugram</h2>
+<p>JCI-accredited with state-of-the-art infrastructure. Artemis excels in cardiology, orthopedics, IVF, and oncology with a strong focus on medical tourism comfort.</p>
+<h2>4. BLK-Max Super Speciality Hospital</h2>
+<p>650-bed facility in Central Delhi renowned for paediatric cardiac surgery, orthopedics, and fertility treatment. BLK has one of India's largest bone marrow transplant units.</p>
+<h2>Important Considerations</h2>
+<p>When choosing a hospital, consider JCI/NABH accreditation, the hospital's experience with international patients, available translators, and post-discharge follow-up protocols.</p>`,
+  },
+  {
+    title: "Understanding Medical Visa Procedures for India",
+    slug: "medical-visa-india-procedures",
+    category: "Medical Visa Guide",
+    author: "Asians Healthcare",
+    published_at: "2025-10-10T00:00:00Z",
+    thumbnail_url: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
+    content: `<h2>Medical Visa for India: Step-by-Step Guide</h2>
+<p>India offers a dedicated Medical Visa (M-visa) for patients seeking treatment at recognized hospitals. This comprehensive guide explains the entire process.</p>
+<h2>Eligibility</h2>
+<p>A Medical Visa is available to foreign nationals seeking medical treatment at recognized/approved hospitals in India. The visa allows up to three accompanying family members on Medical Attendant Visas.</p>
+<h2>Required Documents</h2>
+<ul><li>Valid passport with at least 6 months validity</li><li>Medical certificate from a recognized hospital in the home country</li><li>Letter from the Indian hospital confirming treatment and timeline</li><li>Recent passport-size photographs</li><li>Proof of financial means to cover treatment costs</li></ul>
+<h2>Application Process</h2>
+<ol><li>Apply online through the Indian visa portal</li><li>Upload required documents</li><li>Pay visa fee (varies by nationality)</li><li>Schedule appointment at Indian embassy/consulate if required</li><li>Receive e-Medical Visa within 3-5 working days</li></ol>
+<p>The e-Medical Visa is valid for 60 days with triple entry, extendable for up to one year while undergoing treatment.</p>`,
+  },
+];

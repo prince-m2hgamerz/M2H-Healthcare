@@ -5,11 +5,23 @@ import Image from "next/image";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { fallbackDoctors } from "@/lib/fallback-data";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { physicianSchema, breadcrumbSchema } from "@/lib/json-ld";
 
-export const metadata: Metadata = {
-  title: "Doctor Details",
-  description: "View doctor profile, qualifications, and experience.",
-};
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const supabase = await createServerSupabaseClient();
+  const { data: rawDoctor } = await supabase.from("doctors").select("*").eq("slug", params.slug).single();
+  const fallbackDoctor = fallbackDoctors.find((doctor) => doctor.slug === params.slug);
+  const doctor = rawDoctor || fallbackDoctor;
+  if (!doctor) return { title: "Doctor Not Found" };
+  const name = doctor.name || "Doctor";
+  const specialty = doctor.specialties?.[0] || "Specialist";
+  return {
+    title: name,
+    description: `Dr. ${name} — ${specialty} in Delhi, India. ${doctor.about?.slice(0, 150) || `Book an appointment with Dr. ${name}, a specialist in ${specialty}.`}`,
+    openGraph: { title: name, description: `Dr. ${name} — ${specialty} at Asians Healthcare.` },
+  };
+}
 
 export default async function DoctorDetailPage({ params }: { params: { slug: string } }) {
   const supabase = await createServerSupabaseClient();
@@ -32,6 +44,20 @@ export default async function DoctorDetailPage({ params }: { params: { slug: str
 
   return (
     <>
+      <JsonLd data={physicianSchema({
+        name: doctor.name,
+        description: doctor.about,
+        specialty: doctor.specialty,
+        image: doctor.photo_url,
+        url: `https://asianshealthcare.com/doctors/${params.slug}`,
+        qualifications: doctor.qualifications,
+        hospitalName: doctor.hospital,
+      })} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "Doctors", url: "https://asianshealthcare.com/doctors" },
+        { name: doctor.name, url: `https://asianshealthcare.com/doctors/${params.slug}` },
+      ])} />
       <section className="bg-canvas-night text-on-primary py-20">
         <div className="container-cinematic">
           <Link href="/doctors" className="inline-flex items-center gap-2 text-link-cool-2 hover:text-on-primary mb-6 transition-colors">

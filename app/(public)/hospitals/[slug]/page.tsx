@@ -4,11 +4,22 @@ import { ArrowLeft, Award, Building2, MapPin } from "lucide-react";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { fallbackHospitals } from "@/lib/fallback-data";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { hospitalSchema, breadcrumbSchema } from "@/lib/json-ld";
 
-export const metadata: Metadata = {
-  title: "Hospital Details",
-  description: "View hospital profile, accreditations, and available treatments.",
-};
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const supabase = await createServerSupabaseClient();
+  const { data: rawHospital } = await supabase.from("hospitals").select("*").eq("slug", params.slug).single();
+  const fallbackHospital = fallbackHospitals.find((hospital) => hospital.slug === params.slug);
+  const hospital = rawHospital || fallbackHospital;
+  if (!hospital) return { title: "Hospital Not Found" };
+  const name = hospital.name || "Hospital";
+  return {
+    title: name,
+    description: `${name} — ${hospital.city}, ${hospital.state}. ${hospital.accreditations?.join(", ") || "Accredited"} multi-specialty hospital. ${hospital.about?.slice(0, 150) || `Learn about ${name} and available treatments.`}`,
+    openGraph: { title: name, description: `${name} — Healthcare facility in ${hospital.city}, India.` },
+  };
+}
 
 export default async function HospitalDetailPage({ params }: { params: { slug: string } }) {
   const supabase = await createServerSupabaseClient();
@@ -29,6 +40,19 @@ export default async function HospitalDetailPage({ params }: { params: { slug: s
 
   return (
     <>
+      <JsonLd data={hospitalSchema({
+        name: hospital.name,
+        description: hospital.about,
+        city: hospital.city,
+        state: hospital.state,
+        beds: hospital.beds_count,
+        url: `https://asianshealthcare.com/hospitals/${params.slug}`,
+      })} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "Hospitals", url: "https://asianshealthcare.com/hospitals" },
+        { name: hospital.name, url: `https://asianshealthcare.com/hospitals/${params.slug}` },
+      ])} />
       <section className="bg-canvas-night text-on-primary py-20">
         <div className="container-cinematic">
           <Link href="/hospitals" className="inline-flex items-center gap-2 text-link-cool-2 hover:text-on-primary mb-6 transition-colors">

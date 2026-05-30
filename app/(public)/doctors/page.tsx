@@ -6,11 +6,13 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { fallbackDoctors } from "@/lib/fallback-data";
 import PageHero from "@/components/layout/PageHero";
 import SearchInput from "@/components/layout/SearchInput";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbSchema } from "@/lib/json-ld";
 import { getSiteImages } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
-  title: "Our Doctors",
-  description: "Browse India's top specialist doctors. Filter by specialty, hospital, and experience.",
+  title: "Top Specialist Doctors in India",
+  description: "Browse India's top specialist doctors across cardiology, orthopedics, oncology, neurology, and more. Board-certified surgeons at JCI hospitals in Delhi NCR.",
 };
 
 export default async function DoctorsPage({
@@ -48,6 +50,10 @@ export default async function DoctorsPage({
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "Doctors", url: "https://asianshealthcare.com/doctors" },
+      ])} />
       <PageHero
         eyebrow="Our Experts"
         title="Our Specialist Doctors"

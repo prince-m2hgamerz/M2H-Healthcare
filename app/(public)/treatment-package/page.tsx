@@ -6,12 +6,14 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { fallbackTreatments } from "@/lib/fallback-data";
 import PageHero from "@/components/layout/PageHero";
 import SearchInput from "@/components/layout/SearchInput";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbSchema } from "@/lib/json-ld";
 import { getSiteImages } from "@/lib/site-settings";
 import { getTreatmentImage } from "@/lib/site-images";
 
 export const metadata: Metadata = {
-  title: "Treatment Packages & Costs",
-  description: "Compare affordable medical treatment costs in India. Save 60-80% on healthcare.",
+  title: "Affordable Medical Treatment Costs in India",
+  description: "Compare treatment costs in India vs. US/UK. Save 60-80% on cardiology, orthopedics, oncology, IVF, and more at top JCI hospitals in Delhi NCR.",
 };
 
 export default async function TreatmentPackagesPage({
@@ -49,6 +51,10 @@ export default async function TreatmentPackagesPage({
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "Treatment Packages", url: "https://asianshealthcare.com/treatment-package" },
+      ])} />
       <PageHero
         eyebrow="Affordable Care"
         title="Treatment Packages & Costs"
