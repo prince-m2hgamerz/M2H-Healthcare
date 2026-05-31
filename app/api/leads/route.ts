@@ -7,9 +7,21 @@ export async function POST(request: Request) {
     const body: Record<string, unknown> = await request.json();
     const supabase = await createServerSupabaseClient();
 
+    // Only insert known valid fields into the leads table
+    const leadData: Record<string, unknown> = {
+      name: body.name || "Unknown",
+      email: body.email || null,
+      phone: body.phone || "",
+      country: body.country || "International",
+      form_type: body.form_type || "Contact",
+      medical_condition: body.medical_condition || body.treatment || null,
+      message: body.message || null,
+      status: "new",
+    };
+
     const { data, error } = await supabase
       .from("leads")
-      .insert([{ ...body, status: "new" }] as never)
+      .insert([leadData] as never)
       .select()
       .single();
 
