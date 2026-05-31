@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import { organizationSchema, websiteSchema, faqPageSchema } from "@/lib/json-ld";
 import HeroSection from "@/components/home/HeroSection";
 import StatsCounter from "@/components/home/StatsCounter";
+import WhoWeAre from "@/components/home/WhoWeAre";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import PatientSupportServices from "@/components/home/PatientSupportServices";
 import FeaturedDoctors from "@/components/home/FeaturedDoctors";
@@ -10,6 +11,7 @@ import FeaturedHospitals from "@/components/home/FeaturedHospitals";
 import TreatmentPackages from "@/components/home/TreatmentPackages";
 import CostComparison from "@/components/home/CostComparison";
 import MedicalCareGallery from "@/components/home/MedicalCareGallery";
+import GetConsultation from "@/components/home/GetConsultation";
 import PatientTestimonials from "@/components/home/PatientTestimonials";
 import InsuranceLogos from "@/components/home/InsuranceLogos";
 import TravelProcess from "@/components/home/TravelProcess";
@@ -87,11 +89,13 @@ export default async function HomePage() {
       ])} />
       <HeroSection imageUrl={images.image_home_hero} />
       <StatsCounter />
+      <WhoWeAre />
       <WhyChooseUs />
       <MedicalCareGallery images={images} />
       <PatientSupportServices imageUrl={images.image_home_support} />
       <FeaturedDoctors doctors={doctors.length > 0 ? doctors : fallbackDoctors} />
       <FeaturedHospitals hospitals={hospitals.length > 0 ? hospitals : fallbackHospitals} />
+      <GetConsultation />
       <CostComparison imageUrl={images.image_home_cost} />
       <TreatmentPackages treatments={treatments.length > 0 ? treatments : fallbackTreatments} images={images} />
       <PatientTestimonials testimonials={testimonials.length > 0 ? testimonials : fallbackTestimonials} />

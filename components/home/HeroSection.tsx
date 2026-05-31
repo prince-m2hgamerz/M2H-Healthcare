@@ -67,7 +67,7 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
             transition={{ delay: 0.2, duration: 0.5 }}
             className="pill-tag mb-6 inline-block"
           >
-            World-Class Healthcare in India
+            Trusted Medical Tourism Company in India
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -75,19 +75,42 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
             transition={{ delay: 0.3, duration: 0.6 }}
           className="font-display text-[44px] leading-[0.98] sm:text-display-xl lg:text-display-xxl tracking-wide mb-6"
           >
-            Your Health Journey
+            World-Class Treatment
             <br />
-            <span className="text-link-mint">Starts in India</span>
+            <span className="text-link-mint">At Affordable Cost</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-body-lg text-link-cool-2 max-w-2xl mb-10 leading-relaxed"
+            className="text-body-lg text-link-cool-2 max-w-2xl mb-6 leading-relaxed"
           >
-            Free medical opinion, cost estimate, visa support, hospital admission help,
-            airport pickup, and interpreter support for overseas patients.
+            Get free medical opinion within 24 hours. We assist with doctor selection, cost estimation,
+            visa invitation, airport pickup, hospital admission, and post-treatment follow-up.
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.45, duration: 0.5 }}
+            className="flex flex-wrap items-center gap-3 mb-10"
+          >
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs text-link-cool-2 border border-white/10">
+              <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+              No Service Fee
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs text-link-cool-2 border border-white/10">
+              <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+              JCI &amp; NABH Hospitals
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs text-link-cool-2 border border-white/10">
+              <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+              24/7 Patient Support
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs text-link-cool-2 border border-white/10">
+              <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+              Save 60-80% vs US
+            </span>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
