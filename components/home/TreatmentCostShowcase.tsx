@@ -66,7 +66,7 @@ const treatmentCosts = [
 
 export default function TreatmentCostShowcase() {
   return (
-    <section className="bg-canvas-cream py-huge overflow-hidden">
+    <section className="bg-canvas-cream py-12 sm:py-huge overflow-hidden">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ export default function TreatmentCostShowcase() {
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {treatmentCosts.map((treatment, i) => (
             <motion.div
               key={treatment.slug + i}

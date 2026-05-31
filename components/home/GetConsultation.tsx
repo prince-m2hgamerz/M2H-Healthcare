@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function GetConsultation() {
   return (
-    <section className="relative bg-gradient-to-br from-canvas-night via-surface-elevated-dark to-canvas-night py-20 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-canvas-night via-surface-elevated-dark to-canvas-night py-12 sm:py-20 overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-72 h-72 bg-aloe-10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-pistachio-10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
@@ -20,7 +20,7 @@ export default function GetConsultation() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h2 className="font-display text-display-md lg:text-display-lg text-on-primary">
+          <h2 className="font-display text-heading-xl sm:text-display-md lg:text-display-lg text-on-primary">
             Get a Free Medical Opinion Within 24 Hours
           </h2>
           <p className="text-body-lg text-link-cool-2 mt-4 max-w-2xl mx-auto">
@@ -28,7 +28,7 @@ export default function GetConsultation() {
             cost estimation, and doctor recommendations — completely free of charge.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
             <Link
               href="/contact-us"
               className="btn-aloe flex items-center gap-2 text-base px-8 py-4"

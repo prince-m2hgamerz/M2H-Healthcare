@@ -26,7 +26,7 @@ const itemVariants = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-canvas-cream py-huge">
+    <section className="bg-canvas-cream py-12 sm:py-huge">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

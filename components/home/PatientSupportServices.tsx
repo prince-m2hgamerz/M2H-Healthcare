@@ -54,7 +54,7 @@ interface PatientSupportServicesProps {
 
 export default function PatientSupportServices({ imageUrl }: PatientSupportServicesProps) {
   return (
-    <section className="bg-canvas-night text-on-primary py-huge">
+    <section className="bg-canvas-night text-on-primary py-12 sm:py-huge">
       <div className="container-cinematic">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <motion.div

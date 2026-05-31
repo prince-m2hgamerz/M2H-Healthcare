@@ -25,7 +25,7 @@ interface CostComparisonProps {
 
 export default function CostComparison({ imageUrl }: CostComparisonProps) {
   return (
-    <section className="bg-canvas-light py-huge">
+    <section className="bg-canvas-light py-12 sm:py-huge">
       <div className="container-cinematic">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <motion.div

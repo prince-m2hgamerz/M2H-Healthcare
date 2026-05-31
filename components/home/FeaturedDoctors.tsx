@@ -28,7 +28,7 @@ const itemVariants = {
 export default function FeaturedDoctors({ doctors = [] }: { doctors?: Doctor[] }) {
   if (doctors.length === 0) return null;
   return (
-    <section className="bg-canvas-light py-huge">
+    <section className="bg-canvas-light py-12 sm:py-huge">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -13,9 +13,9 @@ const highlights = [
 
 export default function WhoWeAre() {
   return (
-    <section className="bg-canvas-cream py-huge overflow-hidden">
+    <section className="bg-canvas-cream py-12 sm:py-huge overflow-hidden">
       <div className="container-cinematic">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}

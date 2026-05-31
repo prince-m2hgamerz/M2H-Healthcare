@@ -24,7 +24,7 @@ export default function PatientTestimonials({ testimonials = [] }: { testimonial
   const t = testimonials[current];
 
   return (
-    <section className="bg-canvas-night text-on-primary py-huge">
+    <section className="bg-canvas-night text-on-primary py-12 sm:py-huge">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,7 +51,7 @@ export default function PatientTestimonials({ testimonials = [] }: { testimonial
                   <Star key={i} size={20} className="fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
-              <blockquote className="font-display text-heading-xl text-on-primary leading-relaxed mb-8">
+              <blockquote className="font-display text-heading-lg sm:text-heading-xl text-on-primary leading-relaxed mb-6 sm:mb-8">
                 &ldquo;{t.text}&rdquo;
               </blockquote>
               <p className="text-body-lg text-link-cool-2">{t.name}</p>

@@ -25,7 +25,7 @@ const itemVariants = {
 
 export default function TravelProcess() {
   return (
-    <section className="bg-canvas-light py-huge overflow-hidden">
+    <section className="bg-canvas-light py-12 sm:py-huge overflow-hidden">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

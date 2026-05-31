@@ -61,10 +61,10 @@ function Counter({ value, suffix, label, icon: Icon }: Stat) {
       transition={{ duration: 0.5 }}
       className="text-center group"
     >
-      <div className="w-14 h-14 rounded-xl bg-aloe-10/50 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-        <Icon size={26} className="text-ink" />
+      <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl bg-aloe-10/50 flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+        <Icon size={22} className="text-ink" />
       </div>
-      <div className="font-display text-display-md lg:text-display-lg text-ink">
+      <div className="font-display text-heading-xl sm:text-display-md lg:text-display-lg text-ink">
         {count.toLocaleString()}{suffix}
       </div>
       <p className="text-body-md text-shade-50 mt-2 font-medium">{label}</p>
@@ -74,7 +74,7 @@ function Counter({ value, suffix, label, icon: Icon }: Stat) {
 
 export default function StatsCounter() {
   return (
-    <section className="bg-canvas-light py-huge border-b border-hairline-light">
+    <section className="bg-canvas-light py-12 sm:py-huge border-b border-hairline-light">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,7 +88,7 @@ export default function StatsCounter() {
           </h2>
           <p className="text-body-md text-shade-50 mt-2">Numbers that speak for our commitment to quality healthcare</p>
         </motion.div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 lg:gap-6">
           {stats.map((stat) => (
             <Counter key={stat.label} {...stat} />
           ))}
