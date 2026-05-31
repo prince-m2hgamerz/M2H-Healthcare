@@ -15,12 +15,33 @@ export async function POST(request: Request) {
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
 
-    const { data: subscribers, error: dbError } = await supabase
+    // Get subscribers from newsletter_subscribers table
+    let emails: string[] = [];
+
+    const { data: subscribers } = await supabase
       .from("newsletter_subscribers")
       .select("email");
 
-    if (dbError || !subscribers?.length) {
-      return Response.json({ error: dbError?.message || "No subscribers found" }, { status: 400 });
+    if (subscribers && subscribers.length > 0) {
+      emails = subscribers.map((s: { email: string }) => s.email);
+    }
+
+    // Also get Newsletter subscribers from leads table (fallback)
+    const { data: leadSubscribers } = await supabase
+      .from("leads")
+      .select("email")
+      .eq("form_type", "Newsletter")
+      .not("email", "is", null);
+
+    if (leadSubscribers && leadSubscribers.length > 0) {
+      const leadEmails = leadSubscribers
+        .map((s: { email: string | null }) => s.email)
+        .filter((e): e is string => !!e);
+      emails = [...new Set([...emails, ...leadEmails])]; // Deduplicate
+    }
+
+    if (emails.length === 0) {
+      return Response.json({ error: "No subscribers found" }, { status: 400 });
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
@@ -42,9 +63,9 @@ export async function POST(request: Request) {
     let sent = 0;
     let failed = 0;
 
-    for (const sub of subscribers) {
+    for (const email of emails) {
       try {
-        await resend.emails.send({ from, to: sub.email, subject, html });
+        await resend.emails.send({ from, to: email, subject, html });
         sent++;
       } catch {
         failed++;
