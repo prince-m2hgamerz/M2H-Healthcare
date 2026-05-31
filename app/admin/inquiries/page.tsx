@@ -26,7 +26,7 @@ const statusColors: Record<string, string> = {
   closed: "bg-gray-100 text-gray-500",
 };
 
-const statusIcons: Record<string, React.ComponentType<{ size?: number }>> = {
+const statusIcons: Record<string, React.ComponentType<{ size?: string | number }>> = {
   new: MessageSquare,
   contacted: Phone,
   converted: CheckCircle2,
