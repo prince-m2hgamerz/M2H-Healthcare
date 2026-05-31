@@ -32,7 +32,7 @@ export default async function HotelsPage({
     stars: hotel.stars || 3,
     price: hotel.price_range || "$$",
     near: "",
-    photo_url: hotel.photo_url || "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+    photo_url: hotel.photo_url || "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg",
   })) || [];
 
   const allHotels = fetchedHotels.length > 0 ? fetchedHotels : fallbackHotels;
@@ -80,7 +80,7 @@ export default async function HotelsPage({
                 <div key={`${hotel.name}-${hotel.address}`} className="overflow-hidden bg-canvas-cream rounded-lg border border-hairline-light hover:shadow-elevation-3 transition-all">
                   <div className="relative h-44 bg-canvas-light">
                     <Image
-                      src={"photo_url" in hotel ? hotel.photo_url : "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"}
+                      src={"photo_url" in hotel ? hotel.photo_url : "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg"}
                       alt={hotel.name}
                       fill
                       className="object-cover"

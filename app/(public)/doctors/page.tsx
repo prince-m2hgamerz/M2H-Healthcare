@@ -38,7 +38,7 @@ export default async function DoctorsPage({
       experience: `${doctor.experience_years || fallback?.experience_years || 0} years`,
       slug: doctor.slug,
       rating: 4.9,
-      photo_url: fallback?.photo_url || doctor.photo_url || "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+      photo_url: fallback?.photo_url || doctor.photo_url || "https://satyughealthcare.com/uploads/doctors/a330cd2834d5826c649d5295bc0cfae7.jpg",
     };
   }) || [];
 

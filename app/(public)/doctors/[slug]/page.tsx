@@ -34,7 +34,7 @@ export default async function DoctorDetailPage({ params }: { params: { slug: str
         experience: `${rawDoctor.experience_years || 0} years`,
         hospital: "Partner Hospital",
         rating: 4.9,
-        photo_url: rawDoctor.photo_url || "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+        photo_url: rawDoctor.photo_url || "https://satyughealthcare.com/uploads/doctors/a330cd2834d5826c649d5295bc0cfae7.jpg",
         qualifications: rawDoctor.qualifications || "",
         about: rawDoctor.about || "No description available.",
       }

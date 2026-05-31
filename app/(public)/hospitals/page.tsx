@@ -37,7 +37,7 @@ export default async function HospitalsPage({
     beds: `${hospital.beds_count?.toLocaleString() || 0}+`,
     accreditation: hospital.accreditations?.join(", ") || "Accredited",
     slug: hospital.slug,
-    photo_url: hospital.logo_url || "https://images.unsplash.com/photo-1587351021759-3772687fe598?w=600&q=80",
+    photo_url: hospital.logo_url || "https://upload.wikimedia.org/wikipedia/commons/e/e8/Indraprastha_Apollo_Hospital.jpg",
   })) || [];
 
   const allHospitals = fetchedHospitals.length > 0 ? fetchedHospitals : fallbackHospitals;

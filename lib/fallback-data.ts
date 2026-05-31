@@ -204,7 +204,7 @@ export const fallbackDoctors = [
     hospital: "AIIMS Delhi",
     rating: 4.8,
     slug: "dr-priya-singh",
-    photo_url: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/325417863181.jpg",
     qualifications: "MBBS, MD Medicine, DM Neurology",
     about:
       "Consultant neurologist at AIIMS specializing in stroke care, movement disorders, epilepsy management, and neuro-immunology. Published over 40 research papers.",
@@ -288,7 +288,7 @@ export const fallbackDoctors = [
     hospital: "Apollo Hospitals Delhi",
     rating: 4.8,
     slug: "dr-anupam-saha",
-    photo_url: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/161501531397.jpg",
     qualifications: "MBBS, MS, MCh Neurosurgery",
     about:
       "Senior neurosurgeon at Apollo Indraprastha specializing in brain tumor surgery, spine stabilization, and cerebrovascular interventions.",
@@ -302,7 +302,7 @@ export const fallbackDoctors = [
     hospital: "Max Super Speciality Hospital Saket",
     rating: 4.8,
     slug: "dr-sandeep-vaishya",
-    photo_url: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/525265157993.png",
     qualifications: "MBBS, MS, MCh Neurosurgery",
     about:
       "Executive Director of Neurosurgery at Max Saket. Specialist in brain tumor surgery, deep brain stimulation, and complex spine surgery.",
@@ -316,7 +316,7 @@ export const fallbackDoctors = [
     hospital: "Artemis Hospital Gurugram",
     rating: 4.8,
     slug: "dr-rashmi-taluja",
-    photo_url: "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/617264631571.png",
     qualifications: "MBBS, MS, FRCOG",
     about:
       "Senior IVF and fertility specialist at Artemis Hospital. Specialist in recurrent pregnancy loss, PCOS management, and advanced reproductive techniques including ICSI and egg donation.",
@@ -330,7 +330,7 @@ export const fallbackDoctors = [
     hospital: "Indian Spinal Injuries Centre",
     rating: 4.9,
     slug: "dr-hs-chhabra",
-    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/507415075859.jpg",
     qualifications: "MBBS, MS Orthopedics, FICS",
     about:
       "Chief of Spine Services at Indian Spinal Injuries Centre. Pioneer of spine deformity correction and minimally invasive spine surgery in India. Awarded Padma Shri.",
@@ -344,7 +344,7 @@ export const fallbackDoctors = [
     hospital: "BLK-Max Super Speciality Hospital",
     rating: 4.9,
     slug: "dr-pradeep-sethi",
-    photo_url: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/492147103510.jpg",
     qualifications: "MBBS, MS, MCh Cardiothoracic Surgery",
     about:
       "Vice Chairman of Paediatric Cardiac Surgery at BLK-Max. Has performed over 6,000 paediatric cardiac surgeries including complex neonatal heart defect repairs.",
@@ -358,7 +358,7 @@ export const fallbackDoctors = [
     hospital: "Sir Ganga Ram Hospital",
     rating: 4.7,
     slug: "dr-deepak-tempe",
-    photo_url: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/811031731733.jpg",
     qualifications: "MBBS, MD, DM Cardiology",
     about:
       "Senior cardiologist at Sir Ganga Ram Hospital with vast experience in interventional cardiology, coronary angioplasty, and pacemaker implantation.",
@@ -372,7 +372,7 @@ export const fallbackDoctors = [
     hospital: "Apollo Hospitals Delhi",
     rating: 4.8,
     slug: "dr-raju-garg",
-    photo_url: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/492147103510.jpg",
     qualifications: "MBBS, MS Orthopedics, DNB",
     about:
       "Senior orthopedic surgeon at Apollo Indraprastha specializing in hip and knee replacement, arthroscopy, and sports injury management.",
@@ -414,7 +414,7 @@ export const fallbackDoctors = [
     hospital: "Max Super Speciality Hospital Saket",
     rating: 4.8,
     slug: "dr-vikas-dua",
-    photo_url: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/029253041876.png",
     qualifications: "MBBS, MD, DM Hematology",
     about:
       "Director of Paediatric Hematology & Bone Marrow Transplant at Max Saket. Has performed over 500 bone marrow transplants including haploidentical transplants.",
@@ -442,7 +442,7 @@ export const fallbackDoctors = [
     hospital: "Sir Ganga Ram Hospital",
     rating: 4.8,
     slug: "dr-anil-arora",
-    photo_url: "https://images.unsplash.com/photo-1618498082410-b4aa22193b38?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/811031731733.jpg",
     qualifications: "MBBS, MD, DM Gastroenterology",
     about:
       "Chairman of Gastroenterology at Sir Ganga Ram Hospital. Expert in therapeutic endoscopy, ERCP, and inflammatory bowel disease management.",
@@ -484,7 +484,7 @@ export const fallbackDoctors = [
     hospital: "Sir Ganga Ram Hospital",
     rating: 4.8,
     slug: "dr-ds-rana",
-    photo_url: "https://images.unsplash.com/photo-1625134673337-519d4d10b313?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/492147103510.jpg",
     qualifications: "MBBS, MD, DM Nephrology",
     about:
       "Chairman of Nephrology at Sir Ganga Ram Hospital. Expert in kidney transplant, dialysis management, and chronic kidney disease care.",
@@ -512,7 +512,7 @@ export const fallbackDoctors = [
     hospital: "Max Super Speciality Hospital Saket",
     rating: 4.8,
     slug: "dr-atul-aggarwal",
-    photo_url: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/525265157993.png",
     qualifications: "MBBS, MD, DM Neurology",
     about:
       "Senior neurologist at Max Saket specializing in stroke management, epilepsy, Parkinson's disease, and dementia care.",
@@ -526,7 +526,7 @@ export const fallbackDoctors = [
     hospital: "Manipal Hospital Dwarka",
     rating: 4.7,
     slug: "dr-sameer-kaushal",
-    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/029253041876.png",
     qualifications: "MBBS, MD, DM Cardiology",
     about:
       "Senior cardiologist at Manipal Hospital Dwarka specializing in coronary interventions, echocardiography, and preventive cardiology.",
@@ -540,7 +540,7 @@ export const fallbackDoctors = [
     hospital: "Artemis Hospital Gurugram",
     rating: 4.7,
     slug: "dr-rakesh-gupta",
-    photo_url: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/492147103510.jpg",
     qualifications: "MBBS, MD, DM Cardiology",
     about:
       "Senior interventional cardiologist at Artemis Hospital specializing in complex coronary interventions, peripheral angioplasty, and structural heart disease treatment.",
@@ -554,7 +554,7 @@ export const fallbackDoctors = [
     hospital: "Fortis Memorial Research Institute",
     rating: 4.7,
     slug: "dr-simmardeep-gill",
-    photo_url: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/161501531397.jpg",
     qualifications: "MBBS, MD, DM Neurology",
     about:
       "Neurologist at Fortis FMRI specializing in stroke interventions, neurocritical care, and multiple sclerosis management.",
@@ -582,7 +582,7 @@ export const fallbackDoctors = [
     hospital: "BLK-Max Super Speciality Hospital",
     rating: 4.7,
     slug: "dr-aditi-sharma",
-    photo_url: "https://images.unsplash.com/photo-1584516150909-c43483ee7932?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/617264631571.png",
     qualifications: "MBBS, MD, DNB Obstetrics & Gynecology",
     about:
       "Fertility specialist at BLK-Max with expertise in IVF, ICSI, fertility preservation, and reproductive endocrinology.",
@@ -610,7 +610,7 @@ export const fallbackDoctors = [
     hospital: "Manipal Hospital Dwarka",
     rating: 4.6,
     slug: "dr-vivek-loomba",
-    photo_url: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/161501531397.jpg",
     qualifications: "MBBS, MS Orthopedics",
     about:
       "Orthopedic surgeon at Manipal Hospital Dwarka specializing in joint replacement, arthroscopy, and trauma surgery.",
@@ -624,7 +624,7 @@ export const fallbackDoctors = [
     hospital: "Narayana Superspeciality Hospital Gurugram",
     rating: 4.7,
     slug: "dr-rajendra-kumar",
-    photo_url: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/811031731733.jpg",
     qualifications: "MBBS, MD, DM Cardiology",
     about:
       "Senior cardiologist at Narayana Superspeciality Hospital Gurugram specializing in high-volume coronary interventions and heart failure management.",
@@ -670,7 +670,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, Govt of India",
     accreditations: ["NABH", "Govt of India"],
     slug: "aiims-delhi",
-    photo_url: "/images/hospital-aiims.webp",
+    photo_url: "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg",
     about:
       "AIIMS is India's premier medical institution and hospital, renowned for its high-quality patient care, medical education, and research. With over 2,400 beds and 600+ specialists, it offers comprehensive treatment across all major specialties at highly affordable rates.",
   },
@@ -684,7 +684,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "medanta-the-medicity",
-    photo_url: "/images/hospital-medanta.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/rRYbW6Ah4XKY0c6se2UgwXkV4p6NXb-metaR1VSVUdSQU0ucG5n-.png",
     about:
       "Medanta is one of India's largest multi-specialty hospitals with a dedicated international patient wing. It features 45+ operating theatres, advanced robotic surgery systems, and world-renowned cardiac, oncology, transplant, and orthopaedic programs.",
   },
@@ -698,7 +698,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "apollo-hospitals-delhi",
-    photo_url: "/images/hospital-apollo.webp",
+    photo_url: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Indraprastha_Apollo_Hospital.jpg",
     about:
       "Apollo Hospitals Indraprastha is a flagship tertiary care hospital in South East Asia with internationally accredited programs in cardiac sciences, oncology, neurosciences, orthopedics, and organ transplantation.",
   },
@@ -712,7 +712,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "fortis-escorts-heart-institute",
-    photo_url: "/images/hospital-fortis-escorts.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/KRKHMv9Fxr54fLXKN0OjZzxiiwFTBq-metaT2JSZkdhUTI1bnJwWldCdkJKMWxzdHBCVG91cEdNLW1ldGFSM1Z5ZFdkeVlXMHVhbkJuLS5qcGc=-.jpg",
     about:
       "Fortis Escorts Heart Institute is India's most recognised cardiac care hospital, performing over 15,000 cardiac surgeries annually with world-class success rates.",
   },
@@ -726,7 +726,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "max-super-speciality-hospital-saket",
-    photo_url: "/images/hospital-max-saket.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2023/7SQ9q1Q1OCZRgZRErb64rLCNhnUGSi-metabHVja25vdy5qcGc=-.jpg",
     about:
       "Max Super Speciality Hospital Saket is a multi-specialty tertiary care hospital known for its advanced neurosciences, bone marrow transplant program, cardiac care, and oncology services.",
   },
@@ -740,7 +740,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "sir-ganga-ram-hospital",
-    photo_url: "/images/hospital-ganga-ram.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/YelIyqoA5uGHAsU26kWk9EH54Aumyv-metaUGF0bmEgSG9zcGl0YWwgSW1hZ2UgKDIpLmpwZw==-.jpg",
     about:
       "Sir Ganga Ram Hospital is a premier multi-specialty hospital in New Delhi with a 70-year legacy of medical excellence across cardiology, gastroenterology, nephrology, and urology.",
   },
@@ -754,7 +754,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "blk-max-super-speciality-hospital",
-    photo_url: "/images/hospital-blk.webp",
+    photo_url: "https://upload.wikimedia.org/wikipedia/commons/3/32/BLK_Super_Specialty_Hospital.jpg",
     about:
       "BLK-Max Super Speciality Hospital is a leading healthcare facility in Central Delhi with 650 beds and 17 super-speciality departments, renowned for paediatric cardiac surgery, orthopedics, and fertility treatment.",
   },
@@ -768,7 +768,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "artemis-hospital-gurugram",
-    photo_url: "/images/hospital-artemis.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/April2025/sdE5SGg6gM0Y4fqeIaLSlnZO7bE8Rq-metaSW5kb3JlIGhvc3BpdGFsIDEuanBn-.jpg",
     about:
       "Artemis Hospital is a state-of-the-art multi-specialty hospital in Gurugram with JCI accreditation, offering advanced care in cardiology, orthopedics, IVF, and oncology with a focus on medical tourism.",
   },
@@ -782,7 +782,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "fortis-memorial-research-institute",
-    photo_url: "/images/hospital-fmri.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/vv3jGl55XyYhdw6Css4eETU7I3cSty-metaTHVja25vdy5wbmc=-.png",
     about:
       "Fortis Memorial Research Institute (FMRI) is a flagship quaternary care hospital with dedicated centres for oncology, neurosciences, orthopedics, cardiac care, and liver transplant.",
   },
@@ -796,7 +796,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "manipal-hospital-dwarka",
-    photo_url: "/images/hospital-manipal.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/CrIXV6svcbfI8IwaGIINKGH4rNzSan-metaUGF0bmEucG5n-.png",
     about:
       "Manipal Hospital Dwarka is a multi-specialty tertiary care hospital serving West Delhi with comprehensive healthcare services including cardiology, orthopedics, neurology, and gastroenterology.",
   },
@@ -810,7 +810,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "indian-spinal-injuries-centre",
-    photo_url: "/images/hospital-spinal.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/UG8G445YMpH2rBUJCF8zJlK52TbUFG-metaSW5kb3JlLnBuZw==-.png",
     about:
       "The Indian Spinal Injuries Centre is Asia's premier institute for spine care and rehabilitation, offering comprehensive treatment for spinal trauma, degenerative spine conditions, and sports injuries.",
   },
@@ -824,7 +824,7 @@ export const fallbackHospitals = [
     accreditation: "NABH",
     accreditations: ["NABH"],
     slug: "venkateshwar-hospital",
-    photo_url: "/images/hospital-venkateshwar.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2025/tueLPci3oHXKmxX7Uz2mnvpMD4M6PE-metaNDgwX3hfMzIwLndlYnA=-.webp",
     about:
       "Venkateshwar Hospital is a multi-super-speciality hospital in Dwarka offering advanced medical care in gastroenterology, cardiology, orthopedics, nephrology, and general surgery.",
   },
@@ -838,7 +838,7 @@ export const fallbackHospitals = [
     accreditation: "NABH",
     accreditations: ["NABH"],
     slug: "saroj-super-speciality-hospital",
-    photo_url: "/images/hospital-saroj.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/April2025/W745nIg3xEkkTksRkH6pFvEAgCyo7D-metaRjdnUkJWYWNqVU1qM1lTaHllazBwZTVHV0lxUDJDLW1ldGFVbUZ1WTJocElEVXhOQ0FnZUNBME1EQXVjRzVuLS5wbmc=-.png",
     about:
       "Saroj Super Speciality Hospital is a well-established medical facility in Central Delhi known for its urology, nephrology, and general surgery departments at affordable prices.",
   },
@@ -852,7 +852,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "paras-hospital-gurugram",
-    photo_url: "/images/hospital-paras.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/KRKHMv9Fxr54fLXKN0OjZzxiiwFTBq-metaT2JSZkdhUTI1bnJwWldCdkJKMWxzdHBCVG91cEdNLW1ldGFSM1Z5ZFdkeVlXMHVhbkJuLS5qcGc=-.jpg",
     about:
       "Paras Hospital is a multi-specialty tertiary care hospital in Gurugram with expertise in gastroenterology, bariatric surgery, orthopedics, and fertility treatment.",
   },
@@ -866,7 +866,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "narayana-superspeciality-hospital-gurugram",
-    photo_url: "/images/hospital-narayana.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/April2025/sdE5SGg6gM0Y4fqeIaLSlnZO7bE8Rq-metaSW5kb3JlIGhvc3BpdGFsIDEuanBn-.jpg",
     about:
       "Narayana Superspeciality Hospital is part of the renowned Narayana Health chain, offering affordable cardiac care, oncology, orthopedics, and neurosurgery with outcomes matching global benchmarks.",
   },
@@ -880,7 +880,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "moolchand-hospital",
-    photo_url: "/images/hospital-moolchand.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2023/7SQ9q1Q1OCZRgZRErb64rLCNhnUGSi-metabHVja25vdy5qcGc=-.jpg",
     about:
       "Moolchand Hospital is a 325-bed multi-specialty hospital in South Delhi with a 70-year legacy, offering comprehensive care in ophthalmology, orthopedics, cardiology, and women's health.",
   },
@@ -894,7 +894,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "columbia-asia-hospital-gurugram",
-    photo_url: "/images/hospital-columbia.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/vv3jGl55XyYhdw6Css4eETU7I3cSty-metaTHVja25vdy5wbmc=-.png",
     about:
       "Columbia Asia Hospital is a JCI-accredited tertiary care facility in Gurugram offering comprehensive services in orthopedics, cardiology, and general surgery.",
   },
@@ -1254,7 +1254,7 @@ export const fallbackBlogs = [
     category: "Treatment Blog",
     author: "Asians Healthcare",
     published_at: "2025-12-15T00:00:00Z",
-    thumbnail_url: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=800&q=80",
+    thumbnail_url: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Indraprastha_Apollo_Hospital.jpg",
     content: `<h2>Why India Is a Top Destination for Medical Tourism</h2>
 <p>India has emerged as one of the world's leading medical tourism destinations, attracting patients from over 80 countries. With JCI and NABH-accredited hospitals, internationally trained doctors, and treatment costs that are 60-80% lower than in Western countries, India offers exceptional value for medical travelers.</p>
 <h2>Key Advantages</h2>
@@ -1270,7 +1270,7 @@ export const fallbackBlogs = [
     category: "Medical Visa Guide",
     author: "Asians Healthcare",
     published_at: "2025-11-20T00:00:00Z",
-    thumbnail_url: "https://images.unsplash.com/photo-1587351021759-3772687fe598?w=800&q=80",
+    thumbnail_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/rRYbW6Ah4XKY0c6se2UgwXkV4p6NXb-metaR1VSVUdSQU0ucG5n-.png",
     content: `<h2>Best Hospitals in Delhi NCR</h2>
 <p>Delhi's National Capital Region hosts some of India's finest healthcare institutions, many with dedicated international patient departments. Here are the top hospitals that cater to medical travelers.</p>
 <h2>1. Apollo Hospitals Indraprastha</h2>
@@ -1290,7 +1290,7 @@ export const fallbackBlogs = [
     category: "Medical Visa Guide",
     author: "Asians Healthcare",
     published_at: "2025-10-10T00:00:00Z",
-    thumbnail_url: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
+    thumbnail_url: "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg",
     content: `<h2>Medical Visa for India: Step-by-Step Guide</h2>
 <p>India offers a dedicated Medical Visa (M-visa) for patients seeking treatment at recognized hospitals. This comprehensive guide explains the entire process.</p>
 <h2>Eligibility</h2>
