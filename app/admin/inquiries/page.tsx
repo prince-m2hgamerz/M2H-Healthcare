@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Search, ChevronDown, ChevronUp, MessageSquare, CheckCircle2, Phone, XCircle } from "lucide-react";
-import { createClient } from "@/lib/supabase/client";
 
 interface Inquiry {
   id: string;
@@ -39,26 +38,34 @@ export default function AdminInquiriesPage() {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const supabase = createClient();
 
-  const fetchInquiries = () => {
+  const fetchInquiries = async () => {
     setLoading(true);
-    supabase
-      .from("leads")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(100)
-      .then(({ data }) => {
-        if (data) setInquiries(data as Inquiry[]);
-        setLoading(false);
-      });
+    try {
+      const res = await fetch("/api/admin/leads");
+      if (res.ok) {
+        const data = await res.json();
+        setInquiries(data as Inquiry[]);
+      }
+    } catch {
+      console.error("Failed to fetch inquiries");
+    }
+    setLoading(false);
   };
 
   useEffect(() => { fetchInquiries(); }, []);
 
   const updateStatus = async (id: string, status: string) => {
-    await supabase.from("leads").update({ status }).eq("id", id);
-    setInquiries((prev) => prev.map((i) => (i.id === id ? { ...i, status } : i)));
+    try {
+      await fetch("/api/admin/leads", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status }),
+      });
+      setInquiries((prev) => prev.map((i) => (i.id === id ? { ...i, status } : i)));
+    } catch {
+      alert("Failed to update status");
+    }
   };
 
   const filtered = inquiries.filter((inq) => {
