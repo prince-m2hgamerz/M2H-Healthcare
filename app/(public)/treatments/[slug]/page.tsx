@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const fb = fallbackTreatments.find((t) => t.slug === params.slug);
   const treatment = raw || fb;
   if (!treatment) return { title: "Treatment Not Found" };
-  const costMin = Number("cost_usd_min" in treatment ? treatment.cost_usd_min : (treatment as Record<string, number>).costMin || 0);
+  const costMin = Number("cost_usd_min" in treatment ? treatment.cost_usd_min : (treatment as unknown as Record<string, number>).costMin || 0);
   return { title: `${treatment.name} Cost in India | M2H Healthcare`, description: `Affordable ${treatment.name} in India starting at $${costMin.toLocaleString()}. Save 60-80% compared to US costs.` };
 }
 
@@ -33,7 +33,7 @@ export default async function TreatmentDetailPage({ params }: { params: { slug: 
 
   if (!treatment) notFound();
 
-  const usCost = "usCost" in treatment ? (treatment as Record<string, number>).usCost : treatment.costMax * 5 || 10000;
+  const usCost = "usCost" in treatment ? (treatment as unknown as Record<string, number>).usCost : treatment.costMax * 5 || 10000;
   const comparisonCountries = [
     { name: "India", cost: treatment.costMin },
     { name: "USA", cost: usCost },
