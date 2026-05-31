@@ -15,6 +15,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'satyughealthcare.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.vaidam.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'medanta.s3.ap-south-1.amazonaws.com',
+      },
     ],
   },
   async headers() {

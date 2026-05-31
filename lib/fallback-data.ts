@@ -176,7 +176,7 @@ export const fallbackDoctors = [
     hospital: "AIIMS Delhi",
     rating: 4.9,
     slug: "dr-rajesh-sharma",
-    photo_url: "/images/doctor-sharma.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr._rajesh_sharma_1.png",
     qualifications: "MBBS, MS, MCh Cardiothoracic Surgery",
     about:
       "Senior cardiac surgeon at AIIMS with expertise in complex coronary bypass, valve repair, and paediatric cardiac surgery. Has performed over 10,000 cardiac procedures.",
@@ -190,7 +190,7 @@ export const fallbackDoctors = [
     hospital: "Medanta - The Medicity",
     rating: 4.9,
     slug: "dr-naresh-trehan",
-    photo_url: "/images/doctor-trehan.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/all-doctor-with-slug/dr-naresh-trehan.png",
     qualifications: "MBBS, MD, FACS",
     about:
       "World-renowned cardiovascular surgeon and Chairman of Medanta. Recipient of Padma Shri and Dr. B. C. Roy Award. Pioneer in minimally invasive cardiac surgery in India.",
@@ -204,7 +204,7 @@ export const fallbackDoctors = [
     hospital: "AIIMS Delhi",
     rating: 4.8,
     slug: "dr-priya-singh",
-    photo_url: "/images/doctor-singh.webp",
+    photo_url: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80",
     qualifications: "MBBS, MD Medicine, DM Neurology",
     about:
       "Consultant neurologist at AIIMS specializing in stroke care, movement disorders, epilepsy management, and neuro-immunology. Published over 40 research papers.",
@@ -218,7 +218,7 @@ export const fallbackDoctors = [
     hospital: "Fortis Escorts Heart Institute",
     rating: 4.9,
     slug: "dr-ashok-seth",
-    photo_url: "/images/doctor-seth.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr._ashok_seth.jpg",
     qualifications: "MBBS, MD, DM Cardiology, FACC",
     about:
       "Chairman of Cardiology at Fortis Escorts. Padma Shri awardee and pioneer of coronary angioplasty in India. Has performed over 35,000 coronary interventions.",
@@ -232,7 +232,7 @@ export const fallbackDoctors = [
     hospital: "Medanta - The Medicity",
     rating: 4.9,
     slug: "dr-arvind-kumar",
-    photo_url: "/images/doctor-kumar.webp",
+    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/doctors/October2025/ZiCkhwVIXStutGWAg8de5lCRpq94ui-metaZHItYXJ2aW5kLWt1bWFyLnBuZw==-.png",
     qualifications: "MBBS, MS, MCh Surgical Oncology",
     about:
       "Leading chest and thoracic oncology surgeon at Medanta. Pioneer of minimally invasive thoracic surgery in India. Expert in lung cancer and mediastinal tumor surgery.",
@@ -246,7 +246,7 @@ export const fallbackDoctors = [
     hospital: "Medanta - The Medicity",
     rating: 4.8,
     slug: "dr-atul-prasad",
-    photo_url: "/images/doctor-prasad.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr.-atul-prasad.jpg",
     qualifications: "MBBS, MD Medicine, DM Neurology",
     about:
       "Principal Director of Neurology at Medanta. Specialist in stroke management, epilepsy surgery evaluation, and neurodegenerative disorders.",
@@ -260,7 +260,7 @@ export const fallbackDoctors = [
     hospital: "Medanta - The Medicity",
     rating: 4.8,
     slug: "dr-ishwar-bohra",
-    photo_url: "/images/doctor-bohra.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr.ishwar_borah-min.jpg",
     qualifications: "MBBS, MS Orthopedics, FRCS",
     about:
       "Senior orthopedic surgeon at Medanta specializing in hip and knee replacement surgeries. Has performed over 8,000 joint replacement procedures.",
@@ -274,7 +274,7 @@ export const fallbackDoctors = [
     hospital: "Medanta - The Medicity",
     rating: 4.9,
     slug: "dr-subhash-gupta",
-    photo_url: "/images/doctor-gupta.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr-subhash-gupta-liver-transplant-surgeon.jpg",
     qualifications: "MBBS, MS, FRCS",
     about:
       "Chairman of Liver Transplant & Biliary Sciences at Medanta. Has performed over 1,500 living donor liver transplants with success rates matching global standards.",
@@ -288,7 +288,7 @@ export const fallbackDoctors = [
     hospital: "Apollo Hospitals Delhi",
     rating: 4.8,
     slug: "dr-anupam-saha",
-    photo_url: "/images/doctor-saha.webp",
+    photo_url: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80",
     qualifications: "MBBS, MS, MCh Neurosurgery",
     about:
       "Senior neurosurgeon at Apollo Indraprastha specializing in brain tumor surgery, spine stabilization, and cerebrovascular interventions.",
@@ -302,7 +302,7 @@ export const fallbackDoctors = [
     hospital: "Max Super Speciality Hospital Saket",
     rating: 4.8,
     slug: "dr-sandeep-vaishya",
-    photo_url: "/images/doctor-vaishya.webp",
+    photo_url: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80",
     qualifications: "MBBS, MS, MCh Neurosurgery",
     about:
       "Executive Director of Neurosurgery at Max Saket. Specialist in brain tumor surgery, deep brain stimulation, and complex spine surgery.",
@@ -316,7 +316,7 @@ export const fallbackDoctors = [
     hospital: "Artemis Hospital Gurugram",
     rating: 4.8,
     slug: "dr-rashmi-taluja",
-    photo_url: "/images/doctor-taluja.webp",
+    photo_url: "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=400&q=80",
     qualifications: "MBBS, MS, FRCOG",
     about:
       "Senior IVF and fertility specialist at Artemis Hospital. Specialist in recurrent pregnancy loss, PCOS management, and advanced reproductive techniques including ICSI and egg donation.",
@@ -330,7 +330,7 @@ export const fallbackDoctors = [
     hospital: "Indian Spinal Injuries Centre",
     rating: 4.9,
     slug: "dr-hs-chhabra",
-    photo_url: "/images/doctor-chhabra.webp",
+    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
     qualifications: "MBBS, MS Orthopedics, FICS",
     about:
       "Chief of Spine Services at Indian Spinal Injuries Centre. Pioneer of spine deformity correction and minimally invasive spine surgery in India. Awarded Padma Shri.",
@@ -344,7 +344,7 @@ export const fallbackDoctors = [
     hospital: "BLK-Max Super Speciality Hospital",
     rating: 4.9,
     slug: "dr-pradeep-sethi",
-    photo_url: "/images/doctor-sethi.webp",
+    photo_url: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&q=80",
     qualifications: "MBBS, MS, MCh Cardiothoracic Surgery",
     about:
       "Vice Chairman of Paediatric Cardiac Surgery at BLK-Max. Has performed over 6,000 paediatric cardiac surgeries including complex neonatal heart defect repairs.",
@@ -358,7 +358,7 @@ export const fallbackDoctors = [
     hospital: "Sir Ganga Ram Hospital",
     rating: 4.7,
     slug: "dr-deepak-tempe",
-    photo_url: "/images/doctor-tempe.webp",
+    photo_url: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&q=80",
     qualifications: "MBBS, MD, DM Cardiology",
     about:
       "Senior cardiologist at Sir Ganga Ram Hospital with vast experience in interventional cardiology, coronary angioplasty, and pacemaker implantation.",
@@ -372,7 +372,7 @@ export const fallbackDoctors = [
     hospital: "Apollo Hospitals Delhi",
     rating: 4.8,
     slug: "dr-raju-garg",
-    photo_url: "/images/doctor-garg.webp",
+    photo_url: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&q=80",
     qualifications: "MBBS, MS Orthopedics, DNB",
     about:
       "Senior orthopedic surgeon at Apollo Indraprastha specializing in hip and knee replacement, arthroscopy, and sports injury management.",
@@ -386,7 +386,7 @@ export const fallbackDoctors = [
     hospital: "Moolchand Hospital",
     rating: 4.7,
     slug: "dr-archana-verma",
-    photo_url: "/images/doctor-verma.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr._archana-min_1.jpg",
     qualifications: "MBBS, MS, FRCS Ophthalmology",
     about:
       "Senior ophthalmologist at Moolchand Hospital specializing in cataract surgery, retinal disorders, and LASIK procedures.",
@@ -400,7 +400,7 @@ export const fallbackDoctors = [
     hospital: "Paras Hospital Gurugram",
     rating: 4.7,
     slug: "dr-vivek-bansal",
-    photo_url: "/images/doctor-bansal.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr._vivek-min_1.jpg",
     qualifications: "MBBS, MD, DM Gastroenterology",
     about:
       "Gastroenterologist at Paras Hospital specializing in therapeutic endoscopy, liver disease management, and bariatric surgery support.",
@@ -414,7 +414,7 @@ export const fallbackDoctors = [
     hospital: "Max Super Speciality Hospital Saket",
     rating: 4.8,
     slug: "dr-vikas-dua",
-    photo_url: "/images/doctor-dua.webp",
+    photo_url: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=400&q=80",
     qualifications: "MBBS, MD, DM Hematology",
     about:
       "Director of Paediatric Hematology & Bone Marrow Transplant at Max Saket. Has performed over 500 bone marrow transplants including haploidentical transplants.",
@@ -428,7 +428,7 @@ export const fallbackDoctors = [
     hospital: "BLK-Max Super Speciality Hospital",
     rating: 4.8,
     slug: "dr-yash-gulati",
-    photo_url: "/images/doctor-gulati.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr.-yash-gulati-orthopedic-surgeon-compressor-min.jpg",
     qualifications: "MBBS, MS Orthopedics, MCh Orthopedics",
     about:
       "Senior orthopedic surgeon at BLK-Max with expertise in joint replacement, arthroscopy, and sports medicine. Trained in leading orthopedic centres in the UK and Australia.",
@@ -442,7 +442,7 @@ export const fallbackDoctors = [
     hospital: "Sir Ganga Ram Hospital",
     rating: 4.8,
     slug: "dr-anil-arora",
-    photo_url: "/images/doctor-arora.webp",
+    photo_url: "https://images.unsplash.com/photo-1618498082410-b4aa22193b38?w=400&q=80",
     qualifications: "MBBS, MD, DM Gastroenterology",
     about:
       "Chairman of Gastroenterology at Sir Ganga Ram Hospital. Expert in therapeutic endoscopy, ERCP, and inflammatory bowel disease management.",
@@ -456,7 +456,7 @@ export const fallbackDoctors = [
     hospital: "Fortis Memorial Research Institute",
     rating: 4.9,
     slug: "dr-vivek-vij",
-    photo_url: "/images/doctor-vij.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr_vivek_vij.jpg",
     qualifications: "MBBS, MS, FRCS",
     about:
       "Director of Liver Transplant at Fortis FMRI. Has performed over 1,000 liver transplants. Pioneer in ABO-incompatible liver transplantation in India.",
@@ -470,7 +470,7 @@ export const fallbackDoctors = [
     hospital: "Artemis Hospital Gurugram",
     rating: 4.7,
     slug: "dr-manoj-miglani",
-    photo_url: "/images/doctor-miglani.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr._manoj_miglani_-_orthopedics_and_joint_replacement_surgeon.jpg",
     qualifications: "MBBS, MS Orthopedics, FRCS",
     about:
       "Senior orthopedic surgeon at Artemis Hospital specializing in joint replacement, arthroscopic surgery, and complex trauma reconstruction.",
@@ -484,7 +484,7 @@ export const fallbackDoctors = [
     hospital: "Sir Ganga Ram Hospital",
     rating: 4.8,
     slug: "dr-ds-rana",
-    photo_url: "/images/doctor-rana.webp",
+    photo_url: "https://images.unsplash.com/photo-1625134673337-519d4d10b313?w=400&q=80",
     qualifications: "MBBS, MD, DM Nephrology",
     about:
       "Chairman of Nephrology at Sir Ganga Ram Hospital. Expert in kidney transplant, dialysis management, and chronic kidney disease care.",
@@ -498,7 +498,7 @@ export const fallbackDoctors = [
     hospital: "Fortis Escorts Heart Institute",
     rating: 4.8,
     slug: "dr-zs-meharwal",
-    photo_url: "/images/doctor-meharwal.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr-z-s-meharwal_cardio-thorasic-vascular-surgery982956-min.jpg",
     qualifications: "MBBS, MS, MCh Cardiothoracic Surgery",
     about:
       "Senior cardiac surgeon at Fortis Escorts specializing in beating heart bypass surgery, valve repair, and aortic surgery.",
@@ -512,7 +512,7 @@ export const fallbackDoctors = [
     hospital: "Max Super Speciality Hospital Saket",
     rating: 4.8,
     slug: "dr-atul-aggarwal",
-    photo_url: "/images/doctor-aggarwal.webp",
+    photo_url: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
     qualifications: "MBBS, MD, DM Neurology",
     about:
       "Senior neurologist at Max Saket specializing in stroke management, epilepsy, Parkinson's disease, and dementia care.",
@@ -526,7 +526,7 @@ export const fallbackDoctors = [
     hospital: "Manipal Hospital Dwarka",
     rating: 4.7,
     slug: "dr-sameer-kaushal",
-    photo_url: "/images/doctor-kaushal.webp",
+    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
     qualifications: "MBBS, MD, DM Cardiology",
     about:
       "Senior cardiologist at Manipal Hospital Dwarka specializing in coronary interventions, echocardiography, and preventive cardiology.",
@@ -540,7 +540,7 @@ export const fallbackDoctors = [
     hospital: "Artemis Hospital Gurugram",
     rating: 4.7,
     slug: "dr-rakesh-gupta",
-    photo_url: "/images/doctor-gupta2.webp",
+    photo_url: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80",
     qualifications: "MBBS, MD, DM Cardiology",
     about:
       "Senior interventional cardiologist at Artemis Hospital specializing in complex coronary interventions, peripheral angioplasty, and structural heart disease treatment.",
@@ -554,7 +554,7 @@ export const fallbackDoctors = [
     hospital: "Fortis Memorial Research Institute",
     rating: 4.7,
     slug: "dr-simmardeep-gill",
-    photo_url: "/images/doctor-gill.webp",
+    photo_url: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80",
     qualifications: "MBBS, MD, DM Neurology",
     about:
       "Neurologist at Fortis FMRI specializing in stroke interventions, neurocritical care, and multiple sclerosis management.",
@@ -568,7 +568,7 @@ export const fallbackDoctors = [
     hospital: "Apollo Hospitals Delhi",
     rating: 4.7,
     slug: "dr-sushant-srivastava",
-    photo_url: "/images/doctor-srivastava.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr-sushant-srivastava.jpg",
     qualifications: "MBBS, MS, MCh Urology",
     about:
       "Urologist at Apollo Indraprastha specializing in robotic prostate surgery, kidney stone treatment, and uro-oncology.",
@@ -582,7 +582,7 @@ export const fallbackDoctors = [
     hospital: "BLK-Max Super Speciality Hospital",
     rating: 4.7,
     slug: "dr-aditi-sharma",
-    photo_url: "/images/doctor-sharma2.webp",
+    photo_url: "https://images.unsplash.com/photo-1584516150909-c43483ee7932?w=400&q=80",
     qualifications: "MBBS, MD, DNB Obstetrics & Gynecology",
     about:
       "Fertility specialist at BLK-Max with expertise in IVF, ICSI, fertility preservation, and reproductive endocrinology.",
@@ -596,7 +596,7 @@ export const fallbackDoctors = [
     hospital: "Fortis Memorial Research Institute",
     rating: 4.8,
     slug: "dr-anurag-saxena",
-    photo_url: "/images/doctor-saxena.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr._anurag_saxena_neurosurgeon_2.png",
     qualifications: "MBBS, MD, DM Medical Oncology",
     about:
       "Senior medical oncologist at Fortis FMRI specializing in breast cancer, lung cancer, and hematological malignancies. Expert in targeted therapy and immunotherapy.",
@@ -610,7 +610,7 @@ export const fallbackDoctors = [
     hospital: "Manipal Hospital Dwarka",
     rating: 4.6,
     slug: "dr-vivek-loomba",
-    photo_url: "/images/doctor-loomba.webp",
+    photo_url: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&q=80",
     qualifications: "MBBS, MS Orthopedics",
     about:
       "Orthopedic surgeon at Manipal Hospital Dwarka specializing in joint replacement, arthroscopy, and trauma surgery.",
@@ -624,7 +624,7 @@ export const fallbackDoctors = [
     hospital: "Narayana Superspeciality Hospital Gurugram",
     rating: 4.7,
     slug: "dr-rajendra-kumar",
-    photo_url: "/images/doctor-rajendra-kumar.webp",
+    photo_url: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&q=80",
     qualifications: "MBBS, MD, DM Cardiology",
     about:
       "Senior cardiologist at Narayana Superspeciality Hospital Gurugram specializing in high-volume coronary interventions and heart failure management.",
@@ -638,7 +638,7 @@ export const fallbackDoctors = [
     hospital: "Columbia Asia Hospital Gurugram",
     rating: 4.6,
     slug: "dr-alok-gupta",
-    photo_url: "/images/doctor-alok-gupta.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr._alok_gupta_-_minimal_access_bariatric_laparoscopic_surgery.jpg",
     qualifications: "MBBS, MS Orthopedics",
     about:
       "Orthopedic surgeon at Columbia Asia Hospital Gurugram specializing in joint replacement, arthroscopy, and sports injuries.",
@@ -652,7 +652,7 @@ export const fallbackDoctors = [
     hospital: "AIIMS Delhi",
     rating: 4.7,
     slug: "dr-amit-kumar",
-    photo_url: "/images/doctor-amit-kumar.webp",
+    photo_url: "https://www.vaidam.com/sites/default/files/dr-amit-kumar-cardiologist_1.jpg",
     qualifications: "MBBS, MS Orthopedics",
     about:
       "Orthopedic surgeon at AIIMS specializing in joint replacement, spine surgery, and trauma management.",
