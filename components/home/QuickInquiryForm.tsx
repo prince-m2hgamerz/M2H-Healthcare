@@ -18,10 +18,18 @@ export default function QuickInquiryForm() {
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch("/api/inquiries", {
+      const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          form_type: "Quick Inquiry",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          country: "International",
+          medical_condition: formData.treatment,
+          message: formData.message,
+        }),
       });
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
