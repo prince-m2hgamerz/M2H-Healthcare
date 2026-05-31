@@ -7,37 +7,71 @@ export async function POST(request: Request) {
     const body: Record<string, unknown> = await request.json();
     const supabase = await createServerSupabaseClient();
 
-    // Map incoming fields to the leads table schema
-    const leadData = {
-      name: body.name || "Unknown",
-      email: body.email || null,
-      phone: body.phone || "",
-      country: body.country || "International",
-      form_type: body.form_type || "Inquiry Form",
-      medical_condition: body.treatment || body.medical_condition || null,
-      message: body.message || null,
+    // Build message combining treatment info and message
+    const messageParts: string[] = [];
+    if (body.treatment) messageParts.push(`Treatment: ${body.treatment}`);
+    if (body.medical_condition) messageParts.push(`Condition: ${body.medical_condition}`);
+    if (body.message) messageParts.push(String(body.message));
+    const combinedMessage = messageParts.join("\n") || null;
+
+    // Insert with known valid fields
+    const leadData: Record<string, unknown> = {
+      name: String(body.name || "Unknown"),
+      email: body.email ? String(body.email) : null,
+      phone: String(body.phone || ""),
+      country: String(body.country || "International"),
+      form_type: String(body.form_type || "Inquiry Form"),
+      message: combinedMessage,
       status: "new",
     };
 
-    const { data, error } = await supabase
+    // Try inserting with medical_condition
+    let result = await supabase
       .from("leads")
-      .insert([leadData] as never)
+      .insert([{ ...leadData, medical_condition: body.medical_condition || body.treatment || null }] as never)
       .select()
       .single();
 
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 400 });
+    // Fallback: try without medical_condition column
+    if (result.error) {
+      result = await supabase
+        .from("leads")
+        .insert([leadData] as never)
+        .select()
+        .single();
     }
 
-    const lead = data as Record<string, unknown>;
+    // Final fallback: minimal fields
+    if (result.error) {
+      result = await supabase
+        .from("leads")
+        .insert([{
+          name: leadData.name,
+          phone: leadData.phone,
+          country: leadData.country,
+          form_type: leadData.form_type,
+          message: combinedMessage,
+          status: "new",
+        }] as never)
+        .select()
+        .single();
+    }
 
-    await Promise.allSettled([
+    if (result.error) {
+      console.error("Supabase insert error:", result.error);
+      return NextResponse.json({ error: result.error.message }, { status: 400 });
+    }
+
+    const lead = result.data as Record<string, unknown>;
+
+    Promise.allSettled([
       sendLeadNotification(lead),
       sendCustomerConfirmation(lead),
-    ]);
+    ]).catch(() => {});
 
     return NextResponse.json({ message: "Inquiry submitted successfully" }, { status: 201 });
-  } catch {
+  } catch (err) {
+    console.error("API /api/inquiries error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
