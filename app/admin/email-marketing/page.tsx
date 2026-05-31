@@ -30,12 +30,13 @@ export default function AdminEmailMarketingPage() {
         body: JSON.stringify({ subject: subject.trim(), body: body.trim() }),
       });
       const json = await res.json();
-      if (res.ok) {
+      if (json.sent > 0) {
         setResult({ success: true, message: json.message });
         setSubject("");
         setBody("");
       } else {
-        setResult({ success: false, message: json.error || "Failed to send" });
+        const errorDetail = json.errors?.join("\n") || json.error || json.message || "Failed to send emails";
+        setResult({ success: false, message: errorDetail });
       }
     } catch {
       setResult({ success: false, message: "Network error. Please try again." });
