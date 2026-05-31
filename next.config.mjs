@@ -23,6 +23,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'medanta.s3.ap-south-1.amazonaws.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+      },
     ],
   },
   async headers() {

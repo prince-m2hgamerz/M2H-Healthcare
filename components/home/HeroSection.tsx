@@ -24,7 +24,7 @@ interface HeroSectionProps {
   imageUrl?: string;
 }
 
-export default function HeroSection({ imageUrl = "https://images.unsplash.com/photo-1551076805-e1869033e561?w=1600&q=80" }: HeroSectionProps) {
+export default function HeroSection({ imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg/1920px-AIIMS_-New_Delhi%27s_Ward_Block.jpg" }: HeroSectionProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("cost");
   const [searchQuery, setSearchQuery] = useState("");
@@ -43,17 +43,17 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
   };
 
   return (
-    <section className="relative bg-canvas-night text-on-primary overflow-hidden min-h-[80vh] lg:min-h-[90vh] flex items-center">
+    <section className="relative text-on-primary overflow-hidden min-h-[80vh] lg:min-h-[90vh] flex items-center">
       <div className="absolute inset-0">
         <Image
           src={imageUrl}
-          alt="Medical care team"
+          alt="AIIMS Hospital New Delhi - India's Premier Medical Institution"
           fill
-          className="object-cover opacity-30"
+          className="object-cover scale-105 blur-[2px]"
           priority
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-br from-canvas-night/90 via-canvas-night/80 to-surface-elevated-dark/70" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/55 to-black/65" />
       <div className="container-cinematic relative z-10 py-20 lg:py-32 w-full">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
