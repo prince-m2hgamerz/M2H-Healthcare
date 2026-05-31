@@ -50,7 +50,7 @@ export const fallbackDoctors = [
     hospital: "Delhi NCR",
     rating: 4.8,
     slug: "dr-yogendra-singh-rajput",
-    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/492147103510.jpg",
     qualifications: "MBBS, MD - Internal Medicine, DM - Cardiology",
     about:
       "Interventional Cardiologist with 16 years of experience specializing in coronary angioplasty, cardiac catheterization, and management of complex cardiac conditions.",
@@ -64,7 +64,7 @@ export const fallbackDoctors = [
     hospital: "Delhi NCR",
     rating: 4.7,
     slug: "dr-vishal-gurnani",
-    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/492147103510.jpg",
     qualifications: "MBBS, MS - Orthopaedics, Fellowship in Paediatric Orthopaedics",
     about:
       "Orthopaedic surgeon with 8 years of experience specializing in paediatric orthopaedics, joint disorders in children, and musculoskeletal deformity correction.",
@@ -78,7 +78,7 @@ export const fallbackDoctors = [
     hospital: "Delhi NCR",
     rating: 4.8,
     slug: "dr-vikas-sharma",
-    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/811031731733.jpg",
     qualifications: "MBBS, MD - Internal Medicine (Maulana Azad Medical College, New Delhi), DM - Neurology (PGIMER Chandigarh)",
     about:
       "Senior Neurologist with 17 years of experience trained at MAMC Delhi and PGIMER Chandigarh, specializing in stroke management, epilepsy, movement disorders, and neuromuscular diseases.",
@@ -92,7 +92,7 @@ export const fallbackDoctors = [
     hospital: "Delhi NCR",
     rating: 4.8,
     slug: "dr-siddhartha-gogia",
-    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/161501531397.jpg",
     qualifications: "MBBS, MD - Paediatrics, Fellowship in Neonatology",
     about:
       "Paediatrician and Neonatologist with 15 years of experience specializing in newborn intensive care, premature infant management, and paediatric critical care.",
@@ -106,7 +106,7 @@ export const fallbackDoctors = [
     hospital: "Delhi NCR",
     rating: 4.7,
     slug: "dr-shilpi-budhiraja",
-    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/325417863181.jpg",
     qualifications: "MBBS, MS - ENT",
     about:
       "ENT Specialist with 14 years of experience in ear, nose, and throat disorders, including endoscopic sinus surgery, tonsillectomy, and hearing loss management.",
@@ -120,7 +120,7 @@ export const fallbackDoctors = [
     hospital: "Delhi NCR",
     rating: 4.7,
     slug: "dr-shilpa-jaiswal",
-    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/811031731733.jpg",
     qualifications: "MBBS (King George's Medical University), MD - Internal Medicine (KGMU), DM - Neurology",
     about:
       "Neurologist with 10 years of experience trained at King George's Medical University, specializing in stroke, epilepsy, headache disorders, and neurodegenerative diseases.",
@@ -134,7 +134,7 @@ export const fallbackDoctors = [
     hospital: "Delhi NCR",
     rating: 4.7,
     slug: "dr-shallini-mittal",
-    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/617264631571.png",
     qualifications: "MBBS, MD - Radiology",
     about:
       "Radiologist with 12 years of experience specializing in diagnostic and interventional radiology, CT scans, MRI imaging, and image-guided procedures.",
@@ -148,7 +148,7 @@ export const fallbackDoctors = [
     hospital: "Delhi NCR",
     rating: 4.7,
     slug: "dr-sanket-goyal",
-    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/161501531397.jpg",
     qualifications: "MBBS (Saurashtra University, Gujarat, 2010), DNB - Paediatrics (National Board of Examination, India, 2014), Fellowship in Neonatology",
     about:
       "Paediatrician and Neonatologist with 10 years of experience specializing in neonatal intensive care, preterm baby management, and paediatric infectious diseases.",
@@ -162,7 +162,7 @@ export const fallbackDoctors = [
     hospital: "Delhi NCR",
     rating: 4.8,
     slug: "dr-sanjeev-chaudhary",
-    photo_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
+    photo_url: "https://satyughealthcare.com/uploads/doctors/492147103510.jpg",
     qualifications: "MBBS, MD - General Medicine, DNB - Cardiology",
     about:
       "Senior Cardiologist with 20 years of experience specializing in interventional cardiology, coronary angiography, pacemaker implantation, and heart failure management.",
