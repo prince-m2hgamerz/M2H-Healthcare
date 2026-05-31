@@ -4,7 +4,7 @@ export function organizationSchema(overrides?: Record<string, JsonValue>) {
   return {
     "@type": "MedicalOrganization",
     name: "Asians Healthcare",
-    alternateName: "M2H Healthcare",
+    alternateName: "Asians Healthcare",
     url: "https://asianshealthcare.com",
     telephone: "+919650928250",
     email: "contact@asianshealthcare.com",

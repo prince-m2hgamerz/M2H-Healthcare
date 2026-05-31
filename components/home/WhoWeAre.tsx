@@ -27,7 +27,7 @@ export default function WhoWeAre() {
               Your Trusted Medical Tourism Partner in India
             </h2>
             <p className="text-body-lg text-shade-50 mt-6 leading-relaxed">
-              M2H Healthcare is a medical assistance company that works as a complete medical guide
+              Asians Healthcare is a medical assistance company that works as a complete medical guide
               for international patients seeking world-class treatment in India. We connect you with
               the right doctors and hospitals for your specific medical needs.
             </p>

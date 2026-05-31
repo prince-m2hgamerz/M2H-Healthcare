@@ -12,9 +12,9 @@ export default function EmergencyBanner() {
             <Phone size={14} />
             <span className="font-medium">+91-9650928250</span>
           </a>
-          <a href="mailto:info@m2hhealthcare.com" className="hidden sm:inline-flex items-center gap-1.5 hover:text-aloe-10 transition-colors">
+          <a href="mailto:info@asianshealthcare.com" className="hidden sm:inline-flex items-center gap-1.5 hover:text-aloe-10 transition-colors">
             <Mail size={14} />
-            <span>info@m2hhealthcare.com</span>
+            <span>info@asianshealthcare.com</span>
           </a>
           <span className="hidden md:inline-flex items-center gap-1.5 text-green-200">
             <Clock size={14} />

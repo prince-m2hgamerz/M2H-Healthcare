@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const fb = fallbackSpecialties.find((s) => s.slug === params.slug);
   const s = raw || fb;
   if (!s) return { title: "Specialty Not Found" };
-  return { title: `${s.name} Treatment in India | M2H Healthcare`, description: s.desc || `${s.name} treatment in India at top hospitals.` };
+  return { title: `${s.name} Treatment in India | Asians Healthcare`, description: s.desc || `${s.name} treatment in India at top hospitals.` };
 }
 
 export default async function SpecialtyDetailPage({ params }: { params: { slug: string } }) {
