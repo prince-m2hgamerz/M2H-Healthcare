@@ -29,15 +29,18 @@ export default async function DoctorsPage({
   const query = typeof searchParams?.q === "string" ? searchParams.q.trim() : "";
   const normalizedQuery = query.toLowerCase();
 
-  const fetchedDoctors = raw?.map((doctor) => ({
-    name: doctor.name,
-    specialty: doctor.specialties?.[0] || "Specialist",
-    hospital: "",
-    experience: `${doctor.experience_years || 0} years`,
-    slug: doctor.slug,
-    rating: 4.9,
-    photo_url: doctor.photo_url || "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
-  })) || [];
+  const fetchedDoctors = raw?.map((doctor) => {
+    const fallback = fallbackDoctors.find((fb) => fb.slug === doctor.slug);
+    return {
+      name: doctor.name,
+      specialty: doctor.specialties?.[0] || fallback?.specialty || "Specialist",
+      hospital: fallback?.hospital || "",
+      experience: `${doctor.experience_years || fallback?.experience_years || 0} years`,
+      slug: doctor.slug,
+      rating: 4.9,
+      photo_url: fallback?.photo_url || doctor.photo_url || "https://satyughealthcare.com/uploads/doctors/a330cd2834d5826c649d5295bc0cfae7.jpg",
+    };
+  }) || [];
 
   const allDoctors = fetchedDoctors.length > 0 ? fetchedDoctors : fallbackDoctors;
   const doctors = normalizedQuery

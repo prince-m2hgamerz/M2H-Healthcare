@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const fb = fallbackSpecialties.find((s) => s.slug === params.slug);
   const s = raw || fb;
   if (!s) return { title: "Specialty Not Found" };
-  return { title: `${s.name} Treatment in India | M2H Healthcare`, description: s.desc || `${s.name} treatment in India at top hospitals.` };
+  return { title: `${s.name} Treatment in India | Asians Healthcare`, description: s.desc || `${s.name} treatment in India at top hospitals.` };
 }
 
 export default async function SpecialtyDetailPage({ params }: { params: { slug: string } }) {
@@ -20,7 +20,11 @@ export default async function SpecialtyDetailPage({ params }: { params: { slug: 
     supabase.from("specialties").select("*").eq("slug", params.slug).single(),
   ]);
   const fb = fallbackSpecialties.find((s) => s.slug === params.slug);
-  const specialty = raw ? { name: raw.name, description: raw.description || "No description available." } : fb;
+  const specialty = raw
+    ? { name: raw.name, description: raw.description || "No description available." }
+    : fb
+    ? { name: fb.name, description: fb.desc || "No description available." }
+    : null;
   if (!specialty) notFound();
 
   const relatedTreatments = fallbackTreatments.filter((t) => t.category.toLowerCase().includes(specialty.name.split(" ")[0].toLowerCase())).slice(0, 6);

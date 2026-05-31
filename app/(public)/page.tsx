@@ -2,18 +2,28 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { organizationSchema, websiteSchema, faqPageSchema } from "@/lib/json-ld";
 import HeroSection from "@/components/home/HeroSection";
+import EmergencyBanner from "@/components/home/EmergencyBanner";
+import CountriesTicker from "@/components/home/CountriesTicker";
 import StatsCounter from "@/components/home/StatsCounter";
+import WhoWeAre from "@/components/home/WhoWeAre";
+import TopSpecialties from "@/components/home/TopSpecialties";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import PatientSupportServices from "@/components/home/PatientSupportServices";
 import FeaturedDoctors from "@/components/home/FeaturedDoctors";
 import FeaturedHospitals from "@/components/home/FeaturedHospitals";
+import TreatmentCostShowcase from "@/components/home/TreatmentCostShowcase";
 import TreatmentPackages from "@/components/home/TreatmentPackages";
 import CostComparison from "@/components/home/CostComparison";
 import MedicalCareGallery from "@/components/home/MedicalCareGallery";
+import GetConsultation from "@/components/home/GetConsultation";
+import QuickInquiryForm from "@/components/home/QuickInquiryForm";
+import VideoTestimonials from "@/components/home/VideoTestimonials";
 import PatientTestimonials from "@/components/home/PatientTestimonials";
 import InsuranceLogos from "@/components/home/InsuranceLogos";
 import TravelProcess from "@/components/home/TravelProcess";
+import NewsletterSignup from "@/components/home/NewsletterSignup";
 import FAQSection from "@/components/home/FAQSection";
+import WhatsAppFloat from "@/components/shared/WhatsAppFloat";
 import {
   fallbackDoctors,
   fallbackHospitals,
@@ -85,19 +95,29 @@ export default async function HomePage() {
         { question: "Which hospitals do you work with?", answer: "We coordinate with NABH and JCI accredited hospitals across major Indian cities, including Delhi NCR, Mumbai, Chennai, Bangalore, and other medical hubs." },
         { question: "How much can I save?", answer: "Savings depend on the procedure and hospital, but many patients see treatment estimates that are 60-80% lower than US or UK costs." },
       ])} />
+      <EmergencyBanner />
       <HeroSection imageUrl={images.image_home_hero} />
+      <CountriesTicker />
       <StatsCounter />
+      <WhoWeAre />
+      <TopSpecialties />
+      <TreatmentCostShowcase />
       <WhyChooseUs />
-      <MedicalCareGallery images={images} />
-      <PatientSupportServices imageUrl={images.image_home_support} />
+      <TravelProcess />
       <FeaturedDoctors doctors={doctors.length > 0 ? doctors : fallbackDoctors} />
+      <GetConsultation />
       <FeaturedHospitals hospitals={hospitals.length > 0 ? hospitals : fallbackHospitals} />
       <CostComparison imageUrl={images.image_home_cost} />
       <TreatmentPackages treatments={treatments.length > 0 ? treatments : fallbackTreatments} images={images} />
+      <VideoTestimonials />
       <PatientTestimonials testimonials={testimonials.length > 0 ? testimonials : fallbackTestimonials} />
+      <QuickInquiryForm />
+      <PatientSupportServices imageUrl={images.image_home_support} />
       <InsuranceLogos insurances={insurances.length > 0 ? insurances : fallbackInsurances} />
-      <TravelProcess />
+      <MedicalCareGallery images={images} />
       <FAQSection />
+      <NewsletterSignup />
+      <WhatsAppFloat />
     </>
   );
 }

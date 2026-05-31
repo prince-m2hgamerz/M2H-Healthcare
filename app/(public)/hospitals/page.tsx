@@ -29,6 +29,27 @@ export default async function HospitalsPage({
   const query = typeof searchParams?.q === "string" ? searchParams.q.trim() : "";
   const normalizedQuery = query.toLowerCase();
 
+  // Real hospital building images mapped by slug
+  const hospitalImages: Record<string, string> = {
+    "aiims-delhi": "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg",
+    "medanta-the-medicity": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/rRYbW6Ah4XKY0c6se2UgwXkV4p6NXb-metaR1VSVUdSQU0ucG5n-.png",
+    "apollo-hospitals-delhi": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Indraprastha_Apollo_Hospital.jpg",
+    "fortis-escorts-heart-institute": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Fortis_Hospital_Noida_-_panoramio.jpg",
+    "max-super-speciality-hospital-saket": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2023/7SQ9q1Q1OCZRgZRErb64rLCNhnUGSi-metabHVja25vdy5qcGc=-.jpg",
+    "sir-ganga-ram-hospital": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/YelIyqoA5uGHAsU26kWk9EH54Aumyv-metaUGF0bmEgSG9zcGl0YWwgSW1hZ2UgKDIpLmpwZw==-.jpg",
+    "blk-max-super-speciality-hospital": "https://upload.wikimedia.org/wikipedia/commons/3/32/BLK_Super_Specialty_Hospital.jpg",
+    "artemis-hospital-gurugram": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/April2025/sdE5SGg6gM0Y4fqeIaLSlnZO7bE8Rq-metaSW5kb3JlIGhvc3BpdGFsIDEuanBn-.jpg",
+    "fortis-memorial-research-institute": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Fortis_Hospital_Noida_-_panoramio.jpg",
+    "manipal-hospital-dwarka": "https://upload.wikimedia.org/wikipedia/commons/4/47/Manipal_hospital.jpg",
+    "indian-spinal-injuries-centre": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/UG8G445YMpH2rBUJCF8zJlK52TbUFG-metaSW5kb3JlLnBuZw==-.png",
+    "venkateshwar-hospital": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2025/tueLPci3oHXKmxX7Uz2mnvpMD4M6PE-metaNDgwX3hfMzIwLndlYnA=-.webp",
+    "saroj-super-speciality-hospital": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/April2025/W745nIg3xEkkTksRkH6pFvEAgCyo7D-metaRjdnUkJWYWNqVU1qM1lTaHllazBwZTVHV0lxUDJDLW1ldGFVbUZ1WTJocElEVXhOQ0FnZUNBME1EQXVjRzVuLS5wbmc=-.png",
+    "paras-hospital-gurugram": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/KRKHMv9Fxr54fLXKN0OjZzxiiwFTBq-metaT2JSZkdhUTI1bnJwWldCdkJKMWxzdHBCVG91cEdNLW1ldGFSM1Z5ZFdkeVlXMHVhbkJuLS5qcGc=-.jpg",
+    "narayana-superspeciality-hospital-gurugram": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Narayana_Multispeciality_Hospital%2C_Mysore.jpg",
+    "moolchand-hospital": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2023/7SQ9q1Q1OCZRgZRErb64rLCNhnUGSi-metabHVja25vdy5qcGc=-.jpg",
+    "columbia-asia-hospital-gurugram": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/vv3jGl55XyYhdw6Css4eETU7I3cSty-metaTHVja25vdy5wbmc=-.png",
+  };
+
   const fetchedHospitals = raw?.map((hospital) => ({
     name: hospital.name,
     location: `${hospital.city}, ${hospital.state}`,
@@ -37,7 +58,7 @@ export default async function HospitalsPage({
     beds: `${hospital.beds_count?.toLocaleString() || 0}+`,
     accreditation: hospital.accreditations?.join(", ") || "Accredited",
     slug: hospital.slug,
-    photo_url: hospital.logo_url || "https://images.unsplash.com/photo-1587351021759-3772687fe598?w=600&q=80",
+    photo_url: hospitalImages[hospital.slug] || hospital.logo_url || "https://upload.wikimedia.org/wikipedia/commons/e/e8/Indraprastha_Apollo_Hospital.jpg",
   })) || [];
 
   const allHospitals = fetchedHospitals.length > 0 ? fetchedHospitals : fallbackHospitals;

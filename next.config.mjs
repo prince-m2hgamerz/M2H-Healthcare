@@ -9,7 +9,23 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: 'satyughealthcare.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.vaidam.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'medanta.s3.ap-south-1.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
       },
     ],
   },

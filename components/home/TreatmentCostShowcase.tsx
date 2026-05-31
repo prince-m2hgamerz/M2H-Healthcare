@@ -1,0 +1,135 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight, IndianRupee } from "lucide-react";
+
+const treatmentCosts = [
+  {
+    name: "Heart Bypass Surgery (CABG)",
+    cost: "$7,000 - $10,000",
+    saving: "Save up to 90%",
+    slug: "heart-bypass-surgery",
+    image: "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
+  },
+  {
+    name: "Knee Replacement Surgery",
+    cost: "$6,500 - $8,500",
+    saving: "Save up to 80%",
+    slug: "knee-replacement",
+    image: "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
+  },
+  {
+    name: "Liver Transplant",
+    cost: "$28,000 - $45,000",
+    saving: "Save up to 75%",
+    slug: "liver-transplant",
+    image: "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
+  },
+  {
+    name: "Bone Marrow Transplant",
+    cost: "$18,000 - $35,000",
+    saving: "Save up to 85%",
+    slug: "bone-marrow-transplant",
+    image: "https://satyughealthcare.com/uploads/treatment_package/510593914830.jpg",
+  },
+  {
+    name: "Spine Surgery",
+    cost: "$8,000 - $12,000",
+    saving: "Save up to 82%",
+    slug: "spine-surgery",
+    image: "https://satyughealthcare.com/uploads/treatment_package/146787701787.png",
+  },
+  {
+    name: "IVF Treatment",
+    cost: "$3,000 - $6,000",
+    saving: "Save up to 70%",
+    slug: "ivf-treatment",
+    image: "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
+  },
+  {
+    name: "Brain Tumor Surgery",
+    cost: "$6,500 - $10,000",
+    saving: "Save up to 85%",
+    slug: "craniotomy-brain-tumor-surgery",
+    image: "https://satyughealthcare.com/uploads/treatment_package/216514607672.png",
+  },
+  {
+    name: "Cardiac Surgery (Pediatric)",
+    cost: "$7,500 - $12,000",
+    saving: "Save up to 88%",
+    slug: "heart-bypass-surgery",
+    image: "https://satyughealthcare.com/uploads/treatment_package/102136737103.png",
+  },
+];
+
+export default function TreatmentCostShowcase() {
+  return (
+    <section className="bg-canvas-cream py-huge overflow-hidden">
+      <div className="container-cinematic">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-4"
+        >
+          <div>
+            <span className="pill-tag mb-4 inline-block">Treatment Costs</span>
+            <h2 className="font-display text-display-md lg:text-display-lg text-ink mt-4">
+              All Prices Are Negotiable
+            </h2>
+            <p className="text-body-lg text-shade-50 max-w-xl mt-4">
+              Get exact cost estimates for your specific condition. Prices shown are indicative ranges — actual cost depends on complexity and hospital.
+            </p>
+          </div>
+          <Link href="/treatment-package" className="btn-outline flex items-center gap-2 shrink-0 self-start lg:self-auto">
+            View All Costs <ArrowRight size={18} />
+          </Link>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {treatmentCosts.map((treatment, i) => (
+            <motion.div
+              key={treatment.slug + i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06, duration: 0.4 }}
+            >
+              <Link
+                href={`/treatment-package/${treatment.slug}`}
+                className="group block bg-canvas-light rounded-xl border border-hairline-light overflow-hidden hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="relative h-40 overflow-hidden">
+                  <Image
+                    src={treatment.image}
+                    alt={treatment.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 right-3">
+                    <span className="inline-flex items-center gap-1 bg-green-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+                      {treatment.saving}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-display text-heading-sm text-ink group-hover:text-shade-60 transition-colors line-clamp-2 min-h-[2.5rem]">
+                    {treatment.name}
+                  </h3>
+                  <div className="flex items-center gap-1.5 mt-3">
+                    <IndianRupee size={16} className="text-shade-50" />
+                    <span className="font-display text-heading-md text-ink">{treatment.cost}</span>
+                  </div>
+                  <p className="text-micro text-shade-40 mt-1">In India (indicative)</p>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

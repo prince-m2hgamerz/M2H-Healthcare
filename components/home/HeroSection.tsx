@@ -24,7 +24,7 @@ interface HeroSectionProps {
   imageUrl?: string;
 }
 
-export default function HeroSection({ imageUrl = "https://images.unsplash.com/photo-1551076805-e1869033e561?w=1600&q=80" }: HeroSectionProps) {
+export default function HeroSection({ imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg/1920px-AIIMS_-New_Delhi%27s_Ward_Block.jpg" }: HeroSectionProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("cost");
   const [searchQuery, setSearchQuery] = useState("");
@@ -43,17 +43,17 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
   };
 
   return (
-    <section className="relative bg-canvas-night text-on-primary overflow-hidden min-h-[80vh] lg:min-h-[90vh] flex items-center">
+    <section className="relative text-on-primary overflow-hidden min-h-[80vh] lg:min-h-[90vh] flex items-center">
       <div className="absolute inset-0">
         <Image
           src={imageUrl}
-          alt="Medical care team"
+          alt="AIIMS Hospital New Delhi - India's Premier Medical Institution"
           fill
-          className="object-cover opacity-30"
+          className="object-cover scale-105 blur-[2px]"
           priority
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-br from-canvas-night/90 via-canvas-night/80 to-surface-elevated-dark/70" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/55 to-black/65" />
       <div className="container-cinematic relative z-10 py-20 lg:py-32 w-full">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
@@ -67,7 +67,7 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
             transition={{ delay: 0.2, duration: 0.5 }}
             className="pill-tag mb-6 inline-block"
           >
-            World-Class Healthcare in India
+            Trusted Medical Tourism Company in India
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -75,19 +75,42 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
             transition={{ delay: 0.3, duration: 0.6 }}
           className="font-display text-[44px] leading-[0.98] sm:text-display-xl lg:text-display-xxl tracking-wide mb-6"
           >
-            Your Health Journey
+            World-Class Treatment
             <br />
-            <span className="text-link-mint">Starts in India</span>
+            <span className="text-link-mint">At Affordable Cost</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-body-lg text-link-cool-2 max-w-2xl mb-10 leading-relaxed"
+            className="text-body-lg text-link-cool-2 max-w-2xl mb-6 leading-relaxed"
           >
-            Free medical opinion, cost estimate, visa support, hospital admission help,
-            airport pickup, and interpreter support for overseas patients.
+            Get free medical opinion within 24 hours. We assist with doctor selection, cost estimation,
+            visa invitation, airport pickup, hospital admission, and post-treatment follow-up.
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.45, duration: 0.5 }}
+            className="flex flex-wrap items-center gap-3 mb-10"
+          >
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs text-link-cool-2 border border-white/10">
+              <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+              No Service Fee
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs text-link-cool-2 border border-white/10">
+              <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+              JCI &amp; NABH Hospitals
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs text-link-cool-2 border border-white/10">
+              <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+              24/7 Patient Support
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs text-link-cool-2 border border-white/10">
+              <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+              Save 60-80% vs US
+            </span>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

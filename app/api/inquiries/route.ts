@@ -27,7 +27,7 @@ export async function POST(request: Request) {
         email: body.email ? String(body.email) : null,
         phone: String(body.phone || ""),
         country: String(body.country || "International"),
-        form_type: String(body.form_type || "Contact"),
+        form_type: String(body.form_type || "Inquiry Form"),
         message: combinedMessage,
         status: "new",
       }])
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
       .single();
 
     if (error) {
-      console.error("Supabase leads insert error:", error);
+      console.error("Supabase inquiries insert error:", error);
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
@@ -47,9 +47,9 @@ export async function POST(request: Request) {
       sendCustomerConfirmation(lead),
     ]).catch(() => {});
 
-    return NextResponse.json({ message: "Lead created successfully" }, { status: 201 });
+    return NextResponse.json({ message: "Inquiry submitted successfully" }, { status: 201 });
   } catch (err) {
-    console.error("API /api/leads error:", err);
+    console.error("API /api/inquiries error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

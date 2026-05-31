@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const fb = fallbackTreatments.find((t) => t.slug === params.slug);
   const treatment = raw || fb;
   if (!treatment) return { title: "Treatment Not Found" };
-  const costMin = Number("cost_usd_min" in treatment ? treatment.cost_usd_min : (treatment as Record<string, number>).costMin || 0);
-  return { title: `${treatment.name} Cost in India | M2H Healthcare`, description: `Affordable ${treatment.name} in India starting at $${costMin.toLocaleString()}. Save 60-80% compared to US costs.` };
+  const costMin = Number("cost_usd_min" in treatment ? treatment.cost_usd_min : (treatment as unknown as Record<string, number>).costMin || 0);
+  return { title: `${treatment.name} Cost in India | Asians Healthcare`, description: `Affordable ${treatment.name} in India starting at $${costMin.toLocaleString()}. Save 60-80% compared to US costs.` };
 }
 
 export default async function TreatmentDetailPage({ params }: { params: { slug: string } }) {
@@ -33,7 +33,7 @@ export default async function TreatmentDetailPage({ params }: { params: { slug: 
 
   if (!treatment) notFound();
 
-  const usCost = "usCost" in treatment ? (treatment as Record<string, number>).usCost : treatment.costMax * 5 || 10000;
+  const usCost = "usCost" in treatment ? (treatment as unknown as Record<string, number>).usCost : treatment.costMax * 5 || 10000;
   const comparisonCountries = [
     { name: "India", cost: treatment.costMin },
     { name: "USA", cost: usCost },
@@ -53,7 +53,7 @@ export default async function TreatmentDetailPage({ params }: { params: { slug: 
   return (
     <>
       <JsonLd data={faqPageSchema(faqs)} />
-      <JsonLd data={breadcrumbSchema([{ name: "Home", url: "https://m2hhealthcare.com" }, { name: "Treatments", url: "https://m2hhealthcare.com/treatments" }, { name: treatment.name, url: `https://m2hhealthcare.com/treatments/${params.slug}` }])} />
+      <JsonLd data={breadcrumbSchema([{ name: "Home", url: "https://asianshealthcare.com" }, { name: "Treatments", url: "https://asianshealthcare.com/treatments" }, { name: treatment.name, url: `https://asianshealthcare.com/treatments/${params.slug}` }])} />
       <section className="bg-gradient-to-r from-primary-dark to-primary text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <Link href="/treatments" className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-6 transition"><ArrowLeft size={18} /> Back to Treatments</Link>
@@ -125,7 +125,7 @@ export default async function TreatmentDetailPage({ params }: { params: { slug: 
               </div>
               <div className="mt-4 pt-4 border-t border-gray-100 space-y-2">
                 <a href="tel:+919650928250" className="flex items-center gap-2 text-sm text-text-secondary hover:text-primary"><Phone size={14} /> +91-9650928250</a>
-                <a href="mailto:info@m2hhealthcare.com" className="flex items-center gap-2 text-sm text-text-secondary hover:text-primary"><Mail size={14} /> info@m2hhealthcare.com</a>
+                <a href="mailto:info@asianshealthcare.com" className="flex items-center gap-2 text-sm text-text-secondary hover:text-primary"><Mail size={14} /> info@asianshealthcare.com</a>
               </div>
             </div>
           </div>

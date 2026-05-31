@@ -1,29 +1,29 @@
 export const SITE = {
-  name: "M2H Healthcare",
+  name: "Asians Healthcare",
   tagline: "Your Trusted Partner in Medical Tourism",
   description:
-    "M2H Healthcare connects you with top hospitals and doctors in India for world-class medical treatments at affordable prices.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://m2hhealthcare.com",
+    "Asians Healthcare connects you with top hospitals and doctors in India for world-class medical treatments at affordable prices.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://asianshealthcare.com",
   phone: "+91-9650928250",
   whatsapp: "919650928250",
-  email: "info@m2hhealthcare.com",
+  email: "info@asianshealthcare.com",
   address: "India",
 } as const;
 
 export const SOCIAL = {
-  facebook: "https://facebook.com/m2hhealthcare",
-  twitter: "https://twitter.com/m2hhealthcare",
-  instagram: "https://instagram.com/m2hhealthcare",
-  linkedin: "https://linkedin.com/company/m2hhealthcare",
-  youtube: "https://youtube.com/@m2hhealthcare",
+  facebook: "https://facebook.com/asianshealthcare",
+  twitter: "https://twitter.com/asianshealthcare",
+  instagram: "https://instagram.com/asianshealthcare",
+  linkedin: "https://linkedin.com/company/asianshealthcare",
+  youtube: "https://youtube.com/@asianshealthcare",
 } as const;
 
 export const CONTACT = {
   phone: SITE.phone,
   whatsapp: SITE.whatsapp,
   email: SITE.email,
-  consultationEmail: "consult@m2hhealthcare.com",
-  supportEmail: "support@m2hhealthcare.com",
+  consultationEmail: "consult@asianshealthcare.com",
+  supportEmail: "support@asianshealthcare.com",
 } as const;
 
 export const WHATSAPP_MESSAGE = {
@@ -126,8 +126,8 @@ export const COUNTRIES = [
 
 export const META = {
   home: {
-    title: "M2H Healthcare - Best Medical Tourism in India",
+    title: "Asians Healthcare - Best Medical Tourism in India",
     description:
-      "M2H Healthcare offers world-class medical treatments in India. Connect with top hospitals, doctors, and affordable healthcare services.",
+      "Asians Healthcare offers world-class medical treatments in India. Connect with top hospitals, doctors, and affordable healthcare services.",
   },
 } as const;
