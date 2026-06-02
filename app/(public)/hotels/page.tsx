@@ -26,13 +26,26 @@ export default async function HotelsPage({
   const query = typeof searchParams?.q === "string" ? searchParams.q.trim() : "";
   const normalizedQuery = query.toLowerCase();
 
-  const fetchedHotels = raw?.map((hotel) => ({
+  const hotelFallbackImages = [
+    "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+    "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80",
+    "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80",
+    "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80",
+    "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=80",
+    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80",
+    "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80",
+    "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80",
+    "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80",
+    "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80",
+  ];
+
+  const fetchedHotels = raw?.map((hotel, index) => ({
     name: hotel.name,
     address: hotel.address,
     stars: hotel.stars || 3,
     price: hotel.price_range || "$$",
     near: "",
-    photo_url: hotel.photo_url || "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+    photo_url: hotel.photo_url || hotelFallbackImages[index % hotelFallbackImages.length],
   })) || [];
 
   const allHotels = fetchedHotels.length > 0 ? fetchedHotels : fallbackHotels;
