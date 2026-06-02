@@ -32,7 +32,7 @@ export default async function HotelsPage({
     stars: hotel.stars || 3,
     price: hotel.price_range || "$$",
     near: "",
-    photo_url: hotel.photo_url || "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg",
+    photo_url: hotel.photo_url || "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
   })) || [];
 
   const allHotels = fetchedHotels.length > 0 ? fetchedHotels : fallbackHotels;
