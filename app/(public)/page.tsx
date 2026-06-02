@@ -23,7 +23,7 @@ import InsuranceLogos from "@/components/home/InsuranceLogos";
 import TravelProcess from "@/components/home/TravelProcess";
 import NewsletterSignup from "@/components/home/NewsletterSignup";
 import FAQSection from "@/components/home/FAQSection";
-import WhatsAppFloat from "@/components/shared/WhatsAppFloat";
+
 import {
   fallbackDoctors,
   fallbackHospitals,
@@ -118,7 +118,6 @@ export default async function HomePage() {
       <MedicalCareGallery images={images} />
       <FAQSection />
       <NewsletterSignup />
-      <WhatsAppFloat />
     </>
   );
 }

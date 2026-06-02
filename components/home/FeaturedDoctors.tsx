@@ -59,7 +59,7 @@ export default function FeaturedDoctors({ doctors = [] }: { doctors?: Doctor[] }
               <Link href={`/doctors/${doctor.slug}`} className="group block bg-canvas-light rounded-xl p-6 border border-hairline-light hover:shadow-elevation-3 transition-all duration-300">
                 <div className="relative w-24 h-24 rounded-full mx-auto mb-5 overflow-hidden ring-2 ring-aloe-10/30 group-hover:ring-aloe-10 transition-all">
                   <Image
-                    src={doctor.photo_url || "https://satyughealthcare.com/uploads/doctors/a330cd2834d5826c649d5295bc0cfae7.jpg"}
+                    src={doctor.photo_url || "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80"}
                     alt={doctor.name}
                     fill
                     className="object-cover"
