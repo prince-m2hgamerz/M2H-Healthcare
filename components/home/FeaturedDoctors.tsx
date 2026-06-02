@@ -57,12 +57,12 @@ export default function FeaturedDoctors({ doctors = [] }: { doctors?: Doctor[] }
           {doctors.map((doctor) => (
             <motion.div key={doctor.slug} variants={itemVariants}>
               <Link href={`/doctors/${doctor.slug}`} className="group block bg-canvas-light rounded-xl p-6 border border-hairline-light hover:shadow-elevation-3 transition-all duration-300">
-                <div className="relative w-24 h-24 rounded-full mx-auto mb-5 overflow-hidden ring-2 ring-aloe-10/30 group-hover:ring-aloe-10 transition-all">
+                <div className="relative w-28 h-28 sm:w-24 sm:h-24 rounded-full mx-auto mb-5 overflow-hidden bg-gradient-to-br from-aloe-10 to-pistachio-10 ring-2 ring-aloe-10/30 group-hover:ring-aloe-10 transition-all">
                   <Image
                     src={doctor.photo_url || "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80"}
                     alt={doctor.name}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                 </div>
                 <div className="text-center">
