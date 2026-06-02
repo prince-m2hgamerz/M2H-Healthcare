@@ -22,7 +22,7 @@ export default function InsuranceLogos({ insurances = defaultInsurances }: { ins
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, staggerChildren: 0.05 }}
-          className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6"
+          className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-12 gap-y-4 sm:gap-y-6"
         >
           {items.map((name, i) => (
             <motion.div

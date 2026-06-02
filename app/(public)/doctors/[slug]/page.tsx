@@ -65,12 +65,12 @@ export default async function DoctorDetailPage({ params }: { params: { slug: str
             Back to Doctors
           </Link>
           <div className="flex flex-col lg:flex-row gap-10 items-start">
-            <div className="relative w-32 h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden ring-4 ring-aloe-10/30 shrink-0">
+            <div className="relative w-36 h-36 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden ring-4 ring-aloe-10/30 shrink-0 mx-auto lg:mx-0">
               <Image
                 src={doctor.photo_url}
                 alt={doctor.name}
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
             <div>

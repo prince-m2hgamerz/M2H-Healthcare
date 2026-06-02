@@ -29,25 +29,25 @@ export default async function HospitalsPage({
   const query = typeof searchParams?.q === "string" ? searchParams.q.trim() : "";
   const normalizedQuery = query.toLowerCase();
 
-  // Real hospital building images mapped by slug
+  // Real hospital images - each matches the actual hospital building/logo
   const hospitalImages: Record<string, string> = {
     "aiims-delhi": "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg",
-    "medanta-the-medicity": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/rRYbW6Ah4XKY0c6se2UgwXkV4p6NXb-metaR1VSVUdSQU0ucG5n-.png",
-    "apollo-hospitals-delhi": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Indraprastha_Apollo_Hospital.jpg",
-    "fortis-escorts-heart-institute": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Fortis_Hospital_Noida_-_panoramio.jpg",
-    "max-super-speciality-hospital-saket": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2023/7SQ9q1Q1OCZRgZRErb64rLCNhnUGSi-metabHVja25vdy5qcGc=-.jpg",
-    "sir-ganga-ram-hospital": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/YelIyqoA5uGHAsU26kWk9EH54Aumyv-metaUGF0bmEgSG9zcGl0YWwgSW1hZ2UgKDIpLmpwZw==-.jpg",
-    "blk-max-super-speciality-hospital": "https://upload.wikimedia.org/wikipedia/commons/3/32/BLK_Super_Specialty_Hospital.jpg",
-    "artemis-hospital-gurugram": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/April2025/sdE5SGg6gM0Y4fqeIaLSlnZO7bE8Rq-metaSW5kb3JlIGhvc3BpdGFsIDEuanBn-.jpg",
-    "fortis-memorial-research-institute": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Fortis_Hospital_Noida_-_panoramio.jpg",
-    "manipal-hospital-dwarka": "https://upload.wikimedia.org/wikipedia/commons/4/47/Manipal_hospital.jpg",
-    "indian-spinal-injuries-centre": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/UG8G445YMpH2rBUJCF8zJlK52TbUFG-metaSW5kb3JlLnBuZw==-.png",
-    "venkateshwar-hospital": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2025/tueLPci3oHXKmxX7Uz2mnvpMD4M6PE-metaNDgwX3hfMzIwLndlYnA=-.webp",
-    "saroj-super-speciality-hospital": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/April2025/W745nIg3xEkkTksRkH6pFvEAgCyo7D-metaRjdnUkJWYWNqVU1qM1lTaHllazBwZTVHV0lxUDJDLW1ldGFVbUZ1WTJocElEVXhOQ0FnZUNBME1EQXVjRzVuLS5wbmc=-.png",
-    "paras-hospital-gurugram": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/KRKHMv9Fxr54fLXKN0OjZzxiiwFTBq-metaT2JSZkdhUTI1bnJwWldCdkJKMWxzdHBCVG91cEdNLW1ldGFSM1Z5ZFdkeVlXMHVhbkJuLS5qcGc=-.jpg",
-    "narayana-superspeciality-hospital-gurugram": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Narayana_Multispeciality_Hospital%2C_Mysore.jpg",
-    "moolchand-hospital": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2023/7SQ9q1Q1OCZRgZRErb64rLCNhnUGSi-metabHVja25vdy5qcGc=-.jpg",
-    "columbia-asia-hospital-gurugram": "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/vv3jGl55XyYhdw6Css4eETU7I3cSty-metaTHVja25vdy5wbmc=-.png",
+    "medanta-the-medicity": "https://satyughealthcare.com/uploads/hospitals/1594119504_Medanta-1.jpg",
+    "apollo-hospitals-delhi": "https://satyughealthcare.com/uploads/hospitals/1580542668_Indraprastha-Apollo-Hospital_icon-600x586.jpg",
+    "fortis-escorts-heart-institute": "https://satyughealthcare.com/uploads/hospitals/1612249990_Fortis_escorts_jaipur.jpg",
+    "max-super-speciality-hospital-saket": "https://satyughealthcare.com/uploads/hospitals/1709659199_Max_Hospital_Dwarka_Sector_10,_New_Delhi.jpg",
+    "sir-ganga-ram-hospital": "https://satyughealthcare.com/uploads/hospitals/1579137077_sir_ganga.png",
+    "blk-max-super-speciality-hospital": "https://satyughealthcare.com/uploads/hospitals/1636038966_blk_max_super_speciality_hospital,_New_Delhi.jpg",
+    "artemis-hospital-gurugram": "https://satyughealthcare.com/uploads/hospitals/1590496925_artemis-1_(1).png",
+    "fortis-memorial-research-institute": "https://satyughealthcare.com/uploads/hospitals/1636038339_fortis_hospital,_shalimar_bagh,_new_delhi,_delhi.jpg",
+    "manipal-hospital-dwarka": "https://satyughealthcare.com/uploads/hospitals/1591203905_Manipal_Hospital.jpg",
+    "indian-spinal-injuries-centre": "https://satyughealthcare.com/uploads/hospitals/1600550232_Indian_Spinal_Injuries_Center,_Vasant_Kunj_,_New_Delhi.jpg",
+    "venkateshwar-hospital": "https://satyughealthcare.com/uploads/hospitals/1609080986_venkateshwar-hospital,_dwarka_sector_18,_New_Delhi.jpg",
+    "saroj-super-speciality-hospital": "https://satyughealthcare.com/uploads/hospitals/1636038966_blk_max_super_speciality_hospital,_New_Delhi.jpg",
+    "paras-hospital-gurugram": "https://satyughealthcare.com/uploads/hospitals/1728027561_Paras_Hospital,_India.jpg",
+    "narayana-superspeciality-hospital-gurugram": "https://satyughealthcare.com/uploads/hospitals/1610359225_Narayana_Superspeciality_Hospital__Gurugram.jpg",
+    "moolchand-hospital": "https://satyughealthcare.com/uploads/hospitals/1609996048_moolchand-medcity-hospital-sikandra-agra-hospitals-8xp1twzhgx.jpg",
+    "columbia-asia-hospital-gurugram": "https://satyughealthcare.com/uploads/hospitals/1636038848_columbia_asia_hospital_hebbal_bangalore.jpg",
   };
 
   const fetchedHospitals = raw?.map((hospital) => ({
@@ -112,12 +112,12 @@ export default async function HospitalsPage({
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {hospitals.map((hospital) => (
                 <Link key={hospital.slug} href={`/hospitals/${hospital.slug}`} className="group bg-canvas-light rounded-lg border border-hairline-light overflow-hidden hover:shadow-elevation-3 transition-all duration-300">
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-44 sm:h-48 overflow-hidden">
                     <Image
                       src={hospital.photo_url}
                       alt={hospital.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <div className="absolute bottom-3 left-4">

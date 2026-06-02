@@ -24,7 +24,7 @@ interface HeroSectionProps {
   imageUrl?: string;
 }
 
-export default function HeroSection({ imageUrl = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1920&q=80" }: HeroSectionProps) {
+export default function HeroSection({ imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg/1920px-AIIMS_-New_Delhi%27s_Ward_Block.jpg" }: HeroSectionProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("cost");
   const [searchQuery, setSearchQuery] = useState("");
@@ -43,18 +43,18 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
   };
 
   return (
-    <section className="relative text-on-primary overflow-hidden min-h-[80vh] lg:min-h-[90vh] flex items-center">
+    <section className="relative text-on-primary overflow-hidden min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] flex items-center">
       <div className="absolute inset-0">
         <Image
           src={imageUrl}
-          alt="Modern hospital building - World-class healthcare in India"
+          alt="AIIMS Hospital New Delhi - India's Premier Medical Institution"
           fill
           className="object-cover scale-105 blur-[2px]"
           priority
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/55 to-black/65" />
-      <div className="container-cinematic relative z-10 py-20 lg:py-32 w-full">
+      <div className="container-cinematic relative z-10 py-12 sm:py-20 lg:py-32 w-full">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-          className="font-display text-[44px] leading-[0.98] sm:text-display-xl lg:text-display-xxl tracking-wide mb-6"
+          className="font-display text-[32px] leading-[1.05] sm:text-[44px] sm:leading-[0.98] lg:text-display-xxl tracking-wide mb-4 sm:mb-6"
           >
             World-Class Treatment
             <br />
@@ -83,7 +83,7 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-body-lg text-link-cool-2 max-w-2xl mb-6 leading-relaxed"
+            className="text-body-md sm:text-body-lg text-link-cool-2 max-w-2xl mb-4 sm:mb-6 leading-relaxed"
           >
             Get free medical opinion within 24 hours. We assist with doctor selection, cost estimation,
             visa invitation, airport pickup, hospital admission, and post-treatment follow-up.
@@ -92,7 +92,7 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.45, duration: 0.5 }}
-            className="flex flex-wrap items-center gap-3 mb-10"
+            className="flex flex-wrap items-center gap-2 sm:gap-3 mb-6 sm:mb-10"
           >
             <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs text-link-cool-2 border border-white/10">
               <svg className="w-3.5 h-3.5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
@@ -118,7 +118,7 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
             transition={{ delay: 0.5, duration: 0.6 }}
             className="max-w-3xl"
           >
-            <div className="flex flex-wrap gap-1 mb-0.5">
+            <div className="flex overflow-x-auto gap-1 mb-0.5 -mx-1 px-1 scrollbar-hide">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 return (
@@ -165,7 +165,7 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="flex flex-wrap gap-8 md:gap-12 text-sm mt-10"
+            className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 text-sm mt-6 sm:mt-10"
           >
             <div>
               <span className="font-display text-heading-xl lg:text-display-md text-aloe-10">15,000+</span>

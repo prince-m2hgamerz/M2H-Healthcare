@@ -76,7 +76,7 @@ const treatmentCards: Array<{
 
 export default function MedicalCareGallery({ images }: { images: ImageMap }) {
   return (
-    <section className="bg-canvas-cream py-huge">
+    <section className="bg-canvas-cream py-12 sm:py-huge">
       <div className="container-cinematic">
         <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>

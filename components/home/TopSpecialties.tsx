@@ -40,7 +40,7 @@ const itemVariants = {
 
 export default function TopSpecialties() {
   return (
-    <section className="bg-canvas-light py-huge border-b border-hairline-light">
+    <section className="bg-canvas-light py-12 sm:py-huge border-b border-hairline-light">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -63,18 +63,18 @@ export default function TopSpecialties() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4"
         >
           {specialties.map((specialty) => (
             <motion.div key={specialty.slug} variants={itemVariants}>
               <Link
                 href={`/speciality/${specialty.slug}`}
-                className="group flex flex-col items-center gap-3 p-6 rounded-xl border border-hairline-light bg-canvas-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300"
+                className="group flex flex-col items-center gap-2 sm:gap-3 p-4 sm:p-6 rounded-xl border border-hairline-light bg-canvas-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300"
               >
-                <div className={`w-14 h-14 rounded-xl ${specialty.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                  <specialty.icon size={26} />
+                <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl ${specialty.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                  <specialty.icon size={22} />
                 </div>
-                <span className="font-display text-heading-sm text-ink text-center group-hover:text-shade-60 transition-colors">
+                <span className="font-display text-caption sm:text-heading-sm text-ink text-center group-hover:text-shade-60 transition-colors">
                   {specialty.name}
                 </span>
               </Link>

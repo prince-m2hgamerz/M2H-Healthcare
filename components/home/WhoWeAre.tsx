@@ -13,9 +13,9 @@ const highlights = [
 
 export default function WhoWeAre() {
   return (
-    <section className="bg-canvas-cream py-huge overflow-hidden">
+    <section className="bg-canvas-cream py-12 sm:py-huge overflow-hidden">
       <div className="container-cinematic">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -58,10 +58,10 @@ export default function WhoWeAre() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-elevation-3 aspect-[4/3]">
               <Image
-                src="https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=800&q=80"
-                alt="Medical professionals consulting - Trusted healthcare in India"
+                src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Indraprastha_Apollo_Hospital.jpg"
+                alt="Apollo Hospital New Delhi - JCI Accredited Healthcare in India"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-canvas-light rounded-xl p-5 shadow-elevation-3 border border-hairline-light hidden lg:block">

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Star } from "lucide-react";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { fallbackHotels } from "@/lib/fallback-data";
 import PageHero from "@/components/layout/PageHero";
 import SearchInput from "@/components/layout/SearchInput";
@@ -18,24 +17,11 @@ export default async function HotelsPage({
 }: {
   searchParams?: { q?: string };
 }) {
-  const supabase = await createServerSupabaseClient();
-  const [{ data: raw }, images] = await Promise.all([
-    supabase.from("hotels").select("*").limit(50),
-    getSiteImages(),
-  ]);
+  const images = await getSiteImages();
   const query = typeof searchParams?.q === "string" ? searchParams.q.trim() : "";
   const normalizedQuery = query.toLowerCase();
 
-  const fetchedHotels = raw?.map((hotel) => ({
-    name: hotel.name,
-    address: hotel.address,
-    stars: hotel.stars || 3,
-    price: hotel.price_range || "$$",
-    near: "",
-    photo_url: hotel.photo_url || "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg",
-  })) || [];
-
-  const allHotels = fetchedHotels.length > 0 ? fetchedHotels : fallbackHotels;
+  const allHotels = fallbackHotels;
   const hotels = normalizedQuery
     ? allHotels.filter((hotel) =>
         [hotel.name, hotel.address, hotel.near]
@@ -80,7 +66,7 @@ export default async function HotelsPage({
                 <div key={`${hotel.name}-${hotel.address}`} className="overflow-hidden bg-canvas-cream rounded-lg border border-hairline-light hover:shadow-elevation-3 transition-all">
                   <div className="relative h-44 bg-canvas-light">
                     <Image
-                      src={"photo_url" in hotel ? hotel.photo_url : "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg"}
+                      src={hotel.photo_url}
                       alt={hotel.name}
                       fill
                       className="object-cover"
@@ -93,6 +79,9 @@ export default async function HotelsPage({
                       ))}
                     </div>
                     <h2 className="font-display text-heading-md text-ink mb-2">{hotel.name}</h2>
+                    {hotel.description && (
+                      <p className="text-caption text-shade-50 mb-2 line-clamp-2">{hotel.description}</p>
+                    )}
                     <div className="flex items-center gap-1 text-caption text-shade-40 mb-2">
                       <MapPin size={14} /><span>{hotel.address}</span>
                     </div>

@@ -90,25 +90,25 @@ export default async function DoctorsPage({
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {doctors.map((doctor) => (
                 <Link key={doctor.slug} href={`/doctors/${doctor.slug}`} className="group bg-canvas-light rounded-lg border border-hairline-light overflow-hidden hover:shadow-elevation-3 transition-all duration-300">
-                  <div className="relative h-56 overflow-hidden bg-gradient-to-br from-aloe-10 to-pistachio-10">
+                  <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-aloe-10 to-pistachio-10">
                     <Image
                       src={doctor.photo_url}
                       alt={doctor.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-contain group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-5 text-center">
-                    <h2 className="font-display text-heading-md text-ink group-hover:text-shade-60 transition-colors">{doctor.name}</h2>
-                    <p className="text-body-md text-shade-50 mt-1">{doctor.specialty}</p>
-                    <p className="text-caption text-shade-40 mt-2">
+                  <div className="p-3 sm:p-5 text-center">
+                    <h2 className="font-display text-sm sm:text-heading-md text-ink group-hover:text-shade-60 transition-colors line-clamp-1">{doctor.name}</h2>
+                    <p className="text-xs sm:text-body-md text-shade-50 mt-1 line-clamp-1">{doctor.specialty}</p>
+                    <p className="text-[10px] sm:text-caption text-shade-40 mt-1 sm:mt-2 line-clamp-1">
                       {doctor.hospital ? `${doctor.experience} - ${doctor.hospital}` : doctor.experience}
                     </p>
-                    <p className="inline-flex items-center justify-center gap-1 text-micro text-yellow-500 mt-2">
-                      <Star size={14} className="fill-yellow-400 text-yellow-400" />
+                    <p className="inline-flex items-center justify-center gap-1 text-micro text-yellow-500 mt-1 sm:mt-2">
+                      <Star size={12} className="fill-yellow-400 text-yellow-400" />
                       {doctor.rating}
                     </p>
                   </div>

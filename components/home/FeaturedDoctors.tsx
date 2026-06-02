@@ -28,7 +28,7 @@ const itemVariants = {
 export default function FeaturedDoctors({ doctors = [] }: { doctors?: Doctor[] }) {
   if (doctors.length === 0) return null;
   return (
-    <section className="bg-canvas-light py-huge">
+    <section className="bg-canvas-light py-12 sm:py-huge">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,12 +57,12 @@ export default function FeaturedDoctors({ doctors = [] }: { doctors?: Doctor[] }
           {doctors.map((doctor) => (
             <motion.div key={doctor.slug} variants={itemVariants}>
               <Link href={`/doctors/${doctor.slug}`} className="group block bg-canvas-light rounded-xl p-6 border border-hairline-light hover:shadow-elevation-3 transition-all duration-300">
-                <div className="relative w-24 h-24 rounded-full mx-auto mb-5 overflow-hidden ring-2 ring-aloe-10/30 group-hover:ring-aloe-10 transition-all">
+                <div className="relative w-28 h-28 sm:w-24 sm:h-24 rounded-full mx-auto mb-5 overflow-hidden bg-gradient-to-br from-aloe-10 to-pistachio-10 ring-2 ring-aloe-10/30 group-hover:ring-aloe-10 transition-all">
                   <Image
-                    src={doctor.photo_url || "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&q=80"}
+                    src={doctor.photo_url || "https://satyughealthcare.com/uploads/doctors/a330cd2834d5826c649d5295bc0cfae7.jpg"}
                     alt={doctor.name}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                 </div>
                 <div className="text-center">

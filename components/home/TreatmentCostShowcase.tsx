@@ -11,14 +11,14 @@ const treatmentCosts = [
     cost: "$7,000 - $10,000",
     saving: "Save up to 90%",
     slug: "heart-bypass-surgery",
-    image: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=600&q=80",
+    image: "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
   },
   {
     name: "Knee Replacement Surgery",
     cost: "$6,500 - $8,500",
     saving: "Save up to 80%",
     slug: "knee-replacement",
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80",
+    image: "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
   },
   {
     name: "Liver Transplant",
@@ -39,7 +39,7 @@ const treatmentCosts = [
     cost: "$8,000 - $12,000",
     saving: "Save up to 82%",
     slug: "spine-surgery",
-    image: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80",
+    image: "https://satyughealthcare.com/uploads/treatment_package/146787701787.png",
   },
   {
     name: "IVF Treatment",
@@ -53,20 +53,20 @@ const treatmentCosts = [
     cost: "$6,500 - $10,000",
     saving: "Save up to 85%",
     slug: "craniotomy-brain-tumor-surgery",
-    image: "https://images.unsplash.com/photo-1582719471384-894fbb16f461?w=600&q=80",
+    image: "https://satyughealthcare.com/uploads/treatment_package/216514607672.png",
   },
   {
     name: "Cardiac Surgery (Pediatric)",
     cost: "$7,500 - $12,000",
     saving: "Save up to 88%",
     slug: "heart-bypass-surgery",
-    image: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&q=80",
+    image: "https://satyughealthcare.com/uploads/treatment_package/102136737103.png",
   },
 ];
 
 export default function TreatmentCostShowcase() {
   return (
-    <section className="bg-canvas-cream py-huge overflow-hidden">
+    <section className="bg-canvas-cream py-12 sm:py-huge overflow-hidden">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ export default function TreatmentCostShowcase() {
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {treatmentCosts.map((treatment, i) => (
             <motion.div
               key={treatment.slug + i}
@@ -107,7 +107,7 @@ export default function TreatmentCostShowcase() {
                     src={treatment.image}
                     alt={treatment.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 right-3">
                     <span className="inline-flex items-center gap-1 bg-green-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">

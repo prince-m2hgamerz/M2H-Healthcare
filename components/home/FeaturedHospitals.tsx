@@ -26,7 +26,7 @@ const itemVariants = {
 export default function FeaturedHospitals({ hospitals = [] }: { hospitals?: Hospital[] }) {
   if (hospitals.length === 0) return null;
   return (
-    <section className="bg-canvas-cream py-huge">
+    <section className="bg-canvas-cream py-12 sm:py-huge">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,10 +57,10 @@ export default function FeaturedHospitals({ hospitals = [] }: { hospitals?: Hosp
               <Link href={`/hospitals/${hospital.slug}`} className="group block bg-canvas-light rounded-xl border border-hairline-light overflow-hidden hover:shadow-elevation-3 transition-all duration-300">
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src={hospital.photo_url || "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80"}
+                    src={hospital.photo_url || "https://upload.wikimedia.org/wikipedia/commons/e/e8/Indraprastha_Apollo_Hospital.jpg"}
                     alt={hospital.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   <div className="absolute bottom-3 left-4">

@@ -33,7 +33,7 @@ export default function VideoTestimonials() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   return (
-    <section className="bg-canvas-cream py-huge">
+    <section className="bg-canvas-cream py-12 sm:py-huge">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,11 +88,11 @@ export default function VideoTestimonials() {
 
       {/* Video Modal */}
       {activeVideo && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 sm:p-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="relative w-full max-w-4xl aspect-video"
+            className="relative w-full max-w-4xl aspect-video max-h-[80vh]"
           >
             <button
               onClick={() => setActiveVideo(null)}

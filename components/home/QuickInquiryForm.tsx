@@ -62,21 +62,21 @@ export default function QuickInquiryForm() {
   }
 
   return (
-    <section className="bg-gradient-to-br from-[#0d3b30] to-[#1a5c4c] py-huge relative overflow-hidden">
+    <section className="bg-gradient-to-br from-[#0d3b30] to-[#1a5c4c] py-12 sm:py-huge relative overflow-hidden">
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
       </div>
 
       <div className="container-cinematic relative z-10">
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-8 sm:gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-display text-display-md lg:text-display-lg text-white">
+            <h2 className="font-display text-heading-xl sm:text-display-md lg:text-display-lg text-white">
               Get Free Medical Opinion &amp; Cost Estimate
             </h2>
             <p className="text-body-lg text-green-100/80 mt-6 leading-relaxed">
@@ -116,7 +116,7 @@ export default function QuickInquiryForm() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-xl">
+            <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-md rounded-2xl p-5 sm:p-8 border border-white/10 shadow-xl">
               <h3 className="font-display text-heading-lg text-white mb-6">Request Free Consultation</h3>
               <div className="space-y-4">
                 <div className="relative">
