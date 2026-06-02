@@ -30,19 +30,25 @@ export default async function TreatmentPackagesPage({
   const categoryFilter = typeof searchParams?.category === "string" ? searchParams.category : "";
   const normalizedQuery = query.toLowerCase();
 
-  const fetchedTreatments = raw?.map((treatment) => ({
-    name: treatment.name,
-    costMin: Number(treatment.cost_usd_min) || 0,
-    costMax: Number(treatment.cost_usd_max) || 0,
-    usCost: Number(treatment.cost_usd_max) * 4 || 15000,
-    slug: treatment.slug,
-    category: treatment.category || "General Surgery",
-    description: treatment.description || "",
-    image_url: treatment.image_url || "",
-  })) || [];
+  const fetchedTreatments = raw?.map((treatment) => {
+    // Find matching image from our 218 treatment packages data
+    const match = allTreatmentPackages.find((p) => p.slug === treatment.slug);
+    return {
+      name: treatment.name,
+      costMin: Number(treatment.cost_usd_min) || 0,
+      costMax: Number(treatment.cost_usd_max) || 0,
+      usCost: Number(treatment.cost_usd_max) * 4 || 15000,
+      slug: treatment.slug,
+      category: treatment.category || "General Surgery",
+      description: treatment.description || "",
+      image_url: treatment.image_url || match?.image_url || "",
+    };
+  }) || [];
 
-  // Use database treatments if available, otherwise use all 218 from satyughealthcare
-  const allTreatments = fetchedTreatments.length > 0 ? fetchedTreatments : allTreatmentPackages;
+  // Merge: show DB treatments + any from the 218 list that aren't in DB
+  const dbSlugs = new Set(fetchedTreatments.map((t) => t.slug));
+  const additionalTreatments = allTreatmentPackages.filter((t) => !dbSlugs.has(t.slug));
+  const allTreatments = [...fetchedTreatments, ...additionalTreatments];
 
   // Filter by search query
   let treatments = normalizedQuery
