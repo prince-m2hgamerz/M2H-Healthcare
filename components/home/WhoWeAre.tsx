@@ -58,8 +58,8 @@ export default function WhoWeAre() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-elevation-3 aspect-[4/3]">
               <Image
-                src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Indraprastha_Apollo_Hospital.jpg"
-                alt="Apollo Hospital New Delhi - JCI Accredited Healthcare in India"
+                src="https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=800&q=80"
+                alt="Medical professionals consulting - Trusted healthcare in India"
                 fill
                 className="object-cover"
               />
