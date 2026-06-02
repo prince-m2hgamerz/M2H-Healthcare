@@ -31,7 +31,7 @@ export default function GetConsultation() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
             <Link
               href="/contact-us"
-              className="btn-aloe flex items-center gap-2 text-base px-8 py-4"
+              className="btn-aloe flex items-center gap-2 text-base px-8 py-4 w-full sm:w-auto justify-center"
             >
               Get Free Consultation
               <ArrowRight size={18} />
@@ -40,7 +40,7 @@ export default function GetConsultation() {
               href="https://api.whatsapp.com/send?phone=919650928250&text=Hello%2C+I+need+medical+assistance"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-hairline-dark text-on-primary hover:bg-white/10 transition-all text-base font-medium"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-hairline-dark text-on-primary hover:bg-white/10 transition-all text-base font-medium w-full sm:w-auto justify-center"
             >
               <MessageCircle size={18} />
               WhatsApp Us

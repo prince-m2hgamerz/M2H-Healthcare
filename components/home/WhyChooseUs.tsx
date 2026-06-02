@@ -49,7 +49,7 @@ export default function WhyChooseUs() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {features.map((feature) => (
             <motion.div key={feature.title} variants={itemVariants} className="bg-canvas-light rounded-xl p-6 border border-hairline-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300">

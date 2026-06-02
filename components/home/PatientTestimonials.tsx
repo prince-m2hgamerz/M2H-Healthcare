@@ -77,7 +77,7 @@ export default function PatientTestimonials({ testimonials = [] }: { testimonial
             </button>
             <div className="flex gap-2">
               {testimonials.map((_, i) => (
-                <button key={i} onClick={() => setCurrent(i)} className={`w-2 h-2 rounded-full transition-colors ${i === current ? "bg-on-primary" : "bg-shade-60"}`} aria-label={`Go to testimonial ${i + 1}`} />
+                <button key={i} onClick={() => setCurrent(i)} className={`w-3 h-3 rounded-full transition-colors p-0 ${i === current ? "bg-on-primary" : "bg-shade-60"}`} aria-label={`Go to testimonial ${i + 1}`} />
               ))}
             </div>
             <button onClick={next} className="w-10 h-10 rounded-full border border-hairline-dark flex items-center justify-center hover:bg-canvas-night-elevated transition-colors" aria-label="Next testimonial">

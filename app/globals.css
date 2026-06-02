@@ -59,9 +59,30 @@ html {
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+  }
 }
 
 /* Mobile responsive fixes */
+@media (max-width: 768px) {
+  .text-heading-xl {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+
+  .text-heading-lg {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .py-huge {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+
 @media (max-width: 640px) {
   .container-cinematic {
     padding-left: 16px;
