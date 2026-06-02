@@ -61,7 +61,7 @@ export default function WhoWeAre() {
                 src="https://medanta.s3.ap-south-1.amazonaws.com/banners/June2023/eXYRLvojbnHzVZHQ0BXQQVLvZGhQlR-metaaW50ZXJuYXRpb25hbC1kZXNrdG9wLmpwZw==-.jpg"
                 alt="World-Class Hospital in India - JCI Accredited Healthcare"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-canvas-light rounded-xl p-5 shadow-elevation-3 border border-hairline-light hidden lg:block">
