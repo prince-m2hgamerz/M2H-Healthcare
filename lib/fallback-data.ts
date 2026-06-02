@@ -1144,7 +1144,7 @@ export const fallbackHotels = [
     price: "$$$$",
     near: "Diplomatic Enclave",
     description: "An ultra-luxury palace hotel in the heart of New Delhi's diplomatic enclave. Known for its opulent interiors, world-class dining, and impeccable service. Features a rooftop pool, luxury spa, and fine dining restaurants.",
-    photo_url: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+    photo_url: "https://upload.wikimedia.org/wikipedia/commons/9/98/Delhi_aerial_photo_04-2016_img20.jpg",
   },
   {
     name: "The Taj Mahal Hotel New Delhi",
@@ -1153,7 +1153,7 @@ export const fallbackHotels = [
     price: "$$$$",
     near: "India Gate",
     description: "An iconic luxury hotel overlooking Lutyens' Delhi. The Taj Mahal Hotel has hosted world leaders and dignitaries since 1978. Features exquisite restaurants, a luxury spa, and beautifully landscaped gardens.",
-    photo_url: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80",
+    photo_url: "/images/hotels/taj-mahal-hotel-delhi.jpg",
   },
   {
     name: "ITC Maurya New Delhi",
@@ -1171,7 +1171,7 @@ export const fallbackHotels = [
     price: "$$$$",
     near: "Connaught Place",
     description: "A heritage art deco hotel from 1931 on Janpath. The Imperial houses one of India's finest private art collections. Known for The Spice Route restaurant, 1911 bar, and its colonial-era grandeur.",
-    photo_url: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80",
+    photo_url: "/images/hotels/imperial-delhi.jpg",
   },
   {
     name: "The Oberoi New Delhi",
@@ -1189,7 +1189,7 @@ export const fallbackHotels = [
     price: "$$$",
     near: "AIIMS & Safdarjung Hospital",
     description: "A prominent 5-star hotel near major medical institutions including AIIMS. Features multiple dining options, a large outdoor pool, fitness center, and well-appointed rooms ideal for medical tourists.",
-    photo_url: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80",
+    photo_url: "/images/hotels/hyatt-regency-delhi.jpg",
   },
   {
     name: "Shangri-La Eros New Delhi",
@@ -1198,7 +1198,7 @@ export const fallbackHotels = [
     price: "$$$$",
     near: "Connaught Place",
     description: "A luxury hotel in the heart of New Delhi near Connaught Place. Known for its spacious rooms, signature Chi Spa, rooftop bar with Parliament views, and award-winning Asian dining at Shang Palace.",
-    photo_url: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80",
+    photo_url: "/images/hotels/shangri-la-delhi.jpg",
   },
   {
     name: "Le Meridien New Delhi",
@@ -1207,7 +1207,7 @@ export const fallbackHotels = [
     price: "$$$",
     near: "Connaught Place & Janpath",
     description: "A distinctive cylindrical tower hotel on Janpath. Centrally located near Connaught Place, featuring a unique atrium design, rooftop pool, multiple restaurants, and convenient access to metro and major landmarks.",
-    photo_url: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80",
+    photo_url: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Le_Meridien%2C_New_Delhi%2C_India_%28014%29.jpg",
   },
   {
     name: "ITC Wellingdon New Delhi",
@@ -1234,7 +1234,7 @@ export const fallbackHotels = [
     price: "$$$",
     near: "IGI Airport & Fortis Hospital",
     description: "A premium airport hotel just minutes from IGI Airport and close to Fortis Hospital. Ideal for medical tourists arriving late or departing early. Features modern rooms, a large pool, spa, and multiple dining options.",
-    photo_url: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=80",
+    photo_url: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Hotel_Radisson_Blu%2C_Dwarka.jpg",
   },
   {
     name: "The Claridges New Delhi",
