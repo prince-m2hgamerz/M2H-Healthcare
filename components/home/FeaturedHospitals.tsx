@@ -60,7 +60,7 @@ export default function FeaturedHospitals({ hospitals = [] }: { hospitals?: Hosp
                     src={hospital.photo_url || "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600&q=80"}
                     alt={hospital.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   <div className="absolute bottom-3 left-4">

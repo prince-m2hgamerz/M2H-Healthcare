@@ -112,12 +112,12 @@ export default async function HospitalsPage({
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {hospitals.map((hospital) => (
                 <Link key={hospital.slug} href={`/hospitals/${hospital.slug}`} className="group bg-canvas-light rounded-lg border border-hairline-light overflow-hidden hover:shadow-elevation-3 transition-all duration-300">
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-44 sm:h-48 overflow-hidden">
                     <Image
                       src={hospital.photo_url}
                       alt={hospital.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <div className="absolute bottom-3 left-4">

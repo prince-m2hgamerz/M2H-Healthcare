@@ -70,7 +70,7 @@ export default async function DoctorDetailPage({ params }: { params: { slug: str
                 src={doctor.photo_url}
                 alt={doctor.name}
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
             <div>

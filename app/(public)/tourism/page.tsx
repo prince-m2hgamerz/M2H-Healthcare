@@ -132,7 +132,7 @@ export default async function TourismPage() {
                     src={destination.image}
                     alt={destination.name}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-5">

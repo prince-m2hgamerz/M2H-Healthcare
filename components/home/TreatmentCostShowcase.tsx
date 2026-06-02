@@ -107,7 +107,7 @@ export default function TreatmentCostShowcase() {
                     src={treatment.image}
                     alt={treatment.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 right-3">
                     <span className="inline-flex items-center gap-1 bg-green-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">

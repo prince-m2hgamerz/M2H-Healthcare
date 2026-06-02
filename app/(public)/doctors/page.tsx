@@ -90,15 +90,15 @@ export default async function DoctorsPage({
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {doctors.map((doctor) => (
                 <Link key={doctor.slug} href={`/doctors/${doctor.slug}`} className="group bg-canvas-light rounded-lg border border-hairline-light overflow-hidden hover:shadow-elevation-3 transition-all duration-300">
-                  <div className="relative h-56 overflow-hidden bg-gradient-to-br from-aloe-10 to-pistachio-10">
+                  <div className="relative h-64 sm:h-56 overflow-hidden bg-gradient-to-br from-aloe-10 to-pistachio-10">
                     <Image
                       src={doctor.photo_url}
                       alt={doctor.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="p-5 text-center">
