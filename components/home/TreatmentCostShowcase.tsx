@@ -53,7 +53,7 @@ const treatmentCosts = [
     cost: "$6,500 - $10,000",
     saving: "Save up to 85%",
     slug: "craniotomy-brain-tumor-surgery",
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1582719471384-894fbb16f461?w=600&q=80",
   },
   {
     name: "Cardiac Surgery (Pediatric)",
