@@ -2,7 +2,7 @@
   "id": "FEAT-001",
   "type": "fix",
   "description": "Fix duplicate floating WhatsApp buttons and replace AI-generated home page images with real Unsplash images, and improve footer mobile responsiveness",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "STEP 1 - Remove duplicate WhatsApp button: In app/(public)/page.tsx, remove the import and usage of <WhatsAppFloat /> component (lines importing from '@/components/shared/WhatsAppFloat' and the <WhatsAppFloat /> JSX). The AppShell already renders FloatingButtons (from components/layout/WhatsAppButton.tsx) globally for all public pages, so the page-level one is redundant.",
     "STEP 2 - Replace AI-generated images in home page sections with real Unsplash URLs. The components that use images on the home page are: (a) HeroSection.tsx - uses a Wikimedia AIIMS image as default, replace with a better quality Unsplash hospital image. (b) WhoWeAre.tsx - uses Wikimedia Apollo Hospital image, replace with a high-quality real hospital/healthcare image from Unsplash. (c) TreatmentCostShowcase.tsx - uses 8 images from satyughealthcare.com which are real medical images but from a third-party site; replace these with appropriate Unsplash healthcare/medical images. (d) FeaturedDoctors.tsx - fallback uses satyughealthcare.com doctor photo; replace with a professional Unsplash doctor portrait. (e) FeaturedHospitals.tsx - fallback uses Wikimedia Apollo Hospital; replace with an appropriate Unsplash hospital building image. Update next.config.mjs to add 'images.unsplash.com' to remotePatterns.",
