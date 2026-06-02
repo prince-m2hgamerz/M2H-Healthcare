@@ -3,45 +3,49 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { fallbackTreatments } from "@/lib/fallback-data";
+import { allTreatmentPackages } from "@/lib/treatment-packages-data";
 import PageHero from "@/components/layout/PageHero";
 import SearchInput from "@/components/layout/SearchInput";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbSchema } from "@/lib/json-ld";
 import { getSiteImages } from "@/lib/site-settings";
-import { getTreatmentImage } from "@/lib/site-images";
 import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 
 export const metadata: Metadata = {
-  title: "Affordable Medical Treatment Costs in India",
-  description: "Compare treatment costs in India vs. US/UK. Save 60-80% on cardiology, orthopedics, oncology, IVF, and more at top JCI hospitals in Delhi NCR.",
+  title: "218+ Treatment Packages & Costs in India | Asians Healthcare",
+  description: "Compare 218+ medical treatment costs in India vs. US/UK. Save 60-80% on cardiology, orthopedics, oncology, transplant, IVF, and more at top JCI hospitals.",
 };
 
 export default async function TreatmentPackagesPage({
   searchParams,
 }: {
-  searchParams?: { q?: string };
+  searchParams?: { q?: string; category?: string };
 }) {
   const supabase = await createServerSupabaseClient();
   const [{ data: raw }, images] = await Promise.all([
-    supabase.from("treatments").select("*").limit(50),
+    supabase.from("treatments").select("*").limit(300),
     getSiteImages(),
   ]);
   const query = typeof searchParams?.q === "string" ? searchParams.q.trim() : "";
+  const categoryFilter = typeof searchParams?.category === "string" ? searchParams.category : "";
   const normalizedQuery = query.toLowerCase();
 
   const fetchedTreatments = raw?.map((treatment) => ({
     name: treatment.name,
     costMin: Number(treatment.cost_usd_min) || 0,
     costMax: Number(treatment.cost_usd_max) || 0,
-    usCost: Number(treatment.cost_usd_max) * 5 || 10000,
+    usCost: Number(treatment.cost_usd_max) * 4 || 15000,
     slug: treatment.slug,
-    category: treatment.category || "General",
+    category: treatment.category || "General Surgery",
     description: treatment.description || "",
+    image_url: treatment.image_url || "",
   })) || [];
 
-  const allTreatments = fetchedTreatments.length > 0 ? fetchedTreatments : fallbackTreatments;
-  const treatments = normalizedQuery
+  // Use database treatments if available, otherwise use all 218 from satyughealthcare
+  const allTreatments = fetchedTreatments.length > 0 ? fetchedTreatments : allTreatmentPackages;
+
+  // Filter by search query
+  let treatments = normalizedQuery
     ? allTreatments.filter((treatment) =>
         [treatment.name, treatment.category, treatment.description]
           .join(" ")
@@ -49,6 +53,14 @@ export default async function TreatmentPackagesPage({
           .includes(normalizedQuery)
       )
     : allTreatments;
+
+  // Filter by category
+  if (categoryFilter) {
+    treatments = treatments.filter((t) => t.category.toLowerCase() === categoryFilter.toLowerCase());
+  }
+
+  // Get unique categories for filter
+  const categories = [...new Set(allTreatments.map((t) => t.category))].sort();
 
   return (
     <>
@@ -61,23 +73,45 @@ export default async function TreatmentPackagesPage({
         { label: "Treatment Packages", href: "/treatment-package" },
       ]} />
       <PageHero
-        eyebrow="Affordable Care"
+        eyebrow="218+ Procedures"
         title="Treatment Packages & Costs"
-        description="Compare treatment costs in India vs. Western countries. Save 60-80% without compromising on quality."
+        description="Compare 218+ treatment costs in India vs. Western countries. Save 60-80% without compromising on quality at JCI/NABH accredited hospitals."
         imageUrl={images.image_treatments_hero}
       />
 
-      <section className="bg-canvas-cream py-12 border-b border-hairline-light">
+      <section className="bg-canvas-cream py-8 sm:py-12 border-b border-hairline-light">
         <div className="container-cinematic">
           <SearchInput
-            placeholder="Search treatments by name or category..."
+            placeholder="Search 218+ treatments by name or category..."
             label="Search treatments"
             resultCount={treatments.length}
           />
+          {/* Category Filter */}
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link
+              href="/treatment-package"
+              className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
+                !categoryFilter ? "bg-ink text-on-primary border-ink" : "bg-canvas-light text-shade-50 border-hairline-light hover:border-ink"
+              }`}
+            >
+              All ({allTreatments.length})
+            </Link>
+            {categories.map((cat) => (
+              <Link
+                key={cat}
+                href={`/treatment-package?category=${encodeURIComponent(cat)}`}
+                className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
+                  categoryFilter === cat ? "bg-ink text-on-primary border-ink" : "bg-canvas-light text-shade-50 border-hairline-light hover:border-ink"
+                }`}
+              >
+                {cat} ({allTreatments.filter((t) => t.category === cat).length})
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="bg-canvas-light py-huge">
+      <section className="bg-canvas-light py-12 sm:py-huge">
         <div className="container-cinematic">
           {treatments.length === 0 ? (
             <div className="text-center border border-hairline-light rounded-lg p-10 bg-canvas-cream">
@@ -88,35 +122,46 @@ export default async function TreatmentPackagesPage({
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {treatments.map((treatment) => (
-                <Link key={treatment.slug} href={`/treatment-package/${treatment.slug}`} className="group overflow-hidden bg-canvas-cream rounded-lg border border-hairline-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300">
-                  <div className="relative h-44">
-                    <Image
-                      src={getTreatmentImage(images, treatment.slug, treatment.category)}
-                      alt={treatment.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <span className="pill-tag-shade !text-micro !px-2 !py-0.5 mb-3 bg-aloe-10/80">{treatment.category}</span>
-                    <h2 className="font-display text-heading-lg text-ink group-hover:text-shade-60 transition-colors">{treatment.name}</h2>
-                    <div className="mt-4 flex items-baseline gap-2">
-                      <span className="font-display text-display-md text-ink">${treatment.costMin.toLocaleString()}</span>
-                      <span className="text-body-md text-shade-40">- ${treatment.costMax.toLocaleString()}</span>
+            <>
+              <p className="text-body-md text-shade-50 mb-6">
+                Showing {treatments.length} treatment{treatments.length !== 1 ? "s" : ""}
+                {categoryFilter && <> in <strong className="text-ink">{categoryFilter}</strong></>}
+                {normalizedQuery && <> matching &ldquo;<strong className="text-ink">{query}</strong>&rdquo;</>}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                {treatments.map((treatment) => (
+                  <Link key={treatment.slug} href={`/treatment-package/${treatment.slug}`} className="group overflow-hidden bg-canvas-cream rounded-xl border border-hairline-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300">
+                    <div className="relative h-36">
+                      <Image
+                        src={treatment.image_url || "https://satyughealthcare.com/uploads/treatment_package/216514607672.png"}
+                        alt={treatment.name}
+                        fill
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute top-2 left-2">
+                        <span className="inline-flex items-center bg-white/90 backdrop-blur-sm text-ink text-[10px] font-semibold px-2 py-0.5 rounded-full">
+                          {treatment.category}
+                        </span>
+                      </div>
                     </div>
-                    <p className="text-caption text-shade-40 mt-1">In India</p>
-                    <div className="mt-3 pt-3 border-t border-hairline-light">
-                      <p className="text-caption text-shade-50">US Cost: <span className="text-shade-60 line-through">${treatment.usCost.toLocaleString()}</span></p>
+                    <div className="p-4">
+                      <h2 className="font-display text-heading-sm text-ink group-hover:text-shade-60 transition-colors line-clamp-2 min-h-[2.5rem]">{treatment.name}</h2>
+                      <div className="mt-3 flex items-baseline gap-1.5">
+                        <span className="font-display text-heading-lg text-ink">${treatment.costMin.toLocaleString()}</span>
+                        <span className="text-caption text-shade-40">- ${treatment.costMax.toLocaleString()}</span>
+                      </div>
+                      <p className="text-micro text-shade-40 mt-0.5">In India</p>
+                      <div className="mt-2 pt-2 border-t border-hairline-light flex items-center justify-between">
+                        <p className="text-micro text-shade-50">US: <span className="line-through">${treatment.usCost.toLocaleString()}</span></p>
+                        <span className="text-micro text-green-700 font-semibold">
+                          Save {Math.round((1 - treatment.costMax / treatment.usCost) * 100)}%
+                        </span>
+                      </div>
                     </div>
-                    <div className="mt-4 flex items-center text-sm text-ink font-medium group-hover:gap-3 transition-all">
-                      View Details <ArrowRight size={16} className="ml-1 group-hover:translate-x-0.5 transition-transform" />
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  </Link>
+                ))}
+              </div>
+            </>
           )}
         </div>
       </section>
