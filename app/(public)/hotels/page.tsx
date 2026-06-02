@@ -80,7 +80,7 @@ export default async function HotelsPage({
                 <div key={`${hotel.name}-${hotel.address}`} className="overflow-hidden bg-canvas-cream rounded-lg border border-hairline-light hover:shadow-elevation-3 transition-all">
                   <div className="relative h-44 bg-canvas-light">
                     <Image
-                      src={"photo_url" in hotel ? hotel.photo_url : "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg"}
+                      src={hotel.photo_url}
                       alt={hotel.name}
                       fill
                       className="object-cover"

@@ -1143,6 +1143,7 @@ export const fallbackHotels = [
     stars: 4,
     price: "$$$",
     near: "Medanta - The Medicity",
+    photo_url: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
   },
   {
     name: "Delhi Care Residency",
@@ -1150,6 +1151,7 @@ export const fallbackHotels = [
     stars: 3,
     price: "$$",
     near: "Apollo Hospitals Delhi",
+    photo_url: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80",
   },
   {
     name: "FMRI Patient Apartments",
@@ -1157,6 +1159,7 @@ export const fallbackHotels = [
     stars: 4,
     price: "$$$",
     near: "Fortis Memorial Research Institute",
+    photo_url: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80",
   },
   {
     name: "AIIMS Patient Lodge",
@@ -1164,6 +1167,7 @@ export const fallbackHotels = [
     stars: 2,
     price: "$",
     near: "All India Institute of Medical Sciences (AIIMS)",
+    photo_url: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80",
   },
   {
     name: "Fortis Escorts Guest House",
@@ -1171,6 +1175,7 @@ export const fallbackHotels = [
     stars: 3,
     price: "$$",
     near: "Fortis Escorts Heart Institute",
+    photo_url: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=80",
   },
   {
     name: "Max Saket International Stay",
@@ -1178,6 +1183,7 @@ export const fallbackHotels = [
     stars: 4,
     price: "$$$",
     near: "Max Super Speciality Hospital Saket",
+    photo_url: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80",
   },
   {
     name: "BLK Patient Comfort Inn",
@@ -1185,6 +1191,7 @@ export const fallbackHotels = [
     stars: 3,
     price: "$$",
     near: "BLK-Max Super Speciality Hospital",
+    photo_url: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80",
   },
   {
     name: "Artemis Recovery Residency",
@@ -1192,6 +1199,7 @@ export const fallbackHotels = [
     stars: 4,
     price: "$$$",
     near: "Artemis Hospital Gurugram",
+    photo_url: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80",
   },
   {
     name: "Sir Ganga Ram Guest Rooms",
@@ -1199,6 +1207,7 @@ export const fallbackHotels = [
     stars: 3,
     price: "$$",
     near: "Sir Ganga Ram Hospital",
+    photo_url: "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80",
   },
   {
     name: "Dwarka Medistay",
@@ -1206,6 +1215,7 @@ export const fallbackHotels = [
     stars: 3,
     price: "$$",
     near: "Manipal Hospital Dwarka",
+    photo_url: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80",
   },
 ];
 
