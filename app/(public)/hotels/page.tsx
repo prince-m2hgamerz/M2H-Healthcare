@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Star } from "lucide-react";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { fallbackHotels } from "@/lib/fallback-data";
 import PageHero from "@/components/layout/PageHero";
 import SearchInput from "@/components/layout/SearchInput";
@@ -18,43 +17,11 @@ export default async function HotelsPage({
 }: {
   searchParams?: { q?: string };
 }) {
-  const supabase = await createServerSupabaseClient();
-  const [{ data: raw }, images] = await Promise.all([
-    supabase.from("hotels").select("*").limit(50),
-    getSiteImages(),
-  ]);
+  const images = await getSiteImages();
   const query = typeof searchParams?.q === "string" ? searchParams.q.trim() : "";
   const normalizedQuery = query.toLowerCase();
 
-  const hotelFallbackImages = [
-    "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
-    "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80",
-    "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80",
-    "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80",
-    "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=80",
-    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80",
-    "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80",
-    "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80",
-    "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80",
-    "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80",
-    "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=80",
-    "https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=600&q=80",
-    "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&q=80",
-    "https://images.unsplash.com/photo-1606402179428-a57976d71fa4?w=600&q=80",
-    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80",
-  ];
-
-  const fetchedHotels = raw?.map((hotel, index) => ({
-    name: hotel.name,
-    address: hotel.address,
-    stars: hotel.stars || 3,
-    price: hotel.price_range || "$$",
-    near: "",
-    description: hotel.description || "",
-    photo_url: hotel.photo_url || hotelFallbackImages[index % hotelFallbackImages.length],
-  })) || [];
-
-  const allHotels = fetchedHotels.length > 0 ? fetchedHotels : fallbackHotels;
+  const allHotels = fallbackHotels;
   const hotels = normalizedQuery
     ? allHotels.filter((hotel) =>
         [hotel.name, hotel.address, hotel.near]
