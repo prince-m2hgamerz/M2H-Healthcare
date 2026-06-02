@@ -41,13 +41,13 @@ const patientLinks = [
 ];
 
 export default function Footer() {
-  const { site_name, contact_phone, contact_email } = useSiteSettings();
+  const { site_name, contact_phone, contact_email, facebook_url, instagram_url, youtube_url } = useSiteSettings();
 
   return (
     <footer className="bg-canvas-night text-on-primary border-t border-hairline-dark">
-      <div className="container-cinematic py-16 lg:py-huge">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-          <div className="sm:col-span-2 lg:col-span-1">
+      <div className="container-cinematic py-12 sm:py-16 lg:py-huge">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_3fr] gap-10 lg:gap-12">
+          <div>
             <Link href="/" className="font-display text-heading-lg tracking-wide">
               {site_name}
             </Link>
@@ -69,72 +69,85 @@ export default function Footer() {
                 <a href={`mailto:${contact_email}`} className="hover:text-on-primary transition-colors">{contact_email}</a>
               </div>
             </div>
+            <div className="flex items-center gap-3 mt-6">
+              <a href={facebook_url} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-hairline-dark flex items-center justify-center text-link-cool-2 hover:text-on-primary hover:bg-shade-60 transition-colors" aria-label="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href={instagram_url} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-hairline-dark flex items-center justify-center text-link-cool-2 hover:text-on-primary hover:bg-shade-60 transition-colors" aria-label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href={youtube_url} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-hairline-dark flex items-center justify-center text-link-cool-2 hover:text-on-primary hover:bg-shade-60 transition-colors" aria-label="YouTube">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
           </div>
 
-          <div>
-            <h4 className="text-eyebrow-cap uppercase tracking-widest text-link-cool-3 mb-4">
-              Treatments
-            </h4>
-            <ul className="space-y-2.5">
-              {treatmentLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div>
+              <h4 className="text-eyebrow-cap uppercase tracking-widest text-link-cool-3 mb-4">
+                Treatments
+              </h4>
+              <ul className="space-y-3">
+                {treatmentLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <h4 className="text-eyebrow-cap uppercase tracking-widest text-link-cool-3 mb-4">
-              Quick Links
-            </h4>
-            <ul className="space-y-2.5">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div>
+              <h4 className="text-eyebrow-cap uppercase tracking-widest text-link-cool-3 mb-4">
+                Quick Links
+              </h4>
+              <ul className="space-y-3">
+                {quickLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <h4 className="text-eyebrow-cap uppercase tracking-widest text-link-cool-3 mb-4">
-              For Patients
-            </h4>
-            <ul className="space-y-2.5">
-              {patientLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div>
+              <h4 className="text-eyebrow-cap uppercase tracking-widest text-link-cool-3 mb-4">
+                For Patients
+              </h4>
+              <ul className="space-y-3">
+                {patientLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <h4 className="text-eyebrow-cap uppercase tracking-widest text-link-cool-3 mb-4">
-              Specialities
-            </h4>
-            <ul className="space-y-2.5">
-              <li><Link href="/speciality/cardiology" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Cardiology</Link></li>
-              <li><Link href="/speciality/orthopedics" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Orthopedics</Link></li>
-              <li><Link href="/speciality/neurology" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Neurology</Link></li>
-              <li><Link href="/speciality/oncology" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Oncology</Link></li>
-              <li><Link href="/speciality/gastroenterology" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Gastroenterology</Link></li>
-              <li><Link href="/speciality/nephrology" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Nephrology</Link></li>
-            </ul>
+            <div>
+              <h4 className="text-eyebrow-cap uppercase tracking-widest text-link-cool-3 mb-4">
+                Specialities
+              </h4>
+              <ul className="space-y-3">
+                <li><Link href="/speciality/cardiology" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Cardiology</Link></li>
+                <li><Link href="/speciality/orthopedics" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Orthopedics</Link></li>
+                <li><Link href="/speciality/neurology" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Neurology</Link></li>
+                <li><Link href="/speciality/oncology" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Oncology</Link></li>
+                <li><Link href="/speciality/gastroenterology" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Gastroenterology</Link></li>
+                <li><Link href="/speciality/nephrology" className="text-caption text-link-cool-2 hover:text-on-primary transition-colors">Nephrology</Link></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-hairline-dark py-6">
-        <div className="container-cinematic flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-micro text-link-cool-2 text-center md:text-left">
+      <div className="border-t border-hairline-dark py-5 sm:py-6 px-4">
+        <div className="container-cinematic flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+          <p className="text-micro text-link-cool-2">
             &copy; {new Date().getFullYear()} {site_name}. Made with <Heart size={10} className="inline text-aloe-10" /> for better healthcare.
           </p>
           <div className="flex gap-6">
