@@ -910,6 +910,8 @@ export const fallbackTreatments = [
     category: "Orthopedics",
     description:
       "Total and partial knee replacement options with leading orthopedic surgeons, modern implants, physiotherapy, and recovery support.",
+  
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
   },
   {
     name: "Hip Replacement",
@@ -920,6 +922,8 @@ export const fallbackTreatments = [
     category: "Orthopedics",
     description:
       "Hip replacement surgery packages covering pre-surgery evaluation, implant selection, hospital stay, and rehabilitation guidance.",
+  
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
   },
   {
     name: "Spine Surgery",
@@ -930,6 +934,8 @@ export const fallbackTreatments = [
     category: "Neurology",
     description:
       "Advanced spine surgery options for disc, deformity, and nerve compression conditions with multidisciplinary care planning.",
+  
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/146787701787.png",
   },
   {
     name: "Hair Transplant",
@@ -940,6 +946,8 @@ export const fallbackTreatments = [
     category: "Cosmetic",
     description:
       "FUE and FUT hair restoration options with transparent graft planning, procedure-day support, and post-treatment care instructions.",
+  
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
   },
   {
     name: "IVF Treatment",
@@ -950,6 +958,8 @@ export const fallbackTreatments = [
     category: "Fertility",
     description:
       "Fertility treatment coordination including IVF cycles, diagnostics, embryo transfer, and specialist follow-up.",
+  
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
   },
   {
     name: "Bariatric Surgery",
@@ -960,6 +970,8 @@ export const fallbackTreatments = [
     category: "Gastroenterology",
     description:
       "Weight-loss surgery options including gastric sleeve and bypass with diet planning, pre-op checks, and recovery guidance.",
+  
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/102136737103.png",
   },
   {
     name: "Heart Bypass Surgery",
@@ -970,6 +982,8 @@ export const fallbackTreatments = [
     category: "Cardiology",
     description:
       "CABG treatment planning with cardiac surgeon opinions, pre-operative evaluation, ICU stay guidance, and rehabilitation support.",
+  
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
   },
   {
     name: "Angioplasty",
@@ -980,6 +994,8 @@ export const fallbackTreatments = [
     category: "Cardiology",
     description:
       "Coronary angioplasty and stent options with transparent device-cost discussion and cardiology follow-up planning.",
+  
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
   },
   {
     name: "Bone Marrow Transplant",
@@ -990,6 +1006,8 @@ export const fallbackTreatments = [
     category: "Oncology",
     description:
       "Transplant evaluation coordination for hematology patients, including donor planning, hospital stay expectations, and infection-safety guidance.",
+  
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/510593914830.jpg",
   },
   {
     name: "Liver Transplant",
@@ -1000,6 +1018,8 @@ export const fallbackTreatments = [
     category: "Transplant",
     description:
       "Liver transplant opinion and hospital coordination for eligible patients, with donor evaluation and extended-stay planning.",
+  
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
   },
   {
     name: "Kidney Transplant",
@@ -1010,6 +1030,8 @@ export const fallbackTreatments = [
     category: "Transplant",
     description:
       "Kidney transplant coordination including nephrology review, donor compatibility guidance, hospital admission, and post-transplant follow-up.",
+  
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
   },
   {
     name: "Dental Implants",

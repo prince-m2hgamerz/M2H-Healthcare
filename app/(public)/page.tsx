@@ -71,6 +71,7 @@ export default async function HomePage() {
     usCost: Number(t.cost_usd_max) * 5 || 10000,
     slug: t.slug,
     category: t.category || "General",
+    image_url: t.image_url || null,
   })) || [];
 
   const testimonials = testimonialsRes.data?.map((t) => ({
@@ -108,7 +109,7 @@ export default async function HomePage() {
       <GetConsultation />
       <FeaturedHospitals hospitals={hospitals.length > 0 ? hospitals : fallbackHospitals} />
       <CostComparison imageUrl={images.image_home_cost} />
-      <TreatmentPackages treatments={treatments.length > 0 ? treatments : fallbackTreatments} images={images} />
+      <TreatmentPackages treatments={treatments.length > 0 ? treatments : fallbackTreatments} />
       <VideoTestimonials />
       <PatientTestimonials testimonials={testimonials.length > 0 ? testimonials : fallbackTestimonials} />
       <QuickInquiryForm />

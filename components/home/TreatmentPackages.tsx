@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { getTreatmentImage, SITE_IMAGE_DEFAULTS, type SiteImageKey } from "@/lib/site-images";
 
 interface Treatment {
   name: string;
@@ -13,6 +12,52 @@ interface Treatment {
   usCost: number;
   slug: string;
   category?: string;
+  image_url?: string | null;
+}
+
+// Real treatment images mapped by slug
+const treatmentImages: Record<string, string> = {
+  "knee-replacement": "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
+  "hip-replacement": "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
+  "spine-surgery": "https://satyughealthcare.com/uploads/treatment_package/146787701787.png",
+  "heart-bypass-surgery": "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
+  "angioplasty": "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
+  "bone-marrow-transplant": "https://satyughealthcare.com/uploads/treatment_package/510593914830.jpg",
+  "liver-transplant": "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
+  "kidney-transplant": "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
+  "ivf-treatment": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
+  "hair-transplant": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
+  "bariatric-surgery": "https://satyughealthcare.com/uploads/treatment_package/102136737103.png",
+  "dental-implants": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
+};
+
+// Fallback by category
+const categoryImages: Record<string, string> = {
+  "orthopedics": "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
+  "cardiology": "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
+  "neurology": "https://satyughealthcare.com/uploads/treatment_package/146787701787.png",
+  "oncology": "https://satyughealthcare.com/uploads/treatment_package/510593914830.jpg",
+  "fertility": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
+  "cosmetic": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
+  "gastroenterology": "https://satyughealthcare.com/uploads/treatment_package/102136737103.png",
+  "transplant": "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
+  "dental": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
+  "general": "https://satyughealthcare.com/uploads/treatment_package/216514607672.png",
+};
+
+const defaultImage = "https://satyughealthcare.com/uploads/treatment_package/216514607672.png";
+
+function getImage(treatment: Treatment): string {
+  // First priority: image_url from database
+  if (treatment.image_url) return treatment.image_url;
+  // Second: lookup by slug
+  if (treatmentImages[treatment.slug]) return treatmentImages[treatment.slug];
+  // Third: lookup by category
+  if (treatment.category && categoryImages[treatment.category.toLowerCase()]) {
+    return categoryImages[treatment.category.toLowerCase()];
+  }
+  // Fallback
+  return defaultImage;
 }
 
 const containerVariants = {
@@ -26,10 +71,9 @@ const itemVariants = {
 
 export default function TreatmentPackages({
   treatments = [],
-  images = SITE_IMAGE_DEFAULTS,
 }: {
   treatments?: Treatment[];
-  images?: Record<SiteImageKey, string>;
+  images?: Record<string, string>;
 }) {
   if (treatments.length === 0) return null;
   return (
@@ -64,10 +108,10 @@ export default function TreatmentPackages({
               <Link href={`/treatment-package/${t.slug}`} className="group block overflow-hidden bg-canvas-cream rounded-xl border border-hairline-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300">
                 <div className="relative h-40">
                   <Image
-                    src={getTreatmentImage(images, t.slug, t.category)}
+                    src={getImage(t)}
                     alt={t.name}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6">
