@@ -902,63 +902,113 @@ export const fallbackHospitals = [
 
 export const fallbackTreatments = [
   {
+    name: "Liver Transplant Surgery",
+    costMin: 28000,
+    costMax: 45000,
+    usCost: 180000,
+    slug: "liver-transplant",
+    category: "Transplant",
+    description:
+      "Living donor and cadaveric liver transplant at NABH accredited hospitals in India. Includes pre-transplant evaluation, surgery, ICU care, and post-transplant follow-up.",
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
+  },
+  {
+    name: "Kidney Transplant",
+    costMin: 13000,
+    costMax: 18000,
+    usCost: 75000,
+    slug: "kidney-transplant",
+    category: "Transplant",
+    description:
+      "Kidney transplant surgery with living or cadaveric donor at top hospitals. Package includes donor evaluation, surgery, immunosuppression planning, and recovery.",
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/884152601829.jpg",
+  },
+  {
+    name: "Bone Marrow Transplant",
+    costMin: 18000,
+    costMax: 35000,
+    usCost: 250000,
+    slug: "bone-marrow-transplant",
+    category: "Oncology",
+    description:
+      "Allogeneic and autologous BMT for leukemia, lymphoma, and blood disorders. Includes HLA matching, conditioning, transplant, and engraftment monitoring.",
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/510593914830.jpg",
+  },
+  {
     name: "Knee Replacement",
-    costMin: 6500,
-    costMax: 8500,
+    costMin: 5000,
+    costMax: 7000,
     usCost: 45000,
     slug: "knee-replacement",
     category: "Orthopedics",
     description:
-      "Total and partial knee replacement options with leading orthopedic surgeons, modern implants, physiotherapy, and recovery support.",
-  
+      "Total and partial knee replacement with imported implants at JCI hospitals. Includes pre-op assessment, surgery, physiotherapy, and discharge planning.",
     image_url: "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
   },
   {
     name: "Hip Replacement",
-    costMin: 7000,
-    costMax: 9500,
+    costMin: 6000,
+    costMax: 8000,
     usCost: 50000,
     slug: "hip-replacement",
     category: "Orthopedics",
     description:
-      "Hip replacement surgery packages covering pre-surgery evaluation, implant selection, hospital stay, and rehabilitation guidance.",
-  
-    image_url: "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
+      "Total hip replacement and hip resurfacing with latest prosthetics. Includes hospital stay, rehabilitation, and follow-up care.",
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/001428941542.jpg",
   },
   {
     name: "Spine Surgery",
-    costMin: 8000,
-    costMax: 12000,
+    costMin: 5000,
+    costMax: 10000,
     usCost: 65000,
     slug: "spine-surgery",
-    category: "Neurology",
+    category: "Orthopedics",
     description:
-      "Advanced spine surgery options for disc, deformity, and nerve compression conditions with multidisciplinary care planning.",
-  
+      "Minimally invasive spine surgery, disc replacement, spinal fusion, and deformity correction by expert spine surgeons.",
     image_url: "https://satyughealthcare.com/uploads/treatment_package/146787701787.png",
   },
   {
-    name: "Hair Transplant",
-    costMin: 2000,
-    costMax: 4000,
-    usCost: 15000,
-    slug: "hair-transplant",
-    category: "Cosmetic",
+    name: "Heart Bypass Surgery (CABG)",
+    costMin: 7000,
+    costMax: 10000,
+    usCost: 100000,
+    slug: "heart-bypass-surgery",
+    category: "Cardiology",
     description:
-      "FUE and FUT hair restoration options with transparent graft planning, procedure-day support, and post-treatment care instructions.",
-  
-    image_url: "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
+      "Coronary artery bypass grafting including on-pump and off-pump techniques. Includes pre-op evaluation, ICU stay, and cardiac rehabilitation.",
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
+  },
+  {
+    name: "Angioplasty and Stenting",
+    costMin: 3500,
+    costMax: 6000,
+    usCost: 30000,
+    slug: "angioplasty",
+    category: "Cardiology",
+    description:
+      "Coronary angioplasty with drug-eluting stent placement. Includes cardiac catheterization, stent procedure, monitoring, and follow-up.",
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/796098408516.jpg",
   },
   {
     name: "IVF Treatment",
     costMin: 3000,
-    costMax: 6000,
+    costMax: 5000,
     usCost: 20000,
     slug: "ivf-treatment",
     category: "Fertility",
     description:
-      "Fertility treatment coordination including IVF cycles, diagnostics, embryo transfer, and specialist follow-up.",
-  
+      "Complete IVF cycle including ovarian stimulation, egg retrieval, embryo culture, transfer, and pregnancy testing at top fertility centers.",
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
+  },
+  {
+    name: "Hair Transplant",
+    costMin: 1500,
+    costMax: 3000,
+    usCost: 15000,
+    slug: "hair-transplant",
+    category: "Cosmetic",
+    description:
+      "FUE and FUT hair transplant with natural results. Includes consultation, graft planning, procedure, and post-care instructions.",
     image_url: "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
   },
   {
@@ -969,99 +1019,52 @@ export const fallbackTreatments = [
     slug: "bariatric-surgery",
     category: "Gastroenterology",
     description:
-      "Weight-loss surgery options including gastric sleeve and bypass with diet planning, pre-op checks, and recovery guidance.",
-  
+      "Gastric sleeve, gastric bypass, and mini gastric bypass. Includes nutritionist consultation, surgery, and long-term diet planning.",
     image_url: "https://satyughealthcare.com/uploads/treatment_package/102136737103.png",
   },
   {
-    name: "Heart Bypass Surgery",
-    costMin: 7000,
+    name: "Brain Tumor Surgery",
+    costMin: 6500,
     costMax: 10000,
-    usCost: 100000,
-    slug: "heart-bypass-surgery",
-    category: "Cardiology",
+    usCost: 80000,
+    slug: "brain-tumor-surgery",
+    category: "Neurology",
     description:
-      "CABG treatment planning with cardiac surgeon opinions, pre-operative evaluation, ICU stay guidance, and rehabilitation support.",
-  
-    image_url: "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
+      "Craniotomy and minimally invasive brain tumor removal with neuro-navigation guided surgery and ICU care by experienced neurosurgeons.",
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/216514607672.png",
   },
   {
-    name: "Angioplasty",
-    costMin: 3500,
-    costMax: 6500,
-    usCost: 30000,
-    slug: "angioplasty",
+    name: "Aortic Valve Replacement",
+    costMin: 8000,
+    costMax: 12000,
+    usCost: 80000,
+    slug: "aortic-valve-replacement",
     category: "Cardiology",
     description:
-      "Coronary angioplasty and stent options with transparent device-cost discussion and cardiology follow-up planning.",
-  
-    image_url: "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
+      "Surgical and transcatheter aortic valve replacement (TAVR/SAVR). Includes cardiac evaluation and post-operative monitoring.",
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/816018845104.jpg",
   },
   {
-    name: "Bone Marrow Transplant",
-    costMin: 18000,
-    costMax: 35000,
-    usCost: 250000,
-    slug: "bone-marrow-transplant",
+    name: "Oncology Surgery",
+    costMin: 5000,
+    costMax: 15000,
+    usCost: 80000,
+    slug: "oncology-surgery",
     category: "Oncology",
     description:
-      "Transplant evaluation coordination for hematology patients, including donor planning, hospital stay expectations, and infection-safety guidance.",
-  
-    image_url: "https://satyughealthcare.com/uploads/treatment_package/510593914830.jpg",
+      "Surgical oncology for breast, lung, colon, and stomach cancers. Includes tumor board review, surgery, and chemo planning.",
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/786610918089.jpg",
   },
   {
-    name: "Liver Transplant",
-    costMin: 28000,
-    costMax: 45000,
-    usCost: 350000,
-    slug: "liver-transplant",
-    category: "Transplant",
+    name: "Scoliosis Correction Surgery",
+    costMin: 8000,
+    costMax: 15000,
+    usCost: 100000,
+    slug: "scoliosis-surgery",
+    category: "Orthopedics",
     description:
-      "Liver transplant opinion and hospital coordination for eligible patients, with donor evaluation and extended-stay planning.",
-  
-    image_url: "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
-  },
-  {
-    name: "Kidney Transplant",
-    costMin: 14000,
-    costMax: 22000,
-    usCost: 250000,
-    slug: "kidney-transplant",
-    category: "Transplant",
-    description:
-      "Kidney transplant coordination including nephrology review, donor compatibility guidance, hospital admission, and post-transplant follow-up.",
-  
-    image_url: "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
-  },
-  {
-    name: "Dental Implants",
-    costMin: 800,
-    costMax: 3000,
-    usCost: 12000,
-    slug: "dental-implants",
-    category: "Dental",
-    description:
-      "Single and full-mouth implant treatment planning with dental imaging, implant-system choices, and staged-visit coordination.",
-  },
-  {
-    name: "Robotic Prostate Surgery",
-    costMin: 6500,
-    costMax: 9500,
-    usCost: 55000,
-    slug: "robotic-prostate-surgery",
-    category: "Urology",
-    description:
-      "Robotic urology surgery options with specialist review, diagnostic workup coordination, and recovery-stay support.",
-  },
-  {
-    name: "Cataract Surgery",
-    costMin: 900,
-    costMax: 2500,
-    usCost: 7000,
-    slug: "cataract-surgery",
-    category: "Ophthalmology",
-    description:
-      "Cataract treatment coordination with lens-option discussion, day-care procedure planning, and follow-up appointment support.",
+      "Spinal deformity correction for adolescent and adult scoliosis with advanced instrumentation and comprehensive rehabilitation.",
+    image_url: "https://satyughealthcare.com/uploads/treatment_package/728155135898.jpg",
   },
 ];
 
