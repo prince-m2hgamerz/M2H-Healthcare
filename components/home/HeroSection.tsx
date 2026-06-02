@@ -24,7 +24,7 @@ interface HeroSectionProps {
   imageUrl?: string;
 }
 
-export default function HeroSection({ imageUrl = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80" }: HeroSectionProps) {
+export default function HeroSection({ imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg/1920px-AIIMS_-New_Delhi%27s_Ward_Block.jpg" }: HeroSectionProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("cost");
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,7 +47,7 @@ export default function HeroSection({ imageUrl = "https://images.unsplash.com/ph
       <div className="absolute inset-0">
         <Image
           src={imageUrl}
-          alt="Modern hospital interior - World-class medical facilities in India"
+          alt="AIIMS Hospital New Delhi - India's Premier Medical Institution"
           fill
           className="object-cover scale-105 blur-[2px]"
           priority

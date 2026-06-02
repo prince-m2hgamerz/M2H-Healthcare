@@ -9,10 +9,6 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'satyughealthcare.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'www.vaidam.com',
       },
       {

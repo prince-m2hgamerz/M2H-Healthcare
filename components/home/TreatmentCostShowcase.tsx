@@ -11,14 +11,14 @@ const treatmentCosts = [
     cost: "$7,000 - $10,000",
     saving: "Save up to 90%",
     slug: "heart-bypass-surgery",
-    image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=600&q=80",
+    image: "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
   },
   {
     name: "Knee Replacement Surgery",
     cost: "$6,500 - $8,500",
     saving: "Save up to 80%",
     slug: "knee-replacement",
-    image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80",
+    image: "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
   },
   {
     name: "Liver Transplant",
@@ -39,7 +39,7 @@ const treatmentCosts = [
     cost: "$8,000 - $12,000",
     saving: "Save up to 82%",
     slug: "spine-surgery",
-    image: "https://images.unsplash.com/photo-1666214280577-5765a899a3d9?w=600&q=80",
+    image: "https://satyughealthcare.com/uploads/treatment_package/146787701787.png",
   },
   {
     name: "IVF Treatment",
@@ -53,14 +53,14 @@ const treatmentCosts = [
     cost: "$6,500 - $10,000",
     saving: "Save up to 85%",
     slug: "craniotomy-brain-tumor-surgery",
-    image: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&q=80",
+    image: "https://satyughealthcare.com/uploads/treatment_package/216514607672.png",
   },
   {
     name: "Cardiac Surgery (Pediatric)",
     cost: "$7,500 - $12,000",
     saving: "Save up to 88%",
     slug: "heart-bypass-surgery",
-    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80",
+    image: "https://satyughealthcare.com/uploads/treatment_package/102136737103.png",
   },
 ];
 
