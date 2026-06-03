@@ -25,7 +25,7 @@ export default function HospitalCard({
     <div className="bg-white border border-[#e2e8f0] rounded-lg overflow-hidden hover:shadow-md transition-shadow">
       <div className="relative h-48 bg-[#f8faf8]">
         {imageUrl ? (
-          <Image src={imageUrl} alt={name} fill className="object-cover" />
+          <Image src={imageUrl} alt={name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
         ) : (
           <div className="flex items-center justify-center h-full">
             <Building2 size={48} className="text-gray-300" />

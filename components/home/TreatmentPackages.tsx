@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import HorizontalSlider from "@/components/shared/HorizontalSlider";
 
 interface Treatment {
   name: string;
@@ -15,37 +16,35 @@ interface Treatment {
   image_url?: string | null;
 }
 
-// Real treatment images mapped by slug
 const treatmentImages: Record<string, string> = {
-  "knee-replacement": "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
-  "hip-replacement": "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
-  "spine-surgery": "https://satyughealthcare.com/uploads/treatment_package/146787701787.png",
-  "heart-bypass-surgery": "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
-  "angioplasty": "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
-  "bone-marrow-transplant": "https://satyughealthcare.com/uploads/treatment_package/510593914830.jpg",
-  "liver-transplant": "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
-  "kidney-transplant": "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
-  "ivf-treatment": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
-  "hair-transplant": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
-  "bariatric-surgery": "https://satyughealthcare.com/uploads/treatment_package/102136737103.png",
-  "dental-implants": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
+  "knee-replacement": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80",
+  "hip-replacement": "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&q=80",
+  "spine-surgery": "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80",
+  "heart-bypass-surgery": "https://images.unsplash.com/photo-1628348070889-cb656235b4eb?w=600&q=80",
+  "angioplasty": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80",
+  "bone-marrow-transplant": "https://images.unsplash.com/photo-1559757175-7cb057faba93?w=600&q=80",
+  "liver-transplant": "https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&q=80",
+  "kidney-transplant": "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=600&q=80",
+  "ivf-treatment": "https://images.unsplash.com/photo-1578496479914-7ef3b0193be3?w=600&q=80",
+  "hair-transplant": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&q=80",
+  "bariatric-surgery": "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80",
+  "dental-implants": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80",
 };
 
-// Fallback by category
 const categoryImages: Record<string, string> = {
-  "orthopedics": "https://satyughealthcare.com/uploads/treatment_package/318445058417.jpg",
-  "cardiology": "https://satyughealthcare.com/uploads/treatment_package/155192473072.png",
-  "neurology": "https://satyughealthcare.com/uploads/treatment_package/146787701787.png",
-  "oncology": "https://satyughealthcare.com/uploads/treatment_package/510593914830.jpg",
-  "fertility": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
-  "cosmetic": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
-  "gastroenterology": "https://satyughealthcare.com/uploads/treatment_package/102136737103.png",
-  "transplant": "https://satyughealthcare.com/uploads/treatment_package/071607183870.png",
-  "dental": "https://satyughealthcare.com/uploads/treatment_package/274716752857.png",
-  "general": "https://satyughealthcare.com/uploads/treatment_package/216514607672.png",
+  "orthopedics": "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&q=80",
+  "cardiology": "https://images.unsplash.com/photo-1628348070889-cb656235b4eb?w=600&q=80",
+  "neurology": "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80",
+  "oncology": "https://images.unsplash.com/photo-1559757175-7cb057faba93?w=600&q=80",
+  "fertility": "https://images.unsplash.com/photo-1578496479914-7ef3b0193be3?w=600&q=80",
+  "cosmetic": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&q=80",
+  "gastroenterology": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80",
+  "transplant": "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=600&q=80",
+  "dental": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80",
+  "general": "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80",
 };
 
-const defaultImage = "https://satyughealthcare.com/uploads/treatment_package/216514607672.png";
+const defaultImage = "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80";
 
 function getImage(treatment: Treatment): string {
   // First priority: image_url from database
@@ -59,15 +58,6 @@ function getImage(treatment: Treatment): string {
   // Fallback
   return defaultImage;
 }
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function TreatmentPackages({
   treatments = [],
@@ -96,39 +86,32 @@ export default function TreatmentPackages({
           </Link>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <HorizontalSlider>
           {treatments.map((t) => (
-            <motion.div key={t.slug} variants={itemVariants}>
-              <Link href={`/treatment-package/${t.slug}`} className="group block overflow-hidden bg-canvas-cream rounded-xl border border-hairline-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300">
-                <div className="relative h-40">
-                  <Image
-                    src={getImage(t)}
-                    alt={t.name}
-                    fill
-                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                  />
+            <Link key={t.slug} href={`/treatment-package/${t.slug}`} className="group block overflow-hidden bg-canvas-cream rounded-xl border border-hairline-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300">
+              <div className="relative h-40">
+                <Image
+                  src={getImage(t)}
+                  alt={t.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="font-display text-heading-lg text-ink group-hover:text-shade-60 transition-colors">{t.name}</h3>
+                <div className="mt-4 flex items-baseline gap-2">
+                  <span className="font-display text-display-md text-ink">${t.costMin.toLocaleString()}</span>
+                  <span className="text-body-md text-shade-40">- ${t.costMax.toLocaleString()}</span>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-display text-heading-lg text-ink group-hover:text-shade-60 transition-colors">{t.name}</h3>
-                  <div className="mt-4 flex items-baseline gap-2">
-                    <span className="font-display text-display-md text-ink">${t.costMin.toLocaleString()}</span>
-                    <span className="text-body-md text-shade-40">- ${t.costMax.toLocaleString()}</span>
-                  </div>
-                  <p className="text-caption text-shade-40 mt-1">In India</p>
-                  <div className="mt-3 pt-3 border-t border-hairline-light">
-                    <p className="text-caption text-shade-50">Comparable cost in US: <span className="text-shade-60 line-through">${t.usCost.toLocaleString()}</span></p>
-                  </div>
+                <p className="text-caption text-shade-40 mt-1">In India</p>
+                <div className="mt-3 pt-3 border-t border-hairline-light">
+                  <p className="text-caption text-shade-50">Comparable cost in US: <span className="text-shade-60 line-through">${t.usCost.toLocaleString()}</span></p>
                 </div>
-              </Link>
-            </motion.div>
+              </div>
+            </Link>
           ))}
-        </motion.div>
+        </HorizontalSlider>
       </div>
     </section>
   );

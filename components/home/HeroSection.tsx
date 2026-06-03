@@ -49,6 +49,7 @@ export default function HeroSection({ imageUrl = "https://upload.wikimedia.org/w
           src={imageUrl}
           alt="AIIMS Hospital New Delhi - India's Premier Medical Institution"
           fill
+          sizes="100vw"
           className="object-cover scale-105 blur-[2px]"
           priority
         />

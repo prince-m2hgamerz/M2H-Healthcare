@@ -13,7 +13,7 @@ export default function PageHero({ eyebrow, title, description, imageUrl, childr
     <section className="relative overflow-hidden bg-canvas-night text-on-primary">
       {imageUrl && (
         <div className="absolute inset-0">
-          <Image src={imageUrl} alt="" fill priority className="object-cover opacity-25" />
+          <Image src={imageUrl} alt="" fill sizes="100vw" priority className="object-cover opacity-25" />
         </div>
       )}
       <div className="absolute inset-0 bg-canvas-night/80" />

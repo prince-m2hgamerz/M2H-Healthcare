@@ -7,8 +7,9 @@ import { localBusinessSchema, breadcrumbSchema } from "@/lib/json-ld";
 import { getSiteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Us | Asians Healthcare",
   description: "Contact Asians Healthcare for medical treatment in India. Get a free consultation, cost estimate, and treatment plan within 24 hours.",
+  alternates: { canonical: "https://asianshealthcare.com/contact-us" },
 };
 
 const responseSteps = [

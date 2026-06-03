@@ -52,6 +52,7 @@ export default async function DoctorDetailPage({ params }: { params: Promise<{ s
                 src={doctor.photo_url}
                 alt={doctor.name}
                 fill
+                sizes="160px"
                 className="object-cover object-top"
               />
             </div>

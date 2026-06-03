@@ -12,8 +12,9 @@ import { getSiteImages } from "@/lib/site-settings";
 import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 
 export const metadata: Metadata = {
-  title: "Partner Hospitals in India",
+  title: "Partner Hospitals in India | Asians Healthcare",
   description: "Explore India's top JCI and NABH accredited hospitals for medical tourism. Apollo, Max, Artemis, BLK-Max, Sir Ganga Ram & more in Delhi NCR.",
+  alternates: { canonical: "https://asianshealthcare.com/hospitals" },
 };
 
 export default async function HospitalsPage({
@@ -118,6 +119,7 @@ export default async function HospitalsPage({
                       src={hospital.photo_url}
                       alt={hospital.name}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />

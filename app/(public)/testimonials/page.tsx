@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import { Star, Quote } from "lucide-react";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import PageHero from "@/components/layout/PageHero";
+import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbSchema } from "@/lib/json-ld";
 import { getSiteImages } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
-  title: "Patient Testimonials",
-  description: "Read what our patients from around the world say about their medical treatment experience in India.",
+  title: "Patient Testimonials | Asians Healthcare",
+  description: "Read real patient stories and reviews from international medical travelers who received treatment in India through Asians Healthcare.",
+  alternates: { canonical: "https://asianshealthcare.com/testimonials" },
 };
 
 export default async function TestimonialsPage() {
@@ -25,6 +29,11 @@ export default async function TestimonialsPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "Testimonials", url: "https://asianshealthcare.com/testimonials" },
+      ])} />
+      <BreadcrumbNav items={[{ label: "Testimonials", href: "/testimonials" }]} />
       <PageHero
         eyebrow="Patient Stories"
         title="Testimonials"

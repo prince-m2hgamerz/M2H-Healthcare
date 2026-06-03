@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Building2, MapPin } from "lucide-react";
 import Image from "next/image";
+import HorizontalSlider from "@/components/shared/HorizontalSlider";
 
 interface Hospital {
   name: string;
@@ -13,15 +14,6 @@ interface Hospital {
   slug: string;
   photo_url?: string;
 }
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
-};
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function FeaturedHospitals({ hospitals = [] }: { hospitals?: Hospital[] }) {
   if (hospitals.length === 0) return null;
@@ -45,41 +37,34 @@ export default function FeaturedHospitals({ hospitals = [] }: { hospitals?: Hosp
           </Link>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <HorizontalSlider>
           {hospitals.map((hospital) => (
-            <motion.div key={hospital.slug} variants={itemVariants}>
-              <Link href={`/hospitals/${hospital.slug}`} className="group block bg-canvas-light rounded-xl border border-hairline-light overflow-hidden hover:shadow-elevation-3 transition-all duration-300">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={hospital.photo_url || "https://safartibbi.com/wp-content/uploads/2022/11/apolo-1.jpg"}
-                    alt={hospital.name}
-                    fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute bottom-3 left-4">
-                    <span className="pill-tag !text-micro !px-2 !py-0.5">{hospital.accreditation}</span>
-                  </div>
+            <Link key={hospital.slug} href={`/hospitals/${hospital.slug}`} className="group block bg-canvas-light rounded-xl border border-hairline-light overflow-hidden hover:shadow-elevation-3 transition-all duration-300">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={hospital.photo_url || "https://safartibbi.com/wp-content/uploads/2022/11/apolo-1.jpg"}
+                  alt={hospital.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute bottom-3 left-4">
+                  <span className="pill-tag !text-micro !px-2 !py-0.5">{hospital.accreditation}</span>
                 </div>
-                <div className="p-5">
-                  <h3 className="font-display text-heading-lg text-ink group-hover:text-shade-60 transition-colors">{hospital.name}</h3>
-                  <div className="flex items-center gap-1 text-caption text-shade-40 mt-1">
-                    <MapPin size={14} /><span>{hospital.location}</span>
-                  </div>
-                  <div className="mt-3 flex items-center gap-2 text-caption text-shade-50">
-                    <Building2 size={14} /> <span>{hospital.beds} beds</span>
-                  </div>
+              </div>
+              <div className="p-5">
+                <h3 className="font-display text-heading-lg text-ink group-hover:text-shade-60 transition-colors">{hospital.name}</h3>
+                <div className="flex items-center gap-1 text-caption text-shade-40 mt-1">
+                  <MapPin size={14} /><span>{hospital.location}</span>
                 </div>
-              </Link>
-            </motion.div>
+                <div className="mt-3 flex items-center gap-2 text-caption text-shade-50">
+                  <Building2 size={14} /> <span>{hospital.beds} beds</span>
+                </div>
+              </div>
+            </Link>
           ))}
-        </motion.div>
+        </HorizontalSlider>
       </div>
     </section>
   );

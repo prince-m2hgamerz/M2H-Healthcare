@@ -27,7 +27,7 @@ export default function DoctorCard({
     <div className="bg-white border border-[#e2e8f0] rounded-lg overflow-hidden hover:shadow-md transition-shadow">
       <div className="relative h-52 bg-[#f8faf8]">
         {imageUrl ? (
-          <Image src={imageUrl} alt={name} fill className="object-cover" />
+          <Image src={imageUrl} alt={name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
         ) : (
           <div className="flex items-center justify-center h-full">
             <div className="w-20 h-20 bg-[#e8f5e9] rounded-full flex items-center justify-center">

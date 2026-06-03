@@ -36,7 +36,7 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error("Supabase inquiries insert error:", error);
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      return NextResponse.json({ error: "Failed to submit inquiry" }, { status: 400 });
     }
 
     const lead = data as Record<string, unknown>;

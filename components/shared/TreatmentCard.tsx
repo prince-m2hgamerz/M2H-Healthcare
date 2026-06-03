@@ -23,7 +23,7 @@ export default function TreatmentCard({
     <div className="bg-white border border-[#e2e8f0] rounded-lg overflow-hidden hover:shadow-md transition-shadow group">
       <div className="relative h-44 bg-[#f8faf8]">
         {imageUrl ? (
-          <Image src={imageUrl} alt={name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+          <Image src={imageUrl} alt={name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-300" />
         ) : (
           <div className="flex items-center justify-center h-full bg-gradient-to-br from-[#e8f5e9] to-[#f8faf8]">
             <span className="text-3xl font-bold text-[#0a7e3d]/30">

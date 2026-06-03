@@ -3,11 +3,25 @@ import Link from "next/link";
 import { ArrowLeft, Shield, Check } from "lucide-react";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
+import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbSchema } from "@/lib/json-ld";
 
-export const metadata: Metadata = {
-  title: "Insurance Details",
-  description: "View insurance coverage details for treatment in India.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const supabase = await createServerSupabaseClient().catch(() => null);
+  let insurance: { name: string; description: string } | null = null;
+  if (supabase) {
+    const { data } = await supabase.from("insurance_companies").select("name, description").eq("slug", slug).single();
+    insurance = data;
+  }
+  if (!insurance) return { title: "Insurance Partner | Asians Healthcare" };
+  return {
+    title: `${insurance.name} Coverage in India | Asians Healthcare`,
+    description: `${insurance.description || `Check if ${insurance.name} covers your medical treatment in India. Insurance acceptance at top hospitals in Delhi NCR.`}`,
+    alternates: { canonical: `https://asianshealthcare.com/insurance-company/${slug}` },
+  };
+}
 
 export default async function InsuranceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -18,6 +32,15 @@ export default async function InsuranceDetailPage({ params }: { params: Promise<
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "Insurance Partners", url: "https://asianshealthcare.com/insurance-company" },
+        { name: insurance.name, url: `https://asianshealthcare.com/insurance-company/${slug}` },
+      ])} />
+      <BreadcrumbNav items={[
+        { label: "Insurance Partners", href: "/insurance-company" },
+        { label: insurance.name, href: `/insurance-company/${slug}` },
+      ]} />
       <section className="bg-canvas-night text-on-primary py-20">
         <div className="container-cinematic">
           <Link href="/insurance-company" className="inline-flex items-center gap-2 text-link-cool-2 hover:text-on-primary mb-6 transition-colors">

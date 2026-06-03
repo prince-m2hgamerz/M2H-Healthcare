@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbSchema } from "@/lib/json-ld";
 import { fallbackBlogs } from "@/lib/fallback-data";
+import { sanitizeHtml } from "@/lib/sanitize";
 
 const siteUrl = "https://asianshealthcare.com";
 
@@ -102,10 +103,10 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
           <div className="max-w-reading-col mx-auto">
             {post.thumbnail_url && (
               <div className="relative mb-10 aspect-[16/9] overflow-hidden rounded-lg border border-hairline-light">
-                <Image src={post.thumbnail_url} alt={post.title} fill className="object-cover" priority />
+                <Image src={post.thumbnail_url} alt={post.title} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" priority />
               </div>
             )}
-            <div className="text-body-lg text-shade-50 leading-relaxed space-y-6" dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className="text-body-lg text-shade-50 leading-relaxed space-y-6" dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }} />
           </div>
         </div>
       </article>

@@ -97,6 +97,7 @@ export default async function BlogsPage({ searchParams }: { searchParams?: Promi
                       src={blog.thumbnail_url}
                       alt={blog.title}
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />

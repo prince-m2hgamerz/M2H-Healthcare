@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Award, Building2, MapPin } from "lucide-react";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { fallbackHospitals } from "@/lib/fallback-data";
+import { getHospitalBySlug } from "@/lib/server-queries";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { hospitalSchema, breadcrumbSchema } from "@/lib/json-ld";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const supabase = await createServerSupabaseClient();
-  const { data: rawHospital } = await supabase.from("hospitals").select("*").eq("slug", slug).single();
+  const { data: rawHospital } = await getHospitalBySlug(slug);
   const fallbackHospital = fallbackHospitals.find((hospital) => hospital.slug === slug);
   const hospital = rawHospital || fallbackHospital;
   if (!hospital) return { title: "Hospital Not Found" };
@@ -24,8 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function HospitalDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const supabase = await createServerSupabaseClient();
-  const { data: rawHospital } = await supabase.from("hospitals").select("*").eq("slug", slug).single();
+  const { data: rawHospital } = await getHospitalBySlug(slug);
   const fallbackHospital = fallbackHospitals.find((hospital) => hospital.slug === slug);
   const hospital = rawHospital
     ? {

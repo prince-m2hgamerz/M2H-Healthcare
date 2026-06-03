@@ -176,11 +176,10 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
                     <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl overflow-hidden shrink-0 border border-hairline-dark">
                       <Image
                         src={item.image}
-                        alt=""
+                        alt={item.title}
                         fill
                         className="object-cover"
                         sizes="48px"
-                        unoptimized
                       />
                     </div>
                   ) : (

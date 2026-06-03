@@ -1,124 +1,96 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FileText, Search, FileCheck, Plane, Car, Heart, Home } from "lucide-react";
 
-const steps = [
-  { icon: FileText, title: "Share Medical Details", description: "Send reports and medical history for specialist review." },
-  { icon: Search, title: "Review Opinion & Cost", description: "Compare relevant doctors, hospitals, and treatment estimates." },
-  { icon: FileCheck, title: "Receive Visa Invitation", description: "Get hospital invitation support for the medical visa process." },
-  { icon: Plane, title: "Plan Travel & Stay", description: "Coordinate arrival date, accommodation, and local transport." },
-  { icon: Car, title: "Airport Pickup", description: "Meet the local team and move directly to your hotel or hospital." },
-  { icon: Heart, title: "Begin Treatment", description: "Get appointment, admission, interpreter, and case-manager support." },
-  { icon: Home, title: "Return with Follow-Up", description: "Carry discharge papers, medication plan, and remote follow-up." },
-];
+const IMAGE_URL =
+  "https://satyughealthcare.com/assets/front/images/travelprocessdesktop.jpg";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
+const PROXY_URL = `/api/image-proxy?url=${encodeURIComponent(IMAGE_URL)}`;
 
 export default function TravelProcess() {
   return (
-    <section className="bg-canvas-light py-12 sm:py-huge overflow-hidden">
-      <div className="container-cinematic">
+    <section className="bg-gradient-to-b from-white to-slate-50 py-16 lg:py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10 sm:mb-16"
+          className="text-center mb-10 lg:mb-14"
         >
-          <span className="pill-tag mb-4 inline-block">Your Journey</span>
-          <h2 className="font-display text-display-md lg:text-display-lg text-ink mt-4">
+          <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+            Your Journey
+          </span>
+
+          <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900">
             Your Medical Journey to India
           </h2>
-          <p className="text-body-md sm:text-body-lg text-shade-50 max-w-2xl mx-auto mt-3 sm:mt-4">
-            A simple 7-step process for international patients travelling to India for treatment.
+
+          <p className="mt-4 max-w-3xl mx-auto text-slate-600 text-base md:text-lg">
+            A simple 7-step process for international patients travelling to
+            India for treatment.
           </p>
         </motion.div>
 
-        {/* Mobile: Vertical timeline */}
+        {/* Image Section */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="lg:hidden relative"
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          {/* Vertical line */}
-          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-hairline-light" />
+          <div className="bg-white rounded-[24px] md:rounded-[40px] overflow-hidden border border-slate-200 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+            {/* Mobile Notice */}
+            <div className="md:hidden text-center text-xs text-slate-500 py-3 border-b bg-slate-50">
+              Swipe horizontally to view the full journey →
+            </div>
 
-          <div className="space-y-6">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.title}
-                variants={itemVariants}
-                className="flex gap-4 relative"
-              >
-                {/* Step number + icon */}
-                <div className="relative z-10 shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-canvas-cream border-2 border-ink/10 flex items-center justify-center shadow-sm">
-                    <step.icon size={20} className="text-ink" />
-                  </div>
-                </div>
+            {/* Mobile */}
+            <div className="md:hidden overflow-x-auto overflow-y-hidden">
+              <div className="w-[1800px] overflow-hidden">
+                <img
+                  src={PROXY_URL}
+                  alt="Medical travel journey to India"
+                  loading="lazy"
+                  className="w-full h-auto block scale-[1.15] origin-center"
+                  style={{
+                    marginTop: "-8%",
+                    marginBottom: "-8%",
+                  }}
+                />
+              </div>
+            </div>
 
-                {/* Content */}
-                <div className="flex-1 pb-2 pt-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-ink bg-aloe-10 px-2 py-0.5 rounded-full">
-                      Step {i + 1}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-heading-md text-ink">{step.title}</h3>
-                  <p className="text-body-md text-shade-50 mt-1 leading-relaxed">{step.description}</p>
-                </div>
-              </motion.div>
-            ))}
+            {/* Desktop */}
+            <div className="hidden md:block overflow-hidden p-4">
+              <img
+                src={PROXY_URL}
+                alt="Medical travel journey to India"
+                loading="lazy"
+                className="w-full h-auto rounded-[28px] block"
+                style={{
+                  marginTop: "-4%",
+                  marginBottom: "-4%",
+                }}
+              />
+            </div>
           </div>
         </motion.div>
 
-        {/* Desktop: Alternating timeline */}
-        <div className="hidden lg:block relative">
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-hairline-light -translate-x-1/2" />
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="relative space-y-12"
-          >
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.title}
-                variants={itemVariants}
-                className={`flex items-center gap-12 ${i % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
-              >
-                <div className={`flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-ink bg-aloe-10 px-2.5 py-1 rounded-full mb-2">
-                    Step {i + 1}
-                  </span>
-                  <h3 className="font-display text-heading-lg text-ink mb-2">{step.title}</h3>
-                  <p className="text-body-md text-shade-50 max-w-md leading-relaxed inline-block">{step.description}</p>
-                </div>
-
-                <div className="relative z-10 shrink-0">
-                  <div className="w-14 h-14 rounded-full bg-canvas-cream border-2 border-ink/10 flex items-center justify-center shadow-elevation-1">
-                    <step.icon size={24} className="text-ink" />
-                  </div>
-                </div>
-
-                <div className="flex-1" />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+        {/* Footer Text */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-center mt-8"
+        >
+          <p className="text-slate-600 max-w-2xl mx-auto">
+            Our international patient care team assists you from consultation
+            and visa support to treatment, recovery, and your return home.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

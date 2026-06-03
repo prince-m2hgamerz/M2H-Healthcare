@@ -61,6 +61,7 @@ export default function WhoWeAre() {
                 src="https://safartibbi.com/wp-content/uploads/2022/11/apolo-1.jpg"
                 alt="Apollo Hospital New Delhi - JCI Accredited Healthcare in India"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-center"
               />
             </div>

@@ -64,7 +64,7 @@ export default function CostComparison({ imageUrl }: CostComparisonProps) {
           >
             {imageUrl && (
               <div className="relative h-56 border-b border-hairline-light">
-                <Image src={imageUrl} alt="Hospital care and treatment planning" fill className="object-cover" />
+                <Image src={imageUrl} alt="Hospital care and treatment planning" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
               </div>
             )}
             <div className="hidden grid-cols-[1.2fr_1fr_1fr_0.8fr] gap-0 border-b border-hairline-light bg-canvas-light px-4 py-3 text-caption uppercase tracking-wider text-shade-40 sm:grid">

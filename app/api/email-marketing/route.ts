@@ -1,9 +1,21 @@
 import { Resend } from "resend";
 import { createClient } from "@supabase/supabase-js";
+import { checkAdmin } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
 
+async function sendBatch(resend: Resend, from: string, batch: string[], subject: string, html: string) {
+  return Promise.allSettled(
+    batch.map((email) =>
+      resend.emails.send({ from, to: email, subject, html }).then((r) => ({ email, result: r })),
+    ),
+  );
+}
+
 export async function POST(request: Request) {
+  const unauthorized = await checkAdmin();
+  if (unauthorized) return unauthorized;
+
   try {
     const { subject, body } = await request.json();
     if (!subject || !body) {
@@ -69,22 +81,26 @@ export async function POST(request: Request) {
 </body>
 </html>`;
 
+    const BATCH_SIZE = 20;
     let sent = 0;
     let failed = 0;
     const errors: string[] = [];
 
-    for (const email of emails) {
-      try {
-        const result = await resend.emails.send({ from, to: email, subject, html });
-        if (result.error) {
-          failed++;
-          errors.push(`${email}: ${result.error.message}`);
+    for (let i = 0; i < emails.length; i += BATCH_SIZE) {
+      const batch = emails.slice(i, i + BATCH_SIZE);
+      const results = await sendBatch(resend, from, batch, subject, html);
+      for (const r of results) {
+        if (r.status === "fulfilled") {
+          if (r.value.result.error) {
+            failed++;
+            errors.push(`${r.value.email}: ${r.value.result.error.message}`);
+          } else {
+            sent++;
+          }
         } else {
-          sent++;
+          failed++;
+          errors.push(`Batch item: ${r.reason instanceof Error ? r.reason.message : String(r.reason)}`);
         }
-      } catch (err) {
-        failed++;
-        errors.push(`${email}: ${err instanceof Error ? err.message : String(err)}`);
       }
     }
 
@@ -97,11 +113,6 @@ export async function POST(request: Request) {
       sent,
       failed,
       errors: errors.length > 0 ? errors : undefined,
-      debug: {
-        from,
-        totalEmails: emails.length,
-        apiKeySet: !!process.env.RESEND_API_KEY,
-      },
     }, { status: sent > 0 ? 200 : 500 });
   } catch (err) {
     return Response.json({ error: String(err) }, { status: 500 });

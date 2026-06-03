@@ -8,8 +8,9 @@ import SearchInput from "@/components/layout/SearchInput";
 import { getSiteImages } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
-  title: "Hotels Near Hospitals",
-  description: "Find comfortable accommodation near partner hospitals for your medical stay in India.",
+  title: "Hotels Near Hospitals | Asians Healthcare",
+  description: "Find comfortable accommodation near partner hospitals for your medical stay in India. Ranging from budget to luxury hotels in Delhi NCR.",
+  alternates: { canonical: "https://asianshealthcare.com/hotels" },
 };
 
 export default async function HotelsPage({
@@ -70,6 +71,7 @@ export default async function HotelsPage({
                       src={hotel.photo_url}
                       alt={hotel.name}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover"
                     />
                   </div>

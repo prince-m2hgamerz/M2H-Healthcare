@@ -8,10 +8,25 @@ import { fallbackSpecialties } from "@/lib/fallback-data";
 import { getSiteImages } from "@/lib/site-settings";
 import { getSpecialtyImage } from "@/lib/site-images";
 
-export const metadata: Metadata = {
-  title: "Specialty Details",
-  description: "Learn about this medical specialty and available treatments in India.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const supabase = await createServerSupabaseClient().catch(() => null);
+  let specialty: { name: string; description: string } | null = null;
+  if (supabase) {
+    const { data } = await supabase.from("specialties").select("name, description").eq("slug", slug).single();
+    specialty = data;
+  }
+  if (!specialty) {
+    const fallback = fallbackSpecialties.find((s) => s.slug === slug);
+    if (fallback) specialty = { name: fallback.name, description: fallback.desc };
+  }
+  if (!specialty) return { title: "Specialty Not Found" };
+  return {
+    title: `${specialty.name} Treatment in India | Asians Healthcare`,
+    description: `${specialty.description || `Expert ${specialty.name} treatment in India at top hospitals with board-certified specialists.`}`,
+    alternates: { canonical: `https://asianshealthcare.com/speciality/${slug}` },
+  };
+}
 
 export default async function SpecialtyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -43,6 +58,7 @@ export default async function SpecialtyDetailPage({ params }: { params: Promise<
             src={getSpecialtyImage(images, slug)}
             alt=""
             fill
+            sizes="100vw"
             priority
             className="object-cover opacity-25"
           />

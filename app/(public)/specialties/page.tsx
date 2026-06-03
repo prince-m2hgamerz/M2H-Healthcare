@@ -4,8 +4,9 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { fallbackSpecialties } from "@/lib/fallback-data";
 
 export const metadata: Metadata = {
-  title: "Medical Specialties in India | Satyug Healthcare",
+  title: "Medical Specialties in India | Asians Healthcare",
   description: "Explore 30+ medical specialties available in India. Find specialists, treatments, and hospitals for your condition.",
+  alternates: { canonical: "https://asianshealthcare.com/specialties" },
 };
 
 const specialtyIcons: Record<string, string> = {

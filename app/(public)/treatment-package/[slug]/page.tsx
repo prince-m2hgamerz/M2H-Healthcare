@@ -2,18 +2,17 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Check, DollarSign } from "lucide-react";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { fallbackTreatments } from "@/lib/fallback-data";
+import { getTreatmentBySlug } from "@/lib/server-queries";
 import { getSiteImages } from "@/lib/site-settings";
 import { getTreatmentImage } from "@/lib/site-images";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { faqPageSchema, breadcrumbSchema } from "@/lib/json-ld";
+import { faqPageSchema, breadcrumbSchema, medicalProcedureSchema } from "@/lib/json-ld";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const supabase = await createServerSupabaseClient();
-  const { data: rawTreatment } = await supabase.from("treatments").select("*").eq("slug", slug).single();
+  const { data: rawTreatment } = await getTreatmentBySlug(slug);
   const fallbackTreatment = fallbackTreatments.find((treatment) => treatment.slug === slug);
   const treatment = rawTreatment || fallbackTreatment;
   if (!treatment) return { title: "Treatment Not Found" };
@@ -28,9 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function TreatmentDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const supabase = await createServerSupabaseClient();
   const [{ data: rawTreatment }, images] = await Promise.all([
-    supabase.from("treatments").select("*").eq("slug", slug).single(),
+    getTreatmentBySlug(slug),
     getSiteImages(),
   ]);
   const fallbackTreatment = fallbackTreatments.find((treatment) => treatment.slug === slug);
@@ -73,6 +71,14 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
 
   return (
     <>
+      <JsonLd data={medicalProcedureSchema({
+        name: treatment.name,
+        description: treatment.description,
+        bodyLocation: treatment.category,
+        cost: `$${treatment.costMin.toLocaleString()} - $${treatment.costMax.toLocaleString()}`,
+        recoveryTime: "6-8 weeks",
+        howPerformed: `Specialized surgical or non-surgical procedure performed by experienced specialists at JCI/NABH accredited hospitals in India.`,
+      })} />
       <JsonLd data={faqPageSchema(faqs)} />
       <JsonLd data={breadcrumbSchema([
         { name: "Home", url: "https://asianshealthcare.com" },
@@ -85,6 +91,7 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
             src={getTreatmentImage(images, slug, treatment.category)}
             alt=""
             fill
+            sizes="100vw"
             priority
             className="object-cover opacity-25"
           />

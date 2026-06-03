@@ -87,7 +87,7 @@ export default function PatientSupportServices({ imageUrl }: PatientSupportServi
             </Link>
             {imageUrl && (
               <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-lg border border-hairline-dark lg:max-w-md">
-                <Image src={imageUrl} alt="Healthcare coordinator supporting an international patient" fill className="object-cover" />
+                <Image src={imageUrl} alt="Healthcare coordinator supporting an international patient" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
               </div>
             )}
           </motion.div>

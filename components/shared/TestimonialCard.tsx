@@ -38,7 +38,7 @@ export default function TestimonialCard({
       <div className="flex items-center gap-3">
         <div className="relative w-10 h-10 rounded-full overflow-hidden bg-[#e8f5e9] shrink-0">
           {imageUrl ? (
-            <Image src={imageUrl} alt={name} fill className="object-cover" />
+            <Image src={imageUrl} alt={name} fill sizes="48px" className="object-cover" />
           ) : (
             <div className="flex items-center justify-center h-full text-sm font-bold text-[#0a7e3d]">
               {name.split(" ").map((n) => n[0]).join("").slice(0, 2)}

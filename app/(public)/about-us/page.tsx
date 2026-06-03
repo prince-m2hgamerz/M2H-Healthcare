@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Shield, Users, Award, Globe, Check } from "lucide-react";
+import Link from "next/link";
+import { Shield, Users, Award, Globe, Check, ChevronRight } from "lucide-react";
 import { getSiteImages } from "@/lib/site-settings";
 import type { SiteImageKey } from "@/lib/site-images";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { organizationSchema, aboutPageSchema, breadcrumbSchema } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "About Us | Asians Healthcare",
   description: "Asians Healthcare is India's trusted medical tourism facilitator. ISO 9001:2015 certified. 15,000+ patients from 30+ countries. Free medical opinion, zero-cost service, end-to-end support.",
+  alternates: { canonical: "https://asianshealthcare.com/about-us" },
 };
 
 const stats = [
@@ -53,12 +57,27 @@ export default async function AboutPage() {
 
   return (
     <>
+      <JsonLd data={organizationSchema()} />
+      <JsonLd data={aboutPageSchema()} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "About Us", url: "https://asianshealthcare.com/about-us" },
+      ])} />
+      <nav aria-label="Breadcrumb" className="bg-canvas-cream/80 border-b border-hairline-light">
+        <div className="container-cinematic py-2.5">
+          <ol className="flex items-center gap-1.5 text-caption text-shade-40">
+            <li><Link href="/" className="hover:text-ink transition-colors">Home</Link></li>
+            <li className="flex items-center gap-1.5"><ChevronRight size={12} className="text-shade-30" /><span className="text-shade-60 font-medium">About Us</span></li>
+          </ol>
+        </div>
+      </nav>
       <section className="relative overflow-hidden bg-canvas-night text-on-primary">
         <div className="absolute inset-0">
           <Image
             src={images.image_about_hero}
             alt="Healthcare coordinator helping a patient"
             fill
+            sizes="100vw"
             priority
             className="object-cover opacity-30"
           />
@@ -124,7 +143,7 @@ export default async function AboutPage() {
               {careBlocks.map((block) => (
                 <div key={block.title} className="overflow-hidden rounded-lg border border-hairline-light bg-canvas-cream">
                   <div className="relative h-44">
-                    <Image src={images[block.imageKey]} alt={block.title} fill className="object-cover" />
+                    <Image src={images[block.imageKey]} alt={block.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 100vw" className="object-cover" />
                   </div>
                   <div className="p-5">
                     <h3 className="font-display text-heading-sm text-ink">{block.title}</h3>

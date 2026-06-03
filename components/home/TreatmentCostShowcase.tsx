@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, IndianRupee } from "lucide-react";
+import HorizontalSlider from "@/components/shared/HorizontalSlider";
 
 const treatmentCosts = [
   {
@@ -89,46 +90,40 @@ export default function TreatmentCostShowcase() {
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <HorizontalSlider>
           {treatmentCosts.map((treatment, i) => (
-            <motion.div
+            <Link
               key={treatment.slug + i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.06, duration: 0.4 }}
+              href={`/treatment-package/${treatment.slug}`}
+              className="group block bg-canvas-light rounded-xl border border-hairline-light overflow-hidden hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300"
             >
-              <Link
-                href={`/treatment-package/${treatment.slug}`}
-                className="group block bg-canvas-light rounded-xl border border-hairline-light overflow-hidden hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="relative h-40 overflow-hidden">
-                  <Image
-                    src={treatment.image}
-                    alt={treatment.name}
-                    fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 right-3">
-                    <span className="inline-flex items-center gap-1 bg-green-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">
-                      {treatment.saving}
-                    </span>
-                  </div>
+              <div className="relative h-40 overflow-hidden">
+                <Image
+                  src={treatment.image}
+                  alt={treatment.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3 right-3">
+                  <span className="inline-flex items-center gap-1 bg-green-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+                    {treatment.saving}
+                  </span>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-display text-heading-sm text-ink group-hover:text-shade-60 transition-colors line-clamp-2 min-h-[2.5rem]">
-                    {treatment.name}
-                  </h3>
-                  <div className="flex items-center gap-1.5 mt-3">
-                    <IndianRupee size={16} className="text-shade-50" />
-                    <span className="font-display text-heading-md text-ink">{treatment.cost}</span>
-                  </div>
-                  <p className="text-micro text-shade-40 mt-1">In India (indicative)</p>
+              </div>
+              <div className="p-4">
+                <h3 className="font-display text-heading-sm text-ink group-hover:text-shade-60 transition-colors line-clamp-2 min-h-[2.5rem]">
+                  {treatment.name}
+                </h3>
+                <div className="flex items-center gap-1.5 mt-3">
+                  <IndianRupee size={16} className="text-shade-50" />
+                  <span className="font-display text-heading-md text-ink">{treatment.cost}</span>
                 </div>
-              </Link>
-            </motion.div>
+                <p className="text-micro text-shade-40 mt-1">In India (indicative)</p>
+              </div>
+            </Link>
           ))}
-        </div>
+        </HorizontalSlider>
       </div>
     </section>
   );

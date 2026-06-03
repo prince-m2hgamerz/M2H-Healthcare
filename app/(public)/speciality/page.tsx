@@ -9,8 +9,9 @@ import { getSiteImages } from "@/lib/site-settings";
 import { getSpecialtyImage } from "@/lib/site-images";
 
 export const metadata: Metadata = {
-  title: "Medical Specialties",
-  description: "Explore medical specialties and treatments available in India.",
+  title: "Medical Specialties | Asians Healthcare",
+  description: "Explore 30+ medical specialties available in India. Find top specialists, treatments, and hospitals for cardiology, orthopedics, oncology, neurology and more.",
+  alternates: { canonical: "https://asianshealthcare.com/speciality" },
 };
 
 const iconMap: Record<string, typeof Heart> = {
@@ -64,6 +65,7 @@ export default async function SpecialtiesPage() {
                     src={getSpecialtyImage(images, specialty.slug)}
                     alt={specialty.name}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-canvas-night/50 to-transparent" />

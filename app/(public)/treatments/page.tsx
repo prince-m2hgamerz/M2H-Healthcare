@@ -10,6 +10,7 @@ import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 export const metadata: Metadata = {
   title: "Treatment Packages & Costs in India | Asians Healthcare",
   description: "Compare treatment costs in India vs. US/UK. Save 60-80% on cardiology, orthopedics, oncology, IVF, and more at top JCI hospitals.",
+  alternates: { canonical: "https://asianshealthcare.com/treatments" },
 };
 
 export default async function TreatmentsPage({ searchParams }: { searchParams?: Promise<{ q?: string; category?: string }> }) {

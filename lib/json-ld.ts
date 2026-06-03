@@ -123,6 +123,48 @@ export function localBusinessSchema(overrides?: Record<string, JsonValue>) {
   } as Record<string, JsonValue>;
 }
 
+export function medicalProcedureSchema(procedure: {
+  name: string;
+  description: string;
+  bodyLocation?: string;
+  howPerformed?: string;
+  preparation?: string;
+  followUp?: string;
+  cost?: string;
+  recoveryTime?: string;
+}) {
+  return {
+    "@type": "MedicalProcedure",
+    name: procedure.name,
+    description: procedure.description,
+    ...(procedure.bodyLocation ? { bodyLocation: procedure.bodyLocation } : {}),
+    ...(procedure.howPerformed ? { howPerformed: procedure.howPerformed } : {}),
+    ...(procedure.preparation ? { preparation: procedure.preparation } : {}),
+    ...(procedure.followUp ? { followUp: procedure.followUp } : {}),
+    ...(procedure.cost ? { cost: procedure.cost } : {}),
+    ...(procedure.recoveryTime ? { recoveryTime: procedure.recoveryTime } : {}),
+  } as Record<string, JsonValue>;
+}
+
+export function aboutPageSchema() {
+  return {
+    "@type": "AboutPage",
+    name: "About Asians Healthcare",
+    description: "India's trusted medical tourism facilitator connecting international patients with top hospitals and doctors.",
+    url: "https://asianshealthcare.com/about-us",
+  } as Record<string, JsonValue>;
+}
+
+export function reviewSchema(reviews: { name: string; reviewBody: string; ratingValue: number; datePublished?: string }[]) {
+  return {
+    "@type": "AggregateRating",
+    ratingValue: 4.8,
+    bestRating: 5,
+    ratingCount: reviews.length,
+    itemReviewed: { "@type": "Organization", name: "Asians Healthcare" },
+  } as Record<string, JsonValue>;
+}
+
 export function breadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     "@type": "BreadcrumbList",

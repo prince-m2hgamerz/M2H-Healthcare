@@ -17,7 +17,7 @@ import CostComparison from "@/components/home/CostComparison";
 import MedicalCareGallery from "@/components/home/MedicalCareGallery";
 import GetConsultation from "@/components/home/GetConsultation";
 import QuickInquiryForm from "@/components/home/QuickInquiryForm";
-import VideoTestimonials from "@/components/home/VideoTestimonials";
+
 import PatientTestimonials from "@/components/home/PatientTestimonials";
 import InsuranceLogos from "@/components/home/InsuranceLogos";
 import TravelProcess from "@/components/home/TravelProcess";
@@ -31,60 +31,48 @@ import {
   fallbackTestimonials,
   fallbackTreatments,
 } from "@/lib/fallback-data";
-import { mergeSiteImages, SITE_IMAGE_KEYS } from "@/lib/site-images";
+import { mergeSiteImages, SITE_IMAGE_KEYS, SITE_IMAGE_DEFAULTS } from "@/lib/site-images";
+import type { SiteImageKey } from "@/lib/site-images";
 
 export default async function HomePage() {
-  const supabase = await createServerSupabaseClient();
+  let treatments: { name: string; costMin: number; costMax: number; usCost: number; slug: string; category: string; image_url: string | null }[] = [];
+  let testimonials: { name: string; country: string; treatment: string; text: string; rating: number; videoId?: string }[] = [];
+  let insurances: string[] = [];
+  let images: Record<SiteImageKey, string> = { ...SITE_IMAGE_DEFAULTS };
 
-  const [doctorsRes, hospitalsRes, treatmentsRes, testimonialsRes, insuranceRes, settingsRes] = await Promise.all([
-    supabase.from("doctors").select("*").eq("is_featured", true).limit(3),
-    supabase.from("hospitals").select("*").eq("is_featured", true).limit(3),
-    supabase.from("treatments").select("*").eq("is_featured", true).limit(6),
-    supabase.from("testimonials").select("*").eq("is_approved", true).limit(10),
-    supabase.from("insurance_companies").select("name"),
-    supabase.from("site_settings").select("key, value").in("key", SITE_IMAGE_KEYS),
-  ]);
+  try {
+    const supabase = await createServerSupabaseClient();
+    const [treatmentsRes, testimonialsRes, insuranceRes, settingsRes] = await Promise.all([
+      supabase.from("treatments").select("*").eq("is_featured", true).limit(6),
+      supabase.from("testimonials").select("*").eq("is_approved", true).limit(10),
+      supabase.from("insurance_companies").select("name"),
+      supabase.from("site_settings").select("key, value").in("key", SITE_IMAGE_KEYS),
+    ]);
 
-  const doctors = doctorsRes.data?.map((d) => ({
-    name: d.name,
-    specialty: d.specialties?.[0] || "Specialist",
-    experience: `${d.experience_years || 0} years`,
-    hospital: "",
-    rating: 4.9,
-    slug: d.slug,
-    photo_url: d.photo_url || undefined,
-  })) || [];
+    treatments = treatmentsRes.data?.map((t) => ({
+      name: t.name,
+      costMin: Number(t.cost_usd_min) || 0,
+      costMax: Number(t.cost_usd_max) || 0,
+      usCost: Number(t.cost_usd_max) * 5 || 10000,
+      slug: t.slug,
+      category: t.category || "General",
+      image_url: t.image_url || null,
+    })) || [];
 
-  const hospitals = hospitalsRes.data?.map((h) => ({
-    name: h.name,
-    location: `${h.city}, ${h.state}`,
-    beds: `${h.beds_count?.toLocaleString() || 0}+`,
-    accreditation: h.accreditations?.join(", ") || "Accredited",
-    slug: h.slug,
-    photo_url: h.logo_url || undefined,
-  })) || [];
+    testimonials = testimonialsRes.data?.map((t) => ({
+      name: t.patient_name,
+      country: t.country,
+      treatment: t.treatment,
+      text: t.text_content,
+      rating: t.rating || 5,
+      videoId: t.video_url?.match(/(?:v=|youtu\.be\/)([\w-]+)/)?.[1] || undefined,
+    })) || [];
 
-  const treatments = treatmentsRes.data?.map((t) => ({
-    name: t.name,
-    costMin: Number(t.cost_usd_min) || 0,
-    costMax: Number(t.cost_usd_max) || 0,
-    usCost: Number(t.cost_usd_max) * 5 || 10000,
-    slug: t.slug,
-    category: t.category || "General",
-    image_url: t.image_url || null,
-  })) || [];
-
-  const testimonials = testimonialsRes.data?.map((t) => ({
-    name: t.patient_name,
-    country: t.country,
-    treatment: t.treatment,
-    text: t.text_content,
-    rating: t.rating || 5,
-    videoId: t.video_url?.match(/(?:v=|youtu\.be\/)([\w-]+)/)?.[1] || undefined,
-  })) || [];
-
-  const insurances = insuranceRes.data?.map((i) => i.name).filter(Boolean) || [];
-  const images = mergeSiteImages(settingsRes.data || undefined);
+    insurances = insuranceRes.data?.map((i) => i.name).filter(Boolean) || [];
+    images = mergeSiteImages(settingsRes.data || undefined) as Record<SiteImageKey, string>;
+  } catch {
+    console.warn("Supabase unavailable, using fallback data");
+  }
 
   return (
     <>
@@ -105,12 +93,11 @@ export default async function HomePage() {
       <TreatmentCostShowcase />
       <WhyChooseUs />
       <TravelProcess />
-      <FeaturedDoctors doctors={doctors.length > 0 ? doctors : fallbackDoctors.slice(0, 12)} />
+      <FeaturedDoctors doctors={fallbackDoctors} />
       <GetConsultation />
-      <FeaturedHospitals hospitals={hospitals.length > 0 ? hospitals : fallbackHospitals} />
+      <FeaturedHospitals hospitals={fallbackHospitals} />
       <CostComparison imageUrl={images.image_home_cost} />
       <TreatmentPackages treatments={treatments.length > 0 ? treatments : fallbackTreatments} />
-      <VideoTestimonials />
       <PatientTestimonials testimonials={testimonials.length > 0 ? testimonials : fallbackTestimonials} />
       <QuickInquiryForm />
       <PatientSupportServices imageUrl={images.image_home_support} />

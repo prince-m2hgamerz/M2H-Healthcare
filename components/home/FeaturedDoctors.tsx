@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import Image from "next/image";
+import HorizontalSlider from "@/components/shared/HorizontalSlider";
 
 interface Doctor {
   name: string;
@@ -14,16 +15,6 @@ interface Doctor {
   slug: string;
   photo_url?: string;
 }
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function FeaturedDoctors({ doctors = [] }: { doctors?: Doctor[] }) {
   if (doctors.length === 0) return null;
@@ -47,37 +38,30 @@ export default function FeaturedDoctors({ doctors = [] }: { doctors?: Doctor[] }
           </Link>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <HorizontalSlider>
           {doctors.map((doctor) => (
-            <motion.div key={doctor.slug} variants={itemVariants}>
-              <Link href={`/doctors/${doctor.slug}`} className="group block bg-canvas-light rounded-xl p-6 border border-hairline-light hover:shadow-elevation-3 transition-all duration-300">
-                <div className="relative w-28 h-28 sm:w-24 sm:h-24 rounded-full mx-auto mb-5 overflow-hidden bg-gradient-to-br from-aloe-10 to-pistachio-10 ring-2 ring-aloe-10/30 group-hover:ring-aloe-10 transition-all">
-                  <Image
-                    src={doctor.photo_url || "https://satyughealthcare.com/uploads/doctors/a330cd2834d5826c649d5295bc0cfae7.jpg"}
-                    alt={doctor.name}
-                    fill
-                    className="object-cover object-top"
-                  />
+            <Link key={doctor.slug} href={`/doctors/${doctor.slug}`} className="group block bg-canvas-light rounded-xl p-6 border border-hairline-light hover:shadow-elevation-3 transition-all duration-300">
+              <div className="relative w-28 h-28 sm:w-24 sm:h-24 rounded-full mx-auto mb-5 overflow-hidden bg-gradient-to-br from-aloe-10 to-pistachio-10 ring-2 ring-aloe-10/30 group-hover:ring-aloe-10 transition-all">
+                <Image
+                  src={doctor.photo_url || "https://satyughealthcare.com/uploads/doctors/a330cd2834d5826c649d5295bc0cfae7.jpg"}
+                  alt={doctor.name}
+                  fill
+                  sizes="96px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-1 mb-2">
+                  <Star size={14} className="fill-yellow-400 text-yellow-400" />
+                  <span className="text-sm font-medium text-shade-60">{doctor.rating}</span>
                 </div>
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-1 mb-2">
-                    <Star size={14} className="fill-yellow-400 text-yellow-400" />
-                    <span className="text-sm font-medium text-shade-60">{doctor.rating}</span>
-                  </div>
-                  <h3 className="font-display text-heading-md text-ink group-hover:text-shade-60 transition-colors">{doctor.name}</h3>
-                  <p className="text-body-md text-shade-50 mt-1">{doctor.specialty}</p>
-                  <p className="text-caption text-shade-40 mt-2">{doctor.experience} &middot; {doctor.hospital}</p>
-                </div>
-              </Link>
-            </motion.div>
+                <h3 className="font-display text-heading-md text-ink group-hover:text-shade-60 transition-colors">{doctor.name}</h3>
+                <p className="text-body-md text-shade-50 mt-1">{doctor.specialty}</p>
+                <p className="text-caption text-shade-40 mt-2">{doctor.experience} &middot; {doctor.hospital}</p>
+              </div>
+            </Link>
           ))}
-        </motion.div>
+        </HorizontalSlider>
       </div>
     </section>
   );

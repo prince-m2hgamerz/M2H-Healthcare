@@ -5,8 +5,9 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { mergeSiteImages, SITE_IMAGE_KEYS } from "@/lib/site-images";
 
 export const metadata: Metadata = {
-  title: "Medical Tourism in India",
-  description: "Plan medical treatment in India with recovery stays, visa support, airport pickup, hotels, interpreters, and local travel coordination.",
+  title: "Medical Tourism in India | Asians Healthcare",
+  description: "Complete medical tourism guide for India. Visa assistance, airport pickup, hotel booking, interpreter services, and recovery coordination for international patients.",
+  alternates: { canonical: "https://asianshealthcare.com/tourism" },
 };
 
 const destinationCopy = [
@@ -68,6 +69,7 @@ export default async function TourismPage() {
             src={images.image_tourism_hero}
             alt="India Gate in New Delhi"
             fill
+            sizes="100vw"
             priority
             className="object-cover opacity-35"
           />
@@ -132,6 +134,7 @@ export default async function TourismPage() {
                     src={destination.image}
                     alt={destination.name}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>

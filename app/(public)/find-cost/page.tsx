@@ -34,7 +34,7 @@ export default function FindCostPage() {
     <>
       <section className="relative overflow-hidden text-white">
         <div className="absolute inset-0">
-          <Image src="/images/ttm-pagetitle-bg.jpg" alt="" fill priority className="object-cover" />
+          <Image src="/images/ttm-pagetitle-bg.jpg" alt="" fill sizes="100vw" priority className="object-cover" />
         </div>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 sm:py-20 lg:py-24 text-center">

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { SiteImageKey } from "@/lib/site-images";
+import HorizontalSlider from "@/components/shared/HorizontalSlider";
 
 type ImageMap = Record<SiteImageKey, string>;
 
@@ -88,11 +89,11 @@ export default function MedicalCareGallery({ images }: { images: ImageMap }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <HorizontalSlider>
           {supportCards.map((card) => (
             <div key={card.title} className="overflow-hidden rounded-lg border border-hairline-light bg-canvas-light">
               <div className="relative h-48">
-                <Image src={images[card.imageKey]} alt={card.title} fill className="object-cover" />
+                <Image src={images[card.imageKey]} alt={card.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw" className="object-cover" />
               </div>
               <div className="p-5">
                 <h3 className="font-display text-heading-md text-ink">{card.title}</h3>
@@ -100,7 +101,7 @@ export default function MedicalCareGallery({ images }: { images: ImageMap }) {
               </div>
             </div>
           ))}
-        </div>
+        </HorizontalSlider>
 
         <div className="mt-16">
           <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
@@ -113,11 +114,11 @@ export default function MedicalCareGallery({ images }: { images: ImageMap }) {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <HorizontalSlider>
             {treatmentCards.map((card) => (
               <Link key={card.title} href={card.href} className="group overflow-hidden rounded-lg border border-hairline-light bg-canvas-light">
                 <div className="relative h-44">
-                  <Image src={images[card.imageKey]} alt={card.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image src={images[card.imageKey]} alt={card.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="p-5">
                   <h3 className="font-display text-heading-sm text-ink">{card.title}</h3>
@@ -125,7 +126,7 @@ export default function MedicalCareGallery({ images }: { images: ImageMap }) {
                 </div>
               </Link>
             ))}
-          </div>
+          </HorizontalSlider>
         </div>
       </div>
     </section>

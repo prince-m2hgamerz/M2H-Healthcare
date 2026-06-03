@@ -186,11 +186,10 @@ export default async function SearchPage({
                             <div className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl overflow-hidden shrink-0">
                               <Image
                                 src={item.image}
-                                alt=""
+                                alt={item.title}
                                 fill
                                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                                 sizes="64px"
-                                unoptimized
                               />
                             </div>
                           ) : (

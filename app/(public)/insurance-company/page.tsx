@@ -4,11 +4,15 @@ import Link from "next/link";
 import { Shield } from "lucide-react";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import PageHero from "@/components/layout/PageHero";
+import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbSchema } from "@/lib/json-ld";
 import { getSiteImages } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
-  title: "Insurance Partners",
-  description: "Accepted insurance companies for medical treatment in India.",
+  title: "Insurance Partners | Asians Healthcare",
+  description: "Accepted international insurance companies for medical treatment in India. Check if your provider covers treatment at our partner hospitals.",
+  alternates: { canonical: "https://asianshealthcare.com/insurance-company" },
 };
 
 export default async function InsurancePage() {
@@ -25,6 +29,11 @@ export default async function InsurancePage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "https://asianshealthcare.com" },
+        { name: "Insurance Partners", url: "https://asianshealthcare.com/insurance-company" },
+      ])} />
+      <BreadcrumbNav items={[{ label: "Insurance Partners", href: "/insurance-company" }]} />
       <PageHero
         eyebrow="Insurance"
         title="Insurance Partners"
@@ -39,7 +48,7 @@ export default async function InsurancePage() {
               <Link key={c.slug} href={`/insurance-company/${c.slug}`} className="group bg-canvas-cream rounded-lg p-8 border border-hairline-light hover:shadow-elevation-3 transition-all text-center">
                 <div className="relative w-16 h-16 rounded-full bg-aloe-10 flex items-center justify-center mx-auto mb-4 overflow-hidden">
                   {c.logo_url ? (
-                    <Image src={c.logo_url} alt={c.name} fill className="object-contain p-2" />
+                    <Image src={c.logo_url} alt={c.name} fill sizes="64px" className="object-contain p-2" />
                   ) : (
                     <Shield size={32} className="text-ink" />
                   )}

@@ -14,6 +14,7 @@ import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 export const metadata: Metadata = {
   title: "218+ Treatment Packages & Costs in India | Asians Healthcare",
   description: "Compare 218+ medical treatment costs in India vs. US/UK. Save 60-80% on cardiology, orthopedics, oncology, transplant, IVF, and more at top JCI hospitals.",
+  alternates: { canonical: "https://asianshealthcare.com/treatment-package" },
 };
 
 export default async function TreatmentPackagesPage({
@@ -176,6 +177,7 @@ export default async function TreatmentPackagesPage({
                         src={treatment.image_url || "https://satyughealthcare.com/uploads/treatment_package/216514607672.png"}
                         alt={treatment.name}
                         fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute top-2 left-2">

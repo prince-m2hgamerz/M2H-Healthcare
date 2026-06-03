@@ -18,14 +18,23 @@
 
 # misc
 .DS_Store
+Thumbs.db
+desktop.ini
 *.pem
+*.tmp
+*.temp
+*.bak
+*.swp
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
+next-dev*.log
 
 # local env files
+.env
 .env*.local
 
 # vercel
