@@ -19,14 +19,15 @@ export const metadata: Metadata = {
 export default async function HospitalsPage({
   searchParams,
 }: {
-  searchParams?: { q?: string };
+  searchParams?: Promise<{ q?: string }>;
 }) {
+  const sp = searchParams ? await searchParams : {};
   const supabase = await createServerSupabaseClient();
   const [{ data: raw }, images] = await Promise.all([
     supabase.from("hospitals").select("*").limit(50),
     getSiteImages(),
   ]);
-  const query = typeof searchParams?.q === "string" ? searchParams.q.trim() : "";
+  const query = typeof sp?.q === "string" ? sp.q.trim() : "";
   const normalizedQuery = query.toLowerCase();
 
   // Real hospital images - each matches the actual hospital building/logo

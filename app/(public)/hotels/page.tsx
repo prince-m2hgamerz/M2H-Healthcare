@@ -15,10 +15,11 @@ export const metadata: Metadata = {
 export default async function HotelsPage({
   searchParams,
 }: {
-  searchParams?: { q?: string };
+  searchParams?: Promise<{ q?: string }>;
 }) {
+  const sp = searchParams ? await searchParams : {};
   const images = await getSiteImages();
-  const query = typeof searchParams?.q === "string" ? searchParams.q.trim() : "";
+  const query = typeof sp?.q === "string" ? sp.q.trim() : "";
   const normalizedQuery = query.toLowerCase();
 
   const allHotels = fallbackHotels;

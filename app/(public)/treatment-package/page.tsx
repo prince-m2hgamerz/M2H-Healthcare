@@ -19,15 +19,16 @@ export const metadata: Metadata = {
 export default async function TreatmentPackagesPage({
   searchParams,
 }: {
-  searchParams?: { q?: string; category?: string };
+  searchParams?: Promise<{ q?: string; category?: string }>;
 }) {
+  const sp = searchParams ? await searchParams : {};
   const supabase = await createServerSupabaseClient();
   const [{ data: raw }, images] = await Promise.all([
     supabase.from("treatments").select("*").limit(300),
     getSiteImages(),
   ]);
-  const query = typeof searchParams?.q === "string" ? searchParams.q.trim() : "";
-  const categoryFilter = typeof searchParams?.category === "string" ? searchParams.category : "";
+  const query = typeof sp?.q === "string" ? sp.q.trim() : "";
+  const categoryFilter = typeof sp?.category === "string" ? sp.category : "";
   const normalizedQuery = query.toLowerCase();
 
   // Map DB slugs to real images from the 218 treatments data

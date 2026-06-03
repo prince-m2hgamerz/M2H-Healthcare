@@ -113,9 +113,10 @@ function buildResults(query: string): SearchResult[] {
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams?: { q?: string };
+  searchParams?: Promise<{ q?: string }>;
 }) {
-  const query = typeof searchParams?.q === "string" ? searchParams.q.trim() : "";
+  const sp = searchParams ? await searchParams : {};
+  const query = typeof sp?.q === "string" ? sp.q.trim() : "";
   const results = query ? buildResults(query) : [];
 
   const categoryOrder = ["Doctor", "Hospital", "Treatment", "Specialty", "Blog"];

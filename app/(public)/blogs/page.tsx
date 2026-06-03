@@ -19,13 +19,14 @@ export const metadata: Metadata = {
 
 const categories = ["All", "Medical Visa Guide", "Treatment Blog", "Tourism Blog"];
 
-export default async function BlogsPage({ searchParams }: { searchParams?: { cat?: string } }) {
+export default async function BlogsPage({ searchParams }: { searchParams?: Promise<{ cat?: string }> }) {
+  const sp = searchParams ? await searchParams : {};
   const supabase = await createServerSupabaseClient();
   const [{ data: raw }, images] = await Promise.all([
     supabase.from("blogs").select("*").eq("is_published", true).limit(50),
     getSiteImages(),
   ]);
-  const activeCategory = typeof searchParams?.cat === "string" ? searchParams.cat : "All";
+  const activeCategory = typeof sp?.cat === "string" ? sp.cat : "All";
   const fetchedBlogs = raw?.map((b) => ({
     title: b.title,
     category: b.category,

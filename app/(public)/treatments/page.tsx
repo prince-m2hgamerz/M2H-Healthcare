@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   description: "Compare treatment costs in India vs. US/UK. Save 60-80% on cardiology, orthopedics, oncology, IVF, and more at top JCI hospitals.",
 };
 
-export default async function TreatmentsPage({ searchParams }: { searchParams?: { q?: string; category?: string } }) {
+export default async function TreatmentsPage({ searchParams }: { searchParams?: Promise<{ q?: string; category?: string }> }) {
+  const sp = searchParams ? await searchParams : {};
   const supabase = await createServerSupabaseClient();
   const [{ data: raw }, images] = await Promise.all([
     supabase.from("treatments").select("*").limit(50),
@@ -26,8 +27,8 @@ export default async function TreatmentsPage({ searchParams }: { searchParams?: 
   })) || [];
 
   const allTreatments = fetched.length > 0 ? fetched : fallbackTreatments;
-  const query = typeof searchParams?.q === "string" ? searchParams.q.trim().toLowerCase() : "";
-  const categoryFilter = typeof searchParams?.category === "string" ? searchParams.category : "";
+  const query = typeof sp?.q === "string" ? sp.q.trim().toLowerCase() : "";
+  const categoryFilter = typeof sp?.category === "string" ? sp.category : "";
 
   let filtered = allTreatments;
   if (query) filtered = filtered.filter((t) => [t.name, t.category].join(" ").toLowerCase().includes(query));
