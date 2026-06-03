@@ -57,7 +57,7 @@ export default function FeaturedHospitals({ hospitals = [] }: { hospitals?: Hosp
               <Link href={`/hospitals/${hospital.slug}`} className="group block bg-canvas-light rounded-xl border border-hairline-light overflow-hidden hover:shadow-elevation-3 transition-all duration-300">
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src={hospital.photo_url || "https://upload.wikimedia.org/wikipedia/commons/e/e8/Indraprastha_Apollo_Hospital.jpg"}
+                    src={hospital.photo_url || "https://safartibbi.com/wp-content/uploads/2022/11/apolo-1.jpg"}
                     alt={hospital.name}
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500"

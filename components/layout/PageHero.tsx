@@ -20,7 +20,7 @@ export default function PageHero({ eyebrow, title, description, imageUrl, childr
       <div className="container-cinematic relative z-10 py-16 sm:py-20 lg:py-24">
         {children}
         <span className="pill-tag mb-4 inline-block">{eyebrow}</span>
-        <h1 className="font-display text-[42px] leading-tight sm:text-display-xl lg:text-display-lg text-on-primary mb-4">
+        <h1 className="font-display text-3xl leading-tight sm:text-display-xl lg:text-display-lg text-on-primary mb-4">
           {title}
         </h1>
         <p className="text-body-lg text-link-cool-2 max-w-2xl">{description}</p>

@@ -10,10 +10,11 @@ import { getTreatmentImage } from "@/lib/site-images";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { faqPageSchema, breadcrumbSchema } from "@/lib/json-ld";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient();
-  const { data: rawTreatment } = await supabase.from("treatments").select("*").eq("slug", params.slug).single();
-  const fallbackTreatment = fallbackTreatments.find((treatment) => treatment.slug === params.slug);
+  const { data: rawTreatment } = await supabase.from("treatments").select("*").eq("slug", slug).single();
+  const fallbackTreatment = fallbackTreatments.find((treatment) => treatment.slug === slug);
   const treatment = rawTreatment || fallbackTreatment;
   if (!treatment) return { title: "Treatment Not Found" };
   const name = treatment.name || "Treatment";
@@ -25,13 +26,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function TreatmentDetailPage({ params }: { params: { slug: string } }) {
+export default async function TreatmentDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient();
   const [{ data: rawTreatment }, images] = await Promise.all([
-    supabase.from("treatments").select("*").eq("slug", params.slug).single(),
+    supabase.from("treatments").select("*").eq("slug", slug).single(),
     getSiteImages(),
   ]);
-  const fallbackTreatment = fallbackTreatments.find((treatment) => treatment.slug === params.slug);
+  const fallbackTreatment = fallbackTreatments.find((treatment) => treatment.slug === slug);
   const treatment = rawTreatment
       ? {
           name: rawTreatment.name,
@@ -75,12 +77,12 @@ export default async function TreatmentDetailPage({ params }: { params: { slug: 
       <JsonLd data={breadcrumbSchema([
         { name: "Home", url: "https://asianshealthcare.com" },
         { name: "Treatment Packages", url: "https://asianshealthcare.com/treatment-package" },
-        { name: treatment.name, url: `https://asianshealthcare.com/treatment-package/${params.slug}` },
+        { name: treatment.name, url: `https://asianshealthcare.com/treatment-package/${slug}` },
       ])} />
       <section className="relative overflow-hidden bg-canvas-night text-on-primary py-20">
         <div className="absolute inset-0">
           <Image
-            src={getTreatmentImage(images, params.slug, treatment.category)}
+            src={getTreatmentImage(images, slug, treatment.category)}
             alt=""
             fill
             priority

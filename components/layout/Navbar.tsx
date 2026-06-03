@@ -5,9 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
+import SearchModal from "@/components/search/SearchModal";
 
 const primaryNavLinks = [
   { label: "Home", href: "/" },
@@ -31,6 +32,7 @@ const navLinks = [...primaryNavLinks, ...exploreLinks];
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const pathname = usePathname();
   const settings = useSiteSettings();
   const siteName = settings.site_name || "Asians Healthcare";
@@ -46,7 +48,19 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
+
   return (
+    <>
     <nav className="sticky top-0 z-50 bg-canvas-night text-on-primary border-b border-hairline-dark">
       <div className="container-cinematic flex items-center justify-between h-16 lg:h-20">
         <Link href="/" className="shrink-0 flex items-center gap-2">
@@ -119,7 +133,18 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-2">
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="flex items-center gap-2 px-3 py-2 text-link-cool-2 hover:text-on-primary transition-colors border border-hairline-dark rounded-lg hover:border-hairline"
+            aria-label="Search"
+          >
+            <Search size={18} />
+            <span className="text-caption hidden xl:inline">Search...</span>
+            <kbd className="hidden xl:inline-flex items-center px-1.5 py-0.5 text-[10px] text-link-cool-2 bg-canvas-night rounded border border-hairline-dark">
+              ⌘K
+            </kbd>
+          </button>
           <Link href="/treatment-package" className="btn-outline-dark text-sm !py-2 !px-5">
             Find Cost
           </Link>
@@ -130,7 +155,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="lg:hidden text-on-primary p-2 -mr-2"
+          className="lg:hidden text-on-primary p-3"
           aria-label={open ? "Close menu" : "Open menu"}
         >
           {open ? <X size={28} /> : <Menu size={28} />}
@@ -147,12 +172,20 @@ export default function Navbar() {
             className="lg:hidden overflow-hidden bg-canvas-night border-t border-hairline-dark"
           >
             <div className="container-cinematic py-6 space-y-4">
+              <button
+                onClick={() => { setOpen(false); setSearchOpen(true); }}
+                className="flex items-center gap-3 w-full text-left font-display text-heading-md text-on-primary hover:text-link-mint transition-colors py-3"
+              >
+                <Search size={22} />
+                Search
+              </button>
+              <hr className="border-hairline-dark" />
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "block font-display text-heading-md transition-colors",
+                    "block font-display text-heading-md transition-colors py-3",
                     pathname === link.href || pathname.startsWith(`${link.href}/`)
                       ? "text-link-mint"
                       : "text-on-primary hover:text-link-mint"
@@ -174,5 +207,8 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </nav>
+
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
+    </>
   );
 }

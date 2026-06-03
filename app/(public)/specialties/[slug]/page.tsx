@@ -5,21 +5,23 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { fallbackSpecialties, fallbackTreatments } from "@/lib/fallback-data";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient();
-  const { data: raw } = await supabase.from("specialties").select("*").eq("slug", params.slug).single();
-  const fb = fallbackSpecialties.find((s) => s.slug === params.slug);
+  const { data: raw } = await supabase.from("specialties").select("*").eq("slug", slug).single();
+  const fb = fallbackSpecialties.find((s) => s.slug === slug);
   const s = raw || fb;
   if (!s) return { title: "Specialty Not Found" };
   return { title: `${s.name} Treatment in India | Asians Healthcare`, description: s.desc || `${s.name} treatment in India at top hospitals.` };
 }
 
-export default async function SpecialtyDetailPage({ params }: { params: { slug: string } }) {
+export default async function SpecialtyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient();
   const [{ data: raw }] = await Promise.all([
-    supabase.from("specialties").select("*").eq("slug", params.slug).single(),
+    supabase.from("specialties").select("*").eq("slug", slug).single(),
   ]);
-  const fb = fallbackSpecialties.find((s) => s.slug === params.slug);
+  const fb = fallbackSpecialties.find((s) => s.slug === slug);
   const specialty = raw
     ? { name: raw.name, description: raw.description || "No description available." }
     : fb
@@ -60,7 +62,7 @@ export default async function SpecialtyDetailPage({ params }: { params: { slug: 
               )}
             </div>
             <div className="space-y-4">
-              <Link href={`/doctors?specialty=${params.slug}`} className="btn-primary w-full block text-center">Find Specialists</Link>
+              <Link href={`/doctors?specialty=${slug}`} className="btn-primary w-full block text-center">Find Specialists</Link>
               <Link href="/contact-us" className="btn-outline w-full block text-center">Get Free Consultation</Link>
             </div>
           </div>

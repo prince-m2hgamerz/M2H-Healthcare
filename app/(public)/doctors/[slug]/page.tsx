@@ -2,43 +2,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Award, MapPin, Star } from "lucide-react";
 import Image from "next/image";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { fallbackDoctors } from "@/lib/fallback-data";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { physicianSchema, breadcrumbSchema } from "@/lib/json-ld";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const supabase = await createServerSupabaseClient();
-  const { data: rawDoctor } = await supabase.from("doctors").select("*").eq("slug", params.slug).single();
-  const fallbackDoctor = fallbackDoctors.find((doctor) => doctor.slug === params.slug);
-  const doctor = rawDoctor || fallbackDoctor;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const doctor = fallbackDoctors.find((doctor) => doctor.slug === slug);
   if (!doctor) return { title: "Doctor Not Found" };
-  const name = doctor.name || "Doctor";
-  const specialty = doctor.specialties?.[0] || "Specialist";
   return {
-    title: name,
-    description: `Dr. ${name} — ${specialty} in Delhi, India. ${doctor.about?.slice(0, 150) || `Book an appointment with Dr. ${name}, a specialist in ${specialty}.`}`,
-    openGraph: { title: name, description: `Dr. ${name} — ${specialty} at Asians Healthcare.` },
+    title: doctor.name,
+    description: `${doctor.name} — ${doctor.specialty} at ${doctor.hospital}. ${doctor.about?.slice(0, 150) || `Book an appointment with ${doctor.name}, a specialist in ${doctor.specialty}.`}`,
+    openGraph: { title: doctor.name, description: `${doctor.name} — ${doctor.specialty} at Apollo Hospitals.` },
   };
 }
 
-export default async function DoctorDetailPage({ params }: { params: { slug: string } }) {
-  const supabase = await createServerSupabaseClient();
-  const { data: rawDoctor } = await supabase.from("doctors").select("*").eq("slug", params.slug).single();
-  const fallbackDoctor = fallbackDoctors.find((doctor) => doctor.slug === params.slug);
-  const doctor = rawDoctor
-    ? {
-        name: rawDoctor.name,
-        specialty: rawDoctor.specialties?.[0] || "Specialist",
-        experience: `${rawDoctor.experience_years || 0} years`,
-        hospital: "Partner Hospital",
-        rating: 4.9,
-        photo_url: rawDoctor.photo_url || "https://satyughealthcare.com/uploads/doctors/a330cd2834d5826c649d5295bc0cfae7.jpg",
-        qualifications: rawDoctor.qualifications || "",
-        about: rawDoctor.about || "No description available.",
-      }
-    : fallbackDoctor;
+export default async function DoctorDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const doctor = fallbackDoctors.find((doctor) => doctor.slug === slug);
 
   if (!doctor) notFound();
 
@@ -49,14 +31,14 @@ export default async function DoctorDetailPage({ params }: { params: { slug: str
         description: doctor.about,
         specialty: doctor.specialty,
         image: doctor.photo_url,
-        url: `https://asianshealthcare.com/doctors/${params.slug}`,
+        url: `https://asianshealthcare.com/doctors/${slug}`,
         qualifications: doctor.qualifications,
         hospitalName: doctor.hospital,
       })} />
       <JsonLd data={breadcrumbSchema([
         { name: "Home", url: "https://asianshealthcare.com" },
         { name: "Doctors", url: "https://asianshealthcare.com/doctors" },
-        { name: doctor.name, url: `https://asianshealthcare.com/doctors/${params.slug}` },
+        { name: doctor.name, url: `https://asianshealthcare.com/doctors/${slug}` },
       ])} />
       <section className="bg-canvas-night text-on-primary py-20">
         <div className="container-cinematic">

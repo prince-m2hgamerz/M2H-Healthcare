@@ -13,13 +13,14 @@ export const metadata: Metadata = {
   description: "Learn about this medical specialty and available treatments in India.",
 };
 
-export default async function SpecialtyDetailPage({ params }: { params: { slug: string } }) {
+export default async function SpecialtyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient();
   const [{ data: rawSpecialty }, images] = await Promise.all([
-    supabase.from("specialties").select("*").eq("slug", params.slug).single(),
+    supabase.from("specialties").select("*").eq("slug", slug).single(),
     getSiteImages(),
   ]);
-  const fallbackSpecialty = fallbackSpecialties.find((specialty) => specialty.slug === params.slug);
+  const fallbackSpecialty = fallbackSpecialties.find((specialty) => specialty.slug === slug);
   const specialty = rawSpecialty
     ? {
         name: rawSpecialty.name,
@@ -39,7 +40,7 @@ export default async function SpecialtyDetailPage({ params }: { params: { slug: 
       <section className="relative overflow-hidden bg-canvas-night text-on-primary py-20">
         <div className="absolute inset-0">
           <Image
-            src={getSpecialtyImage(images, params.slug)}
+            src={getSpecialtyImage(images, slug)}
             alt=""
             fill
             priority

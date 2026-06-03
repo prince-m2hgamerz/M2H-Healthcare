@@ -33,7 +33,7 @@ export default async function BlogsPage({ searchParams }: { searchParams?: { cat
     date: b.published_at ? new Date(b.published_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "",
     slug: b.slug,
     excerpt: stripHtml(b.content || "").substring(0, 120) + "...",
-    thumbnail_url: b.thumbnail_url || "https://upload.wikimedia.org/wikipedia/commons/e/e8/Indraprastha_Apollo_Hospital.jpg",
+    thumbnail_url: b.thumbnail_url || "https://safartibbi.com/wp-content/uploads/2022/11/apolo-1.jpg",
   })) || [];
   const allBlogs = fetchedBlogs.length > 0 ? fetchedBlogs : fallbackBlogs.map((b) => ({
     ...b,

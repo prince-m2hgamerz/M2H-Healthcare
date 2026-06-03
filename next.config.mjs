@@ -27,6 +27,50 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'satyughealthcare.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'safartibbi.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'getwellgo.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.joonsquare.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'crossborderscare.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.globalcarehealth.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'medicircle.in',
+      },
+      {
+        protocol: 'https',
+        hostname: 'drupal-cdn-hfaeddcdbng5hfbg.a01.azurefd.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'd35oenyzp35321.cloudfront.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'max-website20-images.s3.ap-south-1.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.apollohospitals.com',
+      },
     ],
   },
   async headers() {

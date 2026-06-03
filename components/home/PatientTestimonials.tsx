@@ -72,15 +72,17 @@ export default function PatientTestimonials({ testimonials = [] }: { testimonial
           </AnimatePresence>
 
           <div className="flex items-center justify-center gap-4 mt-8">
-            <button onClick={prev} className="w-10 h-10 rounded-full border border-hairline-dark flex items-center justify-center hover:bg-canvas-night-elevated transition-colors" aria-label="Previous testimonial">
+            <button onClick={prev} className="w-12 h-12 rounded-full border border-hairline-dark flex items-center justify-center hover:bg-canvas-night-elevated transition-colors shrink-0" aria-label="Previous testimonial">
               <ChevronLeft size={20} />
             </button>
-            <div className="flex gap-2">
+            <div className="flex gap-1">
               {testimonials.map((_, i) => (
-                <button key={i} onClick={() => setCurrent(i)} className={`w-3 h-3 rounded-full transition-colors p-2 ${i === current ? "bg-on-primary" : "bg-shade-60"}`} aria-label={`Go to testimonial ${i + 1}`} />
+                <button key={i} onClick={() => setCurrent(i)} className={`p-2 ${i === current ? "text-on-primary" : "text-shade-60"}`} aria-label={`Go to testimonial ${i + 1}`}>
+                  <span className={`block w-3 h-3 rounded-full transition-colors ${i === current ? "bg-on-primary" : "bg-shade-60"}`} />
+                </button>
               ))}
             </div>
-            <button onClick={next} className="w-10 h-10 rounded-full border border-hairline-dark flex items-center justify-center hover:bg-canvas-night-elevated transition-colors" aria-label="Next testimonial">
+            <button onClick={next} className="w-12 h-12 rounded-full border border-hairline-dark flex items-center justify-center hover:bg-canvas-night-elevated transition-colors shrink-0" aria-label="Next testimonial">
               <ChevronRight size={20} />
             </button>
           </div>

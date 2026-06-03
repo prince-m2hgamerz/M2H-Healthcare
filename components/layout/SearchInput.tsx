@@ -20,7 +20,7 @@ function SearchInputInner({
   const currentQuery = searchParams.get("q") || "";
   const [value, setValue] = useState(currentQuery);
   const [focused, setFocused] = useState(false);
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const updateUrl = useCallback(
     (term: string) => {

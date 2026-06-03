@@ -105,7 +105,7 @@ export default async function HomePage() {
       <TreatmentCostShowcase />
       <WhyChooseUs />
       <TravelProcess />
-      <FeaturedDoctors doctors={doctors.length > 0 ? doctors : fallbackDoctors} />
+      <FeaturedDoctors doctors={doctors.length > 0 ? doctors : fallbackDoctors.slice(0, 12)} />
       <GetConsultation />
       <FeaturedHospitals hospitals={hospitals.length > 0 ? hospitals : fallbackHospitals} />
       <CostComparison imageUrl={images.image_home_cost} />

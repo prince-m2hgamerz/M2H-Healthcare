@@ -7,10 +7,11 @@ import { fallbackHospitals } from "@/lib/fallback-data";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { hospitalSchema, breadcrumbSchema } from "@/lib/json-ld";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient();
-  const { data: rawHospital } = await supabase.from("hospitals").select("*").eq("slug", params.slug).single();
-  const fallbackHospital = fallbackHospitals.find((hospital) => hospital.slug === params.slug);
+  const { data: rawHospital } = await supabase.from("hospitals").select("*").eq("slug", slug).single();
+  const fallbackHospital = fallbackHospitals.find((hospital) => hospital.slug === slug);
   const hospital = rawHospital || fallbackHospital;
   if (!hospital) return { title: "Hospital Not Found" };
   const name = hospital.name || "Hospital";
@@ -21,10 +22,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function HospitalDetailPage({ params }: { params: { slug: string } }) {
+export default async function HospitalDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient();
-  const { data: rawHospital } = await supabase.from("hospitals").select("*").eq("slug", params.slug).single();
-  const fallbackHospital = fallbackHospitals.find((hospital) => hospital.slug === params.slug);
+  const { data: rawHospital } = await supabase.from("hospitals").select("*").eq("slug", slug).single();
+  const fallbackHospital = fallbackHospitals.find((hospital) => hospital.slug === slug);
   const hospital = rawHospital
     ? {
         name: rawHospital.name,
@@ -46,12 +48,12 @@ export default async function HospitalDetailPage({ params }: { params: { slug: s
         city: hospital.city,
         state: hospital.state,
         beds: hospital.beds_count,
-        url: `https://asianshealthcare.com/hospitals/${params.slug}`,
+        url: `https://asianshealthcare.com/hospitals/${slug}`,
       })} />
       <JsonLd data={breadcrumbSchema([
         { name: "Home", url: "https://asianshealthcare.com" },
         { name: "Hospitals", url: "https://asianshealthcare.com/hospitals" },
-        { name: hospital.name, url: `https://asianshealthcare.com/hospitals/${params.slug}` },
+        { name: hospital.name, url: `https://asianshealthcare.com/hospitals/${slug}` },
       ])} />
       <section className="bg-canvas-night text-on-primary py-20">
         <div className="container-cinematic">

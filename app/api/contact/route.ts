@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { sendLeadNotification, sendCustomerConfirmation } from "@/lib/email";
+import { serverInstance } from "@/lib/rollbar";
 
 export async function POST(request: Request) {
   try {
@@ -25,7 +26,8 @@ export async function POST(request: Request) {
     ]);
 
     return NextResponse.json({ message: "Contact form submitted successfully" }, { status: 201 });
-  } catch {
+  } catch (error) {
+    serverInstance.error(error instanceof Error ? error : new Error("Contact API error"));
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

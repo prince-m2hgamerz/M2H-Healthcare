@@ -7,17 +7,17 @@ import { ArrowRight, Building2, DollarSign, Hotel, Search, Stethoscope } from "l
 import Image from "next/image";
 
 const tabs = [
-  { id: "cost", label: "Find Cost", icon: DollarSign, placeholder: "Search treatment cost..." },
-  { id: "doctor", label: "Find Doctor", icon: Stethoscope, placeholder: "Search by doctor name or specialty..." },
-  { id: "hospital", label: "Find Hospital", icon: Building2, placeholder: "Search by hospital name or location..." },
-  { id: "hotel", label: "Find Hotel", icon: Hotel, placeholder: "Search nearby hotels..." },
+  { id: "cost", label: "Find Cost", icon: DollarSign, placeholder: "Search treatments, doctors, hospitals..." },
+  { id: "doctor", label: "Find Doctor", icon: Stethoscope, placeholder: "Search treatments, doctors, hospitals..." },
+  { id: "hospital", label: "Find Hospital", icon: Building2, placeholder: "Search treatments, doctors, hospitals..." },
+  { id: "hotel", label: "Find Hotel", icon: Hotel, placeholder: "Search treatments, doctors, hospitals..." },
 ];
 
 const tabLinks: Record<string, string> = {
-  cost: "/treatment-package",
-  doctor: "/doctors",
-  hospital: "/hospitals",
-  hotel: "/hotels",
+  cost: "/search",
+  doctor: "/search",
+  hospital: "/search",
+  hotel: "/search",
 };
 
 interface HeroSectionProps {
@@ -118,7 +118,7 @@ export default function HeroSection({ imageUrl = "https://upload.wikimedia.org/w
             transition={{ delay: 0.5, duration: 0.6 }}
             className="max-w-3xl"
           >
-            <div className="flex overflow-x-auto gap-1 mb-0.5 -mx-1 px-1 scrollbar-hide">
+            <div className="flex overflow-x-auto gap-1 mb-0.5 scrollbar-hide">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 return (
@@ -127,13 +127,13 @@ export default function HeroSection({ imageUrl = "https://upload.wikimedia.org/w
                     type="button"
                     aria-pressed={activeTab === tab.id}
                     onClick={() => { setActiveTab(tab.id); setSearchQuery(""); }}
-                    className={`inline-flex items-center gap-2 px-4 py-2.5 text-sm rounded-t-lg transition-all ${
+                    className={`inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2.5 text-xs sm:text-sm rounded-t-lg transition-all shrink-0 ${
                       activeTab === tab.id
                         ? "bg-white/10 text-on-primary border-b-2 border-link-mint"
                         : "text-link-cool-2 hover:text-on-primary hover:bg-white/5"
                     }`}
                   >
-                    <Icon size={16} />
+                    <Icon size={14} className="sm:size-[16px]" />
                     {tab.label}
                   </button>
                 );

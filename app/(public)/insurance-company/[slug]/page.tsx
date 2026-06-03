@@ -9,9 +9,10 @@ export const metadata: Metadata = {
   description: "View insurance coverage details for treatment in India.",
 };
 
-export default async function InsuranceDetailPage({ params }: { params: { slug: string } }) {
+export default async function InsuranceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient();
-  const { data: insurance } = await supabase.from("insurance_companies").select("*").eq("slug", params.slug).single();
+  const { data: insurance } = await supabase.from("insurance_companies").select("*").eq("slug", slug).single();
 
   if (!insurance) notFound();
 

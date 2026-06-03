@@ -63,7 +63,7 @@ export default function DoctorCard({
 
         <Link
           href={`/doctors/${slug}`}
-          className="block w-full text-center bg-[#0a7e3d] text-white rounded-md px-4 py-2.5 text-sm font-semibold hover:bg-[#086b33] transition-colors"
+          className="block w-full text-center bg-[#0a7e3d] text-white rounded-md px-4 py-3 text-sm font-semibold hover:bg-[#086b33] transition-colors"
         >
           Book Appointment
         </Link>

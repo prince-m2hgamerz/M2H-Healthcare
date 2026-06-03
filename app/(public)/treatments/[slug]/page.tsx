@@ -9,23 +9,25 @@ import { getSiteImages } from "@/lib/site-settings";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { faqPageSchema, breadcrumbSchema } from "@/lib/json-ld";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient();
-  const { data: raw } = await supabase.from("treatments").select("*").eq("slug", params.slug).single();
-  const fb = fallbackTreatments.find((t) => t.slug === params.slug);
+  const { data: raw } = await supabase.from("treatments").select("*").eq("slug", slug).single();
+  const fb = fallbackTreatments.find((t) => t.slug === slug);
   const treatment = raw || fb;
   if (!treatment) return { title: "Treatment Not Found" };
   const costMin = Number("cost_usd_min" in treatment ? treatment.cost_usd_min : (treatment as unknown as Record<string, number>).costMin || 0);
   return { title: `${treatment.name} Cost in India | Asians Healthcare`, description: `Affordable ${treatment.name} in India starting at $${costMin.toLocaleString()}. Save 60-80% compared to US costs.` };
 }
 
-export default async function TreatmentDetailPage({ params }: { params: { slug: string } }) {
+export default async function TreatmentDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient();
   const [{ data: raw }, images] = await Promise.all([
-    supabase.from("treatments").select("*").eq("slug", params.slug).single(),
+    supabase.from("treatments").select("*").eq("slug", slug).single(),
     getSiteImages(),
   ]);
-  const fb = fallbackTreatments.find((t) => t.slug === params.slug);
+  const fb = fallbackTreatments.find((t) => t.slug === slug);
   const treatment = raw ? {
     name: raw.name, category: raw.category, costMin: Number(raw.cost_usd_min) || 0,
     costMax: Number(raw.cost_usd_max) || 0, description: raw.description || "No description available.",
@@ -53,7 +55,7 @@ export default async function TreatmentDetailPage({ params }: { params: { slug: 
   return (
     <>
       <JsonLd data={faqPageSchema(faqs)} />
-      <JsonLd data={breadcrumbSchema([{ name: "Home", url: "https://asianshealthcare.com" }, { name: "Treatments", url: "https://asianshealthcare.com/treatments" }, { name: treatment.name, url: `https://asianshealthcare.com/treatments/${params.slug}` }])} />
+      <JsonLd data={breadcrumbSchema([{ name: "Home", url: "https://asianshealthcare.com" }, { name: "Treatments", url: "https://asianshealthcare.com/treatments" }, { name: treatment.name, url: `https://asianshealthcare.com/treatments/${slug}` }])} />
       <section className="bg-gradient-to-r from-primary-dark to-primary text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <Link href="/treatments" className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-6 transition"><ArrowLeft size={18} /> Back to Treatments</Link>

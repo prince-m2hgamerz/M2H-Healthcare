@@ -18,19 +18,20 @@ export async function generateStaticParams() {
   return fallbackBlogs.map((b) => ({ slug: b.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient().catch(() => null);
   let post = supabase
-    ? (await supabase.from("blogs").select("*").eq("slug", params.slug).single()).data
+    ? (await supabase.from("blogs").select("*").eq("slug", slug).single()).data
     : null;
-  if (!post) post = fallbackBlogs.find((b) => b.slug === params.slug) || null;
+  if (!post) post = fallbackBlogs.find((b) => b.slug === slug) || null;
   if (!post) return { title: "Blog Post Not Found" };
   const excerpt = post.content?.replace(/<[^>]+>/g, "").substring(0, 155) || "";
   const cleanTitle = post.title?.replace(/\s*\|\s*Asians Healthcare$/, "") || "Blog Post";
   return {
     title: cleanTitle,
     description: excerpt || `Read about ${post.title} — a comprehensive guide on medical tourism, treatment options, and healthcare in India.`,
-    alternates: { canonical: `/blogs/${params.slug}` },
+    alternates: { canonical: `/blogs/${slug}` },
     openGraph: {
       title: cleanTitle,
       description: excerpt,
@@ -49,12 +50,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
+export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const supabase = await createServerSupabaseClient().catch(() => null);
   let post = supabase
-    ? (await supabase.from("blogs").select("*").eq("slug", params.slug).single()).data
+    ? (await supabase.from("blogs").select("*").eq("slug", slug).single()).data
     : null;
-  if (!post) post = fallbackBlogs.find((b) => b.slug === params.slug) as typeof post | undefined;
+  if (!post) post = fallbackBlogs.find((b) => b.slug === slug) as typeof post | undefined;
   if (!post) notFound();
 
   const date = post.published_at
@@ -70,7 +72,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
     datePublished: post.published_at || undefined,
     dateModified: post.updated_at || post.published_at || undefined,
     image: post.thumbnail_url || undefined,
-    mainEntityOfPage: { "@type": "WebPage", "@id": `${siteUrl}/blogs/${params.slug}` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${siteUrl}/blogs/${slug}` },
   };
 
   return (
@@ -79,7 +81,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
       <JsonLd data={breadcrumbSchema([
         { name: "Home", url: siteUrl },
         { name: "Blog", url: `${siteUrl}/blogs` },
-        { name: post.title, url: `${siteUrl}/blogs/${params.slug}` },
+        { name: post.title, url: `${siteUrl}/blogs/${slug}` },
       ])} />
       <section className="bg-canvas-night text-on-primary py-20">
         <div className="container-cinematic">

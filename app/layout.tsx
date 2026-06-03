@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/layout/AppShell";
 import CookieConsent from "@/components/shared/CookieConsent";
+import RollbarProvider from "@/components/shared/RollbarProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -63,8 +64,10 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" title="Asians Healthcare Blog" href="/api/rss" />
       </head>
       <body className="font-sans antialiased">
-        <AppShell>{children}</AppShell>
-        <CookieConsent />
+        <RollbarProvider>
+          <AppShell>{children}</AppShell>
+          <CookieConsent />
+        </RollbarProvider>
       </body>
     </html>
   );
