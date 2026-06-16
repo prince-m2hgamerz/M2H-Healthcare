@@ -9,13 +9,13 @@ import { buildSearchIndex, type SearchItem } from "@/lib/search-index";
 
 const categoryOrder = ["Doctor", "Hospital", "Treatment", "Specialty", "Blog", "Hotel", "Testimonial"];
 const categoryColors: Record<string, string> = {
-  Doctor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  Hospital: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-  Treatment: "bg-rose-500/10 text-rose-400 border-rose-500/20",
-  Specialty: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-  Blog: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-  Hotel: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-  Testimonial: "bg-pink-500/10 text-pink-400 border-pink-500/20",
+  Doctor: "bg-accent/10 text-accent border-accent/20",
+  Hospital: "bg-primary/10 text-primary border-primary/20",
+  Treatment: "bg-pistachio/10 text-pistachio border-pistachio/20",
+  Specialty: "bg-aloe/10 text-aloe border-aloe/20",
+  Blog: "bg-gold/10 text-gold border-gold/20",
+  Hotel: "bg-primary/10 text-primary border-primary/20",
+  Testimonial: "bg-accent/10 text-accent border-accent/20",
 };
 
 export default function SearchModal({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -117,9 +117,9 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[10vh] sm:pt-[15vh]">
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-2xl mx-2 sm:mx-4 bg-canvas-night-elevated border border-hairline-dark rounded-xl sm:rounded-2xl shadow-elevation-4 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-        <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-4 border-b border-hairline-dark">
-          <Search size={18} className="sm:size-20 text-link-cool-2 shrink-0" />
+      <div className="relative w-full max-w-2xl mx-2 sm:mx-4 bg-white border border-hairline-light rounded-xl sm:rounded-2xl shadow-elevation-4 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+        <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-4 border-b border-hairline-light">
+          <Search size={18} className="sm:size-20 text-shade-40 shrink-0" />
           <input
             ref={inputRef}
             type="text"
@@ -127,14 +127,14 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
             onChange={(e) => doSearch(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Search doctors, hospitals, treatments..."
-            className="flex-1 bg-transparent text-on-primary text-body-sm sm:text-lg outline-none placeholder:text-link-cool-2"
+            className="flex-1 bg-transparent text text-body-sm sm:text-lg outline-none placeholder:text-shade-40"
           />
           {query && (
-            <button onClick={() => doSearch("")} className="text-link-cool-2 hover:text-on-primary p-1">
+            <button onClick={() => doSearch("")} className="text-shade-40 hover:text p-1">
               <X size={18} />
             </button>
           )}
-          <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-xs text-link-cool-2 bg-canvas-night rounded border border-hairline-dark">
+          <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-xs text-shade-40 bg-canvas-light rounded border border-hairline-light">
             ESC
           </kbd>
         </div>
@@ -142,22 +142,22 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
         <div className="max-h-[65vh] sm:max-h-[60vh] overflow-y-auto overscroll-contain">
           {loading && (
             <div className="flex items-center justify-center py-8 sm:py-12">
-              <Loader2 size={20} className="sm:size-24 animate-spin text-link-cool-2" />
+              <Loader2 size={20} className="sm:size-24 animate-spin text-shade-40" />
             </div>
           )}
 
           {!loading && !query && (
-            <div className="py-8 sm:py-12 text-center text-link-cool-2">
-              <Search size={28} className="sm:size-40 mx-auto mb-3 opacity-40" />
-              <p className="text-body-sm sm:text-body">Type to search across all content</p>
-              <p className="text-caption mt-1">Try searching for a doctor, treatment, or hospital</p>
+            <div className="py-8 sm:py-12 text-center">
+              <Search size={28} className="sm:size-40 mx-auto mb-3 text-shade-40 opacity-40" />
+              <p className="text-body-sm sm:text-body text">Type to search across all content</p>
+              <p className="text-caption mt-1 text-shade-40">Try searching for a doctor, treatment, or hospital</p>
             </div>
           )}
 
           {!loading && query && results.length === 0 && (
-            <div className="py-8 sm:py-12 text-center text-link-cool-2">
-              <p className="text-body-sm sm:text-body">No results found for &quot;{query}&quot;</p>
-              <p className="text-caption mt-1">Try different keywords</p>
+            <div className="py-8 sm:py-12 text-center">
+              <p className="text-body-sm sm:text-body text">No results found for &quot;{query}&quot;</p>
+              <p className="text-caption mt-1 text-shade-40">Try different keywords</p>
             </div>
           )}
 
@@ -169,11 +169,11 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
                   onClick={() => navigate(item)}
                   onMouseEnter={() => setSelectedIndex(idx)}
                   className={`w-full flex items-start gap-3 sm:gap-4 px-3 sm:px-5 py-2.5 sm:py-3 text-left transition-colors ${
-                    idx === selectedIndex ? "bg-canvas-night" : "hover:bg-canvas-night"
+                    idx === selectedIndex ? "bg-canvas-light" : "hover:bg-canvas-light"
                   }`}
                 >
                   {item.image ? (
-                    <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl overflow-hidden shrink-0 border border-hairline-dark">
+                    <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl overflow-hidden shrink-0 border border-hairline-light">
                       <Image
                         src={item.image}
                         alt={item.title}
@@ -183,8 +183,8 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
                       />
                     </div>
                   ) : (
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-canvas-night flex items-center justify-center shrink-0 border border-hairline-dark">
-                      <Search size={16} className="sm:size-20 text-link-cool-2" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-canvas-light flex items-center justify-center shrink-0 border border-hairline-light">
+                      <Search size={16} className="sm:size-20 text-shade-40" />
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
@@ -197,8 +197,8 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
                         {item.category}
                       </span>
                     </div>
-                    <p className="text-body-sm sm:text-body text-on-primary font-medium truncate">{item.title}</p>
-                    <p className="text-link-cool-2 text-xs sm:text-sm line-clamp-1">{item.description}</p>
+                    <p className="text-body-sm sm:text-body text font-medium truncate">{item.title}</p>
+                    <p className="text-shade-40 text-xs sm:text-sm line-clamp-1">{item.description}</p>
                   </div>
                 </button>
               ))}
@@ -207,15 +207,15 @@ export default function SearchModal({ open, onClose }: { open: boolean; onClose:
         </div>
 
         {results.length > 0 && (
-          <div className="hidden sm:flex items-center gap-4 px-5 py-3 border-t border-hairline-dark text-[11px] text-link-cool-2">
+          <div className="hidden sm:flex items-center gap-4 px-5 py-3 border-t border-hairline-light text-[11px] text-shade-40">
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-canvas-night rounded border border-hairline-dark">↑↓</kbd> Navigate
+              <kbd className="px-1.5 py-0.5 bg-canvas-light rounded border border-hairline-light">↑↓</kbd> Navigate
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-canvas-night rounded border border-hairline-dark">Enter</kbd> Open
+              <kbd className="px-1.5 py-0.5 bg-canvas-light rounded border border-hairline-light">Enter</kbd> Open
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-canvas-night rounded border border-hairline-dark">Esc</kbd> Close
+              <kbd className="px-1.5 py-0.5 bg-canvas-light rounded border border-hairline-light">Esc</kbd> Close
             </span>
           </div>
         )}

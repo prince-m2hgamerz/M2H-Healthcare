@@ -4,7 +4,6 @@ import { Search } from "lucide-react";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { fallbackTreatments } from "@/lib/fallback-data";
 import PageHero from "@/components/layout/PageHero";
-import { getSiteImages } from "@/lib/site-settings";
 import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 
 export const metadata: Metadata = {
@@ -16,10 +15,7 @@ export const metadata: Metadata = {
 export default async function TreatmentsPage({ searchParams }: { searchParams?: Promise<{ q?: string; category?: string }> }) {
   const sp = searchParams ? await searchParams : {};
   const supabase = await createServerSupabaseClient();
-  const [{ data: raw }, images] = await Promise.all([
-    supabase.from("treatments").select("*").limit(50),
-    getSiteImages(),
-  ]);
+  const { data: raw } = await supabase.from("treatments").select("*").limit(50);
 
   const fetched = raw?.map((t) => ({
     name: t.name, costMin: Number(t.cost_usd_min) || 0, costMax: Number(t.cost_usd_max) || 0,
@@ -40,15 +36,15 @@ export default async function TreatmentsPage({ searchParams }: { searchParams?: 
   return (
     <>
       <BreadcrumbNav items={[{ label: "Home", href: "/" }, { label: "Treatments", href: "/treatments" }]} />
-      <PageHero eyebrow="Affordable Care" title="Treatment Packages & Costs" description="Compare treatment costs in India vs. Western countries. Save 60-80% without compromising on quality." imageUrl={images.image_treatments_hero} />
-      <section className="bg-primary-light/30 py-8 border-b border-gray-200">
+       <PageHero eyebrow="Affordable Care" title="Treatment Packages & Costs" description="Compare treatment costs in India vs. Western countries. Save 60-80% without compromising on quality." />
+      <section className="bg-surface py-8 border-b border-hairline-light">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-              <input type="text" placeholder="Search treatments..." className="w-full border border-gray-200 rounded-lg pl-10 pr-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-shade-40" size={20} />
+              <input type="text" placeholder="Search treatments..." className="w-full border border-hairline-light rounded-lg pl-10 pr-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white" />
             </div>
-            <select className="border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+            <select className="border border-hairline-light rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-text">
               <option value="">All Categories</option>
               {categories.map((c) => <option key={c} value={c}>{c}</option>)}
             </select>

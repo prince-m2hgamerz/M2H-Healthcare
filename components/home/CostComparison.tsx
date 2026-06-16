@@ -25,7 +25,7 @@ interface CostComparisonProps {
 
 export default function CostComparison({ imageUrl }: CostComparisonProps) {
   return (
-    <section className="bg-canvas-light py-12 sm:py-huge">
+    <section className="bg-white py-12 sm:py-huge">
       <div className="container-cinematic">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <motion.div
@@ -35,7 +35,7 @@ export default function CostComparison({ imageUrl }: CostComparisonProps) {
             transition={{ duration: 0.5 }}
           >
             <span className="pill-tag mb-4 inline-block">Transparent Pricing</span>
-            <h2 className="font-display text-display-md lg:text-display-lg text-ink">
+            <h2 className="font-display text-display-md lg:text-display-lg text">
               Compare costs before you choose a hospital
             </h2>
             <p className="mt-5 max-w-2xl text-body-lg leading-relaxed text-shade-50">
@@ -44,7 +44,7 @@ export default function CostComparison({ imageUrl }: CostComparisonProps) {
             <div className="mt-8 space-y-3">
               {included.map((item) => (
                 <div key={item} className="flex items-start gap-3 text-body-md text-shade-50">
-                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-ink" />
+                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text" />
                   <span>{item}</span>
                 </div>
               ))}
@@ -60,14 +60,14 @@ export default function CostComparison({ imageUrl }: CostComparisonProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="overflow-hidden rounded-lg border border-hairline-light bg-canvas-cream"
+            className="overflow-hidden rounded-lg border border-hairline-light bg-surface"
           >
             {imageUrl && (
               <div className="relative h-56 border-b border-hairline-light">
                 <Image src={imageUrl} alt="Hospital care and treatment planning" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
               </div>
             )}
-            <div className="hidden grid-cols-[1.2fr_1fr_1fr_0.8fr] gap-0 border-b border-hairline-light bg-canvas-light px-4 py-3 text-caption uppercase tracking-wider text-shade-40 sm:grid">
+              <div className="hidden grid-cols-[1.2fr_1fr_1fr_0.8fr] gap-0 border-b border-hairline-light bg-white px-4 py-3 text-caption uppercase tracking-wider text-shade-40 sm:grid">
               <span>Treatment</span>
               <span>India</span>
               <span>Typical Abroad</span>
@@ -78,13 +78,13 @@ export default function CostComparison({ imageUrl }: CostComparisonProps) {
                 key={item.treatment}
                 className="grid grid-cols-1 gap-3 border-b border-hairline-light px-4 py-4 last:border-0 sm:grid-cols-[1.2fr_1fr_1fr_0.8fr] sm:gap-0"
               >
-                <div className="flex items-center gap-2 font-display text-heading-sm text-ink">
+                <div className="flex items-center gap-2 font-display text-heading-sm text">
                   <BadgeDollarSign size={18} className="text-shade-50" />
                   {item.treatment}
                 </div>
-                <div className="text-body-md text-ink"><span className="mr-2 text-caption text-shade-40 sm:hidden">India:</span>{item.india}</div>
+                <div className="text-body-md text"><span className="mr-2 text-caption text-shade-40 sm:hidden">India:</span>{item.india}</div>
                 <div className="text-body-md text-shade-50 line-through decoration-shade-40"><span className="mr-2 text-caption text-shade-40 no-underline sm:hidden">Typical abroad:</span>{item.abroad}</div>
-                <div className="inline-flex w-fit items-center gap-1 rounded-pill bg-aloe-10 px-3 py-1 text-caption text-ink">
+                <div className="inline-flex w-fit items-center gap-1 rounded-pill bg-accent/20 px-3 py-1 text-caption text-accent">
                   <TrendingDown size={15} />
                   {item.saving}
                 </div>

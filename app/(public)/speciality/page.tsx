@@ -52,8 +52,7 @@ export default async function SpecialtiesPage() {
         eyebrow="Our Expertise"
         title="Medical Specialties"
         description="Find the right specialty, compare doctors, and plan treatment with accredited hospitals in India."
-        imageUrl={images.image_specialities_hero}
-      />
+       />
 
       <section className="bg-canvas-light py-huge">
         <div className="container-cinematic">

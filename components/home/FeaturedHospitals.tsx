@@ -18,7 +18,7 @@ interface Hospital {
 export default function FeaturedHospitals({ hospitals = [] }: { hospitals?: Hospital[] }) {
   if (hospitals.length === 0) return null;
   return (
-    <section className="bg-canvas-cream py-12 sm:py-huge">
+    <section className="bg-surface py-12 sm:py-huge">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ export default function FeaturedHospitals({ hospitals = [] }: { hospitals?: Hosp
         >
           <div>
             <span className="pill-tag-shade mb-4 inline-block">Top Facilities</span>
-            <h2 className="font-display text-display-md lg:text-display-lg text-ink mt-4">Featured Hospitals</h2>
+            <h2 className="font-display text-display-md lg:text-display-lg text mt-4">Featured Hospitals</h2>
             <p className="text-body-lg text-shade-50 max-w-xl mt-4">India&apos;s most trusted healthcare institutions with international accreditation.</p>
           </div>
           <Link href="/hospitals" className="btn-outline flex items-center gap-2 shrink-0 self-start lg:self-auto">
@@ -39,7 +39,7 @@ export default function FeaturedHospitals({ hospitals = [] }: { hospitals?: Hosp
 
         <HorizontalSlider>
           {hospitals.map((hospital) => (
-            <Link key={hospital.slug} href={`/hospitals/${hospital.slug}`} className="group block bg-canvas-light rounded-xl border border-hairline-light overflow-hidden hover:shadow-elevation-3 transition-all duration-300">
+            <Link key={hospital.slug} href={`/hospitals/${hospital.slug}`} className="group block bg-white rounded-xl border border-hairline-light overflow-hidden hover:shadow-elevation-3 transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <Image
                   src={hospital.photo_url || "https://safartibbi.com/wp-content/uploads/2022/11/apolo-1.jpg"}
@@ -54,7 +54,7 @@ export default function FeaturedHospitals({ hospitals = [] }: { hospitals?: Hosp
                 </div>
               </div>
               <div className="p-5">
-                <h3 className="font-display text-heading-lg text-ink group-hover:text-shade-60 transition-colors">{hospital.name}</h3>
+                <h3 className="font-display text-heading-lg text group-hover:text-shade-60 transition-colors">{hospital.name}</h3>
                 <div className="flex items-center gap-1 text-caption text-shade-40 mt-1">
                   <MapPin size={14} /><span>{hospital.location}</span>
                 </div>

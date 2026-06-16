@@ -33,7 +33,7 @@ export default function VideoTestimonials() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   return (
-    <section className="bg-canvas-cream py-12 sm:py-huge">
+    <section className="bg-surface py-12 sm:py-huge">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -43,7 +43,7 @@ export default function VideoTestimonials() {
           className="text-center mb-12"
         >
           <span className="pill-tag mb-4 inline-block">Happy Patients</span>
-          <h2 className="font-display text-display-md lg:text-display-lg text-ink mt-4">
+          <h2 className="font-display text-display-md lg:text-display-lg text mt-4">
             Watch Our Patient Stories
           </h2>
           <p className="text-body-lg text-shade-50 max-w-2xl mx-auto mt-4">
@@ -73,12 +73,12 @@ export default function VideoTestimonials() {
                 />
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex items-center justify-center">
                   <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
-                    <Play size={28} className="text-ink ml-1" fill="currentColor" />
+                    <Play size={28} className="text ml-1" fill="currentColor" />
                   </div>
                 </div>
               </div>
               <div className="mt-4">
-                <h3 className="font-display text-heading-sm text-ink group-hover:text-shade-60 transition-colors">
+                <h3 className="font-display text-heading-sm text group-hover:text-shade-60 transition-colors">
                   {video.patient}
                 </h3>
                 <p className="text-caption text-shade-50 mt-1">{video.treatment}</p>
@@ -98,7 +98,7 @@ export default function VideoTestimonials() {
           >
             <button
               onClick={() => setActiveVideo(null)}
-              className="absolute -top-12 right-0 text-white hover:text-aloe-10 transition-colors"
+              className="absolute -top-12 right-0 text-white hover:text-accent transition-colors"
               aria-label="Close video"
             >
               <X size={32} />

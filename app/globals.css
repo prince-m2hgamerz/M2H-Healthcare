@@ -2,54 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-feature-settings: "ss03";
-}
-
 html {
   overflow-x: hidden;
 }
 
 @layer base {
   body {
-    @apply font-sans text-body-md text-ink bg-canvas-light antialiased overflow-x-hidden;
+    @apply font-sans text-body-md text-text antialiased overflow-x-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+    @apply font-display text-text;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center bg-ink text-on-primary text-body-md rounded-pill px-6 py-3 transition-colors hover:bg-shade-70 min-h-[44px];
+    @apply inline-flex items-center justify-center bg-primary text-white text-body-md rounded-md px-3 sm:px-4 py-3 transition-all hover:bg-primary-mid font-medium;
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center bg-accent text-white text-body-md rounded-md px-3 sm:px-4 py-3 transition-all hover:bg-accent/90 shadow-btn-accent font-medium;
   }
   .btn-outline {
-    @apply inline-flex items-center justify-center bg-transparent text-ink border border-ink text-body-md rounded-pill px-6 py-3 transition-colors hover:bg-shade-30/20 min-h-[44px];
+    @apply inline-flex items-center justify-center bg-transparent text-primary border border-primary text-body-md rounded-md px-3 sm:px-4 py-3 transition-all hover:bg-primary-tint font-medium;
   }
-  .btn-outline-dark {
-    @apply inline-flex items-center justify-center bg-transparent text-on-primary border-2 border-on-primary text-body-md rounded-pill px-6 py-3 transition-colors hover:bg-white/10 min-h-[44px];
-  }
-  .btn-aloe {
-    @apply inline-flex items-center justify-center bg-aloe-10 text-ink text-body-md rounded-pill px-6 py-3 transition-colors hover:bg-aloe-10/80 min-h-[44px];
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center bg-transparent text-white border-2 border-white/30 text-body-md rounded-md px-3 sm:px-4 py-3 transition-all hover:bg-white/10 font-medium;
   }
   .container-cinematic {
-    @apply w-full max-w-cinematic mx-auto px-4 sm:px-6 lg:px-12;
-  }
-  .container-content {
-    @apply w-full max-w-reading-col mx-auto px-4 sm:px-6;
+    @apply w-full max-w-cinematic mx-auto px-4 sm:px-6 lg:px-8;
   }
   .section-padding {
-    @apply py-16 lg:py-huge;
+    @apply py-14 lg:py-24;
   }
   .pill-tag {
-    @apply inline-flex items-center bg-aloe-10 text-ink text-eyebrow-cap uppercase tracking-widest rounded-pill px-3 py-1;
+    @apply inline-flex items-center bg-primary-tint text-primary-mid text-eyebrow uppercase tracking-[0.10em] rounded-md px-4 py-1.5 font-semibold;
   }
-  .pill-tag-shade {
-    @apply inline-flex items-center bg-shade-30 text-ink text-eyebrow-cap uppercase tracking-widest rounded-pill px-3 py-1;
+  .pill-accent {
+    @apply inline-flex items-center bg-accent-light text-accent-text text-eyebrow uppercase tracking-[0.10em] rounded-md px-4 py-1.5 font-semibold;
+  }
+  .eyebrow-label {
+    @apply text-accent text-eyebrow uppercase tracking-[0.10em] font-semibold mb-3;
+  }
+  .card {
+    @apply bg-surface-white rounded-lg border border-border shadow-card transition-all hover:shadow-card-hover;
+  }
+  .card-noshadow {
+    @apply bg-surface-white rounded-lg border border-border;
+  }
+  .input-field {
+    @apply w-full rounded-lg border-2 border-border bg-white p-4 text-body-md text-text placeholder:text-text-light focus:outline-none focus:border-border-focus focus:shadow-input transition-all;
   }
 }
-
 
 @layer utilities {
   .scrollbar-hide {
@@ -59,27 +63,17 @@ html {
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  .touch-target {
-    min-width: 44px;
-    min-height: 44px;
-  }
 }
 
-/* Mobile responsive fixes */
 @media (max-width: 768px) {
-  .text-heading-xl {
+  .text-display-xl {
+    font-size: 32px;
+  }
+  .text-display-lg {
+    font-size: 30px;
+  }
+  .text-display-md {
     font-size: 24px;
-    line-height: 1.3;
-  }
-
-  .text-heading-lg {
-    font-size: 20px;
-    line-height: 1.3;
-  }
-
-  .py-huge {
-    padding-top: 48px;
-    padding-bottom: 48px;
   }
 }
 
@@ -88,27 +82,13 @@ html {
     padding-left: 16px;
     padding-right: 16px;
   }
-
-  .py-huge {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-  .text-display-xxl {
-    font-size: 36px;
-  }
-
   .text-display-xl {
-    font-size: 32px;
-  }
-
-  .text-display-lg {
     font-size: 28px;
-    line-height: 1.2;
   }
-
+  .text-display-lg {
+    font-size: 26px;
+  }
   .text-display-md {
-    font-size: 24px;
-    line-height: 1.2;
+    font-size: 22px;
   }
 }

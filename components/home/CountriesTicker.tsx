@@ -28,7 +28,7 @@ const items = [
 
 export default function CountriesTicker() {
   return (
-    <section className="bg-canvas-night border-b border-hairline-dark overflow-hidden py-3">
+    <section className="bg-surface border-b border-hairline-light overflow-hidden py-3">
       <div className="relative flex">
         <motion.div
           className="flex items-center gap-8 whitespace-nowrap"
@@ -36,8 +36,8 @@ export default function CountriesTicker() {
           transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 40, ease: "linear" } }}
         >
           {[...items, ...items].map((item, i) => (
-            <div key={i} className="inline-flex items-center gap-2 text-link-cool-2 text-sm">
-              <item.icon size={14} className="text-aloe-10" />
+            <div key={i} className="inline-flex items-center gap-2 text-shade-40 text-sm">
+              <item.icon size={14} className="text-accent" />
               <span>{item.text}</span>
             </div>
           ))}

@@ -47,8 +47,7 @@ export default async function ContactPage() {
         eyebrow="Get in Touch"
         title="Contact Us"
         description="Ready to start your medical journey? Reach out to us and our team will get back to you within 24 hours."
-        imageUrl={images.image_contact_hero}
-      />
+       />
 
       <section className="bg-canvas-cream py-10 border-b border-hairline-light">
         <div className="container-cinematic">

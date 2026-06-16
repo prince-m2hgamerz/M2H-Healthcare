@@ -30,9 +30,9 @@ function getInitials(name: string): string {
 
 function hashColor(name: string): string {
   const colors = [
-    "bg-blue-600", "bg-emerald-600", "bg-violet-600",
-    "bg-rose-600", "bg-amber-600", "bg-teal-600",
-    "bg-indigo-600", "bg-cyan-600", "bg-fuchsia-600",
+    "bg-primary", "bg-accent", "bg-pistachio",
+    "bg-aloe", "bg-gold", "bg-primary/80",
+    "bg-accent/80", "bg-pistachio/80", "bg-aloe/80",
   ];
   let hash = 0;
   for (let i = 0; i < name.length; i++) hash = (hash * 31 + name.charCodeAt(i)) | 0;
@@ -60,18 +60,17 @@ function AvatarPhoto({ doctor }: { doctor: Doctor }) {
   const [err, setErr] = useState(false);
   if (!doctor.photo_url || err) {
     return (
-      <div className={`w-full h-full flex items-center justify-center text-white font-bold text-2xl ${hashColor(doctor.name)}`}>
+      <div className={`w-full h-full flex items-center justify-center text-ink font-bold text-2xl ${hashColor(doctor.name)}`}>
         {getInitials(doctor.name)}
       </div>
     );
   }
-  const isApollo = doctor.photo_url.includes("drupal-cdn");
   return (
     <Image
       src={doctor.photo_url}
       alt={doctor.name}
       fill
-      unoptimized={isApollo}
+      unoptimized
       sizes="(max-width: 640px) 50vw, 200px"
       className="object-cover object-top"
       onError={() => setErr(true)}
@@ -106,7 +105,7 @@ function DoctorCard({ doctor, index }: { doctor: Doctor; index: number }) {
           {doctor.name}
         </h3>
 
-        {doctor.specialty && doctor.specialty !== "Specialist" && (
+        {doctor.specialty && doctor.specialty !== "Specialist" && doctor.expertise.length === 0 && (
           <div className="flex items-center gap-1.5 text-caption text-shade-50">
             <Stethoscope size={13} className="shrink-0 text-link-mint" />
             <span className="truncate">{doctor.specialty}</span>

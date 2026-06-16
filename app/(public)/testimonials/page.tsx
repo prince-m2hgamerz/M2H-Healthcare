@@ -5,9 +5,8 @@ import PageHero from "@/components/layout/PageHero";
 import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbSchema } from "@/lib/json-ld";
-import { getSiteImages } from "@/lib/site-settings";
-
-export const metadata: Metadata = {
+ 
+ export const metadata: Metadata = {
   title: "Patient Testimonials | Asians Healthcare",
   description: "Read real patient stories and reviews from international medical travelers who received treatment in India through Asians Healthcare.",
   alternates: { canonical: "https://asianshealthcare.com/testimonials" },
@@ -15,10 +14,7 @@ export const metadata: Metadata = {
 
 export default async function TestimonialsPage() {
   const supabase = await createServerSupabaseClient();
-  const [{ data: raw }, images] = await Promise.all([
-    supabase.from("testimonials").select("*").eq("is_approved", true).limit(50),
-    getSiteImages(),
-  ]);
+  const { data: raw } = await supabase.from("testimonials").select("*").eq("is_approved", true).limit(50);
   const testimonials = raw?.map((t) => ({
     name: t.patient_name,
     country: t.country,
@@ -38,8 +34,7 @@ export default async function TestimonialsPage() {
         eyebrow="Patient Stories"
         title="Testimonials"
         description="Hear from patients around the world who transformed their health through medical treatment in India."
-        imageUrl={images.image_testimonials_hero}
-      />
+       />
 
       <section className="bg-canvas-light py-huge">
         <div className="container-cinematic">

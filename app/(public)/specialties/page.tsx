@@ -32,11 +32,11 @@ export default async function SpecialtiesPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-r from-primary-dark to-primary text-white py-16">
+      <section className="bg-canvas-night text-on-primary py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <span className="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Our Expertise</span>
+          <span className="inline-block bg-white/10 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Our Expertise</span>
           <h1 className="text-4xl font-bold mb-4">Medical Specialties</h1>
-          <p className="text-white/80 text-lg max-w-2xl">Find the right specialty, compare doctors, and plan treatment with accredited hospitals in India.</p>
+          <p className="text-on-primary/70 text-lg max-w-2xl">Find the right specialty, compare doctors, and plan treatment with accredited hospitals in India.</p>
         </div>
       </section>
       <section className="py-16 bg-white">

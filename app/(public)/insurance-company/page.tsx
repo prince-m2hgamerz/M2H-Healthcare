@@ -7,9 +7,8 @@ import PageHero from "@/components/layout/PageHero";
 import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbSchema } from "@/lib/json-ld";
-import { getSiteImages } from "@/lib/site-settings";
-
-export const metadata: Metadata = {
+ 
+ export const metadata: Metadata = {
   title: "Insurance Partners | Asians Healthcare",
   description: "Accepted international insurance companies for medical treatment in India. Check if your provider covers treatment at our partner hospitals.",
   alternates: { canonical: "https://asianshealthcare.com/insurance-company" },
@@ -17,10 +16,7 @@ export const metadata: Metadata = {
 
 export default async function InsurancePage() {
   const supabase = await createServerSupabaseClient();
-  const [{ data: raw }, images] = await Promise.all([
-    supabase.from("insurance_companies").select("*").limit(50),
-    getSiteImages(),
-  ]);
+  const { data: raw } = await supabase.from("insurance_companies").select("*").limit(50);
   const companies = raw?.map((c) => ({
     name: c.name,
     slug: c.slug,
@@ -38,8 +34,7 @@ export default async function InsurancePage() {
         eyebrow="Insurance"
         title="Insurance Partners"
         description="We work with leading international insurance providers to ensure your treatment is covered."
-        imageUrl={images.image_insurance_hero}
-      />
+       />
 
       <section className="bg-canvas-light py-huge">
         <div className="container-cinematic">

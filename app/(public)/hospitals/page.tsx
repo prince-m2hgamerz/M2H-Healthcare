@@ -9,7 +9,6 @@ import PageHero from "@/components/layout/PageHero";
 import SearchInput from "@/components/layout/SearchInput";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbSchema } from "@/lib/json-ld";
-import { getSiteImages } from "@/lib/site-settings";
 import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 
 export const metadata: Metadata = {
@@ -25,10 +24,7 @@ export default async function HospitalsPage({
 }) {
   const sp = searchParams ? await searchParams : {};
   const supabase = await createServerSupabaseClient();
-  const [{ data: raw }, images] = await Promise.all([
-    supabase.from("hospitals").select("*").limit(50),
-    getSiteImages(),
-  ]);
+  const { data: raw } = await supabase.from("hospitals").select("*").limit(50);
   const query = typeof sp?.q === "string" ? sp.q.trim() : "";
   const normalizedQuery = query.toLowerCase();
 
@@ -67,8 +63,7 @@ export default async function HospitalsPage({
         eyebrow="Top Facilities"
         title="Our Partner Hospitals"
         description="Internationally accredited hospitals equipped with advanced technology and world-class infrastructure."
-        imageUrl={images.image_hospitals_hero}
-      />
+       />
 
       <section className="bg-canvas-cream py-12 border-b border-hairline-light">
         <div className="container-cinematic">

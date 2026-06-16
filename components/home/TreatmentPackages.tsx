@@ -67,7 +67,7 @@ export default function TreatmentPackages({
 }) {
   if (treatments.length === 0) return null;
   return (
-    <section className="bg-canvas-light py-12 sm:py-huge">
+    <section className="bg-white py-12 sm:py-huge">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,7 +78,7 @@ export default function TreatmentPackages({
         >
           <div>
             <span className="pill-tag mb-4 inline-block">Affordable Care</span>
-            <h2 className="font-display text-display-md lg:text-display-lg text-ink mt-4">Treatment Packages</h2>
+            <h2 className="font-display text-display-md lg:text-display-lg text mt-4">Treatment Packages</h2>
             <p className="text-body-lg text-shade-50 max-w-xl mt-4">Save 60-80% on medical treatments in India compared to US and UK costs.</p>
           </div>
           <Link href="/treatment-package" className="btn-outline flex items-center gap-2 shrink-0 self-start lg:self-auto">
@@ -88,7 +88,7 @@ export default function TreatmentPackages({
 
         <HorizontalSlider>
           {treatments.map((t) => (
-            <Link key={t.slug} href={`/treatment-package/${t.slug}`} className="group block overflow-hidden bg-canvas-cream rounded-xl border border-hairline-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300">
+            <Link key={t.slug} href={`/treatment-package/${t.slug}`} className="group block overflow-hidden bg-surface rounded-xl border border-hairline-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300">
               <div className="relative h-40">
                 <Image
                   src={getImage(t)}
@@ -99,9 +99,9 @@ export default function TreatmentPackages({
                 />
               </div>
               <div className="p-6">
-                <h3 className="font-display text-heading-lg text-ink group-hover:text-shade-60 transition-colors">{t.name}</h3>
+                <h3 className="font-display text-heading-lg text group-hover:text-shade-60 transition-colors">{t.name}</h3>
                 <div className="mt-4 flex items-baseline gap-2">
-                  <span className="font-display text-display-md text-ink">${t.costMin.toLocaleString()}</span>
+                  <span className="font-display text-display-md text">${t.costMin.toLocaleString()}</span>
                   <span className="text-body-md text-shade-40">- ${t.costMax.toLocaleString()}</span>
                 </div>
                 <p className="text-caption text-shade-40 mt-1">In India</p>

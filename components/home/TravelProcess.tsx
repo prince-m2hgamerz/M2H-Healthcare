@@ -1,13 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const IMAGE_URL = "https://satyughealthcare.com/assets/front/images/travelprocessdesktop.jpg";
-const PROXY_URL = `/api/image-proxy?url=${encodeURIComponent(IMAGE_URL)}`;
+import Image from "next/image";
 
 export default function TravelProcess() {
   return (
-    <section className="bg-canvas-light py-16 sm:py-huge overflow-hidden">
+    <section className="bg-white py-16 sm:py-huge overflow-hidden">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -17,7 +15,7 @@ export default function TravelProcess() {
           className="text-center mb-12 sm:mb-16"
         >
           <span className="pill-tag mb-4 inline-block">Your Journey</span>
-          <h2 className="font-display text-display-md lg:text-display-lg text-ink mt-4">
+          <h2 className="font-display text-display-md lg:text-display-lg text mt-4">
             Your Medical Journey to India
           </h2>
           <p className="text-body-md sm:text-body-lg text-shade-50 max-w-2xl mx-auto mt-3 sm:mt-4">
@@ -33,10 +31,11 @@ export default function TravelProcess() {
           className="w-full"
         >
           <div className="w-full overflow-hidden rounded-lg">
-            <img
-              src={PROXY_URL}
+            <Image
+              src="/images/travelprocessdesktop.jpg"
               alt="Medical travel journey to India"
-              loading="lazy"
+              width={1200}
+              height={600}
               className="w-full h-auto block"
               style={{
                 clipPath: "inset(6% 0 6% 0)",

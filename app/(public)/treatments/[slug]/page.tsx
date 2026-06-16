@@ -5,7 +5,6 @@ import Image from "next/image";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { fallbackTreatments } from "@/lib/fallback-data";
-import { getSiteImages } from "@/lib/site-settings";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { faqPageSchema, breadcrumbSchema } from "@/lib/json-ld";
 
@@ -23,10 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function TreatmentDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const supabase = await createServerSupabaseClient();
-  const [{ data: raw }, images] = await Promise.all([
-    supabase.from("treatments").select("*").eq("slug", slug).single(),
-    getSiteImages(),
-  ]);
+  const { data: raw } = await supabase.from("treatments").select("*").eq("slug", slug).single();
   const fb = fallbackTreatments.find((t) => t.slug === slug);
   const treatment = raw ? {
     name: raw.name, category: raw.category, costMin: Number(raw.cost_usd_min) || 0,
@@ -56,14 +52,14 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
     <>
       <JsonLd data={faqPageSchema(faqs)} />
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: "https://asianshealthcare.com" }, { name: "Treatments", url: "https://asianshealthcare.com/treatments" }, { name: treatment.name, url: `https://asianshealthcare.com/treatments/${slug}` }])} />
-      <section className="bg-gradient-to-r from-primary-dark to-primary text-white py-16">
+      <section className="bg-canvas-night text-on-primary py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <Link href="/treatments" className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-6 transition"><ArrowLeft size={18} /> Back to Treatments</Link>
-          <span className="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">{treatment.category}</span>
+          <Link href="/treatments" className="inline-flex items-center gap-2 text-on-primary/60 hover:text-on-primary mb-6 transition"><ArrowLeft size={18} /> Back to Treatments</Link>
+          <span className="inline-block bg-white/10 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">{treatment.category}</span>
           <h1 className="text-4xl font-bold mb-4">{treatment.name}</h1>
-          <div className="flex items-baseline gap-2 mb-2"><span className="text-4xl font-bold">${treatment.costMin.toLocaleString()}</span><span className="text-xl text-white/70">- ${treatment.costMax.toLocaleString()}</span></div>
-          <p className="text-white/60 mb-4">In India</p>
-          <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2"><DollarSign size={18} /><span className="text-sm">Typical overseas comparison: ${usCost.toLocaleString()}</span></div>
+          <div className="flex items-baseline gap-2 mb-2"><span className="text-4xl font-bold">${treatment.costMin.toLocaleString()}</span><span className="text-xl text-on-primary/60">- ${treatment.costMax.toLocaleString()}</span></div>
+          <p className="text-on-primary/50 mb-4">In India</p>
+          <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2"><DollarSign size={18} /><span className="text-sm">Typical overseas comparison: ${usCost.toLocaleString()}</span></div>
         </div>
       </section>
 
@@ -82,7 +78,7 @@ export default async function TreatmentDetailPage({ params }: { params: Promise<
               <h2 className="text-2xl font-bold text-text-primary mb-4">Cost Comparison</h2>
               <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden mb-8">
                 <table className="w-full text-left">
-                  <thead><tr className="bg-primary-light/50"><th className="px-4 py-3 font-semibold text-text-primary">Country</th><th className="px-4 py-3 font-semibold text-text-primary">Average Cost</th><th className="px-4 py-3 font-semibold text-text-primary">Savings</th></tr></thead>
+                  <thead><tr className="bg-hairline-light"><th className="px-4 py-3 font-semibold text-text">Country</th><th className="px-4 py-3 font-semibold text-text">Average Cost</th><th className="px-4 py-3 font-semibold text-text">Savings</th></tr></thead>
                   <tbody>
                     {comparisonCountries.map((c, i) => (
                       <tr key={c.name} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>

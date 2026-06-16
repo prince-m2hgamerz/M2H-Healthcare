@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Star, Building2, Stethoscope, Search } from "lucide-react";
+import { BadgeCheck, Building2, Stethoscope, Search } from "lucide-react";
 
 const PER_PAGE = 24;
 
@@ -73,9 +73,9 @@ export default function DoctorsGrid({ doctors }: { doctors: DoctorItem[] }) {
               )}
               <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex items-center gap-1.5">
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-white/90 backdrop-blur-sm rounded-full text-[11px] font-medium text-ink shadow-sm">
-                  <Star size={11} className="fill-yellow-400 text-yellow-400" />
-                  {doctor.rating}
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-white/90 backdrop-blur-sm rounded-full text-[11px] font-medium text-aloe-40 shadow-sm">
+                  <BadgeCheck size={11} />
+                  Verified
                 </span>
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-white/90 backdrop-blur-sm rounded-full text-[11px] font-medium text-ink shadow-sm truncate">
                   <Building2 size={11} className="text-shade-40 shrink-0" />

@@ -54,7 +54,7 @@ interface PatientSupportServicesProps {
 
 export default function PatientSupportServices({ imageUrl }: PatientSupportServicesProps) {
   return (
-    <section className="bg-canvas-night text-on-primary py-12 sm:py-huge">
+    <section className="bg-surface py-12 sm:py-huge">
       <div className="container-cinematic">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <motion.div
@@ -64,10 +64,10 @@ export default function PatientSupportServices({ imageUrl }: PatientSupportServi
             transition={{ duration: 0.5 }}
           >
             <span className="pill-tag mb-4 inline-block">Patient Support</span>
-            <h2 className="font-display text-display-md lg:text-display-lg text-on-primary">
+            <h2 className="font-display text-display-md lg:text-display-lg text">
               One team for every step of your medical trip
             </h2>
-            <p className="mt-5 max-w-2xl text-body-lg leading-relaxed text-link-cool-2">
+            <p className="mt-5 max-w-2xl text-body-lg leading-relaxed text-shade-50">
               Opinion, cost estimate, visa invitation, appointments, local stay, admission,
               interpreter support, and follow-up in one coordinated flow.
             </p>
@@ -75,18 +75,18 @@ export default function PatientSupportServices({ imageUrl }: PatientSupportServi
               {assurances.map((assurance) => (
                 <div
                   key={assurance.label}
-                  className="inline-flex items-center gap-2 rounded-pill border border-hairline-dark bg-canvas-night-elevated px-4 py-2 text-caption text-link-cool-3"
+                  className="inline-flex items-center gap-2 rounded-lg border border-hairline-light bg-white px-4 py-2 text-caption text-shade-40"
                 >
-                  <assurance.icon size={16} className="text-aloe-10" />
+                  <assurance.icon size={16} className="text-accent" />
                   {assurance.label}
                 </div>
               ))}
             </div>
-            <Link href="/contact-us" className="btn-aloe mt-8">
+            <Link href="/contact-us" className="btn-accent mt-8">
               Start a Free Case Review
             </Link>
             {imageUrl && (
-              <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-lg border border-hairline-dark lg:max-w-md">
+              <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-lg border border-hairline-light lg:max-w-md">
                 <Image src={imageUrl} alt="Healthcare coordinator supporting an international patient" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
               </div>
             )}
@@ -102,16 +102,16 @@ export default function PatientSupportServices({ imageUrl }: PatientSupportServi
             {supportTracks.map((track) => (
               <div
                 key={track.title}
-                className="rounded-lg border border-hairline-dark bg-canvas-night-elevated p-5 shadow-elevation-2"
+                className="rounded-lg border border-hairline-light bg-white p-5 shadow-elevation-2"
               >
-                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-lg bg-aloe-10 text-ink">
+                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-lg bg-accent text-white">
                   <track.icon size={22} />
                 </div>
-                <h3 className="font-display text-heading-sm text-on-primary">{track.title}</h3>
+                <h3 className="font-display text-heading-sm text">{track.title}</h3>
                 <ul className="mt-4 space-y-3">
                   {track.items.map((item) => (
-                    <li key={item} className="flex gap-2 text-caption leading-relaxed text-link-cool-2">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-aloe-10" />
+                    <li key={item} className="flex gap-2 text-caption leading-relaxed text-shade-50">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                       <span>{item}</span>
                     </li>
                   ))}

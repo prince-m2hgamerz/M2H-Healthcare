@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Star, Building2, Calendar } from "lucide-react";
+import { BadgeCheck, Building2, Calendar } from "lucide-react";
 
 interface DoctorCardProps {
   name: string;
@@ -55,9 +55,8 @@ export default function DoctorCard({
 
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-1">
-            <Star size={16} className="fill-yellow-400 text-yellow-400" />
-            <span className="text-sm font-semibold text-[#1a1a2e]">{rating.toFixed(1)}</span>
-            {reviewCount && <span className="text-xs text-gray-500">({reviewCount})</span>}
+            <BadgeCheck size={16} className="text-[#0a7e3d]" />
+            <span className="text-xs font-semibold text-[#0a7e3d]">Verified Specialist</span>
           </div>
         </div>
 

@@ -33,12 +33,12 @@ export default async function SpecialtyDetailPage({ params }: { params: Promise<
 
   return (
     <>
-      <section className="bg-gradient-to-r from-primary-dark to-primary text-white py-16">
+      <section className="bg-canvas-night text-on-primary py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <Link href="/specialties" className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-6 transition"><ArrowLeft size={18} /> Back to Specialties</Link>
-          <span className="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Specialty</span>
+          <Link href="/specialties" className="inline-flex items-center gap-2 text-on-primary/60 hover:text-on-primary mb-6 transition"><ArrowLeft size={18} /> Back to Specialties</Link>
+          <span className="inline-block bg-white/10 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Specialty</span>
           <h1 className="text-4xl font-bold mb-4">{specialty.name}</h1>
-          <p className="text-white/80 text-xl max-w-3xl">{specialty.description}</p>
+          <p className="text-on-primary/70 text-xl max-w-3xl">{specialty.description}</p>
         </div>
       </section>
 

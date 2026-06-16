@@ -59,7 +59,7 @@ function SearchInputInner({
       <div className="relative flex-1 w-full">
         <Search
           className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors ${
-            focused ? "text-ink" : "text-shade-40"
+            focused ? "text" : "text-shade-40"
           }`}
           size={20}
         />
@@ -71,9 +71,9 @@ function SearchInputInner({
           onBlur={() => setFocused(false)}
           aria-label={label}
           placeholder={placeholder}
-          className={`w-full border rounded-pill pl-12 pr-11 py-3 text-body-md text-ink placeholder:text-shade-40 outline-none transition-all bg-canvas-light ${
+          className={`w-full border border-hairline-light rounded-pill pl-12 pr-11 py-3 text-body-md text placeholder:text-shade-40 outline-none transition-all bg-white ${
             focused
-              ? "border-ink ring-1 ring-aloe-10/40"
+              ? "border-primary-mid ring-1 ring-primary-mid/20"
               : "border-hairline-light"
           }`}
         />
@@ -81,7 +81,7 @@ function SearchInputInner({
           <button
             type="button"
             onClick={handleClear}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-shade-40 hover:text-ink transition-colors p-1 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-shade-40 hover:text transition-colors p-1 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Clear search"
           >
             <X size={18} />

@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import PageHero from "@/components/layout/PageHero";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbSchema } from "@/lib/json-ld";
-import { getSiteImages } from "@/lib/site-settings";
 import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 import DoctorsClient from "./DoctorsClient";
 import { allDoctors } from "@/lib/doctors-data";
@@ -15,8 +14,6 @@ export const metadata: Metadata = {
 };
 
 export default async function DoctorsPage() {
-  const images = await getSiteImages();
-
   return (
     <>
       <JsonLd data={breadcrumbSchema([
@@ -31,8 +28,7 @@ export default async function DoctorsPage() {
         eyebrow="Our Experts"
         title="Find Your Specialist"
         description={`${allDoctors.length}+ top doctors from India's leading hospitals — filter by specialty, hospital, or gender to find the right expert for you.`}
-        imageUrl={images.image_doctors_hero}
-      />
+       />
 
       <Suspense fallback={
         <div className="container-cinematic py-20 text-center text-shade-50">

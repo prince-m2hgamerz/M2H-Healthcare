@@ -26,7 +26,7 @@ const itemVariants = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-canvas-cream py-12 sm:py-huge">
+    <section className="bg-surface py-12 sm:py-huge">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,7 +36,7 @@ export default function WhyChooseUs() {
           className="text-center mb-16"
         >
           <span className="pill-tag mb-4 inline-block">Why Choose Us</span>
-          <h2 className="font-display text-display-md lg:text-display-lg text-ink mt-4">
+          <h2 className="font-display text-display-md lg:text-display-lg text mt-4">
             Why Patients Choose Asians Healthcare
           </h2>
           <p className="text-body-lg text-shade-50 max-w-2xl mx-auto mt-4">
@@ -52,11 +52,11 @@ export default function WhyChooseUs() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {features.map((feature) => (
-            <motion.div key={feature.title} variants={itemVariants} className="bg-canvas-light rounded-xl p-6 border border-hairline-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-aloe-10 flex items-center justify-center mb-4">
-                <feature.icon size={22} className="text-ink" />
+            <motion.div key={feature.title} variants={itemVariants} className="bg-white rounded-xl p-6 border border-hairline-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center mb-4">
+                <feature.icon size={22} className="text" />
               </div>
-              <h3 className="font-display text-heading-sm text-ink mb-2">{feature.title}</h3>
+              <h3 className="font-display text-heading-sm text mb-2">{feature.title}</h3>
               <p className="text-body-md text-shade-50 leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}

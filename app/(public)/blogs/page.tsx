@@ -7,7 +7,6 @@ import PageHero from "@/components/layout/PageHero";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbSchema } from "@/lib/json-ld";
 import { fallbackBlogs } from "@/lib/fallback-data";
-import { getSiteImages } from "@/lib/site-settings";
 import { stripHtml } from "@/lib/utils";
 import NewsletterSignup from "@/components/home/NewsletterSignup";
 
@@ -22,10 +21,7 @@ const categories = ["All", "Medical Visa Guide", "Treatment Blog", "Tourism Blog
 export default async function BlogsPage({ searchParams }: { searchParams?: Promise<{ cat?: string }> }) {
   const sp = searchParams ? await searchParams : {};
   const supabase = await createServerSupabaseClient();
-  const [{ data: raw }, images] = await Promise.all([
-    supabase.from("blogs").select("*").eq("is_published", true).limit(50),
-    getSiteImages(),
-  ]);
+  const { data: raw } = await supabase.from("blogs").select("*").eq("is_published", true).limit(50);
   const activeCategory = typeof sp?.cat === "string" ? sp.cat : "All";
   const fetchedBlogs = raw?.map((b) => ({
     title: b.title,
@@ -53,8 +49,7 @@ export default async function BlogsPage({ searchParams }: { searchParams?: Promi
         eyebrow="Our Blog"
         title="Blogs & Resources"
         description="Stay informed with the latest in medical tourism, treatment guides, and healthcare tips."
-        imageUrl={images.image_blogs_hero}
-      />
+       />
 
       <section className="bg-canvas-cream py-6 sm:py-8 border-b border-hairline-light sticky top-16 lg:top-20 z-30">
         <div className="container-cinematic">

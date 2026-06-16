@@ -12,7 +12,7 @@ import PatientSupportServices from "@/components/home/PatientSupportServices";
 import FeaturedDoctors from "@/components/home/FeaturedDoctors";
 import FeaturedHospitals from "@/components/home/FeaturedHospitals";
 import TreatmentCostShowcase from "@/components/home/TreatmentCostShowcase";
-import TreatmentPackages from "@/components/home/TreatmentPackages";
+
 import CostComparison from "@/components/home/CostComparison";
 import MedicalCareGallery from "@/components/home/MedicalCareGallery";
 import GetConsultation from "@/components/home/GetConsultation";
@@ -29,7 +29,6 @@ import {
   fallbackHospitals,
   fallbackInsurances,
   fallbackTestimonials,
-  fallbackTreatments,
 } from "@/lib/fallback-data";
 import { mergeSiteImages, SITE_IMAGE_KEYS, SITE_IMAGE_DEFAULTS } from "@/lib/site-images";
 import type { SiteImageKey } from "@/lib/site-images";
@@ -93,11 +92,11 @@ export default async function HomePage() {
       <TreatmentCostShowcase />
       <WhyChooseUs />
       <TravelProcess />
-      <FeaturedDoctors doctors={fallbackDoctors} />
+      <FeaturedDoctors doctors={fallbackDoctors.slice(0, 8)} />
       <GetConsultation />
       <FeaturedHospitals hospitals={fallbackHospitals} />
       <CostComparison imageUrl={images.image_home_cost} />
-      <TreatmentPackages treatments={treatments.length > 0 ? treatments : fallbackTreatments} />
+
       <PatientTestimonials testimonials={testimonials.length > 0 ? testimonials : fallbackTestimonials} />
       <QuickInquiryForm />
       <PatientSupportServices imageUrl={images.image_home_support} />

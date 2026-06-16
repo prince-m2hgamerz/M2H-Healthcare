@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Search } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 import type { Metadata } from "next";
 import {
   fallbackDoctors,
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
 };
 
 const categoryColors: Record<string, string> = {
-  Doctor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  Hospital: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-  Treatment: "bg-rose-500/10 text-rose-400 border-rose-500/20",
-  Specialty: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-  Blog: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-  Hotel: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-  Testimonial: "bg-pink-500/10 text-pink-400 border-pink-500/20",
+  Doctor: "bg-accent/10 text-accent border-accent/20",
+  Hospital: "bg-primary/10 text-primary border-primary/20",
+  Treatment: "bg-pistachio/10 text-pistachio border-pistachio/20",
+  Specialty: "bg-aloe/10 text-aloe border-aloe/20",
+  Blog: "bg-gold/10 text-gold border-gold/20",
+  Hotel: "bg-primary/10 text-primary border-primary/20",
+  Testimonial: "bg-accent/10 text-accent border-accent/20",
 };
 
 interface SearchResult {
@@ -138,24 +138,33 @@ export default async function SearchPage({
       <section className="section-padding bg-canvas">
         <div className="container-cinematic">
           <form method="GET" action="/search" className="max-w-2xl mx-auto mb-8 sm:mb-12">
-            <div className="relative">
-              <Search size={18} className="sm:size-20 absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-link-cool-2" />
-              <input
-                type="text"
-                name="q"
-                defaultValue={query}
-                placeholder="Search doctors, hospitals, treatments..."
-                className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 bg-canvas-night-elevated border border-hairline-dark rounded-xl text-body-sm sm:text-lg text-on-primary placeholder:text-link-cool-2 outline-none focus:border-link-mint transition-colors"
-                autoFocus
-              />
+            <div className="bg-white border border-hairline-light rounded-xl shadow-sm p-1.5 sm:p-2 flex items-center gap-2">
+              <div className="relative flex-1">
+                <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-shade-40" />
+                <input
+                  type="text"
+                  name="q"
+                  defaultValue={query}
+                  placeholder="Search doctors, hospitals, treatments..."
+                  className="w-full pl-10 pr-3 py-2.5 sm:py-3 text-body-sm sm:text-body bg-transparent text placeholder:text-shade-40 outline-none focus:outline-none"
+                  autoFocus
+                />
+              </div>
+              <button
+                type="submit"
+                className="btn-accent whitespace-nowrap flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg shrink-0"
+              >
+                Search
+                <ArrowRight size={18} />
+              </button>
             </div>
           </form>
 
           {query && results.length === 0 && (
             <div className="text-center py-12 sm:py-16">
-              <Search size={36} className="sm:size-48 mx-auto mb-4 text-link-cool-2 opacity-40" />
-              <h2 className="text-heading-xs sm:text-heading-md text-on-primary mb-2">No results found</h2>
-              <p className="text-link-cool-2 text-sm sm:text-body">
+              <Search size={36} className="sm:size-48 mx-auto mb-4 text-shade-40 opacity-40" />
+              <h2 className="text-heading-xs sm:text-heading-md text mb-2">No results found</h2>
+              <p className="text-shade-50 text-sm sm:text-body">
                 No results matching &quot;{query}&quot;. Try different keywords.
               </p>
             </div>
@@ -163,17 +172,17 @@ export default async function SearchPage({
 
           {results.length > 0 && (
             <div className="space-y-8 sm:space-y-12">
-              <p className="text-link-cool-2 text-sm sm:text-body">{results.length} result{results.length !== 1 ? "s" : ""} found</p>
+              <p className="text-shade-50 text-sm sm:text-body">{results.length} result{results.length !== 1 ? "s" : ""} found</p>
               {categoryOrder.map((cat) => {
                 const items = grouped.get(cat);
                 if (!items) return null;
                 return (
                   <div key={cat}>
-                    <h3 className="text-heading-2xs sm:text-heading-sm text-on-primary mb-3 sm:mb-4 flex items-center gap-2">
+                    <h3 className="text-heading-2xs sm:text-heading-sm text mb-3 sm:mb-4 flex items-center gap-2">
                       <span className={`inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium uppercase tracking-wider border ${categoryColors[cat] || ""}`}>
                         {cat}
                       </span>
-                      <span className="text-link-cool-2 text-xs sm:text-sm font-normal">({items.length})</span>
+                      <span className="text-shade-50 text-xs sm:text-sm font-normal">({items.length})</span>
                     </h3>
                     <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                       {items.map((item) => (
@@ -194,14 +203,14 @@ export default async function SearchPage({
                             </div>
                           ) : (
                             <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-canvas-night flex items-center justify-center shrink-0">
-                              <Search size={18} className="sm:size-24 text-link-cool-2" />
+                              <Search size={18} className="sm:size-24 text-shade-40" />
                             </div>
                           )}
                           <div className="min-w-0">
                             <p className="text-body-sm sm:text-body text-on-primary font-medium group-hover:text-link-mint transition-colors truncate">
                               {item.title}
                             </p>
-                            <p className="text-link-cool-2 text-xs sm:text-sm mt-0.5 sm:mt-1 line-clamp-2">{item.description}</p>
+                            <p className="text-shade-40 text-xs sm:text-sm mt-0.5 sm:mt-1 line-clamp-2">{item.description}</p>
                           </div>
                         </Link>
                       ))}
@@ -214,9 +223,9 @@ export default async function SearchPage({
 
           {!query && (
             <div className="text-center py-12 sm:py-16">
-              <Search size={36} className="sm:size-48 mx-auto mb-4 text-link-cool-2 opacity-40" />
-              <h2 className="text-heading-xs sm:text-heading-md text-on-primary mb-2">Search Across Everything</h2>
-              <p className="text-link-cool-2 text-sm sm:text-body">
+              <Search size={36} className="sm:size-48 mx-auto mb-4 text-shade-40 opacity-40" />
+              <h2 className="text-heading-xs sm:text-heading-md text mb-2">Search Across Everything</h2>
+              <p className="text-shade-50 text-sm sm:text-body">
                 Enter a search term above to find doctors, hospitals, treatments, specialties, and more.
               </p>
             </div>

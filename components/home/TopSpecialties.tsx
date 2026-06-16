@@ -16,16 +16,16 @@ import {
 } from "lucide-react";
 
 const specialties = [
-  { name: "Cardiology", icon: Heart, slug: "cardiology", color: "bg-red-50 text-red-600" },
-  { name: "Neurology", icon: Brain, slug: "neurology", color: "bg-purple-50 text-purple-600" },
-  { name: "Orthopaedics", icon: Bone, slug: "orthopedics", color: "bg-blue-50 text-blue-600" },
-  { name: "Oncology", icon: Microscope, slug: "oncology", color: "bg-amber-50 text-amber-600" },
-  { name: "IVF & Fertility", icon: Baby, slug: "ivf-treatment", color: "bg-pink-50 text-pink-600" },
-  { name: "Ophthalmology", icon: Eye, slug: "ophthalmology", color: "bg-teal-50 text-teal-600" },
-  { name: "Transplant", icon: Activity, slug: "transplant", color: "bg-green-50 text-green-600" },
-  { name: "Gastroenterology", icon: Pill, slug: "gastroenterology", color: "bg-orange-50 text-orange-600" },
-  { name: "Nephrology", icon: Syringe, slug: "nephrology", color: "bg-cyan-50 text-cyan-600" },
-  { name: "General Medicine", icon: Stethoscope, slug: "general-medicine", color: "bg-indigo-50 text-indigo-600" },
+  { name: "Cardiology", icon: Heart, slug: "cardiology", color: "bg-gold/10 text-gold" },
+  { name: "Neurology", icon: Brain, slug: "neurology", color: "bg-accent/10 text-accent" },
+  { name: "Orthopaedics", icon: Bone, slug: "orthopedics", color: "bg-primary/10 text-primary" },
+  { name: "Oncology", icon: Microscope, slug: "oncology", color: "bg-primary/10 text-primary" },
+  { name: "IVF & Fertility", icon: Baby, slug: "ivf-treatment", color: "bg-gold/10 text-gold" },
+  { name: "Ophthalmology", icon: Eye, slug: "ophthalmology", color: "bg-accent/10 text-accent" },
+  { name: "Transplant", icon: Activity, slug: "transplant", color: "bg-accent/10 text-accent" },
+  { name: "Gastroenterology", icon: Pill, slug: "gastroenterology", color: "bg-primary/10 text-primary" },
+  { name: "Nephrology", icon: Syringe, slug: "nephrology", color: "bg-primary/10 text-primary" },
+  { name: "General Medicine", icon: Stethoscope, slug: "general-medicine", color: "bg-accent/10 text-accent" },
 ];
 
 const containerVariants = {
@@ -40,7 +40,7 @@ const itemVariants = {
 
 export default function TopSpecialties() {
   return (
-    <section className="bg-canvas-light py-12 sm:py-huge border-b border-hairline-light">
+    <section className="bg-white py-12 sm:py-huge border-b border-hairline-light">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ export default function TopSpecialties() {
           className="text-center mb-12"
         >
           <span className="pill-tag mb-4 inline-block">Specialties</span>
-          <h2 className="font-display text-display-md lg:text-display-lg text-ink mt-4">
+          <h2 className="font-display text-display-md lg:text-display-lg text mt-4">
             Top Medical Specialties
           </h2>
           <p className="text-body-lg text-shade-50 max-w-2xl mx-auto mt-4">
@@ -69,12 +69,12 @@ export default function TopSpecialties() {
             <motion.div key={specialty.slug} variants={itemVariants}>
               <Link
                 href={`/speciality/${specialty.slug}`}
-                className="group flex flex-col items-center gap-2 sm:gap-3 p-4 sm:p-6 rounded-xl border border-hairline-light bg-canvas-light hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300"
+                className="group flex flex-col items-center gap-2 sm:gap-3 p-4 sm:p-6 rounded-xl border border-hairline-light bg-white hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300"
               >
                 <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl ${specialty.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                   <specialty.icon size={22} />
                 </div>
-                <span className="font-display text-caption sm:text-heading-sm text-ink text-center group-hover:text-shade-60 transition-colors">
+                  <span className="font-display text-caption sm:text-heading-sm text text-center group-hover:text-shade-60 transition-colors">
                   {specialty.name}
                 </span>
               </Link>

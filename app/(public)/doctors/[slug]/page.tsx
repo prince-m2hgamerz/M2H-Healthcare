@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Award, MapPin, Star } from "lucide-react";
+import { ArrowLeft, Award, MapPin, BadgeCheck } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { fallbackDoctors } from "@/lib/fallback-data";
@@ -63,7 +63,7 @@ export default async function DoctorDetailPage({ params }: { params: Promise<{ s
               <div className="flex flex-wrap items-center gap-4 text-caption text-link-cool-1">
                 <span className="flex items-center gap-1"><MapPin size={14} />{doctor.hospital}</span>
                 <span className="flex items-center gap-1"><Award size={14} />{doctor.experience}</span>
-                <span className="flex items-center gap-1"><Star size={14} className="text-yellow-400" />{doctor.rating} rating</span>
+                <span className="flex items-center gap-1"><BadgeCheck size={14} className="text-aloe-40" />Verified Specialist</span>
               </div>
             </div>
           </div>

@@ -8,7 +8,6 @@ import PageHero from "@/components/layout/PageHero";
 import SearchInput from "@/components/layout/SearchInput";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbSchema } from "@/lib/json-ld";
-import { getSiteImages } from "@/lib/site-settings";
 import BreadcrumbNav from "@/components/shared/BreadcrumbNav";
 
 export const metadata: Metadata = {
@@ -24,10 +23,7 @@ export default async function TreatmentPackagesPage({
 }) {
   const sp = searchParams ? await searchParams : {};
   const supabase = await createServerSupabaseClient();
-  const [{ data: raw }, images] = await Promise.all([
-    supabase.from("treatments").select("*").limit(300),
-    getSiteImages(),
-  ]);
+  const { data: raw } = await supabase.from("treatments").select("*").limit(300);
   const query = typeof sp?.q === "string" ? sp.q.trim() : "";
   const categoryFilter = typeof sp?.category === "string" ? sp.category : "";
   const normalizedQuery = query.toLowerCase();
@@ -117,8 +113,7 @@ export default async function TreatmentPackagesPage({
         eyebrow="218+ Procedures"
         title="Treatment Packages & Costs"
         description="Compare 218+ treatment costs in India vs. Western countries. Save 60-80% without compromising on quality at JCI/NABH accredited hospitals."
-        imageUrl={images.image_treatments_hero}
-      />
+       />
 
       <section className="bg-canvas-cream py-8 sm:py-12 border-b border-hairline-light">
         <div className="container-cinematic">

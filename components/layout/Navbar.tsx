@@ -62,10 +62,17 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const settings = useSiteSettings();
   const siteName = settings.site_name || "Asians Healthcare";
   const exploreActive = exploreLinks.some((link) => pathname === link.href || pathname.startsWith(`${link.href}/`));
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -90,8 +97,13 @@ export default function Navbar() {
 
   return (
     <>
-    <nav className="sticky top-0 z-50 bg-canvas-night text-on-primary border-b border-hairline-dark">
-      <div className="container-cinematic flex items-center justify-between h-16 lg:h-20">
+    <nav className={cn(
+      "sticky top-0 z-50 h-[72px] transition-all duration-300",
+      scrolled
+        ? "bg-white/90 backdrop-blur-md border-b border-border"
+        : "bg-white border-b border-transparent"
+    )}>
+      <div className="container-cinematic flex items-center justify-between h-full">
         <Link href="/" className="shrink-0 flex items-center gap-2">
           <Image src="/logo.svg" alt={siteName} width={160} height={32} className="h-8 w-auto" priority />
         </Link>
@@ -102,10 +114,10 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-caption uppercase tracking-wider transition-colors",
+                "text-[15px] font-medium transition-colors",
                 pathname === link.href || pathname.startsWith(`${link.href}/`)
-                  ? "text-on-primary"
-                  : "text-link-cool-2 hover:text-on-primary"
+                  ? "text-accent"
+                  : "text-text hover:text-primary-mid"
               )}
             >
               {link.label}
@@ -121,8 +133,8 @@ export default function Navbar() {
               type="button"
               onClick={() => setExploreOpen((current) => !current)}
               className={cn(
-                "inline-flex items-center gap-1.5 text-caption uppercase tracking-wider transition-colors",
-                exploreActive ? "text-on-primary" : "text-link-cool-2 hover:text-on-primary"
+                "inline-flex items-center gap-1.5 text-[15px] font-medium transition-colors",
+                exploreActive ? "text-accent" : "text-text hover:text-primary-mid"
               )}
               aria-expanded={exploreOpen}
               aria-haspopup="menu"
@@ -138,7 +150,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.18 }}
-                  className="absolute right-0 top-full mt-4 w-64 rounded-lg border border-hairline-dark bg-canvas-night-elevated p-2 shadow-elevation-4"
+                  className="absolute right-0 top-full mt-4 w-64 rounded-lg border border-border bg-white p-2 shadow-lg"
                   role="menu"
                 >
                   {exploreLinks.map((link) => (
@@ -146,10 +158,10 @@ export default function Navbar() {
                       key={link.href}
                       href={link.href}
                       className={cn(
-                        "block rounded-md px-3 py-2.5 text-caption transition-colors",
+                        "block rounded-md px-3 py-2.5 text-[14px] font-medium transition-colors",
                         pathname === link.href || pathname.startsWith(`${link.href}/`)
-                          ? "bg-canvas-night text-on-primary"
-                          : "text-link-cool-2 hover:bg-canvas-night hover:text-on-primary"
+                          ? "bg-primary-tint text-accent"
+                          : "text-text-muted hover:bg-primary-tint hover:text-text"
                       )}
                       role="menuitem"
                     >
@@ -162,29 +174,29 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="hidden lg:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-3">
           <button
             onClick={() => setSearchOpen(true)}
-            className="flex items-center gap-2 px-3 py-2 text-link-cool-2 hover:text-on-primary transition-colors border border-hairline-dark rounded-lg hover:border-hairline"
+            className="flex items-center gap-2 px-3 py-2 text-text-muted bg-canvas-light border border-border rounded-lg hover:border-primary-mid/30 transition-colors text-[13px] font-medium"
             aria-label="Search"
           >
-            <Search size={18} />
-            <span className="text-caption hidden xl:inline">Search...</span>
-            <kbd className="hidden xl:inline-flex items-center px-1.5 py-0.5 text-[10px] text-link-cool-2 bg-canvas-night rounded border border-hairline-dark">
+            <Search size={16} />
+            <span className="hidden xl:inline">Search...</span>
+            <kbd className="hidden xl:inline-flex items-center px-1.5 py-0.5 text-[10px] text-text-light bg-white rounded border border-border">
               ⌘K
             </kbd>
           </button>
-          <Link href="/treatment-package" className="btn-outline-dark text-sm !py-2 !px-5">
+          <Link href="/treatment-package" className="btn-outline text-[15px] !py-2.5 !px-6">
             Find Cost
           </Link>
-          <Link href="/contact-us" className="btn-primary text-sm !py-2 !px-5">
+          <Link href="/contact-us" className="btn-accent text-[15px] !py-2.5 !px-6">
             Get Free Quote
           </Link>
         </div>
 
         <button
           onClick={() => setOpen(!open)}
-          className="lg:hidden text-on-primary p-3"
+          className="lg:hidden text-text p-3"
           aria-label={open ? "Close menu" : "Open menu"}
         >
           {open ? <X size={28} /> : <Menu size={28} />}
@@ -198,21 +210,21 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden overflow-hidden bg-canvas-night border-t border-hairline-dark"
+            className="lg:hidden overflow-hidden bg-white border-t border-border"
           >
             <div className="flex flex-col max-h-[80vh]">
               <div className="overflow-y-auto container-cinematic py-6 space-y-5">
                 <button
                   onClick={() => { setOpen(false); setSearchOpen(true); }}
-                  className="flex items-center gap-3 w-full text-left text-on-primary hover:text-link-mint transition-colors py-2.5 px-4 -mx-4 rounded-lg hover:bg-canvas-night-elevated"
+                  className="flex items-center gap-3 w-full text-left text-text transition-colors py-2.5 px-4 -mx-4 rounded-lg hover:bg-primary-tint"
                 >
-                  <Search size={20} />
+                  <Search size={20} className="text-primary-mid" />
                   <span className="font-display text-heading-sm">Search</span>
                 </button>
-                <hr className="border-hairline-dark" />
+                <hr className="border-border" />
 
                 <div className="space-y-2">
-                  <p className="text-caption uppercase tracking-[0.12em] text-link-cool-2 font-medium px-4 text-[11px]">
+                  <p className="text-eyebrow text-primary-mid font-medium px-4">
                     Main
                   </p>
                   {primaryNavLinks.map((link) => {
@@ -225,24 +237,24 @@ export default function Navbar() {
                         className={cn(
                           "flex items-center justify-between rounded-lg px-4 py-2.5 transition-colors",
                           isActive
-                            ? "bg-canvas-night-elevated text-on-primary"
-                            : "text-link-cool-2 hover:bg-canvas-night-elevated hover:text-on-primary"
+                            ? "bg-primary-tint text-accent font-medium"
+                            : "text-text hover:bg-primary-tint hover:text-text"
                         )}
                       >
                         <div className="flex items-center gap-3">
                           {linkIcon[link.label]}
                           <span className="font-display text-heading-sm">{link.label}</span>
                         </div>
-                        <ChevronRight size={14} className="text-link-cool-2" />
+                        <ChevronRight size={14} className="text-text-light" />
                       </Link>
                     );
                   })}
                 </div>
 
-                <hr className="border-hairline-dark" />
+                <hr className="border-border" />
 
                 <div className="space-y-2">
-                  <p className="text-caption uppercase tracking-[0.12em] text-link-cool-2 font-medium px-4 text-[11px]">
+                  <p className="text-eyebrow text-primary-mid font-medium px-4">
                     Explore
                   </p>
                   {exploreLinks.map((link) => {
@@ -255,24 +267,24 @@ export default function Navbar() {
                         className={cn(
                           "flex items-center justify-between rounded-lg px-4 py-2.5 transition-colors",
                           isActive
-                            ? "bg-canvas-night-elevated text-on-primary"
-                            : "text-link-cool-2 hover:bg-canvas-night-elevated hover:text-on-primary"
+                            ? "bg-primary-tint text-accent font-medium"
+                            : "text-text hover:bg-primary-tint hover:text-text"
                         )}
                       >
                         <div className="flex items-center gap-3">
                           {linkIcon[link.label]}
                           <span className="font-display text-heading-sm">{link.label}</span>
                         </div>
-                        <ChevronRight size={14} className="text-link-cool-2" />
+                        <ChevronRight size={14} className="text-text-light" />
                       </Link>
                     );
                   })}
                 </div>
 
-                <hr className="border-hairline-dark" />
+                <hr className="border-border" />
 
                 <div className="space-y-2">
-                  <p className="text-caption uppercase tracking-[0.12em] text-link-cool-2 font-medium px-4 text-[11px]">
+                  <p className="text-eyebrow text-primary-mid font-medium px-4">
                     Legal
                   </p>
                   {legalLinks.map((link) => {
@@ -285,26 +297,26 @@ export default function Navbar() {
                         className={cn(
                           "flex items-center justify-between rounded-lg px-4 py-2.5 transition-colors",
                           isActive
-                            ? "bg-canvas-night-elevated text-on-primary"
-                            : "text-link-cool-2 hover:bg-canvas-night-elevated hover:text-on-primary"
+                            ? "bg-primary-tint text-accent font-medium"
+                            : "text-text hover:bg-primary-tint hover:text-text"
                         )}
                       >
                         <div className="flex items-center gap-3">
                           {linkIcon[link.label]}
                           <span className="font-display text-heading-sm">{link.label}</span>
                         </div>
-                        <ChevronRight size={14} className="text-link-cool-2" />
+                        <ChevronRight size={14} className="text-text-light" />
                       </Link>
-                    );
+    );
                   })}
                 </div>
               </div>
 
-              <div className="sticky bottom-0 border-t border-hairline-dark bg-canvas-night p-4 container-cinematic space-y-3">
-                <Link href="/treatment-package" className="btn-outline-dark w-full text-center block" onClick={() => setOpen(false)}>
+              <div className="sticky bottom-0 border-t border-border bg-white p-4 container-cinematic space-y-3">
+                <Link href="/treatment-package" className="btn-outline w-full text-center block" onClick={() => setOpen(false)}>
                   Find Cost
                 </Link>
-                <Link href="/contact-us" className="btn-primary w-full text-center block" onClick={() => setOpen(false)}>
+                <Link href="/contact-us" className="btn-accent w-full text-center block" onClick={() => setOpen(false)}>
                   Get Free Quote
                 </Link>
               </div>

@@ -8,11 +8,11 @@
     <rect x="11" y="14" width="10" height="4" rx="1" fill="white"/>
   </g>
   <!-- "Asians" text -->
-  <text x="36" y="22" font-family="Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="white" letter-spacing="0.5">
+  <text x="36" y="22" font-family="Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#0B3954" letter-spacing="0.5">
     Asians
   </text>
   <!-- "Healthcare" text -->
-  <text x="108" y="22" font-family="Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="300" fill="white" letter-spacing="0.5">
+  <text x="108" y="22" font-family="Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="300" fill="#0B3954" letter-spacing="0.5">
     Healthcare
   </text>
   <!-- Tagline -->

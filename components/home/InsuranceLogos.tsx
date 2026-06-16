@@ -6,7 +6,7 @@ export default function InsuranceLogos({ insurances = defaultInsurances }: { ins
   const items = insurances.length > 0 ? insurances : defaultInsurances;
 
   return (
-    <section className="bg-canvas-cream py-16">
+    <section className="bg-surface py-16">
       <div className="container-cinematic">
         <motion.p
           initial={{ opacity: 0 }}
@@ -31,7 +31,7 @@ export default function InsuranceLogos({ insurances = defaultInsurances }: { ins
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06, duration: 0.3 }}
-              className="text-heading-sm font-display text-shade-40 hover:text-ink transition-colors cursor-default px-3 py-1.5 border border-hairline-light rounded-lg hover:border-aloe-10/30"
+              className="text-heading-sm font-display text-shade-40 hover:text transition-colors cursor-default px-3 py-1.5 border border-hairline-light rounded-lg hover:border-primary/10"
             >
               {name}
             </motion.div>

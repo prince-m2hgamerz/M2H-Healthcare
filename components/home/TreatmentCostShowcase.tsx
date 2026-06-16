@@ -67,7 +67,7 @@ const treatmentCosts = [
 
 export default function TreatmentCostShowcase() {
   return (
-    <section className="bg-canvas-cream py-12 sm:py-huge overflow-hidden">
+    <section className="bg-surface py-12 sm:py-huge overflow-hidden">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,7 +78,7 @@ export default function TreatmentCostShowcase() {
         >
           <div>
             <span className="pill-tag mb-4 inline-block">Treatment Costs</span>
-            <h2 className="font-display text-display-md lg:text-display-lg text-ink mt-4">
+            <h2 className="font-display text-display-md lg:text-display-lg text mt-4">
               All Prices Are Negotiable
             </h2>
             <p className="text-body-lg text-shade-50 max-w-xl mt-4">
@@ -95,7 +95,7 @@ export default function TreatmentCostShowcase() {
             <Link
               key={treatment.slug + i}
               href={`/treatment-package/${treatment.slug}`}
-              className="group block bg-canvas-light rounded-xl border border-hairline-light overflow-hidden hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300"
+              className="group block bg-white rounded-xl border border-hairline-light overflow-hidden hover:shadow-elevation-3 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="relative h-40 overflow-hidden">
                 <Image
@@ -112,12 +112,12 @@ export default function TreatmentCostShowcase() {
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="font-display text-heading-sm text-ink group-hover:text-shade-60 transition-colors line-clamp-2 min-h-[2.5rem]">
+                <h3 className="font-display text-heading-sm text group-hover:text-shade-60 transition-colors line-clamp-2 min-h-[2.5rem]">
                   {treatment.name}
                 </h3>
                 <div className="flex items-center gap-1.5 mt-3">
                   <IndianRupee size={16} className="text-shade-50" />
-                  <span className="font-display text-heading-md text-ink">{treatment.cost}</span>
+                  <span className="font-display text-heading-md text">{treatment.cost}</span>
                 </div>
                 <p className="text-micro text-shade-40 mt-1">In India (indicative)</p>
               </div>

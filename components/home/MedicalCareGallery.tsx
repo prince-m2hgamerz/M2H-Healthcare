@@ -77,12 +77,12 @@ const treatmentCards: Array<{
 
 export default function MedicalCareGallery({ images }: { images: ImageMap }) {
   return (
-    <section className="bg-canvas-cream py-12 sm:py-huge">
+    <section className="bg-surface py-12 sm:py-huge">
       <div className="container-cinematic">
         <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <span className="pill-tag mb-4 inline-block">Medical Assistance</span>
-            <h2 className="font-display text-display-md lg:text-display-lg text-ink">Useful support, from reports to return home</h2>
+            <h2 className="font-display text-display-md lg:text-display-lg text">Useful support, from reports to return home</h2>
           </div>
           <p className="max-w-xl text-body-md text-shade-50">
             Built around the core needs of overseas patients: opinion, cost, hospital choice, travel, admission, language support, and follow-up.
@@ -91,12 +91,12 @@ export default function MedicalCareGallery({ images }: { images: ImageMap }) {
 
         <HorizontalSlider>
           {supportCards.map((card) => (
-            <div key={card.title} className="overflow-hidden rounded-lg border border-hairline-light bg-canvas-light">
+            <div key={card.title} className="overflow-hidden rounded-lg border border-hairline-light bg-white">
               <div className="relative h-48">
                 <Image src={images[card.imageKey]} alt={card.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw" className="object-cover" />
               </div>
               <div className="p-5">
-                <h3 className="font-display text-heading-md text-ink">{card.title}</h3>
+                <h3 className="font-display text-heading-md text">{card.title}</h3>
                 <p className="mt-2 text-body-md leading-relaxed text-shade-50">{card.text}</p>
               </div>
             </div>
@@ -107,7 +107,7 @@ export default function MedicalCareGallery({ images }: { images: ImageMap }) {
           <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <span className="pill-tag-shade mb-4 inline-block">Common Treatments</span>
-              <h2 className="font-display text-display-md text-ink">High-demand care categories</h2>
+              <h2 className="font-display text-display-md text">High-demand care categories</h2>
             </div>
             <Link href="/treatment-package" className="btn-outline inline-flex gap-2 self-start lg:self-auto">
               View Costs <ArrowRight size={18} />
@@ -116,12 +116,12 @@ export default function MedicalCareGallery({ images }: { images: ImageMap }) {
 
           <HorizontalSlider>
             {treatmentCards.map((card) => (
-              <Link key={card.title} href={card.href} className="group overflow-hidden rounded-lg border border-hairline-light bg-canvas-light">
+              <Link key={card.title} href={card.href} className="group overflow-hidden rounded-lg border border-hairline-light bg-white">
                 <div className="relative h-44">
                   <Image src={images[card.imageKey]} alt={card.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="p-5">
-                  <h3 className="font-display text-heading-sm text-ink">{card.title}</h3>
+                  <h3 className="font-display text-heading-sm text">{card.title}</h3>
                   <p className="mt-2 text-caption leading-relaxed text-shade-50">{card.text}</p>
                 </div>
               </Link>

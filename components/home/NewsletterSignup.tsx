@@ -31,27 +31,27 @@ export default function NewsletterSignup() {
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-br from-canvas-night to-canvas-night-elevated text-on-primary py-16 sm:py-20"
+        className="bg-surface py-16 sm:py-20"
       >
         <div className="container-cinematic text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-aloe-10/20 mb-5">
-            <Check size={32} className="text-aloe-10" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-accent/20 mb-5">
+            <Check size={32} className="text-accent" />
           </div>
-          <h2 className="font-display text-heading-xl sm:text-display-md mb-2">You&apos;re subscribed!</h2>
-          <p className="text-body-lg text-link-cool-2">We&apos;ll send you the latest guides and tips.</p>
+          <h2 className="font-display text-heading-xl sm:text-display-md text mb-2">You&apos;re subscribed!</h2>
+          <p className="text-body-lg text-shade-50">We&apos;ll send you the latest guides and tips.</p>
         </div>
       </motion.section>
     );
   }
 
   return (
-    <section className="bg-gradient-to-br from-canvas-night to-canvas-night-elevated text-on-primary py-16 sm:py-20">
+    <section className="bg-surface py-16 sm:py-20">
       <div className="container-cinematic max-w-2xl mx-auto text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-aloe-10/20 mb-5">
-          <Mail size={32} className="text-aloe-10" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-accent/20 mb-5">
+          <Mail size={32} className="text-accent" />
         </div>
-        <h2 className="font-display text-heading-xl sm:text-display-md mb-2">Get Free Medical Tourism Guides</h2>
-        <p className="text-body-lg text-link-cool-2 mb-8 max-w-lg mx-auto">Subscribe for treatment cost guides, visa tips, and patient stories delivered to your inbox.</p>
+        <h2 className="font-display text-heading-xl sm:text-display-md mb-2 text">Get Free Medical Tourism Guides</h2>
+        <p className="text-body-lg text-shade-50 mb-8 max-w-lg mx-auto">Subscribe for treatment cost guides, visa tips, and patient stories delivered to your inbox.</p>
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
           <div className="relative flex-1">
             <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-shade-40 pointer-events-none" />
@@ -61,7 +61,7 @@ export default function NewsletterSignup() {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full pl-11 pr-4 py-3.5 sm:py-3 rounded-pill text-body-md text-ink bg-canvas-light border border-hairline-light focus:outline-none focus:ring-2 focus:ring-aloe-10/60 focus:border-aloe-10 transition-shadow"
+              className="w-full pl-11 pr-4 py-3.5 sm:py-3 rounded-lg text-body-md text bg-white border border-hairline-light focus:outline-none focus:ring-2 focus:ring-accent/60 focus:border-accent transition-shadow"
             />
           </div>
           <button type="submit" disabled={status === "loading"} className="btn-primary whitespace-nowrap flex items-center justify-center gap-2 !py-3.5 sm:!py-3">

@@ -19,7 +19,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-canvas-cream py-12 sm:py-huge">
+    <section className="bg-surface py-12 sm:py-huge">
       <div className="container-cinematic">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ export default function FAQSection() {
           className="text-center mb-16"
         >
           <span className="pill-tag mb-4 inline-block">FAQs</span>
-          <h2 className="font-display text-display-md lg:text-display-lg text-ink mt-4">
+          <h2 className="font-display text-display-md lg:text-display-lg text mt-4">
             Frequently Asked Questions
           </h2>
           <p className="text-body-lg text-shade-50 max-w-2xl mx-auto mt-4">
@@ -45,13 +45,13 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.3 }}
-              className="bg-canvas-light rounded-xl border border-hairline-light overflow-hidden"
+              className="bg-white rounded-xl border border-hairline-light overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-canvas-cream transition-colors"
+                className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-surface transition-colors"
               >
-                <span className="font-display text-heading-sm text-ink">{faq.q}</span>
+                <span className="font-display text-heading-sm text">{faq.q}</span>
                 <ChevronDown
                   size={20}
                   className={`shrink-0 text-shade-40 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`}

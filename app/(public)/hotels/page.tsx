@@ -5,9 +5,8 @@ import { MapPin, Star } from "lucide-react";
 import { fallbackHotels } from "@/lib/fallback-data";
 import PageHero from "@/components/layout/PageHero";
 import SearchInput from "@/components/layout/SearchInput";
-import { getSiteImages } from "@/lib/site-settings";
-
-export const metadata: Metadata = {
+ 
+ export const metadata: Metadata = {
   title: "Hotels Near Hospitals | Asians Healthcare",
   description: "Find comfortable accommodation near partner hospitals for your medical stay in India. Ranging from budget to luxury hotels in Delhi NCR.",
   alternates: { canonical: "https://asianshealthcare.com/hotels" },
@@ -19,7 +18,6 @@ export default async function HotelsPage({
   searchParams?: Promise<{ q?: string }>;
 }) {
   const sp = searchParams ? await searchParams : {};
-  const images = await getSiteImages();
   const query = typeof sp?.q === "string" ? sp.q.trim() : "";
   const normalizedQuery = query.toLowerCase();
 
@@ -39,8 +37,7 @@ export default async function HotelsPage({
         eyebrow="Accommodation"
         title="Hotels Near Hospitals"
         description="Comfortable accommodation options near our partner hospitals for your medical stay."
-        imageUrl={images.image_hotels_hero}
-      />
+       />
 
       <section className="bg-canvas-cream py-12 border-b border-hairline-light">
         <div className="container-cinematic">
