@@ -71,6 +71,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.apollohospitals.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'parashospitals-web.s3.ap-south-1.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.artemishospitals.com',
+      },
     ],
   },
   async headers() {

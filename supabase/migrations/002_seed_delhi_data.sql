@@ -19,20 +19,8 @@ INSERT INTO specialties (id, name, slug, description) VALUES
   ('c0000001-0000-0000-0000-000000000012', 'Cosmetic Surgery', 'cosmetic-surgery', 'Aesthetic and reconstructive procedures with privacy-focused recovery planning.')
 ON CONFLICT (slug) DO NOTHING;
 
--- ─── Hospitals (17 Delhi / NCR) ────────────────────────────
+-- ─── Hospitals (16 Delhi / NCR) ────────────────────────────
 INSERT INTO hospitals (id, name, slug, logo_url, city, state, beds_count, accreditations, about, is_featured) VALUES
-(
-  'a0000001-0000-0000-0000-000000000001',
-  'All India Institute of Medical Sciences (AIIMS)',
-  'aiims-delhi',
-  '/images/hospital-aiims.webp',
-  'New Delhi',
-  'Delhi',
-  2478,
-  ARRAY['NABH', 'Govt of India'],
-  'AIIMS is India''s premier medical institution and hospital, renowned for its high-quality patient care, medical education, and research. With over 2,400 beds and 600+ specialists, it offers comprehensive treatment across all major specialties at highly affordable rates for international patients.',
-  true
-),
 (
   'a0000001-0000-0000-0000-000000000002',
   'Medanta - The Medicity',
@@ -235,10 +223,10 @@ INSERT INTO doctors (id, name, slug, photo_url, experience_years, hospital_id, s
   'dr-rajesh-sharma',
   '/images/doctor-sharma.webp',
   28,
-  'a0000001-0000-0000-0000-000000000001',
+  'a0000001-0000-0000-0000-000000000004',
   ARRAY['Cardiac Surgery'],
   'MBBS, MS, MCh Cardiothoracic Surgery',
-  'Senior cardiac surgeon at AIIMS with expertise in complex coronary bypass, valve repair, and paediatric cardiac surgery. Has performed over 10,000 cardiac procedures.',
+  'Senior cardiac surgeon at Fortis Escorts with expertise in complex coronary bypass, valve repair, and paediatric cardiac surgery. Has performed over 10,000 cardiac procedures.',
   true
 ),
 (
@@ -259,10 +247,10 @@ INSERT INTO doctors (id, name, slug, photo_url, experience_years, hospital_id, s
   'dr-priya-singh',
   '/images/doctor-singh.webp',
   18,
-  'a0000001-0000-0000-0000-000000000001',
+  'a0000001-0000-0000-0000-000000000005',
   ARRAY['Neurology'],
   'MBBS, MD Medicine, DM Neurology',
-  'Consultant neurologist at AIIMS specializing in stroke care, movement disorders, epilepsy management, and neuro-immunology. Published over 40 research papers.',
+  'Consultant neurologist at Max Super Speciality Hospital specializing in stroke care, movement disorders, epilepsy management, and neuro-immunology. Published over 40 research papers.',
   true
 ),
 (
@@ -535,10 +523,10 @@ INSERT INTO doctors (id, name, slug, photo_url, experience_years, hospital_id, s
   'dr-amit-kumar',
   '/images/doctor-amit-kumar.webp',
   20,
-  'a0000001-0000-0000-0000-000000000001',
+  'a0000001-0000-0000-0000-000000000003',
   ARRAY['Orthopedics'],
   'MBBS, MS Orthopedics',
-  'Orthopedic surgeon at AIIMS specializing in joint replacement, spine surgery, and trauma management.',
+  'Orthopedic surgeon at Apollo Hospitals specializing in joint replacement, spine surgery, and trauma management.',
   false
 ),
 (
@@ -752,7 +740,6 @@ INSERT INTO hotels (id, name, address, hospital_id, stars, price_range, booking_
   ('80000001-0000-0000-0000-000000000001', 'The Medicity Suites', 'Sector 38, Gurugram', 'a0000001-0000-0000-0000-000000000002', 4, '$$$', NULL, NULL),
   ('80000001-0000-0000-0000-000000000002', 'Delhi Care Residency', 'Sarita Vihar, New Delhi', 'a0000001-0000-0000-0000-000000000003', 3, '$$', NULL, NULL),
   ('80000001-0000-0000-0000-000000000003', 'FMRI Patient Apartments', 'Sector 44, Gurugram', 'a0000001-0000-0000-0000-000000000009', 4, '$$$', NULL, NULL),
-  ('80000001-0000-0000-0000-000000000004', 'AIIMS Patient Lodge', 'Ansari Nagar, New Delhi', 'a0000001-0000-0000-0000-000000000001', 2, '$', NULL, NULL),
   ('80000001-0000-0000-0000-000000000005', 'Fortis Escorts Guest House', 'Okhla Road, New Delhi', 'a0000001-0000-0000-0000-000000000004', 3, '$$', NULL, NULL),
   ('80000001-0000-0000-0000-000000000006', 'Max Saket International Stay', 'Saket, New Delhi', 'a0000001-0000-0000-0000-000000000005', 4, '$$$', NULL, NULL),
   ('80000001-0000-0000-0000-000000000007', 'BLK Patient Comfort Inn', 'Pusa Road, New Delhi', 'a0000001-0000-0000-0000-000000000007', 3, '$$', NULL, NULL),

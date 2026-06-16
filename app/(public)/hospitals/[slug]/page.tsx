@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Award, Building2, MapPin } from "lucide-react";
 import { notFound } from "next/navigation";
 import { fallbackHospitals } from "@/lib/fallback-data";
@@ -14,10 +15,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const hospital = rawHospital || fallbackHospital;
   if (!hospital) return { title: "Hospital Not Found" };
   const name = hospital.name || "Hospital";
+  const photoUrl = rawHospital?.logo_url || (fallbackHospital && "photo_url" in fallbackHospital ? fallbackHospital.photo_url : null);
   return {
     title: name,
     description: `${name} — ${hospital.city}, ${hospital.state}. ${hospital.accreditations?.join(", ") || "Accredited"} multi-specialty hospital. ${hospital.about?.slice(0, 150) || `Learn about ${name} and available treatments.`}`,
-    openGraph: { title: name, description: `${name} — Healthcare facility in ${hospital.city}, India.` },
+    openGraph: {
+      title: name,
+      description: `${name} — Healthcare facility in ${hospital.city}, India.`,
+      images: photoUrl ? [{ url: photoUrl, width: 1200, height: 630, alt: name }] : undefined,
+    },
   };
 }
 
@@ -33,6 +39,7 @@ export default async function HospitalDetailPage({ params }: { params: Promise<{
         accreditation: rawHospital.accreditations?.join(", ") || "Accredited",
         beds_count: rawHospital.beds_count || 0,
         about: rawHospital.about || "No description available.",
+        photo_url: rawHospital.logo_url || fallbackHospital?.photo_url || null,
       }
     : fallbackHospital;
 
@@ -59,9 +66,15 @@ export default async function HospitalDetailPage({ params }: { params: Promise<{
             <ArrowLeft size={18} /> Back to Hospitals
           </Link>
           <div className="flex flex-col lg:flex-row gap-8 items-start">
-            <div className="w-20 h-20 rounded-lg bg-aloe-10 flex items-center justify-center shrink-0">
-              <Building2 size={40} className="text-ink" />
-            </div>
+            {hospital.photo_url ? (
+              <div className="relative w-24 h-24 lg:w-32 lg:h-32 rounded-xl overflow-hidden shrink-0 ring-2 ring-white/10">
+                <Image src={hospital.photo_url} alt={hospital.name} fill className="object-cover" sizes="128px" />
+              </div>
+            ) : (
+              <div className="w-20 h-20 rounded-lg bg-aloe-10 flex items-center justify-center shrink-0">
+                <Building2 size={40} className="text-ink" />
+              </div>
+            )}
             <div>
               <span className="pill-tag mb-3">Hospital Profile</span>
               <h1 className="font-display text-display-md lg:text-display-lg text-on-primary mb-3">{hospital.name}</h1>

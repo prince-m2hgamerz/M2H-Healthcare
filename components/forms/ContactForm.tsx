@@ -1,15 +1,31 @@
 "use client";
 
-import { useState } from "react";
-import { Send } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Send, Stethoscope, Building2 } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 export default function ContactForm() {
+  const searchParams = useSearchParams();
+  const doctorParam = searchParams.get("doctor");
+  const hospitalParam = searchParams.get("hospital");
+  const specialtyParam = searchParams.get("specialty");
+
+  const hasDoctorInfo = !!(doctorParam || hospitalParam || specialtyParam);
+
+  const initialTreatment = useMemo(() => {
+    if (!hasDoctorInfo) return "";
+    const parts: string[] = [];
+    if (doctorParam) parts.push(`Consultation for ${doctorParam}`);
+    if (specialtyParam) parts.push(specialtyParam);
+    return parts.join(" - ");
+  }, [doctorParam, specialtyParam, hasDoctorInfo]);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     country: "",
-    treatment: "",
+    treatment: initialTreatment,
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -19,6 +35,13 @@ export default function ContactForm() {
     e.preventDefault();
     setLoading(true);
     try {
+      const messageParts: string[] = [];
+      if (doctorParam) messageParts.push(`Doctor: ${doctorParam}`);
+      if (hospitalParam) messageParts.push(`Hospital: ${hospitalParam}`);
+      if (specialtyParam) messageParts.push(`Specialty: ${specialtyParam}`);
+      if (formData.treatment) messageParts.push(`Treatment: ${formData.treatment}`);
+      if (formData.message) messageParts.push(formData.message);
+
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -28,7 +51,7 @@ export default function ContactForm() {
           email: formData.email,
           phone: formData.phone,
           country: formData.country,
-          message: `${formData.treatment ? `Treatment: ${formData.treatment}\n` : ""}${formData.message}`,
+          message: messageParts.join("\n"),
         }),
       });
       if (!res.ok) throw new Error("Failed to submit");
@@ -47,7 +70,7 @@ export default function ContactForm() {
         </div>
         <h3 className="font-display text-heading-xl text-ink mb-2">Thank You!</h3>
         <p className="text-body-lg text-shade-50">
-          We&apos;ve received your message. Our team will reach out shortly.
+          We&apos;ve received your{doctorParam ? ` enquiry for ${doctorParam}` : ""}. Our team will reach out shortly.
         </p>
       </div>
     );
@@ -55,6 +78,34 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      {hasDoctorInfo && (
+        <div className="rounded-lg border border-link-mint/30 bg-aloe-5 p-4">
+          <div className="flex items-start justify-between gap-3">
+            <div className="space-y-1.5">
+              <p className="text-caption font-semibold text-ink uppercase tracking-wider text-[11px]">You are enquiring about</p>
+              {doctorParam && (
+                <p className="text-body-md text-ink flex items-center gap-2">
+                  <Stethoscope size={15} className="shrink-0 text-link-mint" />
+                  {doctorParam}
+                </p>
+              )}
+              {specialtyParam && (
+                <p className="text-caption text-shade-50 flex items-center gap-2">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-link-mint shrink-0" />
+                  {specialtyParam}
+                </p>
+              )}
+              {hospitalParam && (
+                <p className="text-caption text-shade-50 flex items-center gap-2">
+                  <Building2 size={13} className="shrink-0 text-shade-40" />
+                  {hospitalParam}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <input

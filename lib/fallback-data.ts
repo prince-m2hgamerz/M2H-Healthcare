@@ -16,20 +16,6 @@ export const fallbackDoctors = apolloDoctors.map((d) => ({
 
 export const fallbackHospitals = [
   {
-    name: "All India Institute of Medical Sciences (AIIMS)",
-    location: "New Delhi, Delhi",
-    city: "New Delhi",
-    state: "Delhi",
-    beds: "2,478+",
-    beds_count: 2478,
-    accreditation: "NABH, Govt of India",
-    accreditations: ["NABH", "Govt of India"],
-    slug: "aiims-delhi",
-    photo_url: "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg",
-    about:
-      "AIIMS is India's premier medical institution and hospital, renowned for its high-quality patient care, medical education, and research. With over 2,400 beds and 600+ specialists, it offers comprehensive treatment across all major specialties at highly affordable rates.",
-  },
-  {
     name: "Medanta - The Medicity",
     location: "Gurugram, Haryana",
     city: "Gurugram",
@@ -39,7 +25,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "medanta-the-medicity",
-    photo_url: "https://getwellgo.com/uploads/hospitals/medanta-gurgaon.jpg",
+    photo_url: "/images/hospital-medanta.webp",
     about:
       "Medanta is one of India's largest multi-specialty hospitals with a dedicated international patient wing. It features 45+ operating theatres, advanced robotic surgery systems, and world-renowned cardiac, oncology, transplant, and orthopaedic programs.",
   },
@@ -53,7 +39,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "apollo-hospitals-delhi",
-    photo_url: "https://safartibbi.com/wp-content/uploads/2022/11/apolo-1.jpg",
+    photo_url: "/images/hospital-apollo.webp",
     about:
       "Apollo Hospitals Indraprastha is a flagship tertiary care hospital in South East Asia with internationally accredited programs in cardiac sciences, oncology, neurosciences, orthopedics, and organ transplantation.",
   },
@@ -67,7 +53,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "fortis-escorts-heart-institute",
-    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/KRKHMv9Fxr54fLXKN0OjZzxiiwFTBq-metaT2JSZkdhUTI1bnJwWldCdkJKMWxzdHBCVG91cEdNLW1ldGFSM1Z5ZFdkeVlXMHVhbkJuLS5qcGc=-.jpg",
+    photo_url: "/images/hospital-fortis-escorts.webp",
     about:
       "Fortis Escorts Heart Institute is India's most recognised cardiac care hospital, performing over 15,000 cardiac surgeries annually with world-class success rates.",
   },
@@ -81,7 +67,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "max-super-speciality-hospital-saket",
-    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2023/7SQ9q1Q1OCZRgZRErb64rLCNhnUGSi-metabHVja25vdy5qcGc=-.jpg",
+    photo_url: "/images/hospital-max-saket.webp",
     about:
       "Max Super Speciality Hospital Saket is a multi-specialty tertiary care hospital known for its advanced neurosciences, bone marrow transplant program, cardiac care, and oncology services.",
   },
@@ -95,7 +81,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "sir-ganga-ram-hospital",
-    photo_url: "https://www.joonsquare.com/usermanage/image/business/sir-ganga-ram-hospital-east-delhi-1160/sir-ganga-ram-hospital-east-delhi-ganga2.jpg",
+    photo_url: "/images/hospital-ganga-ram.webp",
     about:
       "Sir Ganga Ram Hospital is a premier multi-specialty hospital in New Delhi with a 70-year legacy of medical excellence across cardiology, gastroenterology, nephrology, and urology.",
   },
@@ -109,7 +95,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "blk-max-super-speciality-hospital",
-    photo_url: "https://crossborderscare.com/wp-content/uploads/2023/05/Blk-Max-hospital.jpg",
+    photo_url: "/images/hospital-blk-max.webp",
     about:
       "BLK-Max Super Speciality Hospital is a leading healthcare facility in Central Delhi with 650 beds and 17 super-speciality departments, renowned for paediatric cardiac surgery, orthopedics, and fertility treatment.",
   },
@@ -123,7 +109,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "artemis-hospital-gurugram",
-    photo_url: "https://www.globalcarehealth.com/img/hospitalsimg/Artemis-Hospital-Gurugram-India-gchh81.webp",
+    photo_url: "/images/hospital-artemis.webp",
     about:
       "Artemis Hospital is a state-of-the-art multi-specialty hospital in Gurugram with JCI accreditation, offering advanced care in cardiology, orthopedics, IVF, and oncology with a focus on medical tourism.",
   },
@@ -137,7 +123,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "fortis-memorial-research-institute",
-    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/vv3jGl55XyYhdw6Css4eETU7I3cSty-metaTHVja25vdy5wbmc=-.png",
+    photo_url: "/images/hospital-fmri.webp",
     about:
       "Fortis Memorial Research Institute (FMRI) is a flagship quaternary care hospital with dedicated centres for oncology, neurosciences, orthopedics, cardiac care, and liver transplant.",
   },
@@ -151,7 +137,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "manipal-hospital-dwarka",
-    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/CrIXV6svcbfI8IwaGIINKGH4rNzSan-metaUGF0bmEucG5n-.png",
+    photo_url: "/images/hospital-manipal-dwarka.webp",
     about:
       "Manipal Hospital Dwarka is a multi-specialty tertiary care hospital serving West Delhi with comprehensive healthcare services including cardiology, orthopedics, neurology, and gastroenterology.",
   },
@@ -165,7 +151,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "indian-spinal-injuries-centre",
-    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/UG8G445YMpH2rBUJCF8zJlK52TbUFG-metaSW5kb3JlLnBuZw==-.png",
+    photo_url: "/images/hospital-isic.webp",
     about:
       "The Indian Spinal Injuries Centre is Asia's premier institute for spine care and rehabilitation, offering comprehensive treatment for spinal trauma, degenerative spine conditions, and sports injuries.",
   },
@@ -179,7 +165,7 @@ export const fallbackHospitals = [
     accreditation: "NABH",
     accreditations: ["NABH"],
     slug: "venkateshwar-hospital",
-    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2025/tueLPci3oHXKmxX7Uz2mnvpMD4M6PE-metaNDgwX3hfMzIwLndlYnA=-.webp",
+    photo_url: "/images/hospital-venkateshwar.webp",
     about:
       "Venkateshwar Hospital is a multi-super-speciality hospital in Dwarka offering advanced medical care in gastroenterology, cardiology, orthopedics, nephrology, and general surgery.",
   },
@@ -193,7 +179,7 @@ export const fallbackHospitals = [
     accreditation: "NABH",
     accreditations: ["NABH"],
     slug: "saroj-super-speciality-hospital",
-    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/April2025/W745nIg3xEkkTksRkH6pFvEAgCyo7D-metaRjdnUkJWYWNqVU1qM1lTaHllazBwZTVHV0lxUDJDLW1ldGFVbUZ1WTJocElEVXhOQ0FnZUNBME1EQXVjRzVuLS5wbmc=-.png",
+    photo_url: "/images/hospital-saroj.webp",
     about:
       "Saroj Super Speciality Hospital is a well-established medical facility in Central Delhi known for its urology, nephrology, and general surgery departments at affordable prices.",
   },
@@ -207,7 +193,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "paras-hospital-gurugram",
-    photo_url: "https://medicircle.in/uploads/2020/january2020/paras_hospital_edit.jpg",
+    photo_url: "/images/hospital-paras.webp",
     about:
       "Paras Hospital is a multi-specialty tertiary care hospital in Gurugram with expertise in gastroenterology, bariatric surgery, orthopedics, and fertility treatment.",
   },
@@ -221,7 +207,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "narayana-superspeciality-hospital-gurugram",
-    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/April2025/sdE5SGg6gM0Y4fqeIaLSlnZO7bE8Rq-metaSW5kb3JlIGhvc3BpdGFsIDEuanBn-.jpg",
+    photo_url: "/images/hospital-narayana.webp",
     about:
       "Narayana Superspeciality Hospital is part of the renowned Narayana Health chain, offering affordable cardiac care, oncology, orthopedics, and neurosurgery with outcomes matching global benchmarks.",
   },
@@ -235,7 +221,7 @@ export const fallbackHospitals = [
     accreditation: "NABH, ISO 9001",
     accreditations: ["NABH", "ISO 9001"],
     slug: "moolchand-hospital",
-    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2023/7SQ9q1Q1OCZRgZRErb64rLCNhnUGSi-metabHVja25vdy5qcGc=-.jpg",
+    photo_url: "/images/hospital-moolchand.webp",
     about:
       "Moolchand Hospital is a 325-bed multi-specialty hospital in South Delhi with a 70-year legacy, offering comprehensive care in ophthalmology, orthopedics, cardiology, and women's health.",
   },
@@ -249,7 +235,7 @@ export const fallbackHospitals = [
     accreditation: "JCI, NABH",
     accreditations: ["JCI", "NABH"],
     slug: "columbia-asia-hospital-gurugram",
-    photo_url: "https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/vv3jGl55XyYhdw6Css4eETU7I3cSty-metaTHVja25vdy5wbmc=-.png",
+    photo_url: "/images/hospital-columbia-asia.webp",
     about:
       "Columbia Asia Hospital is a JCI-accredited tertiary care facility in Gurugram offering comprehensive services in orthopedics, cardiology, and general surgery.",
   },
@@ -542,8 +528,8 @@ export const fallbackHotels = [
     address: "Bhikaji Cama Place, Ring Road, New Delhi",
     stars: 5,
     price: "$$$",
-    near: "AIIMS & Safdarjung Hospital",
-    description: "A prominent 5-star hotel near major medical institutions including AIIMS. Features multiple dining options, a large outdoor pool, fitness center, and well-appointed rooms ideal for medical tourists.",
+    near: "Safdarjung Hospital & South Delhi",
+    description: "A prominent 5-star hotel near major medical institutions in South Delhi. Features multiple dining options, a large outdoor pool, fitness center, and well-appointed rooms ideal for medical tourists.",
     photo_url: "/images/hotels/hyatt-regency-delhi.jpg",
   },
   {
@@ -735,7 +721,7 @@ export const fallbackBlogs = [
     category: "Medical Visa Guide",
     author: "Asians Healthcare",
     published_at: "2025-10-10T00:00:00Z",
-    thumbnail_url: "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg",
+    thumbnail_url: "https://satyughealthcare.com/uploads/hospitals/1609996048_moolchand-medcity-hospital-sikandra-agra-hospitals-8xp1twzhgx.jpg",
     content: `<h2>Medical Visa for India: Step-by-Step Guide</h2>
 <p>India offers a dedicated Medical Visa (M-visa) for patients seeking treatment at recognized hospitals. This comprehensive guide explains the entire process.</p>
 <h2>Eligibility</h2>

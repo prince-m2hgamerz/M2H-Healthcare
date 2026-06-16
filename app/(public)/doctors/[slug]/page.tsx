@@ -82,7 +82,7 @@ export default async function DoctorDetailPage({ params }: { params: Promise<{ s
               </>
             )}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact-us" className="btn-primary">Book Appointment</Link>
+              <Link href={`/contact-us?doctor=${encodeURIComponent(doctor.name)}&hospital=${encodeURIComponent(doctor.hospital)}&specialty=${encodeURIComponent(doctor.specialty)}`} className="btn-primary">Book Appointment</Link>
               <Link href="/treatment-package" className="btn-outline">View Treatment Costs</Link>
             </div>
           </div>

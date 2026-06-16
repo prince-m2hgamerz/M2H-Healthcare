@@ -4,6 +4,7 @@ import { Building2, MapPin } from "lucide-react";
 import Image from "next/image";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { fallbackHospitals } from "@/lib/fallback-data";
+import { hospitalImageBySlug } from "@/lib/doctors-data";
 import PageHero from "@/components/layout/PageHero";
 import SearchInput from "@/components/layout/SearchInput";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -31,27 +32,6 @@ export default async function HospitalsPage({
   const query = typeof sp?.q === "string" ? sp.q.trim() : "";
   const normalizedQuery = query.toLowerCase();
 
-  // Real hospital images - each matches the actual hospital building/logo
-  const hospitalImages: Record<string, string> = {
-    "aiims-delhi": "https://upload.wikimedia.org/wikipedia/commons/c/cd/AIIMS_-New_Delhi%27s_Ward_Block.jpg",
-    "medanta-the-medicity": "https://getwellgo.com/uploads/hospitals/medanta-gurgaon.jpg",
-    "apollo-hospitals-delhi": "https://satyughealthcare.com/uploads/hospitals/1580542668_Indraprastha-Apollo-Hospital_icon-600x586.jpg",
-    "fortis-escorts-heart-institute": "https://satyughealthcare.com/uploads/hospitals/1612249990_Fortis_escorts_jaipur.jpg",
-    "max-super-speciality-hospital-saket": "https://satyughealthcare.com/uploads/hospitals/1709659199_Max_Hospital_Dwarka_Sector_10,_New_Delhi.jpg",
-    "sir-ganga-ram-hospital": "https://www.joonsquare.com/usermanage/image/business/sir-ganga-ram-hospital-east-delhi-1160/sir-ganga-ram-hospital-east-delhi-ganga2.jpg",
-    "blk-max-super-speciality-hospital": "https://crossborderscare.com/wp-content/uploads/2023/05/Blk-Max-hospital.jpg",
-    "artemis-hospital-gurugram": "https://www.globalcarehealth.com/img/hospitalsimg/Artemis-Hospital-Gurugram-India-gchh81.webp",
-    "fortis-memorial-research-institute": "https://satyughealthcare.com/uploads/hospitals/1636038339_fortis_hospital,_shalimar_bagh,_new_delhi,_delhi.jpg",
-    "manipal-hospital-dwarka": "https://satyughealthcare.com/uploads/hospitals/1591203905_Manipal_Hospital.jpg",
-    "indian-spinal-injuries-centre": "https://satyughealthcare.com/uploads/hospitals/1600550232_Indian_Spinal_Injuries_Center,_Vasant_Kunj_,_New_Delhi.jpg",
-    "venkateshwar-hospital": "https://satyughealthcare.com/uploads/hospitals/1609080986_venkateshwar-hospital,_dwarka_sector_18,_New_Delhi.jpg",
-    "saroj-super-speciality-hospital": "https://satyughealthcare.com/uploads/hospitals/1636038966_blk_max_super_speciality_hospital,_New_Delhi.jpg",
-    "paras-hospital-gurugram": "https://medicircle.in/uploads/2020/january2020/paras_hospital_edit.jpg",
-    "narayana-superspeciality-hospital-gurugram": "https://satyughealthcare.com/uploads/hospitals/1610359225_Narayana_Superspeciality_Hospital__Gurugram.jpg",
-    "moolchand-hospital": "https://satyughealthcare.com/uploads/hospitals/1609996048_moolchand-medcity-hospital-sikandra-agra-hospitals-8xp1twzhgx.jpg",
-    "columbia-asia-hospital-gurugram": "https://satyughealthcare.com/uploads/hospitals/1636038848_columbia_asia_hospital_hebbal_bangalore.jpg",
-  };
-
   const fetchedHospitals = raw?.map((hospital) => ({
     name: hospital.name,
     location: `${hospital.city}, ${hospital.state}`,
@@ -60,7 +40,7 @@ export default async function HospitalsPage({
     beds: `${hospital.beds_count?.toLocaleString() || 0}+`,
     accreditation: hospital.accreditations?.join(", ") || "Accredited",
     slug: hospital.slug,
-    photo_url: hospitalImages[hospital.slug] || hospital.logo_url || "https://safartibbi.com/wp-content/uploads/2022/11/apolo-1.jpg",
+    photo_url: hospitalImageBySlug[hospital.slug] || hospital.logo_url || "/images/hospital-apollo.webp",
   })) || [];
 
   const allHospitals = fetchedHospitals.length > 0 ? fetchedHospitals : fallbackHospitals;

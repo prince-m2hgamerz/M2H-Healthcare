@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import ContactForm from "@/components/forms/ContactForm";
 import { Clock, FileText, Mail, MapPin, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
@@ -72,7 +73,9 @@ export default async function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
             <div className="lg:col-span-3">
               <h2 className="font-display text-heading-xl text-ink mb-6">Send Us a Message</h2>
-              <ContactForm />
+              <Suspense fallback={<div className="py-8 text-center text-shade-40">Loading form...</div>}>
+                <ContactForm />
+              </Suspense>
             </div>
             <div className="lg:col-span-2">
               <h2 className="font-display text-heading-xl text-ink mb-6">Contact Information</h2>
